@@ -1,0 +1,11 @@
+{
+    "admin": {
+        "active": false,
+        "created_at": "2026-01-30T12:14:01.487794",
+        "password": "0000",
+        "permissions": [
+            "all"
+        ],
+        "role": "admin"
+    }
+}
