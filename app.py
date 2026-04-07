@@ -320,7 +320,8 @@ def load_sheets_for_edit():
         st.error(f"❌ خطأ في تحميل الشيتات: {e}")
         return None
 
-def save_local_excel_and_push(sheets_dict, commit_message="Update"):
+def save_local_excel(sheets_dict):
+    """حفظ الملف محلياً فقط"""
     try:
         with pd.ExcelWriter(APP_CONFIG["LOCAL_FILE"], engine="openpyxl") as writer:
             for name, sh in sheets_dict.items():
@@ -328,37 +329,71 @@ def save_local_excel_and_push(sheets_dict, commit_message="Update"):
                     sh.to_excel(writer, sheet_name=name, index=False)
                 except:
                     sh.astype(object).to_excel(writer, sheet_name=name, index=False)
+        return True
     except Exception as e:
-        st.error(f"⚠ خطأ في الحفظ: {e}")
-        return None
-    st.cache_data.clear()
-    token = st.secrets.get("github", {}).get("token", None)
-    if not token or not GITHUB_AVAILABLE:
-        st.warning("⚠ تم الحفظ محلياً فقط")
-        return load_sheets_for_edit()
+        st.error(f"⚠ خطأ في الحفظ المحلي: {e}")
+        return False
+
+def push_to_github():
+    """رفع الملف المحلي إلى GitHub"""
     try:
+        token = st.secrets.get("github", {}).get("token", None)
+        if not token:
+            st.warning("⚠ لم يتم العثور على GitHub token")
+            return False
+        
+        if not GITHUB_AVAILABLE:
+            st.warning("⚠ PyGithub غير متوفر")
+            return False
+        
         g = Github(token)
         repo = g.get_repo(APP_CONFIG["REPO_NAME"])
+        
         with open(APP_CONFIG["LOCAL_FILE"], "rb") as f:
             content = f.read()
+        
         try:
             contents = repo.get_contents(APP_CONFIG["FILE_PATH"], ref=APP_CONFIG["BRANCH"])
-            repo.update_file(path=APP_CONFIG["FILE_PATH"], message=commit_message, content=content, sha=contents.sha, branch=APP_CONFIG["BRANCH"])
+            repo.update_file(
+                path=APP_CONFIG["FILE_PATH"], 
+                message=f"تحديث الملف بواسطة {st.session_state.get('username', 'user')} - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", 
+                content=content, 
+                sha=contents.sha, 
+                branch=APP_CONFIG["BRANCH"]
+            )
         except:
-            repo.create_file(path=APP_CONFIG["FILE_PATH"], message=commit_message, content=content, branch=APP_CONFIG["BRANCH"])
-        st.success("✅ تم الرفع إلى GitHub")
-        return load_sheets_for_edit()
+            repo.create_file(
+                path=APP_CONFIG["FILE_PATH"], 
+                message=f"إنشاء الملف بواسطة {st.session_state.get('username', 'user')} - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", 
+                content=content, 
+                branch=APP_CONFIG["BRANCH"]
+            )
+        return True
     except Exception as e:
-        st.error(f"❌ فشل الرفع: {e}")
-        return None
+        st.error(f"❌ فشل الرفع إلى GitHub: {e}")
+        return False
 
-def auto_save_to_github(sheets_dict, operation_description):
+def save_and_push(sheets_dict, operation_description):
+    """حفظ محلياً ورفع إلى GitHub"""
     username = st.session_state.get("username", "unknown")
-    commit_message = f"{operation_description} by {username}"
-    result = save_local_excel_and_push(sheets_dict, commit_message)
-    if result is not None:
-        return result
-    return sheets_dict
+    st.info(f"💾 جاري حفظ التغييرات... ({operation_description})")
+    
+    # حفظ محلياً
+    if save_local_excel(sheets_dict):
+        st.success("✅ تم الحفظ محلياً")
+        
+        # محاولة الرفع إلى GitHub
+        if push_to_github():
+            st.success("✅ تم الرفع إلى GitHub")
+            st.cache_data.clear()
+            return load_sheets_for_edit()
+        else:
+            st.warning("⚠ تم الحفظ محلياً فقط (فشل الرفع إلى GitHub)")
+            st.cache_data.clear()
+            return load_sheets_for_edit()
+    else:
+        st.error("❌ فشل الحفظ المحلي")
+        return None
 
 # ------------------------------- دوال العرض والتعديل -------------------------------
 def create_new_sheet_in_excel(sheets_edit, new_sheet_name, template_columns=None):
@@ -417,8 +452,9 @@ def add_new_event_with_equipment(sheets_edit, sheet_name, equipment_list, unique
         new_row_df = pd.DataFrame([new_row])
         df_new = pd.concat([df, new_row_df], ignore_index=True)
         sheets_edit[sheet_name] = df_new
-        new_sheets = auto_save_to_github(sheets_edit, f"إضافة حدث في {sheet_name}")
-        if new_sheets is not None:
+        
+        result = save_and_push(sheets_edit, f"إضافة حدث في {sheet_name}")
+        if result is not None:
             st.success("✅ تم إضافة الحدث بنجاح!")
             st.rerun()
     return sheets_edit
@@ -596,13 +632,13 @@ def add_new_sheet_to_github(sheets_edit, equipment_config, unique_id):
         new_sheet_name = st.text_input(
             "📝 اسم الشيت الجديد:", 
             key=f"new_sheet_name_{unique_id}", 
-            placeholder="مثال: قسم الميكانيكا, محطة الكهرباء, صيانة المضخات",
-            help="أدخل اسم الشيت (يجب أن يكون فريداً ولا يحتوي على أحرف خاصة)"
+            placeholder="مثال: قسم الميكانيكا, محطة الكهرباء",
+            help="أدخل اسم الشيت (يجب أن يكون فريداً)"
         )
         
         if new_sheet_name:
             if new_sheet_name in sheets_edit:
-                st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل في الملف!")
+                st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل!")
             else:
                 st.success(f"✅ اسم الشيت '{new_sheet_name}' متاح")
     
@@ -611,8 +647,7 @@ def add_new_sheet_to_github(sheets_edit, equipment_config, unique_id):
         use_default = st.checkbox(
             "استخدام الأعمدة الافتراضية", 
             value=True, 
-            key=f"use_default_{unique_id}",
-            help="تستخدم الأعمدة الافتراضية: التاريخ، المعدة، الحدث/العطل، الإجراء التصحيحي، تم بواسطة، الطن، الصور، ملاحظات"
+            key=f"use_default_{unique_id}"
         )
         
         if use_default:
@@ -620,81 +655,72 @@ def add_new_sheet_to_github(sheets_edit, equipment_config, unique_id):
             st.info(f"📊 الأعمدة: {', '.join(columns_list)}")
         else:
             columns_text = st.text_area(
-                "✏️ الأعمدة (كل عمود في سطر منفصل):", 
+                "✏️ الأعمدة (كل عمود في سطر):", 
                 value="\n".join(APP_CONFIG["DEFAULT_SHEET_COLUMNS"]), 
                 key=f"columns_{unique_id}", 
-                height=150,
-                help="أدخل اسم كل عمود في سطر منفصل"
+                height=150
             )
             columns_list = [col.strip() for col in columns_text.split("\n") if col.strip()]
             if not columns_list:
                 columns_list = APP_CONFIG["DEFAULT_SHEET_COLUMNS"]
-                st.warning("⚠ لم يتم إدخال أعمدة، سيتم استخدام الأعمدة الافتراضية")
     
     st.markdown("---")
     
-    # معاينة الشيت
+    # معاينة
     st.markdown("### 📋 معاينة الشيت الجديد")
     preview_df = pd.DataFrame(columns=columns_list)
     st.dataframe(preview_df, use_container_width=True)
-    st.caption(f"📊 عدد الأعمدة: {len(columns_list)} | الشيت سيكون فارغاً، يمكنك إضافة البيانات لاحقاً")
+    st.caption(f"📊 عدد الأعمدة: {len(columns_list)}")
     
     st.markdown("---")
     
-    # أزرار التحكم
-    btn_col1, btn_col2, btn_col3 = st.columns([1, 2, 1])
-    
-    with btn_col2:
-        if st.button("✅ إنشاء وإضافة الشيت", key=f"create_sheet_btn_{unique_id}", type="primary", use_container_width=True):
-            # التحقق من صحة البيانات
-            if not new_sheet_name:
-                st.error("❌ الرجاء إدخال اسم الشيت")
-                return sheets_edit
-            
-            # تنظيف اسم الشيت من الأحرف غير المسموحة
-            clean_name = re.sub(r'[\\/*?:"<>|]', '_', new_sheet_name.strip())
-            
-            if clean_name != new_sheet_name:
-                st.warning(f"⚠ تم تعديل اسم الشيت إلى: {clean_name} (تمت إزالة الأحرف غير المسموحة)")
-                new_sheet_name = clean_name
-            
-            if new_sheet_name in sheets_edit:
-                st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل في الملف!")
-                return sheets_edit
-            
-            # إنشاء الشيت الجديد
-            try:
-                with st.spinner("جاري إنشاء الشيت وحفظه..."):
-                    sheets_edit = create_new_sheet_in_excel(sheets_edit, new_sheet_name, columns_list)
+    # زر الإنشاء
+    if st.button("✅ إنشاء وإضافة الشيت", key=f"create_sheet_btn_{unique_id}", type="primary", use_container_width=True):
+        if not new_sheet_name:
+            st.error("❌ الرجاء إدخال اسم الشيت")
+            return sheets_edit
+        
+        # تنظيف اسم الشيت
+        clean_name = re.sub(r'[\\/*?:"<>|]', '_', new_sheet_name.strip())
+        if clean_name != new_sheet_name:
+            st.warning(f"⚠ تم تعديل اسم الشيت إلى: {clean_name}")
+            new_sheet_name = clean_name
+        
+        if new_sheet_name in sheets_edit:
+            st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل!")
+            return sheets_edit
+        
+        # إنشاء الشيت
+        try:
+            with st.spinner("جاري إنشاء الشيت وحفظه..."):
+                # إنشاء DataFrame جديد
+                new_df = pd.DataFrame(columns=columns_list)
+                sheets_edit[new_sheet_name] = new_df
+                
+                # حفظ ورفع
+                result = save_and_push(sheets_edit, f"إنشاء شيت جديد: {new_sheet_name}")
+                
+                if result is not None:
+                    sheets_edit = result
                     
-                    # حفظ التغييرات ورفعها إلى GitHub
-                    new_sheets = auto_save_to_github(
-                        sheets_edit,
-                        f"إنشاء شيت جديد: {new_sheet_name}"
-                    )
+                    # إضافة تكوين المعدات
+                    if new_sheet_name not in equipment_config:
+                        equipment_config[new_sheet_name] = {
+                            "equipment_list": [], 
+                            "created_at": datetime.now().isoformat()
+                        }
+                        save_equipment_config(equipment_config)
                     
-                    if new_sheets is not None:
-                        sheets_edit = new_sheets
-                        
-                        # إضافة تكوين المعدات للشيت الجديد
-                        if new_sheet_name not in equipment_config:
-                            equipment_config[new_sheet_name] = {
-                                "equipment_list": [], 
-                                "created_at": datetime.now().isoformat()
-                            }
-                            save_equipment_config(equipment_config)
-                        
-                        st.success(f"✅ تم إنشاء الشيت '{new_sheet_name}' بنجاح!")
-                        st.info(f"ℹ️ تم حفظ الشيت ورفعه إلى GitHub. يمكنك الآن إضافة المعدات والبيانات.")
-                        st.balloons()
-                        st.rerun()
-                    else:
-                        st.error("❌ فشل حفظ الشيت. يرجى المحاولة مرة أخرى.")
-                        return sheets_edit
-                        
-            except Exception as e:
-                st.error(f"❌ حدث خطأ أثناء إنشاء الشيت: {str(e)}")
-                return sheets_edit
+                    st.success(f"✅ تم إنشاء الشيت '{new_sheet_name}' بنجاح!")
+                    st.balloons()
+                    st.rerun()
+                else:
+                    st.error("❌ فشل حفظ الشيت")
+                    return sheets_edit
+                    
+        except Exception as e:
+            st.error(f"❌ حدث خطأ: {str(e)}")
+            return sheets_edit
     
     return sheets_edit
 
@@ -747,9 +773,9 @@ def manage_data_edit(sheets_edit, equipment_config):
                         )
                         if st.button(f"💾 حفظ التغييرات", key=f"save_{edit_unique_id}_{sheet_name}"):
                             sheets_edit[sheet_name] = edited_df.astype(object)
-                            new_sheets = auto_save_to_github(sheets_edit, f"تعديل {sheet_name}")
-                            if new_sheets is not None:
-                                sheets_edit = new_sheets
+                            result = save_and_push(sheets_edit, f"تعديل {sheet_name}")
+                            if result is not None:
+                                sheets_edit = result
                                 st.success("✅ تم الحفظ!")
                                 st.rerun()
     
