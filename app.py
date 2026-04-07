@@ -18,7 +18,7 @@ except Exception:
 APP_CONFIG = {
     "APP_TITLE": "نظام إدارة الصيانة - CMMS",
     "APP_ICON": "🏭",
-    "REPO_NAME": "mahmedabdallh123/Elqds",
+    "REPO_NAME": "mahmedabdallh123/stations",
     "BRANCH": "main",
     "FILE_PATH": "l9.xlsx",
     "LOCAL_FILE": "l9.xlsx",
@@ -38,8 +38,8 @@ IMAGES_FOLDER = APP_CONFIG["IMAGES_FOLDER"]
 EQUIPMENT_CONFIG_FILE = "equipment_config.json"
 
 GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
-GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/Elqds/refs/heads/main/users.json"
-GITHUB_REPO_USERS = "mahmedabdallh123/Elqds"
+GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/stations/refs/heads/main/users.json"
+GITHUB_REPO_USERS = "mahmedabdallh123/stations"
 
 # ------------------------------- دوال تكوينات المعدات -------------------------------
 def load_equipment_config():
