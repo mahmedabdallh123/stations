@@ -17,9 +17,9 @@ except Exception:
     GITHUB_AVAILABLE = False
 
 APP_CONFIG = {
-    "APP_TITLE": "نظام إدارة الصيانة - CMMS",
+    "APP_TITLE": "  صيانه المحطات - CMMS",
     "APP_ICON": "🏭",
-    "REPO_NAME": "mahmedabdallh123/Elqds",
+    "REPO_NAME": "mahmedabdallh123/stations",
     "BRANCH": "main",
     "FILE_PATH": "l9.xlsx",
     "LOCAL_FILE": "l9.xlsx",
@@ -28,7 +28,7 @@ APP_CONFIG = {
     "IMAGES_FOLDER": "event_images",
     "ALLOWED_IMAGE_TYPES": ["jpg", "jpeg", "png", "gif", "bmp", "webp"],
     "MAX_IMAGE_SIZE_MB": 10,
-    "DEFAULT_SHEET_COLUMNS": ["التاريخ", "المعدة", "الحدث/العطل", "الإجراء التصحيحي", "تم بواسطة", "الطن", "الصور", "ملاحظات"],
+    "DEFAULT_SHEET_COLUMNS": ["التاريخ", "المعدة", "الحدث/العطل", "الإجراء التصحيحي", "تم بواسطة", "الصور"],
 }
 
 USERS_FILE = "users.json"
