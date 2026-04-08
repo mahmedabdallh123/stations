@@ -7,5 +7,23 @@
             "all"
         ],
         "role": "admin"
+    },
+    "editor": {
+        "created_at": "2026-04-08T19:22:50.331573",
+        "password": "ef5e5a1fb95055e0e56cccf98a41e784a132c14e7f6e1ba244302f0e72b29baf",
+        "permissions": [
+            "view",
+            "edit",
+            "manage_sheets"
+        ],
+        "role": "editor"
+    },
+    "viewer": {
+        "created_at": "2026-04-08T19:22:50.331553",
+        "password": "65375049b9e4d7cad6c9ba286fdeb9394b28135a3e84136404cfccfdcc438894",
+        "permissions": [
+            "view"
+        ],
+        "role": "viewer"
     }
 }
