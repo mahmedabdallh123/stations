@@ -9,7 +9,7 @@
         "role": "admin"
     },
     "editor": {
-        "created_at": "2026-04-08T19:22:57.312597",
+        "created_at": "2026-04-08T19:23:00.769622",
         "password": "ef5e5a1fb95055e0e56cccf98a41e784a132c14e7f6e1ba244302f0e72b29baf",
         "permissions": [
             "view",
@@ -19,7 +19,7 @@
         "role": "editor"
     },
     "viewer": {
-        "created_at": "2026-04-08T19:22:57.312581",
+        "created_at": "2026-04-08T19:23:00.769599",
         "password": "65375049b9e4d7cad6c9ba286fdeb9394b28135a3e84136404cfccfdcc438894",
         "permissions": [
             "view"
