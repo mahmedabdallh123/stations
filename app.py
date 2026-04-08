@@ -7,6 +7,735 @@ import requests
 import shutil
 import re
 from datetime import datetime, timedelta
+import io
+from github import Github, GithubException
+
+APP_CONFIG = {
+    "APP_TITLE": "نظام إدارة التشحيم وتغيير الزيت",
+    "APP_ICON": "⚙️",
+    "REPO_NAME": "mahmedabdallh123/Elqds",
+    "BRANCH": "main",
+    "FILE_PATH": "lubrication_data.xlsx",
+    "LOCAL_FILE": "lubrication_data.xlsx",
+    "MAX_ACTIVE_USERS": 5,
+    "SESSION_DURATION_MINUTES": 60,
+    "DEFAULT_LUBRICATION_COLUMNS": [
+        "المعدة", "نوع العملية", "نوع المادة", "الكمية", 
+        "تاريخ العملية", "عدد ساعات التشغيل الحالي", "عدد الساعات المستهدف", 
+        "الساعات المتبقية", "اخر عدد ساعات", "تم بواسطة", "ملاحظات", "حالة العملية"
+    ],
+    "PROCESS_TYPES": ["تشحيم", "تغيير زيت"],
+    "OIL_TYPES": ["زيت محرك 10W40", "زيت محرك 15W50", "زيت هيدروليك 46", "زيت هيدروليك 68", "زيت تروس 80W90", "زيت تروس 85W140", "شحم عام", "شحم عالي الحرارة", "زيت فرامل DOT4", "سائل تبريد", "أخرى"],
+    "GREASE_TYPES": ["شحم عام", "شحم عالي الحرارة", "شحم ليثيوم", "شحم نحاسي", "شحم سيليكون"],
+    "DEFAULT_INTERVALS": {
+        "تشحيم": 250,
+        "تغيير زيت": 500
+    }
+}
+
+USERS_FILE = "users.json"
+STATE_FILE = "state.json"
+SESSION_DURATION = timedelta(minutes=APP_CONFIG["SESSION_DURATION_MINUTES"])
+MAX_ACTIVE_USERS = APP_CONFIG["MAX_ACTIVE_USERS"]
+
+GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
+GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/Elqds/refs/heads/main/users.json"
+GITHUB_REPO_USERS = "mahmedabdallh123/Elqds"
+
+def download_users_from_github():
+    try:
+        response = requests.get(GITHUB_USERS_URL, timeout=10)
+        response.raise_for_status()
+        users_data = response.json()
+        with open(USERS_FILE, "w", encoding="utf-8") as f:
+            json.dump(users_data, f, indent=4, ensure_ascii=False)
+        return users_data
+    except:
+        if os.path.exists(USERS_FILE):
+            try:
+                with open(USERS_FILE, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except:
+                pass
+        return {"admin": {"password": "admin123", "role": "admin", "created_at": datetime.now().isoformat(), "permissions": ["all"], "active": False}}
+
+def load_users():
+    try:
+        users_data = download_users_from_github()
+        if "admin" not in users_data:
+            users_data["admin"] = {"password": "admin123", "role": "admin", "created_at": datetime.now().isoformat(), "permissions": ["all"], "active": False}
+        return users_data
+    except:
+        return {"admin": {"password": "admin123", "role": "admin", "created_at": datetime.now().isoformat(), "permissions": ["all"], "active": False}}
+
+def load_state():
+    if not os.path.exists(STATE_FILE):
+        with open(STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump({}, f)
+        return {}
+    try:
+        with open(STATE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return {}
+
+def save_state(state):
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=4, ensure_ascii=False)
+
+def cleanup_sessions(state):
+    now = datetime.now()
+    changed = False
+    for user, info in list(state.items()):
+        if info.get("active") and "login_time" in info:
+            try:
+                login_time = datetime.fromisoformat(info["login_time"])
+                if now - login_time > SESSION_DURATION:
+                    info["active"] = False
+                    info.pop("login_time", None)
+                    changed = True
+            except:
+                info["active"] = False
+                changed = True
+    if changed:
+        save_state(state)
+    return state
+
+def remaining_time(state, username):
+    if not username or username not in state:
+        return None
+    info = state.get(username)
+    if not info or not info.get("active"):
+        return None
+    try:
+        lt = datetime.fromisoformat(info["login_time"])
+        remaining = SESSION_DURATION - (datetime.now() - lt)
+        if remaining.total_seconds() <= 0:
+            return None
+        return remaining
+    except:
+        return None
+
+def logout_action():
+    state = load_state()
+    username = st.session_state.get("username")
+    if username and username in state:
+        state[username]["active"] = False
+        state[username].pop("login_time", None)
+        save_state(state)
+    for k in list(st.session_state.keys()):
+        st.session_state.pop(k, None)
+    st.rerun()
+
+def login_ui():
+    users = load_users()
+    state = cleanup_sessions(load_state())
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+        st.session_state.username = None
+        st.session_state.user_role = None
+        st.session_state.user_permissions = []
+
+    st.title(f"{APP_CONFIG['APP_ICON']} تسجيل الدخول - {APP_CONFIG['APP_TITLE']}")
+    username_input = st.selectbox("اختر المستخدم", list(users.keys()))
+    password = st.text_input("كلمة المرور", type="password")
+    active_users = [u for u, v in state.items() if v.get("active")]
+    active_count = len(active_users)
+    st.caption(f"المستخدمون النشطون: {active_count} / {MAX_ACTIVE_USERS}")
+
+    if not st.session_state.logged_in:
+        if st.button("تسجيل الدخول"):
+            current_users = load_users()
+            if username_input in current_users and current_users[username_input]["password"] == password:
+                if username_input != "admin" and username_input in active_users:
+                    st.warning("هذا المستخدم مسجل دخول بالفعل.")
+                    return False
+                elif active_count >= MAX_ACTIVE_USERS and username_input != "admin":
+                    st.error("الحد الأقصى للمستخدمين المتصلين.")
+                    return False
+                state[username_input] = {"active": True, "login_time": datetime.now().isoformat()}
+                save_state(state)
+                st.session_state.logged_in = True
+                st.session_state.username = username_input
+                st.session_state.user_role = current_users[username_input].get("role", "viewer")
+                st.session_state.user_permissions = current_users[username_input].get("permissions", ["view"])
+                st.success(f"تم تسجيل الدخول: {username_input}")
+                st.rerun()
+            else:
+                st.error("كلمة المرور غير صحيحة.")
+        return False
+    else:
+        st.success(f"مسجل الدخول كـ: {st.session_state.username}")
+        rem = remaining_time(state, st.session_state.username)
+        if rem:
+            mins, secs = divmod(int(rem.total_seconds()), 60)
+            st.info(f"الوقت المتبقي: {mins:02d}:{secs:02d}")
+        if st.button("تسجيل الخروج"):
+            logout_action()
+        return True
+
+def fetch_from_github_requests():
+    try:
+        response = requests.get(GITHUB_EXCEL_URL, stream=True, timeout=15)
+        response.raise_for_status()
+        with open(APP_CONFIG["LOCAL_FILE"], "wb") as f:
+            shutil.copyfileobj(response.raw, f)
+        st.cache_data.clear()
+        return True
+    except Exception as e:
+        create_initial_file()
+        return True
+
+def create_initial_file():
+    try:
+        initial_df = pd.DataFrame(columns=APP_CONFIG["DEFAULT_LUBRICATION_COLUMNS"])
+        with pd.ExcelWriter(APP_CONFIG["LOCAL_FILE"], engine="openpyxl") as writer:
+            initial_df.to_excel(writer, sheet_name="سجل العمليات", index=False)
+        return True
+    except:
+        return False
+
+@st.cache_data(show_spinner=False)
+def load_data():
+    if not os.path.exists(APP_CONFIG["LOCAL_FILE"]):
+        create_initial_file()
+        return pd.DataFrame(columns=APP_CONFIG["DEFAULT_LUBRICATION_COLUMNS"])
+    try:
+        df = pd.read_excel(APP_CONFIG["LOCAL_FILE"], sheet_name="سجل العمليات")
+        df = df.fillna('')
+        return df
+    except:
+        return pd.DataFrame(columns=APP_CONFIG["DEFAULT_LUBRICATION_COLUMNS"])
+
+def save_to_github(df, commit_message):
+    try:
+        token = st.secrets.get("github", {}).get("token", None)
+        if not token:
+            st.error("❌ لم يتم العثور على GitHub token")
+            return False
+        
+        temp_file = APP_CONFIG["LOCAL_FILE"]
+        try:
+            with pd.ExcelWriter(temp_file, engine="openpyxl") as writer:
+                df.to_excel(writer, sheet_name="سجل العمليات", index=False)
+        except Exception as e:
+            st.error(f"❌ خطأ في إنشاء ملف Excel: {e}")
+            return False
+        
+        try:
+            g = Github(token)
+            repo = g.get_repo(APP_CONFIG["REPO_NAME"])
+            with open(temp_file, "rb") as f:
+                content = f.read()
+            try:
+                contents = repo.get_contents(APP_CONFIG["FILE_PATH"], ref=APP_CONFIG["BRANCH"])
+                repo.update_file(
+                    path=APP_CONFIG["FILE_PATH"],
+                    message=commit_message,
+                    content=content,
+                    sha=contents.sha,
+                    branch=APP_CONFIG["BRANCH"]
+                )
+                return True
+            except GithubException as e:
+                if e.status == 404:
+                    repo.create_file(
+                        path=APP_CONFIG["FILE_PATH"],
+                        message=commit_message,
+                        content=content,
+                        branch=APP_CONFIG["BRANCH"]
+                    )
+                    return True
+                else:
+                    st.error(f"❌ خطأ في GitHub: {e}")
+                    return False
+        except Exception as e:
+            st.error(f"❌ فشل الرفع إلى GitHub: {str(e)}")
+            return False
+    except Exception as e:
+        st.error(f"❌ خطأ عام: {str(e)}")
+        return False
+
+def get_machines_list(df):
+    if df.empty or "المعدة" not in df.columns:
+        return []
+    machines = df["المعدة"].dropna().unique()
+    machines = [str(m).strip() for m in machines if str(m).strip() != ""]
+    return sorted(machines)
+
+def add_new_machine(df, machine_name):
+    if machine_name in get_machines_list(df):
+        return df, False, f"الماكينة '{machine_name}' موجودة بالفعل!"
+    
+    new_record = {
+        "المعدة": machine_name,
+        "نوع العملية": "",
+        "نوع المادة": "",
+        "الكمية": "",
+        "تاريخ العملية": "",
+        "عدد ساعات التشغيل الحالي": "",
+        "عدد الساعات المستهدف": "",
+        "الساعات المتبقية": "",
+        "اخر عدد ساعات": "",
+        "تم بواسطة": "",
+        "ملاحظات": "",
+        "حالة العملية": "جديد - لم يتم تسجيل أي عملية"
+    }
+    new_df = pd.concat([df, pd.DataFrame([new_record])], ignore_index=True)
+    return new_df, True, f"تم إضافة الماكينة '{machine_name}' بنجاح"
+
+def add_operation(df, machine_name, process_type, material_type, quantity, current_hours, target_hours, notes, username):
+    mask = df["المعدة"] == machine_name
+    
+    if not mask.any():
+        return df, False, "الماكينة غير موجودة"
+    
+    remaining_hours = target_hours - current_hours
+    
+    if remaining_hours < 0:
+        remaining_hours = 0
+    
+    if remaining_hours <= 0:
+        status = "🔴 متأخر - يجب إجراء العملية فوراً"
+    elif remaining_hours <= 50:
+        status = f"🟡 ينتهي قريباً - متبقي {remaining_hours} ساعة"
+    else:
+        status = f"🟢 سليم - متبقي {remaining_hours} ساعة"
+    
+    df.loc[mask, "نوع العملية"] = process_type
+    df.loc[mask, "نوع المادة"] = material_type
+    df.loc[mask, "الكمية"] = quantity
+    df.loc[mask, "تاريخ العملية"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    df.loc[mask, "عدد ساعات التشغيل الحالي"] = current_hours
+    df.loc[mask, "عدد الساعات المستهدف"] = target_hours
+    df.loc[mask, "الساعات المتبقية"] = remaining_hours
+    df.loc[mask, "اخر عدد ساعات"] = current_hours
+    df.loc[mask, "تم بواسطة"] = username
+    df.loc[mask, "ملاحظات"] = notes
+    df.loc[mask, "حالة العملية"] = status
+    
+    return df, True, f"تم تسجيل {process_type} للماكينة '{machine_name}' بنجاح"
+
+def update_hours_and_counters(df, machine_name, current_hours):
+    mask = df["المعدة"] == machine_name
+    
+    if not mask.any():
+        return df, False, "الماكينة غير موجودة"
+    
+    old_hours = df.loc[mask, "اخر عدد ساعات"].iloc[0]
+    target = df.loc[mask, "عدد الساعات المستهدف"].iloc[0]
+    
+    if old_hours and old_hours != "" and not pd.isna(old_hours):
+        remaining = target - current_hours
+    else:
+        remaining = target - current_hours
+    
+    if remaining < 0:
+        remaining = 0
+    
+    df.loc[mask, "عدد ساعات التشغيل الحالي"] = current_hours
+    df.loc[mask, "الساعات المتبقية"] = remaining
+    
+    if remaining <= 0:
+        df.loc[mask, "حالة العملية"] = "🔴 متأخر - يجب إجراء العملية فوراً"
+    elif remaining <= 50:
+        df.loc[mask, "حالة العملية"] = f"🟡 ينتهي قريباً - متبقي {remaining} ساعة"
+    else:
+        df.loc[mask, "حالة العملية"] = f"🟢 سليم - متبقي {remaining} ساعة"
+    
+    return df, True, "تم تحديث ساعات التشغيل"
+
+def get_overdue_machines(df):
+    if df.empty:
+        return pd.DataFrame()
+    
+    overdue = []
+    for idx, row in df.iterrows():
+        remaining = row.get("الساعات المتبقية", "")
+        if remaining != "" and remaining != "" and not pd.isna(remaining):
+            try:
+                if float(remaining) <= 0:
+                    overdue.append(row)
+            except:
+                pass
+    
+    return pd.DataFrame(overdue)
+
+def get_upcoming_machines(df, hours=50):
+    if df.empty:
+        return pd.DataFrame()
+    
+    upcoming = []
+    for idx, row in df.iterrows():
+        remaining = row.get("الساعات المتبقية", "")
+        if remaining != "" and remaining != "" and not pd.isna(remaining):
+            try:
+                if 0 < float(remaining) <= hours:
+                    upcoming.append(row)
+            except:
+                pass
+    
+    return pd.DataFrame(upcoming)
+
+def show_dashboard(df):
+    st.header("📊 لوحة التحكم")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    total = len(df)
+    overdue = len(get_overdue_machines(df))
+    upcoming = len(get_upcoming_machines(df, 50))
+    good = total - overdue - upcoming
+    
+    with col1:
+        st.metric("🏭 إجمالي الماكينات", total)
+    with col2:
+        st.metric("🔴 متأخرة", overdue, delta="يجب التنفيذ فوراً" if overdue > 0 else None, delta_color="inverse")
+    with col3:
+        st.metric("🟡 تحتاج خلال 50 ساعة", upcoming)
+    with col4:
+        st.metric("🟢 سليمة", good)
+    
+    st.markdown("---")
+    
+    if overdue > 0:
+        st.error("🚨 الماكينات المتأخرة")
+        overdue_df = get_overdue_machines(df)
+        display_cols = ["المعدة", "نوع العملية", "نوع المادة", "الساعات المتبقية", "حالة العملية"]
+        st.dataframe(overdue_df[display_cols], use_container_width=True)
+        st.markdown("---")
+    
+    if upcoming > 0:
+        st.warning("⚠️ ماكينات تحتاج صيانة خلال 50 ساعة")
+        upcoming_df = get_upcoming_machines(df, 50)
+        display_cols = ["المعدة", "نوع العملية", "نوع المادة", "الساعات المتبقية", "حالة العملية"]
+        st.dataframe(upcoming_df[display_cols], use_container_width=True)
+        st.markdown("---")
+    
+    st.subheader("📋 جميع الماكينات")
+    
+    status_filter = st.selectbox("فلتر:", ["الكل", "🟢 سليم", "🟡 ينتهي قريباً", "🔴 متأخر"])
+    
+    display_df = df.copy()
+    if status_filter != "الكل":
+        display_df = display_df[display_df["حالة العملية"].str.contains(status_filter, na=False)]
+    
+    display_cols = ["المعدة", "نوع العملية", "نوع المادة", "تاريخ العملية", "عدد ساعات التشغيل الحالي", "الساعات المتبقية", "حالة العملية"]
+    available_cols = [col for col in display_cols if col in display_df.columns]
+    st.dataframe(display_df[available_cols], use_container_width=True, height=400)
+
+def show_add_machine(df):
+    st.header("➕ إضافة ماكينة جديدة")
+    
+    machine_name = st.text_input("🏭 اسم الماكينة:", placeholder="مثال: مضخة الزيت الرئيسية - مولد كهرباء - ضاغط هواء")
+    
+    if st.button("✅ إضافة الماكينة", type="primary", use_container_width=True):
+        if not machine_name:
+            st.error("❌ الرجاء إدخال اسم الماكينة")
+        else:
+            new_df, success, msg = add_new_machine(df, machine_name)
+            if success:
+                if save_to_github(new_df, f"إضافة ماكينة: {machine_name}"):
+                    st.success(msg)
+                    st.cache_data.clear()
+                    st.rerun()
+                else:
+                    st.error("❌ فشل حفظ البيانات")
+            else:
+                st.error(msg)
+
+def show_add_operation(df):
+    st.header("🛢️ تسجيل عملية جديدة")
+    
+    machines = get_machines_list(df)
+    if not machines:
+        st.warning("⚠️ لا توجد ماكينات. الرجاء إضافة ماكينة أولاً.")
+        return
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        machine_name = st.selectbox("🏭 الماكينة:", machines)
+        
+        process_type = st.selectbox("📋 نوع العملية:", APP_CONFIG["PROCESS_TYPES"])
+        
+        if process_type == "تشحيم":
+            material_type = st.selectbox("🛢️ نوع المادة:", APP_CONFIG["GREASE_TYPES"])
+        else:
+            material_type = st.selectbox("🛢️ نوع الزيت:", APP_CONFIG["OIL_TYPES"])
+        
+        quantity = st.text_input("⚖️ الكمية:", placeholder="مثال: 5 لتر / 2 كجم")
+    
+    with col2:
+        current_hours = st.number_input("⏱️ عدد ساعات التشغيل الحالي:", min_value=0, step=1, value=0)
+        
+        default_target = APP_CONFIG["DEFAULT_INTERVALS"].get(process_type, 250)
+        target_hours = st.number_input("🎯 عدد الساعات المستهدف (بعد العملية):", min_value=1, step=10, value=default_target)
+        st.caption(f"💡 المدة الافتراضية لـ {process_type}: {default_target} ساعة")
+        
+        notes = st.text_area("📝 ملاحظات:", placeholder="أي ملاحظات إضافية...")
+    
+    if st.button("✅ تسجيل العملية", type="primary", use_container_width=True):
+        new_df, success, msg = add_operation(
+            df, machine_name, process_type, material_type, quantity, 
+            current_hours, target_hours, notes, st.session_state.get('username', 'user')
+        )
+        if success:
+            if save_to_github(new_df, f"تسجيل {process_type} للماكينة: {machine_name}"):
+                st.success(msg)
+                st.balloons()
+                st.cache_data.clear()
+                st.rerun()
+            else:
+                st.error("❌ فشل حفظ البيانات")
+        else:
+            st.error(msg)
+
+def show_update_hours(df):
+    st.header("⏱️ تحديث ساعات التشغيل")
+    
+    machines = get_machines_list(df)
+    if not machines:
+        st.warning("⚠️ لا توجد ماكينات")
+        return
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        machine_name = st.selectbox("🏭 الماكينة:", machines, key="update_machine")
+        
+        machine_data = df[df["المعدة"] == machine_name].iloc[0]
+        
+        st.info(f"""
+        **معلومات العملية الأخيرة:**
+        - نوع العملية: {machine_data.get('نوع العملية', 'لا يوجد')}
+        - نوع المادة: {machine_data.get('نوع المادة', 'لا يوجد')}
+        - آخر ساعات مسجلة: {machine_data.get('اخر عدد ساعات', 0)}
+        - الساعات المستهدف: {machine_data.get('عدد الساعات المستهدف', 'غير محدد')}
+        - الساعات المتبقية: {machine_data.get('الساعات المتبقية', 'غير محدد')}
+        """)
+    
+    with col2:
+        current_hours = st.number_input("⏱️ عدد ساعات التشغيل الحالي:", min_value=0, step=1, value=0)
+    
+    if st.button("🔄 تحديث الساعات", type="primary", use_container_width=True):
+        new_df, success, msg = update_hours_and_counters(df, machine_name, current_hours)
+        if success:
+            if save_to_github(new_df, f"تحديث ساعات تشغيل الماكينة: {machine_name}"):
+                st.success(msg)
+                st.cache_data.clear()
+                st.rerun()
+            else:
+                st.error("❌ فشل حفظ البيانات")
+        else:
+            st.error(msg)
+
+def show_machine_details(df):
+    st.header("🔍 تفاصيل الماكينة")
+    
+    machines = get_machines_list(df)
+    if not machines:
+        st.warning("⚠️ لا توجد ماكينات")
+        return
+    
+    machine_name = st.selectbox("اختر الماكينة:", machines, key="details_machine")
+    
+    if machine_name:
+        machine_data = df[df["المعدة"] == machine_name].iloc[0]
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric("🏭 الماكينة", machine_name)
+            st.metric("📋 آخر عملية", machine_data.get('نوع العملية', 'لا يوجد'))
+        
+        with col2:
+            st.metric("🛢️ المادة", machine_data.get('نوع المادة', 'لا يوجد'))
+            st.metric("⚖️ الكمية", machine_data.get('الكمية', 'لا يوجد'))
+        
+        with col3:
+            remaining = machine_data.get('الساعات المتبقية', 'لا يوجد')
+            st.metric("⏳ الساعات المتبقية", remaining)
+            target = machine_data.get('عدد الساعات المستهدف', 'لا يوجد')
+            st.metric("🎯 الساعات المستهدف", target)
+        
+        st.markdown("---")
+        
+        remaining_hours = machine_data.get('الساعات المتبقية', 0)
+        target_hours = machine_data.get('عدد الساعات المستهدف', 1)
+        
+        if remaining_hours != "" and remaining_hours != "" and not pd.isna(remaining_hours):
+            try:
+                remaining = float(remaining_hours)
+                target = float(target_hours) if target_hours != "" and not pd.isna(target_hours) else 1
+                progress = max(0, min(100, (target - remaining) / target * 100)) if target > 0 else 0
+                
+                st.subheader("📊 العداد التنازلي")
+                st.progress(progress / 100)
+                
+                if remaining <= 0:
+                    st.error(f"🔴 **متأخر بـ {abs(remaining)} ساعة** - يجب إجراء العملية فوراً!")
+                elif remaining <= 50:
+                    st.warning(f"🟡 **متبقي {remaining:.0f} ساعة** - يجب الإجراء قريباً!")
+                else:
+                    st.success(f"🟢 **متبقي {remaining:.0f} ساعة** - الحالة جيدة")
+                
+                st.caption(f"المدة الإجمالية: {target:.0f} ساعة | تم: {target - remaining:.0f} ساعة | متبقي: {remaining:.0f} ساعة")
+            except:
+                pass
+        
+        st.markdown("---")
+        st.subheader("📋 سجل العمليات")
+        st.info(f"آخر عملية: {machine_data.get('تاريخ العملية', 'لا توجد عمليات مسجلة')}")
+        st.caption(f"تم بواسطة: {machine_data.get('تم بواسطة', 'غير معروف')}")
+        st.caption(f"ملاحظات: {machine_data.get('ملاحظات', 'لا توجد ملاحظات')}")
+
+def show_reports(df):
+    st.header("📊 التقارير")
+    
+    tab1, tab2, tab3 = st.tabs(["📈 إحصائيات", "🔴 متأخرة", "🟡 قادمة"])
+    
+    with tab1:
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.subheader("📋 حسب نوع العملية")
+            process_stats = df["نوع العملية"].value_counts().reset_index()
+            process_stats.columns = ["نوع العملية", "العدد"]
+            st.dataframe(process_stats, use_container_width=True)
+        
+        with col2:
+            st.subheader("📊 حسب الحالة")
+            status_stats = df["حالة العملية"].value_counts().reset_index()
+            status_stats.columns = ["الحالة", "العدد"]
+            st.dataframe(status_stats, use_container_width=True)
+    
+    with tab2:
+        st.subheader("🔴 الماكينات المتأخرة")
+        overdue_df = get_overdue_machines(df)
+        if not overdue_df.empty:
+            display_cols = ["المعدة", "نوع العملية", "نوع المادة", "الساعات المتبقية", "حالة العملية"]
+            st.dataframe(overdue_df[display_cols], use_container_width=True)
+            
+            csv = overdue_df.to_csv(index=False).encode('utf-8')
+            st.download_button("📥 تحميل التقرير", csv, "overdue_machines.csv", "text/csv")
+        else:
+            st.success("🎉 لا توجد ماكينات متأخرة")
+    
+    with tab3:
+        st.subheader("🟡 الماكينات القادمة")
+        hours_filter = st.slider("عدد الساعات القادمة:", 10, 200, 50)
+        upcoming_df = get_upcoming_machines(df, hours_filter)
+        if not upcoming_df.empty:
+            display_cols = ["المعدة", "نوع العملية", "نوع المادة", "الساعات المتبقية", "حالة العملية"]
+            st.dataframe(upcoming_df[display_cols], use_container_width=True)
+            
+            csv = upcoming_df.to_csv(index=False).encode('utf-8')
+            st.download_button("📥 تحميل التقرير", csv, "upcoming_machines.csv", "text/csv")
+        else:
+            st.info(f"لا توجد ماكينات تحتاج صيانة خلال {hours_filter} ساعة")
+
+def show_settings(df):
+    st.header("⚙️ الإعدادات")
+    
+    st.subheader("📅 المدة الافتراضية (ساعات)")
+    
+    new_intervals = {}
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        new_lube = st.number_input("تشحيم (ساعات):", min_value=50, max_value=2000, value=APP_CONFIG["DEFAULT_INTERVALS"]["تشحيم"])
+        new_intervals["تشحيم"] = new_lube
+    
+    with col2:
+        new_oil = st.number_input("تغيير زيت (ساعات):", min_value=100, max_value=2000, value=APP_CONFIG["DEFAULT_INTERVALS"]["تغيير زيت"])
+        new_intervals["تغيير زيت"] = new_oil
+    
+    if st.button("💾 حفظ الإعدادات", type="primary"):
+        APP_CONFIG["DEFAULT_INTERVALS"] = new_intervals
+        st.success("✅ تم حفظ الإعدادات")
+        st.rerun()
+    
+    st.markdown("---")
+    st.subheader("🗑️ حذف ماكينة")
+    
+    machines = get_machines_list(df)
+    if machines:
+        machine_to_delete = st.selectbox("اختر الماكينة للحذف:", machines, key="delete_machine")
+        st.warning("⚠️ تحذير: سيتم حذف جميع بيانات هذه الماكينة")
+        if st.button("🗑️ حذف", type="secondary"):
+            new_df = df[df["المعدة"] != machine_to_delete].copy()
+            if save_to_github(new_df, f"حذف ماكينة: {machine_to_delete}"):
+                st.success(f"تم حذف '{machine_to_delete}'")
+                st.cache_data.clear()
+                st.rerun()
+            else:
+                st.error("فشل الحذف")
+    else:
+        st.info("لا توجد ماكينات")
+
+st.set_page_config(page_title=APP_CONFIG["APP_TITLE"], layout="wide", page_icon="⚙️")
+
+with st.sidebar:
+    st.header("🔐 الجلسة")
+    if not st.session_state.get("logged_in"):
+        if not login_ui():
+            st.stop()
+    else:
+        state = cleanup_sessions(load_state())
+        username = st.session_state.username
+        rem = remaining_time(state, username)
+        if rem:
+            mins, secs = divmod(int(rem.total_seconds()), 60)
+            st.success(f"👋 {username} | ⏳ {mins:02d}:{secs:02d}")
+        st.markdown("---")
+        if st.button("🔄 تحديث"):
+            if fetch_from_github_requests():
+                st.cache_data.clear()
+                st.rerun()
+        if st.button("🚪 خروج"):
+            logout_action()
+
+df = load_data()
+
+st.title(f"{APP_CONFIG['APP_ICON']} {APP_CONFIG['APP_TITLE']}")
+
+user_role = st.session_state.get("user_role", "viewer")
+user_permissions = st.session_state.get("user_permissions", ["view"])
+can_edit = (user_role == "admin" or user_role == "editor" or "edit" in user_permissions)
+
+tabs_list = ["📊 لوحة التحكم", "🔍 تفاصيل الماكينات"]
+if can_edit:
+    tabs_list.extend(["➕ إضافة ماكينة", "🛢️ عملية جديدة", "⏱️ تحديث الساعات", "📊 تقارير", "⚙️ إعدادات"])
+
+tabs = st.tabs(tabs_list)
+
+with tabs[0]:
+    show_dashboard(df)
+
+with tabs[1]:
+    show_machine_details(df)
+
+if can_edit:
+    with tabs[2]:
+        show_add_machine(df)
+    with tabs[3]:
+        show_add_operation(df)
+    with tabs[4]:
+        show_update_hours(df)
+    with tabs[5]:
+        show_reports(df)
+    with tabs[6]:
+        show_settings(df)import streamlit as st
+import pandas as pd
+import numpy as np
+import json
+import os
+import requests
+import shutil
+import re
+from datetime import datetime, timedelta
 from base64 import b64decode
 import uuid
 import io
