@@ -10,7 +10,6 @@ from datetime import datetime, timedelta
 from base64 import b64decode
 import uuid
 import io
-import hashlib
 
 # محاولة استيراد Plotly مع معالجة الخطأ
 try:
@@ -35,39 +34,25 @@ except Exception:
     GITHUB_AVAILABLE = False
 
 APP_CONFIG = {
-    "APP_TITLE": "نظام إدارة الصيانة المحطات- CMMS",
+    "APP_TITLE": "نظام إدارة الصيانة - CMMS",
     "APP_ICON": "🏭",
-    "REPO_NAME": "mahmedabdallh123/ stations",
+    "REPO_NAME": "mahmedabdallh123/stations",
     "BRANCH": "main",
     "FILE_PATH": "l9.xlsx",
     "LOCAL_FILE": "l9.xlsx",
-    "MAX_ACTIVE_USERS": 10,
-    "SESSION_DURATION_MINUTES": 30,
+    "MAX_ACTIVE_USERS": 5,
+    "SESSION_DURATION_MINUTES": 60,
     "IMAGES_FOLDER": "event_images",
     "ALLOWED_IMAGE_TYPES": ["jpg", "jpeg", "png", "gif", "bmp", "webp"],
     "MAX_IMAGE_SIZE_MB": 10,
     "DEFAULT_SHEET_COLUMNS": ["التاريخ", "المعدة", "الحدث/العطل", "الإجراء التصحيحي", "تم بواسطة", "الطن", "الصور", "ملاحظات"],
 }
 
-# ==================== إعدادات الأمان الثابتة ====================
-ADMIN_PASSWORD = "0000"  # يمكنك تغيير كلمة مرور المشرف هنا
-
-# ==================== دوال تشفير كلمات المرور ====================
-def hash_password(password):
-    """تشفير كلمة المرور باستخدام SHA-256"""
-    return hashlib.sha256(password.encode()).hexdigest()
-
-def verify_password(password, hashed):
-    """التحقق من صحة كلمة المرور"""
-    return hash_password(password) == hashed
-
-# ==================== إعدادات الملفات ====================
 USERS_FILE = "users.json"
 STATE_FILE = "state.json"
 SESSION_DURATION = timedelta(minutes=APP_CONFIG["SESSION_DURATION_MINUTES"])
 MAX_ACTIVE_USERS = APP_CONFIG["MAX_ACTIVE_USERS"]
 IMAGES_FOLDER = APP_CONFIG["IMAGES_FOLDER"]
-EQUIPMENT_CONFIG_FILE = "equipment_config.json"
 
 GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
 GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/stations/refs/heads/main/users.json"
@@ -75,6 +60,7 @@ GITHUB_REPO_USERS = "mahmedabdallh123/stations"
 
 # ------------------------------- دوال تحليل الأعطال -------------------------------
 def analyze_failures(df, equipment_name=None):
+    """تحليل بيانات الأعطال وإرجاع إحصائيات متقدمة"""
     if df is None or df.empty:
         return None
     
@@ -100,10 +86,12 @@ def analyze_failures(df, equipment_name=None):
     total_failures = len(data)
     unique_equipment = data["المعدة"].nunique()
     
+    # 1. معدل تكرار العطل لكل معدة
     failure_rate = data["المعدة"].value_counts().reset_index()
     failure_rate.columns = ["المعدة", "عدد الأعطال"]
     failure_rate["النسبة المئوية"] = (failure_rate["عدد الأعطال"] / total_failures * 100).round(2)
     
+    # 2. أكثر الأعطال تكراراً
     if "الحدث/العطل" in data.columns:
         all_issues = data["الحدث/العطل"].dropna().astype(str)
         issue_counts = all_issues.value_counts().head(10).reset_index()
@@ -111,6 +99,7 @@ def analyze_failures(df, equipment_name=None):
     else:
         issue_counts = pd.DataFrame()
     
+    # 3. MTBF
     mtbf_results = []
     for equipment in data["المعدة"].unique():
         eq_data = data[data["المعدة"] == equipment].sort_values("التاريخ")
@@ -127,9 +116,11 @@ def analyze_failures(df, equipment_name=None):
             })
     mtbf_df = pd.DataFrame(mtbf_results) if mtbf_results else pd.DataFrame()
     
+    # 4. تحليل زمني شهري
     data["الشهر"] = data["التاريخ"].dt.to_period("M").astype(str)
     monthly_failures = data.groupby(["الشهر", "المعدة"]).size().reset_index(name="عدد الأعطال")
     
+    # 5. تحليل أيام الأسبوع
     weekday_names = ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
     data["يوم_الأسبوع"] = data["التاريخ"].dt.dayofweek.map({
         0: "الاثنين", 1: "الثلاثاء", 2: "الأربعاء", 3: "الخميس", 
@@ -138,6 +129,7 @@ def analyze_failures(df, equipment_name=None):
     weekday_failures = data["يوم_الأسبوع"].value_counts().reindex(weekday_names).fillna(0).reset_index()
     weekday_failures.columns = ["اليوم", "عدد الأعطال"]
     
+    # 6. الإجراءات التصحيحية
     if "الإجراء التصحيحي" in data.columns:
         corrections = data["الإجراء التصحيحي"].dropna().astype(str)
         correction_counts = corrections.value_counts().head(10).reset_index()
@@ -162,9 +154,11 @@ def analyze_failures(df, equipment_name=None):
     }
 
 def generate_excel_report(analysis, sheet_name, equipment_filter):
+    """توليد ملف Excel متعدد الأوراق من نتائج التحليل"""
     output = io.BytesIO()
     
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        # ورقة الملخص
         summary_data = {
             "المعيار": ["إجمالي الأعطال", "عدد المعدات", "فترة التحليل من", "فترة التحليل إلى", "المعدة المفلترة"],
             "القيمة": [
@@ -178,33 +172,41 @@ def generate_excel_report(analysis, sheet_name, equipment_filter):
         summary_df = pd.DataFrame(summary_data)
         summary_df.to_excel(writer, sheet_name="الملخص", index=False)
         
+        # ورقة معدل تكرار الأعطال
         if not analysis["failure_rate"].empty:
             analysis["failure_rate"].to_excel(writer, sheet_name="معدل تكرار الأعطال", index=False)
         
+        # ورقة أكثر الأعطال تكراراً
         if not analysis["issue_counts"].empty:
             analysis["issue_counts"].to_excel(writer, sheet_name="أكثر الأعطال تكراراً", index=False)
         
+        # ورقة MTBF
         if not analysis["mtbf"].empty:
             analysis["mtbf"].to_excel(writer, sheet_name="متوسط الوقت بين الأعطال (MTBF)", index=False)
         
+        # ورقة التحليل الشهري
         if not analysis["monthly"].empty:
             pivot_monthly = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
             pivot_monthly.to_excel(writer, sheet_name="التحليل الشهري")
         
+        # ورقة تحليل أيام الأسبوع
         if not analysis["weekday"].empty:
             analysis["weekday"].to_excel(writer, sheet_name="تحليل أيام الأسبوع", index=False)
         
+        # ورقة الإجراءات التصحيحية
         if not analysis["correction_counts"].empty:
             analysis["correction_counts"].to_excel(writer, sheet_name="الإجراءات التصحيحية", index=False)
         
+        # ورقة البيانات الخام
         raw_export = analysis["raw_data"][["التاريخ", "المعدة", "الحدث/العطل", "الإجراء التصحيحي", "تم بواسطة", "الطن", "ملاحظات"]].copy()
         raw_export.to_excel(writer, sheet_name="البيانات الخام", index=False)
     
     output.seek(0)
     return output
 
-# ------------------------------- دوال تصدير البيانات -------------------------------
+# ------------------------------- دوال تصدير البيانات إلى Excel -------------------------------
 def export_sheet_to_excel(sheets_dict, sheet_name):
+    """تصدير شيت محدد إلى ملف Excel"""
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df = sheets_dict[sheet_name]
@@ -213,6 +215,7 @@ def export_sheet_to_excel(sheets_dict, sheet_name):
     return output
 
 def export_all_sheets_to_excel(sheets_dict):
+    """تصدير جميع الشيتات إلى ملف Excel واحد"""
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         for sheet_name, df in sheets_dict.items():
@@ -221,34 +224,14 @@ def export_all_sheets_to_excel(sheets_dict):
     return output
 
 def export_filtered_results_to_excel(results_df, sheet_name):
+    """تصدير نتائج البحث إلى ملف Excel"""
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         results_df.to_excel(writer, sheet_name=sheet_name, index=False)
     output.seek(0)
     return output
 
-# ------------------------------- دوال إدارة المعدات -------------------------------
-def load_equipment_config():
-    if not os.path.exists(EQUIPMENT_CONFIG_FILE):
-        default_config = {}
-        with open(EQUIPMENT_CONFIG_FILE, "w", encoding="utf-8") as f:
-            json.dump(default_config, f, indent=4, ensure_ascii=False)
-        return default_config
-    try:
-        with open(EQUIPMENT_CONFIG_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except:
-        return {}
-
-def save_equipment_config(config):
-    try:
-        with open(EQUIPMENT_CONFIG_FILE, "w", encoding="utf-8") as f:
-            json.dump(config, f, indent=4, ensure_ascii=False)
-        return True
-    except Exception as e:
-        st.error(f"خطأ في حفظ تكوين المعدات: {e}")
-        return False
-
+# ------------------------------- دوال الحصول على المعدات -------------------------------
 def get_equipment_list_from_sheet(df):
     if df is None or df.empty or "المعدة" not in df.columns:
         return []
@@ -288,24 +271,7 @@ def remove_equipment_from_sheet_data(sheets_edit, sheet_name, equipment_name):
     sheets_edit[sheet_name] = new_df
     return True, f"تم حذف جميع سجلات المعدة '{equipment_name}'"
 
-# ------------------------------- دوال إدارة المستخدمين (دائمين) -------------------------------
-def get_default_users():
-    """إرجاع قائمة المستخدمين الافتراضية (بدون admin لأنه ثابت في الكود)"""
-    return {
-        "viewer": {
-            "password": hash_password("viewer123"),
-            "role": "viewer",
-            "created_at": datetime.now().isoformat(),
-            "permissions": ["view"]
-        },
-        "editor": {
-            "password": hash_password("editor123"),
-            "role": "editor",
-            "created_at": datetime.now().isoformat(),
-            "permissions": ["view", "edit", "manage_sheets"]
-        }
-    }
-
+# ------------------------------- دوال المستخدمين -------------------------------
 def download_users_from_github():
     try:
         response = requests.get(GITHUB_USERS_URL, timeout=10)
@@ -321,7 +287,7 @@ def download_users_from_github():
                     return json.load(f)
             except:
                 pass
-        return get_default_users()
+        return {"admin": {"password": "admin123", "role": "admin", "created_at": datetime.now().isoformat(), "permissions": ["all"], "active": False}}
 
 def upload_users_to_github(users_data):
     try:
@@ -344,68 +310,12 @@ def upload_users_to_github(users_data):
 def load_users():
     try:
         users_data = download_users_from_github()
-        default_users = get_default_users()
-        for username, user_data in default_users.items():
-            if username not in users_data:
-                users_data[username] = user_data
-        upload_users_to_github(users_data)
+        if "admin" not in users_data:
+            users_data["admin"] = {"password": "admin123", "role": "admin", "created_at": datetime.now().isoformat(), "permissions": ["all"], "active": False}
         return users_data
-    except Exception as e:
-        st.error(f"خطأ في تحميل بيانات المستخدمين: {e}")
-        return get_default_users()
+    except:
+        return {"admin": {"password": "admin123", "role": "admin", "created_at": datetime.now().isoformat(), "permissions": ["all"], "active": False}}
 
-def save_users_to_github(users_data):
-    return upload_users_to_github(users_data)
-
-def add_user_to_github(username, user_data):
-    try:
-        users = load_users()
-        if username in users:
-            st.warning(f"⚠ المستخدم '{username}' موجود بالفعل")
-            return False
-        
-        if "password" in user_data and not user_data["password"].startswith("encrypted:"):
-            user_data["password"] = hash_password(user_data["password"])
-        
-        users[username] = user_data
-        return save_users_to_github(users)
-    except Exception as e:
-        st.error(f"❌ خطأ في إضافة المستخدم {username}: {e}")
-        return False
-
-def delete_user_from_github(username):
-    try:
-        users = load_users()
-        if username in users:
-            del users[username]
-            return save_users_to_github(users)
-        return False
-    except Exception as e:
-        st.error(f"❌ خطأ في حذف المستخدم {username}: {e}")
-        return False
-
-def authenticate_user(username, password):
-    if username == "admin":
-        return password == ADMIN_PASSWORD
-    
-    users = load_users()
-    if username in users:
-        stored_password = users[username].get("password", "")
-        return verify_password(password, stored_password)
-    
-    return False
-
-def get_user_role(username):
-    if username == "admin":
-        return "admin", ["all"]
-    
-    users = load_users()
-    if username in users:
-        return users[username].get("role", "viewer"), users[username].get("permissions", ["view"])
-    
-    return "viewer", ["view"]
-
-# ------------------------------- دوال الجلسة -------------------------------
 def load_state():
     if not os.path.exists(STATE_FILE):
         with open(STATE_FILE, "w", encoding="utf-8") as f:
@@ -475,49 +385,40 @@ def login_ui():
         st.session_state.user_permissions = []
 
     st.title(f"{APP_CONFIG['APP_ICON']} تسجيل الدخول - {APP_CONFIG['APP_TITLE']}")
-    
-    user_list = ["admin"] + list(users.keys())
-    username_input = st.selectbox("👤 اختر المستخدم", user_list)
-    password = st.text_input("🔑 كلمة المرور", type="password")
-    
+    username_input = st.selectbox("اختر المستخدم", list(users.keys()))
+    password = st.text_input("كلمة المرور", type="password")
     active_users = [u for u, v in state.items() if v.get("active")]
     active_count = len(active_users)
-    st.caption(f"🔒 المستخدمون النشطون حالياً: {active_count} / {MAX_ACTIVE_USERS}")
+    st.caption(f"المستخدمون النشطون: {active_count} / {MAX_ACTIVE_USERS}")
 
     if not st.session_state.logged_in:
-        if st.button("تسجيل الدخول", type="primary", use_container_width=True):
-            if authenticate_user(username_input, password):
+        if st.button("تسجيل الدخول"):
+            current_users = load_users()
+            if username_input in current_users and current_users[username_input]["password"] == password:
                 if username_input != "admin" and username_input in active_users:
-                    st.warning("⚠ هذا المستخدم مسجل دخول بالفعل من جهاز آخر.")
+                    st.warning("هذا المستخدم مسجل دخول بالفعل.")
                     return False
                 elif active_count >= MAX_ACTIVE_USERS and username_input != "admin":
-                    st.error("🚫 الحد الأقصى للمستخدمين المتصلين حالياً. يرجى المحاولة لاحقاً.")
+                    st.error("الحد الأقصى للمستخدمين المتصلين.")
                     return False
-                
                 state[username_input] = {"active": True, "login_time": datetime.now().isoformat()}
                 save_state(state)
-                
                 st.session_state.logged_in = True
                 st.session_state.username = username_input
-                user_role, user_permissions = get_user_role(username_input)
-                st.session_state.user_role = user_role
-                st.session_state.user_permissions = user_permissions
-                
-                st.success(f"✅ تم تسجيل الدخول بنجاح: {username_input}")
+                st.session_state.user_role = current_users[username_input].get("role", "viewer")
+                st.session_state.user_permissions = current_users[username_input].get("permissions", ["view"])
+                st.success(f"تم تسجيل الدخول: {username_input}")
                 st.rerun()
             else:
-                st.error("❌ اسم المستخدم أو كلمة المرور غير صحيحة.")
+                st.error("كلمة المرور غير صحيحة.")
         return False
     else:
-        username = st.session_state.username
-        user_role = st.session_state.user_role
-        st.success(f"✅ مرحباً {username} | الدور: {user_role}")
-        rem = remaining_time(state, username)
+        st.success(f"مسجل الدخول كـ: {st.session_state.username}")
+        rem = remaining_time(state, st.session_state.username)
         if rem:
-            hours, remainder = divmod(int(rem.total_seconds()), 3600)
-            minutes, seconds = divmod(remainder, 60)
-            st.info(f"⏳ الوقت المتبقي: {hours:02d}:{minutes:02d}:{seconds:02d}")
-        if st.button("🚪 تسجيل الخروج", use_container_width=True):
+            mins, secs = divmod(int(rem.total_seconds()), 60)
+            st.info(f"الوقت المتبقي: {mins:02d}:{secs:02d}")
+        if st.button("تسجيل الخروج"):
             logout_action()
         return True
 
@@ -652,6 +553,7 @@ def display_sheet_data(sheet_name, df, unique_id, sheets_edit):
             display_df[col] = display_df[col].astype(str).apply(lambda x: x[:100] + "..." if len(x) > 100 else x)
     st.dataframe(display_df, use_container_width=True, height=400)
     
+    # زر تصدير الشيت إلى Excel
     col_btn1, col_btn2 = st.columns(2)
     with col_btn1:
         excel_file = export_sheet_to_excel({sheet_name: df}, sheet_name)
@@ -746,6 +648,7 @@ def search_across_sheets(all_sheets):
             st.success(f"تم العثور على {len(combined_results)} نتيجة")
             st.dataframe(combined_results, use_container_width=True, height=500)
             
+            # تصدير النتائج إلى Excel (بدلاً من CSV)
             excel_file = export_filtered_results_to_excel(combined_results, "نتائج_البحث")
             st.download_button(
                 "📥 تحميل نتائج البحث كملف Excel",
@@ -759,6 +662,7 @@ def search_across_sheets(all_sheets):
 
 # ==================== تحليل الأعطال ====================
 def failures_analysis_tab(all_sheets):
+    """تبويب تحليل الأعطال"""
     st.header("📊 تحليل الأعطال والإجراءات التصحيحية")
     
     if not all_sheets:
@@ -785,6 +689,7 @@ def failures_analysis_tab(all_sheets):
                 st.error("❌ لا توجد بيانات كافية للتحليل. تأكد من وجود بيانات في الشيت المحدد مع تواريخ صالحة.")
                 return
             
+            # عرض الملخص
             st.subheader("📈 ملخص التحليل")
             col_a, col_b, col_c, col_d = st.columns(4)
             with col_a:
@@ -796,6 +701,7 @@ def failures_analysis_tab(all_sheets):
             with col_d:
                 st.metric("إلى تاريخ", analysis["date_range"]["to"])
             
+            # عرض الرسوم البيانية
             st.subheader("📊 الرسوم البيانية")
             
             if PLOTLY_AVAILABLE:
@@ -810,6 +716,7 @@ def failures_analysis_tab(all_sheets):
             else:
                 st.warning("⚠️ مكتبات الرسم البياني غير متوفرة. يرجى تثبيت plotly أو matplotlib لعرض الرسوم البيانية.")
             
+            # عرض الجداول التفصيلية
             st.subheader("📋 الجداول التفصيلية")
             
             tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -848,6 +755,7 @@ def failures_analysis_tab(all_sheets):
                 else:
                     st.info("لا توجد بيانات")
             
+            # زر تصدير التقرير
             st.markdown("---")
             st.subheader("📥 تصدير التقرير")
             
@@ -861,11 +769,13 @@ def failures_analysis_tab(all_sheets):
             )
 
 def create_failure_charts_matplotlib(analysis):
+    """إنشاء رسوم بيانية باستخدام matplotlib"""
     charts = []
     
     if not MATPLOTLIB_AVAILABLE:
         return charts
     
+    # 1. أكثر المعدات تعطلاً
     if not analysis["failure_rate"].empty:
         fig, ax = plt.subplots(figsize=(10, 6))
         top_equipment = analysis["failure_rate"].head(10)
@@ -878,13 +788,20 @@ def create_failure_charts_matplotlib(analysis):
             ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
         charts.append(fig)
     
+    # 2. نسب الأعطال (دائري)
     if not analysis["failure_rate"].empty:
         fig, ax = plt.subplots(figsize=(8, 8))
         top8 = analysis["failure_rate"].head(8)
-        ax.pie(top8["عدد الأعطال"], labels=top8["المعدة"], autopct='%1.1f%%', startangle=90)
+        wedges, texts, autotexts = ax.pie(
+            top8["عدد الأعطال"], 
+            labels=top8["المعدة"], 
+            autopct='%1.1f%%',
+            startangle=90
+        )
         ax.set_title("نسب الأعطال حسب المعدة", fontsize=14)
         charts.append(fig)
     
+    # 3. التحليل الشهري
     if not analysis["monthly"].empty:
         fig, ax = plt.subplots(figsize=(12, 6))
         pivot = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
@@ -896,6 +813,7 @@ def create_failure_charts_matplotlib(analysis):
         plt.xticks(rotation=45)
         charts.append(fig)
     
+    # 4. أيام الأسبوع
     if not analysis["weekday"].empty:
         fig, ax = plt.subplots(figsize=(10, 6))
         colors = plt.cm.Blues(np.linspace(0.4, 0.9, len(analysis["weekday"])))
@@ -907,6 +825,7 @@ def create_failure_charts_matplotlib(analysis):
             ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5, str(val), ha='center')
         charts.append(fig)
     
+    # 5. MTBF
     if not analysis["mtbf"].empty:
         fig, ax = plt.subplots(figsize=(10, 6))
         colors = plt.cm.Greens(np.linspace(0.4, 0.9, len(analysis["mtbf"])))
@@ -917,6 +836,7 @@ def create_failure_charts_matplotlib(analysis):
             ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, f'{val:.1f}', va='center')
         charts.append(fig)
     
+    # 6. أكثر الأعطال تكراراً
     if not analysis["issue_counts"].empty:
         fig, ax = plt.subplots(figsize=(10, 8))
         top_issues = analysis["issue_counts"].head(10)
@@ -932,11 +852,13 @@ def create_failure_charts_matplotlib(analysis):
     return charts
 
 def create_failure_charts_plotly(analysis):
+    """إنشاء رسوم بيانية باستخدام plotly"""
     charts = []
     
     if not PLOTLY_AVAILABLE:
         return charts
     
+    # 1. أكثر المعدات تعطلاً
     if not analysis["failure_rate"].empty:
         fig = px.bar(
             analysis["failure_rate"].head(10),
@@ -951,6 +873,7 @@ def create_failure_charts_plotly(analysis):
         fig.update_layout(showlegend=False)
         charts.append(fig)
     
+    # 2. رسم بياني دائري
     if not analysis["failure_rate"].empty:
         fig = px.pie(
             analysis["failure_rate"].head(8),
@@ -961,6 +884,7 @@ def create_failure_charts_plotly(analysis):
         )
         charts.append(fig)
     
+    # 3. التحليل الشهري
     if not analysis["monthly"].empty:
         fig = px.line(
             analysis["monthly"],
@@ -972,6 +896,7 @@ def create_failure_charts_plotly(analysis):
         )
         charts.append(fig)
     
+    # 4. أيام الأسبوع
     if not analysis["weekday"].empty:
         fig = px.bar(
             analysis["weekday"],
@@ -985,6 +910,7 @@ def create_failure_charts_plotly(analysis):
         fig.update_traces(textposition='outside')
         charts.append(fig)
     
+    # 5. MTBF
     if not analysis["mtbf"].empty:
         fig = px.bar(
             analysis["mtbf"],
@@ -998,6 +924,7 @@ def create_failure_charts_plotly(analysis):
         fig.update_traces(textposition='outside')
         charts.append(fig)
     
+    # 6. أكثر الأعطال تكراراً
     if not analysis["issue_counts"].empty:
         fig = px.bar(
             analysis["issue_counts"].head(10),
@@ -1251,90 +1178,11 @@ def manage_data_edit(sheets_edit):
     
     return sheets_edit
 
-def manage_users_interface():
-    """واجهة إدارة المستخدمين (للمشرف فقط)"""
-    st.subheader("👥 إدارة المستخدمين")
-    
-    users = load_users()
-    
-    st.markdown("### 📋 قائمة المستخدمين")
-    
-    users_list = []
-    for username, user_data in users.items():
-        users_list.append({
-            "اسم المستخدم": username,
-            "الدور": user_data.get("role", "viewer"),
-            "الصلاحيات": ", ".join(user_data.get("permissions", ["view"])),
-            "تاريخ الإنشاء": user_data.get("created_at", "").split("T")[0] if "T" in user_data.get("created_at", "") else user_data.get("created_at", "")
-        })
-    
-    users_df = pd.DataFrame(users_list)
-    st.dataframe(users_df, use_container_width=True)
-    
-    st.markdown("---")
-    st.markdown("### ➕ إضافة مستخدم جديد")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        new_username = st.text_input("اسم المستخدم:", key="new_username")
-        new_password = st.text_input("كلمة المرور:", type="password", key="new_password")
-    
-    with col2:
-        new_role = st.selectbox("الدور:", ["viewer", "editor"], key="new_role")
-        new_permissions = st.multiselect(
-            "الصلاحيات:",
-            ["view", "edit", "manage_sheets"],
-            default=["view"] if new_role == "viewer" else ["view", "edit", "manage_sheets"],
-            key="new_permissions"
-        )
-    
-    if st.button("➕ إضافة مستخدم", key="add_user_btn", type="primary"):
-        if new_username and new_password:
-            if new_username == "admin":
-                st.error("❌ لا يمكن إضافة مستخدم باسم 'admin'")
-            elif new_username in users:
-                st.warning(f"⚠ المستخدم '{new_username}' موجود بالفعل")
-            else:
-                user_data = {
-                    "password": new_password,
-                    "role": new_role,
-                    "created_at": datetime.now().isoformat(),
-                    "permissions": new_permissions
-                }
-                if add_user_to_github(new_username, user_data):
-                    st.success(f"✅ تم إضافة المستخدم '{new_username}' بنجاح")
-                    st.rerun()
-                else:
-                    st.error("❌ فشل إضافة المستخدم")
-        else:
-            st.warning("⚠ الرجاء إدخال اسم المستخدم وكلمة المرور")
-    
-    st.markdown("---")
-    st.markdown("### 🗑️ حذف مستخدم")
-    
-    users_to_delete = [u for u in users.keys() if u not in ["viewer", "editor"]]
-    
-    if users_to_delete:
-        user_to_delete = st.selectbox("اختر المستخدم للحذف:", users_to_delete, key="user_to_delete")
-        
-        if st.button("🗑️ حذف المستخدم", key="delete_user_btn"):
-            if delete_user_from_github(user_to_delete):
-                st.success(f"✅ تم حذف المستخدم '{user_to_delete}' بنجاح")
-                st.rerun()
-            else:
-                st.error("❌ فشل حذف المستخدم")
-    else:
-        st.info("ℹ️ لا توجد مستخدمين للحذف")
-    
-    st.markdown("---")
-    st.info("🔒 ملاحظة: المستخدم 'admin' مُثبت بشكل دائم في النظام ولا يمكن تعديله أو حذفه من هنا.")
-
 # ------------------------------- الواجهة الرئيسية -------------------------------
 st.set_page_config(page_title=APP_CONFIG["APP_TITLE"], layout="wide")
 
 with st.sidebar:
-    st.header("👤 الجلسة")
+    st.header("الجلسة")
     if not st.session_state.get("logged_in"):
         if not login_ui():
             st.stop()
@@ -1343,9 +1191,8 @@ with st.sidebar:
         username = st.session_state.username
         rem = remaining_time(state, username)
         if rem:
-            hours, remainder = divmod(int(rem.total_seconds()), 3600)
-            minutes, seconds = divmod(remainder, 60)
-            st.success(f"👋 {username} | ⏳ {hours:02d}:{minutes:02d}:{seconds:02d}")
+            mins, secs = divmod(int(rem.total_seconds()), 60)
+            st.success(f"👋 {username} | ⏳ {mins:02d}:{secs:02d}")
         st.markdown("---")
         if st.button("🔄 تحديث من GitHub"):
             if fetch_from_github_requests():
@@ -1364,33 +1211,19 @@ st.title(f"{APP_CONFIG['APP_ICON']} {APP_CONFIG['APP_TITLE']}")
 user_role = st.session_state.get("user_role", "viewer")
 user_permissions = st.session_state.get("user_permissions", ["view"])
 can_edit = (user_role == "admin" or user_role == "editor" or "edit" in user_permissions)
-can_manage_users = (user_role == "admin")
 
 tabs_list = ["🔍 بحث متقدم", "📊 تحليل الأعطال"]
-
 if can_edit:
     tabs_list.append("🛠 تعديل وإدارة البيانات")
 
-if can_manage_users:
-    tabs_list.append("👥 إدارة المستخدمين")
-
 tabs = st.tabs(tabs_list)
 
-tab_index = 0
-
-with tabs[tab_index]:
+with tabs[0]:
     search_across_sheets(all_sheets)
-tab_index += 1
 
-with tabs[tab_index]:
+with tabs[1]:
     failures_analysis_tab(all_sheets)
-tab_index += 1
 
-if can_edit and tab_index < len(tabs):
-    with tabs[tab_index]:
+if can_edit and len(tabs) > 2:
+    with tabs[2]:
         sheets_edit = manage_data_edit(sheets_edit)
-    tab_index += 1
-
-if can_manage_users and tab_index < len(tabs):
-    with tabs[tab_index]:
-        manage_users_interface()
