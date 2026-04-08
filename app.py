@@ -35,13 +35,13 @@ STATE_FILE = "state.json"
 SESSION_DURATION = timedelta(minutes=APP_CONFIG["SESSION_DURATION_MINUTES"])
 MAX_ACTIVE_USERS = APP_CONFIG["MAX_ACTIVE_USERS"]
 IMAGES_FOLDER = APP_CONFIG["IMAGES_FOLDER"]
-EQUIPMENT_CONFIG_FILE = "equipment_config.json"
+EQUIPMENT_CONFIG_FILE = "equipment_config.json"  # سيتم استخدامه فقط كنسخة احتياطية (اختياري)
 
 GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
 GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/stations/refs/heads/main/users.json"
 GITHUB_REPO_USERS = "mahmedabdallh123/stations"
 
-# ------------------------------- دوال تكوينات المعدات -------------------------------
+# ------------------------------- دوال تكوينات المعدات (اختياري للتوافق) -------------------------------
 def load_equipment_config():
     if not os.path.exists(EQUIPMENT_CONFIG_FILE):
         default_config = {}
@@ -63,21 +63,58 @@ def save_equipment_config(config):
         st.error(f"خطأ في حفظ تكوين المعدات: {e}")
         return False
 
-def get_sheet_equipment(sheet_name, config):
-    if sheet_name in config:
-        return config[sheet_name].get("equipment_list", [])
-    return []
+# ------------------------------- دوال الحصول على المعدات من البيانات الفعلية -------------------------------
+def get_equipment_list_from_sheet(df):
+    """استخراج قائمة المعدات الفريدة من عمود 'المعدة' في DataFrame"""
+    if df is None or df.empty or "المعدة" not in df.columns:
+        return []
+    # استخراج القيم الفريدة غير الفارغة
+    equipment = df["المعدة"].dropna().unique()
+    equipment = [str(e).strip() for e in equipment if str(e).strip() != ""]
+    return sorted(equipment)
 
-def add_equipment_to_sheet(sheet_name, equipment_name, config):
-    if sheet_name not in config:
-        config[sheet_name] = {"equipment_list": [], "created_at": datetime.now().isoformat()}
-    if equipment_name in config[sheet_name]["equipment_list"]:
-        return False, f"المعدة '{equipment_name}' موجودة بالفعل"
-    config[sheet_name]["equipment_list"].append(equipment_name)
-    save_equipment_config(config)
-    return True, f"تم إضافة المعدة '{equipment_name}' بنجاح"
+def add_equipment_to_sheet_data(sheets_edit, sheet_name, new_equipment):
+    """إضافة معدة جديدة إلى الشيت (بإدراج صف فارغ يحتوي على اسم المعدة فقط)"""
+    if sheet_name not in sheets_edit:
+        return False, "الشيت غير موجود"
+    
+    df = sheets_edit[sheet_name]
+    # التحقق من وجود العمود
+    if "المعدة" not in df.columns:
+        return False, "عمود 'المعدة' غير موجود في هذا الشيت"
+    
+    # التحقق من وجود المعدة مسبقاً
+    existing = get_equipment_list_from_sheet(df)
+    if new_equipment in existing:
+        return False, f"المعدة '{new_equipment}' موجودة بالفعل"
+    
+    # إنشاء صف جديد بجميع الأعمدة مع تعيين قيمة المعدة فقط
+    new_row = {col: "" for col in df.columns}
+    new_row["المعدة"] = new_equipment
+    new_row_df = pd.DataFrame([new_row])
+    sheets_edit[sheet_name] = pd.concat([df, new_row_df], ignore_index=True)
+    
+    return True, f"تم إضافة المعدة '{new_equipment}' بنجاح"
+
+def remove_equipment_from_sheet_data(sheets_edit, sheet_name, equipment_name):
+    """حذف جميع السجلات التي تحمل اسم المعدة المحدد (اختياري - بحذر)"""
+    # ملاحظة: هذه الدالة تحذف كل الصفوف التي تحتوي على تلك المعدة. قد لا تكون مرغوبة.
+    # بدلاً من ذلك يمكن إخفاؤها أو وضع علامة. سنستخدمها فقط إذا أراد المستخدم الحذف الكامل.
+    if sheet_name not in sheets_edit:
+        return False, "الشيت غير موجود"
+    df = sheets_edit[sheet_name]
+    if "المعدة" not in df.columns:
+        return False, "عمود 'المعدة' غير موجود"
+    if equipment_name not in get_equipment_list_from_sheet(df):
+        return False, "المعدة غير موجودة"
+    
+    # حذف جميع الصفوف التي تحمل هذا الاسم
+    new_df = df[df["المعدة"] != equipment_name]
+    sheets_edit[sheet_name] = new_df
+    return True, f"تم حذف جميع سجلات المعدة '{equipment_name}'"
 
 # ------------------------------- دوال المستخدمين -------------------------------
+# (نفس الكود السابق - تم اختصاره للطول ولكن يبقى كما هو)
 def download_users_from_github():
     try:
         response = requests.get(GITHUB_USERS_URL, timeout=10)
@@ -289,7 +326,6 @@ def save_to_github(sheets_dict, commit_message):
             st.error("❌ PyGithub غير متوفر")
             return False
         
-        # حفظ الملف محلياً أولاً
         temp_file = APP_CONFIG["LOCAL_FILE"]
         try:
             with pd.ExcelWriter(temp_file, engine="openpyxl") as writer:
@@ -303,19 +339,14 @@ def save_to_github(sheets_dict, commit_message):
             st.error(f"❌ خطأ في إنشاء ملف Excel: {e}")
             return False
         
-        # رفع الملف إلى GitHub
         try:
             g = Github(token)
             repo = g.get_repo(APP_CONFIG["REPO_NAME"])
-            
             with open(temp_file, "rb") as f:
                 content = f.read()
-            
             try:
-                # محاولة الحصول على الملف الموجود
                 contents = repo.get_contents(APP_CONFIG["FILE_PATH"], ref=APP_CONFIG["BRANCH"])
-                # تحديث الملف الموجود
-                result = repo.update_file(
+                repo.update_file(
                     path=APP_CONFIG["FILE_PATH"],
                     message=commit_message,
                     content=content,
@@ -326,8 +357,7 @@ def save_to_github(sheets_dict, commit_message):
                 return True
             except GithubException as e:
                 if e.status == 404:
-                    # الملف غير موجود، نقوم بإنشائه
-                    result = repo.create_file(
+                    repo.create_file(
                         path=APP_CONFIG["FILE_PATH"],
                         message=commit_message,
                         content=content,
@@ -341,16 +371,17 @@ def save_to_github(sheets_dict, commit_message):
         except Exception as e:
             st.error(f"❌ فشل الرفع إلى GitHub: {str(e)}")
             return False
-            
     except Exception as e:
         st.error(f"❌ خطأ عام: {str(e)}")
         return False
 
 # ------------------------------- دوال العرض -------------------------------
-def display_sheet_data(sheet_name, df, equipment_list, unique_id):
+def display_sheet_data(sheet_name, df, unique_id):
     st.markdown(f"### {sheet_name}")
     st.info(f"عدد السجلات: {len(df)} | عدد الأعمدة: {len(df.columns)}")
     
+    # فلتر حسب المعدة (من القيم الموجودة في العمود)
+    equipment_list = get_equipment_list_from_sheet(df)
     if equipment_list and "المعدة" in df.columns:
         st.markdown("#### فلتر حسب المعدة:")
         selected_filter = st.selectbox(
@@ -368,7 +399,7 @@ def display_sheet_data(sheet_name, df, equipment_list, unique_id):
             display_df[col] = display_df[col].astype(str).apply(lambda x: x[:100] + "..." if len(x) > 100 else x)
     st.dataframe(display_df, use_container_width=True, height=400)
 
-def search_across_sheets(all_sheets, equipment_config):
+def search_across_sheets(all_sheets, equipment_config_ignored):
     st.subheader("بحث متقدم في السجلات")
     
     if not all_sheets:
@@ -381,13 +412,15 @@ def search_across_sheets(all_sheets, equipment_config):
         sheet_options = ["جميع الشيتات"] + list(all_sheets.keys())
         selected_sheet = st.selectbox("اختر الشيت للبحث:", sheet_options, key="search_sheet")
         
+        # الحصول على قائمة المعدات من الشيت المختار (أو من كل الشيتات)
         if selected_sheet != "جميع الشيتات":
-            equipment_list = get_sheet_equipment(selected_sheet, equipment_config)
+            df_temp = all_sheets[selected_sheet]
+            equipment_list = get_equipment_list_from_sheet(df_temp)
         else:
-            all_equipment = []
-            for sheet_name in all_sheets.keys():
-                all_equipment.extend(get_sheet_equipment(sheet_name, equipment_config))
-            equipment_list = list(set(all_equipment))
+            all_eq = set()
+            for sh_name, sh_df in all_sheets.items():
+                all_eq.update(get_equipment_list_from_sheet(sh_df))
+            equipment_list = sorted(all_eq)
         
         filter_equipment = st.selectbox("فلتر حسب المعدة:", ["الكل"] + equipment_list, key="search_eq")
         search_term = st.text_input("كلمة البحث:", placeholder="أدخل نصاً للبحث...", key="search_term")
@@ -395,7 +428,6 @@ def search_across_sheets(all_sheets, equipment_config):
     with col2:
         st.markdown("#### نطاق التاريخ")
         use_date_filter = st.checkbox("تفعيل البحث بالتاريخ", key="use_date_filter")
-        
         if use_date_filter:
             col_date1, col_date2 = st.columns(2)
             with col_date1:
@@ -405,22 +437,18 @@ def search_across_sheets(all_sheets, equipment_config):
         else:
             start_date = None
             end_date = None
-        
         search_in_notes = st.checkbox("البحث في الملاحظات أيضاً", value=True, key="search_notes")
     
     if st.button("بحث", key="search_btn", type="primary"):
         results = []
-        
         sheets_to_search = all_sheets.items()
         if selected_sheet != "جميع الشيتات":
             sheets_to_search = [(selected_sheet, all_sheets[selected_sheet])]
         
         for sheet_name, df in sheets_to_search:
             df_filtered = df.copy()
-            
             if filter_equipment != "الكل" and "المعدة" in df_filtered.columns:
                 df_filtered = df_filtered[df_filtered["المعدة"] == filter_equipment]
-            
             if use_date_filter and start_date and end_date and "التاريخ" in df_filtered.columns:
                 try:
                     df_filtered["التاريخ"] = pd.to_datetime(df_filtered["التاريخ"], errors='coerce')
@@ -428,18 +456,15 @@ def search_across_sheets(all_sheets, equipment_config):
                     df_filtered = df_filtered[mask]
                 except:
                     pass
-            
             if search_term:
                 search_columns = ["الحدث/العطل", "الإجراء التصحيحي"]
                 if search_in_notes:
                     search_columns.append("ملاحظات")
-                
                 mask = pd.Series([False] * len(df_filtered))
                 for col in search_columns:
                     if col in df_filtered.columns:
                         mask = mask | df_filtered[col].astype(str).str.contains(search_term, case=False, na=False)
                 df_filtered = df_filtered[mask]
-            
             if not df_filtered.empty:
                 df_filtered["الشيت"] = sheet_name
                 results.append(df_filtered)
@@ -448,7 +473,6 @@ def search_across_sheets(all_sheets, equipment_config):
             combined_results = pd.concat(results, ignore_index=True)
             st.success(f"تم العثور على {len(combined_results)} نتيجة")
             st.dataframe(combined_results, use_container_width=True, height=500)
-            
             csv = combined_results.to_csv(index=False).encode('utf-8')
             st.download_button(
                 "تحميل النتائج كملف CSV",
@@ -460,104 +484,68 @@ def search_across_sheets(all_sheets, equipment_config):
         else:
             st.warning("لا توجد نتائج مطابقة للبحث")
 
-# ==================== دالة إضافة الشيت إلى GitHub ====================
-def add_new_sheet_to_github(sheets_edit, equipment_config):
+# ==================== دوال إدارة الشيتات والأحداث ====================
+def add_new_sheet_to_github(sheets_edit):
     """إضافة شيت جديد وحفظه مباشرة على GitHub"""
     st.subheader("➕ إضافة شيت جديد إلى GitHub")
-    
     st.info("سيتم إضافة الشيت الجديد إلى ملف Excel الموجود على GitHub")
     
     col1, col2 = st.columns(2)
-    
     with col1:
-        new_sheet_name = st.text_input(
-            "📝 اسم الشيت الجديد:", 
-            key="new_sheet_name_github",
-            placeholder="مثال: قسم الميكانيكا, محطة الكهرباء, صيانة المضخات"
-        )
-        
-        if new_sheet_name:
-            if new_sheet_name in sheets_edit:
-                st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل في الملف!")
-            else:
-                st.success(f"✅ اسم الشيت '{new_sheet_name}' متاح")
-    
+        new_sheet_name = st.text_input("📝 اسم الشيت الجديد:", key="new_sheet_name_github",
+                                       placeholder="مثال: قسم الميكانيكا, محطة الكهرباء")
+        if new_sheet_name and new_sheet_name in sheets_edit:
+            st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل!")
+        elif new_sheet_name:
+            st.success(f"✅ اسم الشيت '{new_sheet_name}' متاح")
     with col2:
         use_default = st.checkbox("استخدام الأعمدة الافتراضية", value=True, key="use_default_columns")
-        
         if use_default:
             columns_list = APP_CONFIG["DEFAULT_SHEET_COLUMNS"]
             st.info(f"📊 الأعمدة: {', '.join(columns_list)}")
         else:
-            columns_text = st.text_area(
-                "✏️ الأعمدة (كل عمود في سطر):", 
-                value="\n".join(APP_CONFIG["DEFAULT_SHEET_COLUMNS"]), 
-                key="custom_columns",
-                height=150
-            )
+            columns_text = st.text_area("✏️ الأعمدة (كل عمود في سطر):", 
+                                        value="\n".join(APP_CONFIG["DEFAULT_SHEET_COLUMNS"]), 
+                                        key="custom_columns", height=150)
             columns_list = [col.strip() for col in columns_text.split("\n") if col.strip()]
             if not columns_list:
                 columns_list = APP_CONFIG["DEFAULT_SHEET_COLUMNS"]
     
     st.markdown("---")
-    
-    # معاينة
     st.markdown("### 📋 معاينة الشيت الجديد")
     preview_df = pd.DataFrame(columns=columns_list)
     st.dataframe(preview_df, use_container_width=True)
     st.caption(f"📊 عدد الأعمدة: {len(columns_list)} | سيتم إنشاء شيت فارغ بهذه الأعمدة")
     
-    st.markdown("---")
-    
-    # زر الإنشاء
     if st.button("✅ إنشاء وإضافة الشيت إلى GitHub", key="create_sheet_github_btn", type="primary", use_container_width=True):
         if not new_sheet_name:
             st.error("❌ الرجاء إدخال اسم الشيت")
             return sheets_edit
-        
-        # تنظيف اسم الشيت
         clean_name = re.sub(r'[\\/*?:"<>|]', '_', new_sheet_name.strip())
         if clean_name != new_sheet_name:
             st.warning(f"⚠ تم تعديل اسم الشيت إلى: {clean_name}")
             new_sheet_name = clean_name
-        
         if new_sheet_name in sheets_edit:
-            st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل في الملف!")
+            st.error(f"❌ الشيت '{new_sheet_name}' موجود بالفعل!")
             return sheets_edit
         
         try:
             with st.spinner("جاري إنشاء الشيت ورفعه إلى GitHub..."):
-                # إنشاء DataFrame جديد
                 new_df = pd.DataFrame(columns=columns_list)
                 sheets_edit[new_sheet_name] = new_df
-                
-                # حفظ ورفع إلى GitHub
                 commit_msg = f"إضافة شيت جديد: {new_sheet_name} بواسطة {st.session_state.get('username', 'user')}"
-                
                 if save_to_github(sheets_edit, commit_msg):
                     st.success(f"✅ تم إنشاء الشيت '{new_sheet_name}' بنجاح ورفعه إلى GitHub!")
-                    
-                    # إضافة تكوين المعدات
-                    if new_sheet_name not in equipment_config:
-                        equipment_config[new_sheet_name] = {
-                            "equipment_list": [], 
-                            "created_at": datetime.now().isoformat()
-                        }
-                        save_equipment_config(equipment_config)
-                    
-                    # مسح الكاش وإعادة التحميل
                     st.cache_data.clear()
                     st.balloons()
                     st.rerun()
                 else:
                     st.error("❌ فشل رفع الشيت إلى GitHub")
                     return sheets_edit
-                    
         except Exception as e:
             st.error(f"❌ حدث خطأ: {str(e)}")
             return sheets_edit
     
-    # عرض الشيتات الموجودة
     st.markdown("---")
     st.markdown("### 📋 الشيتات الموجودة حالياً على GitHub:")
     if sheets_edit:
@@ -565,34 +553,67 @@ def add_new_sheet_to_github(sheets_edit, equipment_config):
             st.write(f"- {sheet_name}")
     else:
         st.info("لا توجد شيتات بعد")
-    
     return sheets_edit
 
-def add_new_event(sheets_edit, sheet_name, equipment_list):
-    """إضافة حدث جديد"""
+def add_new_event(sheets_edit, sheet_name):
+    """إضافة حدث جديد مع اختيار المعدة من القائمة المستخرجة من البيانات"""
     st.markdown(f"### إضافة حدث جديد في شيت: {sheet_name}")
+    df = sheets_edit[sheet_name]
+    equipment_list = get_equipment_list_from_sheet(df)
     
     if not equipment_list:
-        st.warning("⚠ لا توجد معدات مضافة. يرجى إضافة معدات أولاً")
+        st.warning("⚠ لا توجد معدات مسجلة بعد. يمكنك إضافة معدة جديدة عن طريق كتابة اسمها في الحقل المخصص (ستتم إضافتها تلقائياً).")
+        # نعطي خيار إضافة معدة جديدة مباشرة
+        new_equipment = st.text_input("➕ إضافة معدة جديدة (اكتب الاسم ثم استخدم الزر بالأسفل):", key="new_eq_fast")
+        if st.button("إضافة المعدة أولاً", key="add_eq_fast"):
+            if new_equipment:
+                success, msg = add_equipment_to_sheet_data(sheets_edit, sheet_name, new_equipment)
+                if success:
+                    commit_msg = f"إضافة معدة جديدة '{new_equipment}' في شيت {sheet_name}"
+                    if save_to_github(sheets_edit, commit_msg):
+                        st.success(msg)
+                        st.cache_data.clear()
+                        st.rerun()
+                    else:
+                        st.error("فشل الحفظ")
+                else:
+                    st.error(msg)
+            else:
+                st.warning("يرجى إدخال اسم المعدة")
         return sheets_edit
     
     with st.form(key="add_event_form"):
         col1, col2 = st.columns(2)
-        
         with col1:
-            selected_equipment = st.selectbox("اختر المعدة:", equipment_list)
-            event_date = st.date_input("التاريخ:", value=datetime.now())
-            event_desc = st.text_area("الحدث/العطل:", height=100)
-        
+            selected_equipment = st.selectbox("🔧 اختر المعدة:", equipment_list)
+            event_date = st.date_input("📅 التاريخ:", value=datetime.now())
+            event_desc = st.text_area("📝 الحدث/العطل:", height=100)
         with col2:
-            correction_desc = st.text_area("الإجراء التصحيحي:", height=100)
-            servised_by = st.text_input("تم بواسطة:")
-            tones = st.text_input("الطن:")
+            correction_desc = st.text_area("🔧 الإجراء التصحيحي:", height=100)
+            servised_by = st.text_input("👨‍🔧 تم بواسطة:")
+            tones = st.text_input("⚖️ الطن:")
+        notes = st.text_area("📝 ملاحظات:")
         
-        notes = st.text_area("ملاحظات:")
+        # خيار إضافة معدة جديدة مباشرة في نفس النموذج
+        add_new_equipment_inline = st.text_input("➕ أو أضف معدة جديدة (اختياري):", key="new_eq_inline", placeholder="اكتب اسم معدة غير موجودة")
         
-        if st.form_submit_button("إضافة الحدث", type="primary"):
-            df = sheets_edit[sheet_name].copy()
+        submitted = st.form_submit_button("✅ إضافة الحدث", type="primary")
+        
+        if submitted:
+            # إذا تم إدخال معدة جديدة غير موجودة، نضيفها أولاً
+            if add_new_equipment_inline and add_new_equipment_inline not in equipment_list:
+                success, msg = add_equipment_to_sheet_data(sheets_edit, sheet_name, add_new_equipment_inline)
+                if success:
+                    st.success(msg)
+                    # نعيد تحميل القائمة
+                    df = sheets_edit[sheet_name]
+                    equipment_list = get_equipment_list_from_sheet(df)
+                    selected_equipment = add_new_equipment_inline
+                else:
+                    st.error(msg)
+                    return sheets_edit
+            
+            # إنشاء الصف الجديد
             new_row = {
                 "التاريخ": event_date.strftime("%Y-%m-%d"),
                 "المعدة": selected_equipment,
@@ -603,6 +624,7 @@ def add_new_event(sheets_edit, sheet_name, equipment_list):
                 "الصور": "",
                 "ملاحظات": notes
             }
+            # إضافة أي أعمدة إضافية موجودة في DataFrame
             for col in df.columns:
                 if col not in new_row:
                     new_row[col] = ""
@@ -615,34 +637,60 @@ def add_new_event(sheets_edit, sheet_name, equipment_list):
                 st.cache_data.clear()
                 st.success("✅ تم إضافة الحدث بنجاح ورفعه إلى GitHub!")
                 st.rerun()
-    
+            else:
+                st.error("❌ فشل الحفظ")
     return sheets_edit
 
-def manage_equipment(sheet_name, config):
-    """إدارة المعدات"""
-    st.markdown(f"### إدارة المعدات في شيت: {sheet_name}")
-    equipment_list = get_sheet_equipment(sheet_name, config)
+def manage_equipment(sheets_edit, sheet_name):
+    """إدارة المعدات: عرض، إضافة، حذف (تعتمد على البيانات الفعلية)"""
+    st.markdown(f"### 🔧 إدارة المعدات في شيت: {sheet_name}")
+    df = sheets_edit[sheet_name]
+    equipment_list = get_equipment_list_from_sheet(df)
     
     if equipment_list:
-        st.markdown("#### المعدات الحالية:")
+        st.markdown("#### 📋 المعدات الحالية:")
         for eq in equipment_list:
-            st.markdown(f"- {eq}")
+            st.markdown(f"- 🔹 {eq}")
     else:
-        st.info("لا توجد معدات مضافة")
+        st.info("لا توجد معدات مسجلة بعد")
     
     st.markdown("---")
-    
-    new_equipment = st.text_input("اسم المعدة الجديدة:", key="new_equipment_name")
-    if st.button("➕ إضافة معدة", key="add_equipment_btn"):
-        if new_equipment:
-            success, msg = add_equipment_to_sheet(sheet_name, new_equipment, config)
-            if success:
-                st.success(msg)
-                st.rerun()
+    col1, col2 = st.columns(2)
+    with col1:
+        new_equipment = st.text_input("➕ اسم المعدة الجديدة:", key="new_equipment_name")
+        if st.button("➕ إضافة معدة", key="add_equipment_btn"):
+            if new_equipment:
+                success, msg = add_equipment_to_sheet_data(sheets_edit, sheet_name, new_equipment)
+                if success:
+                    commit_msg = f"إضافة معدة '{new_equipment}' في شيت {sheet_name}"
+                    if save_to_github(sheets_edit, commit_msg):
+                        st.success(msg)
+                        st.cache_data.clear()
+                        st.rerun()
+                    else:
+                        st.error("فشل الحفظ")
+                else:
+                    st.error(msg)
             else:
-                st.error(msg)
+                st.warning("يرجى إدخال اسم المعدة")
+    with col2:
+        if equipment_list:
+            eq_to_delete = st.selectbox("🗑️ اختر المعدة للحذف:", equipment_list, key="delete_eq_select")
+            st.warning("⚠️ تحذير: حذف المعدة سيؤدي إلى حذف جميع سجلات الأعطال المرتبطة بها نهائياً!")
+            if st.button("🗑️ حذف المعدة نهائياً", key="delete_equipment_btn"):
+                success, msg = remove_equipment_from_sheet_data(sheets_edit, sheet_name, eq_to_delete)
+                if success:
+                    commit_msg = f"حذف معدة '{eq_to_delete}' وجميع سجلاتها من شيت {sheet_name}"
+                    if save_to_github(sheets_edit, commit_msg):
+                        st.success(msg)
+                        st.cache_data.clear()
+                        st.rerun()
+                    else:
+                        st.error("فشل الحفظ")
+                else:
+                    st.error(msg)
 
-def manage_data_edit(sheets_edit, equipment_config):
+def manage_data_edit(sheets_edit):
     """إدارة البيانات الرئيسية"""
     if sheets_edit is None:
         st.warning("الملف غير موجود. استخدم زر 'تحديث من GitHub' في الشريط الجانبي أولاً")
@@ -657,16 +705,9 @@ def manage_data_edit(sheets_edit, equipment_config):
             sheet_tabs = st.tabs(list(sheets_edit.keys()))
             for i, (sheet_name, df) in enumerate(sheets_edit.items()):
                 with sheet_tabs[i]:
-                    equipment_list = get_sheet_equipment(sheet_name, equipment_config)
-                    display_sheet_data(sheet_name, df, equipment_list, f"view_{sheet_name}")
-                    
+                    display_sheet_data(sheet_name, df, f"view_{sheet_name}")
                     with st.expander("✏️ تعديل مباشر", expanded=False):
-                        edited_df = st.data_editor(
-                            df.astype(str), 
-                            num_rows="dynamic", 
-                            use_container_width=True, 
-                            key=f"editor_{sheet_name}"
-                        )
+                        edited_df = st.data_editor(df.astype(str), num_rows="dynamic", use_container_width=True, key=f"editor_{sheet_name}")
                         if st.button(f"💾 حفظ", key=f"save_{sheet_name}"):
                             sheets_edit[sheet_name] = edited_df.astype(object)
                             commit_msg = f"تعديل بيانات في {sheet_name} بواسطة {st.session_state.get('username', 'user')}"
@@ -678,26 +719,23 @@ def manage_data_edit(sheets_edit, equipment_config):
     with tabs_edit[1]:
         if sheets_edit:
             sheet_name = st.selectbox("اختر الشيت:", list(sheets_edit.keys()), key="add_event_sheet")
-            equipment_list = get_sheet_equipment(sheet_name, equipment_config)
-            if not equipment_list:
-                st.warning(f"لا توجد معدات في '{sheet_name}'. أضف معدات أولاً")
-            else:
-                sheets_edit = add_new_event(sheets_edit, sheet_name, equipment_list)
+            sheets_edit = add_new_event(sheets_edit, sheet_name)
     
     with tabs_edit[2]:
         if sheets_edit:
             sheet_name = st.selectbox("اختر الشيت:", list(sheets_edit.keys()), key="manage_eq_sheet")
-            manage_equipment(sheet_name, equipment_config)
+            manage_equipment(sheets_edit, sheet_name)
     
     with tabs_edit[3]:
-        sheets_edit = add_new_sheet_to_github(sheets_edit, equipment_config)
+        sheets_edit = add_new_sheet_to_github(sheets_edit)
     
     return sheets_edit
 
 # ------------------------------- الواجهة الرئيسية -------------------------------
 st.set_page_config(page_title=APP_CONFIG["APP_TITLE"], layout="wide")
 
-equipment_config = load_equipment_config()
+# لا حاجة لتحميل equipment_config هنا لأننا سنعتمد على البيانات
+equipment_config = {}  # placeholder
 
 with st.sidebar:
     st.header("الجلسة")
@@ -712,7 +750,6 @@ with st.sidebar:
             mins, secs = divmod(int(rem.total_seconds()), 60)
             st.success(f"👋 {username} | ⏳ {mins:02d}:{secs:02d}")
         st.markdown("---")
-        
         if st.button("🔄 تحديث من GitHub"):
             if fetch_from_github_requests():
                 st.rerun()
@@ -732,7 +769,6 @@ user_permissions = st.session_state.get("user_permissions", ["view"])
 can_edit = (user_role == "admin" or user_role == "editor" or "edit" in user_permissions)
 
 tabs_list = ["🔍 بحث متقدم"]
-
 if can_edit:
     tabs_list.append("🛠 تعديل وإدارة البيانات")
 
@@ -740,9 +776,9 @@ tabs = st.tabs(tabs_list)
 
 with tabs[0]:
     st.header("نظام البحث المتقدم")
-    search_across_sheets(all_sheets, equipment_config)
+    search_across_sheets(all_sheets, equipment_config)  # equipment_config ليس مستخدماً فعلياً
 
 if can_edit and len(tabs) > 1:
     with tabs[1]:
         st.header("تعديل وإدارة البيانات")
-        sheets_edit = manage_data_edit(sheets_edit, equipment_config)
+        sheets_edit = manage_data_edit(sheets_edit)
