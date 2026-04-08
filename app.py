@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import json
 import os
 import requests
@@ -8,6 +9,24 @@ import re
 from datetime import datetime, timedelta
 from base64 import b64decode
 import uuid
+import io
+
+# محاولة استيراد Plotly مع معالجة الخطأ
+try:
+    import plotly.express as px
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+    PLOTLY_AVAILABLE = True
+except ImportError:
+    PLOTLY_AVAILABLE = False
+    # محاولة استيراد matplotlib كبديل
+    try:
+        import matplotlib.pyplot as plt
+        import matplotlib.dates as mdates
+        plt.rcParams['font.family'] = 'Arial'
+        MATPLOTLIB_AVAILABLE = True
+    except ImportError:
+        MATPLOTLIB_AVAILABLE = False
 
 try:
     from github import Github, GithubException
@@ -35,60 +54,339 @@ STATE_FILE = "state.json"
 SESSION_DURATION = timedelta(minutes=APP_CONFIG["SESSION_DURATION_MINUTES"])
 MAX_ACTIVE_USERS = APP_CONFIG["MAX_ACTIVE_USERS"]
 IMAGES_FOLDER = APP_CONFIG["IMAGES_FOLDER"]
-EQUIPMENT_CONFIG_FILE = "equipment_config.json"  # سيتم استخدامه فقط كنسخة احتياطية (اختياري)
 
 GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
 GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/Elqds/refs/heads/main/users.json"
 GITHUB_REPO_USERS = "mahmedabdallh123/Elqds"
 
-# ------------------------------- دوال تكوينات المعدات (اختياري للتوافق) -------------------------------
-def load_equipment_config():
-    if not os.path.exists(EQUIPMENT_CONFIG_FILE):
-        default_config = {}
-        with open(EQUIPMENT_CONFIG_FILE, "w", encoding="utf-8") as f:
-            json.dump(default_config, f, indent=4, ensure_ascii=False)
-        return default_config
-    try:
-        with open(EQUIPMENT_CONFIG_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except:
-        return {}
+# ------------------------------- دوال تحليل الأعطال -------------------------------
+def analyze_failures(df, equipment_name=None):
+    """تحليل بيانات الأعطال وإرجاع إحصائيات متقدمة"""
+    if df is None or df.empty:
+        return None
+    
+    data = df.copy()
+    
+    if "التاريخ" not in data.columns or "المعدة" not in data.columns:
+        return None
+    
+    data["التاريخ"] = pd.to_datetime(data["التاريخ"], errors='coerce')
+    data = data.dropna(subset=["التاريخ"])
+    
+    if data.empty:
+        return None
+    
+    if equipment_name and equipment_name != "جميع المعدات":
+        data = data[data["المعدة"] == equipment_name]
+    
+    if data.empty:
+        return None
+    
+    data = data.sort_values("التاريخ")
+    
+    total_failures = len(data)
+    unique_equipment = data["المعدة"].nunique()
+    
+    # 1. معدل تكرار العطل لكل معدة
+    failure_rate = data["المعدة"].value_counts().reset_index()
+    failure_rate.columns = ["المعدة", "عدد الأعطال"]
+    failure_rate["النسبة المئوية"] = (failure_rate["عدد الأعطال"] / total_failures * 100).round(2)
+    
+    # 2. أكثر الأعطال تكراراً
+    if "الحدث/العطل" in data.columns:
+        all_issues = data["الحدث/العطل"].dropna().astype(str)
+        issue_counts = all_issues.value_counts().head(10).reset_index()
+        issue_counts.columns = ["الحدث/العطل", "عدد المرات"]
+    else:
+        issue_counts = pd.DataFrame()
+    
+    # 3. MTBF
+    mtbf_results = []
+    for equipment in data["المعدة"].unique():
+        eq_data = data[data["المعدة"] == equipment].sort_values("التاريخ")
+        if len(eq_data) >= 2:
+            time_diffs = eq_data["التاريخ"].diff().dropna()
+            days_diff = time_diffs.dt.total_seconds() / (24 * 3600)
+            avg_mtbf = days_diff.mean()
+            mtbf_results.append({
+                "المعدة": equipment,
+                "عدد الأعطال": len(eq_data),
+                "متوسط MTBF (أيام)": round(avg_mtbf, 1),
+                "أول عطل": eq_data["التاريخ"].min().strftime("%Y-%m-%d"),
+                "آخر عطل": eq_data["التاريخ"].max().strftime("%Y-%m-%d")
+            })
+    mtbf_df = pd.DataFrame(mtbf_results) if mtbf_results else pd.DataFrame()
+    
+    # 4. تحليل زمني شهري
+    data["الشهر"] = data["التاريخ"].dt.to_period("M").astype(str)
+    monthly_failures = data.groupby(["الشهر", "المعدة"]).size().reset_index(name="عدد الأعطال")
+    
+    # 5. تحليل أيام الأسبوع
+    weekday_names = ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
+    data["يوم_الأسبوع"] = data["التاريخ"].dt.dayofweek.map({
+        0: "الاثنين", 1: "الثلاثاء", 2: "الأربعاء", 3: "الخميس", 
+        4: "الجمعة", 5: "السبت", 6: "الأحد"
+    })
+    weekday_failures = data["يوم_الأسبوع"].value_counts().reindex(weekday_names).fillna(0).reset_index()
+    weekday_failures.columns = ["اليوم", "عدد الأعطال"]
+    
+    # 6. الإجراءات التصحيحية
+    if "الإجراء التصحيحي" in data.columns:
+        corrections = data["الإجراء التصحيحي"].dropna().astype(str)
+        correction_counts = corrections.value_counts().head(10).reset_index()
+        correction_counts.columns = ["الإجراء التصحيحي", "عدد المرات"]
+    else:
+        correction_counts = pd.DataFrame()
+    
+    return {
+        "total_failures": total_failures,
+        "unique_equipment": unique_equipment,
+        "date_range": {
+            "from": data["التاريخ"].min().strftime("%Y-%m-%d"),
+            "to": data["التاريخ"].max().strftime("%Y-%m-%d")
+        },
+        "failure_rate": failure_rate,
+        "issue_counts": issue_counts,
+        "mtbf": mtbf_df,
+        "monthly": monthly_failures,
+        "weekday": weekday_failures,
+        "correction_counts": correction_counts,
+        "raw_data": data
+    }
 
-def save_equipment_config(config):
-    try:
-        with open(EQUIPMENT_CONFIG_FILE, "w", encoding="utf-8") as f:
-            json.dump(config, f, indent=4, ensure_ascii=False)
-        return True
-    except Exception as e:
-        st.error(f"خطأ في حفظ تكوين المعدات: {e}")
-        return False
+def generate_excel_report(analysis, sheet_name, equipment_filter):
+    """توليد ملف Excel متعدد الأوراق من نتائج التحليل"""
+    output = io.BytesIO()
+    
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        summary_data = {
+            "المعيار": ["إجمالي الأعطال", "عدد المعدات", "فترة التحليل من", "فترة التحليل إلى", "المعدة المفلترة"],
+            "القيمة": [
+                analysis["total_failures"],
+                analysis["unique_equipment"],
+                analysis["date_range"]["from"],
+                analysis["date_range"]["to"],
+                equipment_filter if equipment_filter else "جميع المعدات"
+            ]
+        }
+        summary_df = pd.DataFrame(summary_data)
+        summary_df.to_excel(writer, sheet_name="الملخص", index=False)
+        
+        if not analysis["failure_rate"].empty:
+            analysis["failure_rate"].to_excel(writer, sheet_name="معدل تكرار الأعطال", index=False)
+        
+        if not analysis["issue_counts"].empty:
+            analysis["issue_counts"].to_excel(writer, sheet_name="أكثر الأعطال تكراراً", index=False)
+        
+        if not analysis["mtbf"].empty:
+            analysis["mtbf"].to_excel(writer, sheet_name="متوسط الوقت بين الأعطال (MTBF)", index=False)
+        
+        if not analysis["monthly"].empty:
+            pivot_monthly = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
+            pivot_monthly.to_excel(writer, sheet_name="التحليل الشهري")
+        
+        if not analysis["weekday"].empty:
+            analysis["weekday"].to_excel(writer, sheet_name="تحليل أيام الأسبوع", index=False)
+        
+        if not analysis["correction_counts"].empty:
+            analysis["correction_counts"].to_excel(writer, sheet_name="الإجراءات التصحيحية", index=False)
+        
+        raw_export = analysis["raw_data"][["التاريخ", "المعدة", "الحدث/العطل", "الإجراء التصحيحي", "تم بواسطة", "الطن", "ملاحظات"]].copy()
+        raw_export.to_excel(writer, sheet_name="البيانات الخام", index=False)
+    
+    output.seek(0)
+    return output
 
-# ------------------------------- دوال الحصول على المعدات من البيانات الفعلية -------------------------------
+def create_failure_charts_matplotlib(analysis):
+    """إنشاء رسوم بيانية باستخدام matplotlib (بديل plotly)"""
+    charts = []
+    
+    if not PLOTLY_AVAILABLE and not MATPLOTLIB_AVAILABLE:
+        return charts
+    
+    # 1. أكثر المعدات تعطلاً
+    if not analysis["failure_rate"].empty:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        top_equipment = analysis["failure_rate"].head(10)
+        colors = plt.cm.Reds(np.linspace(0.4, 0.9, len(top_equipment)))
+        bars = ax.barh(top_equipment["المعدة"], top_equipment["عدد الأعطال"], color=colors)
+        ax.set_xlabel("عدد الأعطال")
+        ax.set_title("أكثر المعدات تعطلاً", fontsize=14)
+        ax.invert_yaxis()
+        for bar, val in zip(bars, top_equipment["عدد الأعطال"]):
+            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
+        charts.append(fig)
+    
+    # 2. نسب الأعطال (دائري)
+    if not analysis["failure_rate"].empty:
+        fig, ax = plt.subplots(figsize=(8, 8))
+        top8 = analysis["failure_rate"].head(8)
+        wedges, texts, autotexts = ax.pie(
+            top8["عدد الأعطال"], 
+            labels=top8["المعدة"], 
+            autopct='%1.1f%%',
+            startangle=90
+        )
+        ax.set_title("نسب الأعطال حسب المعدة", fontsize=14)
+        charts.append(fig)
+    
+    # 3. التحليل الشهري
+    if not analysis["monthly"].empty:
+        fig, ax = plt.subplots(figsize=(12, 6))
+        pivot = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
+        pivot.plot(kind='line', marker='o', ax=ax)
+        ax.set_xlabel("الشهر")
+        ax.set_ylabel("عدد الأعطال")
+        ax.set_title("تطور الأعطال شهرياً", fontsize=14)
+        ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+        plt.xticks(rotation=45)
+        charts.append(fig)
+    
+    # 4. أيام الأسبوع
+    if not analysis["weekday"].empty:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        colors = plt.cm.Blues(np.linspace(0.4, 0.9, len(analysis["weekday"])))
+        bars = ax.bar(analysis["weekday"]["اليوم"], analysis["weekday"]["عدد الأعطال"], color=colors)
+        ax.set_xlabel("اليوم")
+        ax.set_ylabel("عدد الأعطال")
+        ax.set_title("توزيع الأعطال حسب أيام الأسبوع", fontsize=14)
+        for bar, val in zip(bars, analysis["weekday"]["عدد الأعطال"]):
+            ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5, str(val), ha='center')
+        charts.append(fig)
+    
+    # 5. MTBF
+    if not analysis["mtbf"].empty:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        colors = plt.cm.Greens(np.linspace(0.4, 0.9, len(analysis["mtbf"])))
+        bars = ax.barh(analysis["mtbf"]["المعدة"], analysis["mtbf"]["متوسط MTBF (أيام)"], color=colors)
+        ax.set_xlabel("متوسط MTBF (أيام)")
+        ax.set_title("متوسط الوقت بين الأعطال", fontsize=14)
+        for bar, val in zip(bars, analysis["mtbf"]["متوسط MTBF (أيام)"]):
+            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, f'{val:.1f}', va='center')
+        charts.append(fig)
+    
+    # 6. أكثر الأعطال تكراراً
+    if not analysis["issue_counts"].empty:
+        fig, ax = plt.subplots(figsize=(10, 8))
+        top_issues = analysis["issue_counts"].head(10)
+        colors = plt.cm.Purples(np.linspace(0.4, 0.9, len(top_issues)))
+        bars = ax.barh(top_issues["الحدث/العطل"], top_issues["عدد المرات"], color=colors)
+        ax.set_xlabel("عدد المرات")
+        ax.set_title("أكثر الأعطال تكراراً", fontsize=14)
+        ax.invert_yaxis()
+        for bar, val in zip(bars, top_issues["عدد المرات"]):
+            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
+        charts.append(fig)
+    
+    return charts
+
+def create_failure_charts_plotly(analysis):
+    """إنشاء رسوم بيانية باستخدام plotly"""
+    charts = []
+    
+    # 1. أكثر المعدات تعطلاً
+    if not analysis["failure_rate"].empty:
+        fig = px.bar(
+            analysis["failure_rate"].head(10),
+            x="المعدة",
+            y="عدد الأعطال",
+            title="📊 أكثر المعدات تعطلاً",
+            text="عدد الأعطال",
+            color="عدد الأعطال",
+            color_continuous_scale="Reds"
+        )
+        fig.update_traces(textposition='outside')
+        fig.update_layout(showlegend=False)
+        charts.append(fig)
+    
+    # 2. رسم بياني دائري
+    if not analysis["failure_rate"].empty:
+        fig = px.pie(
+            analysis["failure_rate"].head(8),
+            values="عدد الأعطال",
+            names="المعدة",
+            title="🥧 نسب الأعطال حسب المعدة",
+            hole=0.3
+        )
+        charts.append(fig)
+    
+    # 3. التحليل الشهري
+    if not analysis["monthly"].empty:
+        fig = px.line(
+            analysis["monthly"],
+            x="الشهر",
+            y="عدد الأعطال",
+            color="المعدة",
+            title="📈 تطور الأعطال شهرياً",
+            markers=True
+        )
+        charts.append(fig)
+    
+    # 4. أيام الأسبوع
+    if not analysis["weekday"].empty:
+        fig = px.bar(
+            analysis["weekday"],
+            x="اليوم",
+            y="عدد الأعطال",
+            title="📅 توزيع الأعطال حسب أيام الأسبوع",
+            text="عدد الأعطال",
+            color="عدد الأعطال",
+            color_continuous_scale="Blues"
+        )
+        fig.update_traces(textposition='outside')
+        charts.append(fig)
+    
+    # 5. MTBF
+    if not analysis["mtbf"].empty:
+        fig = px.bar(
+            analysis["mtbf"],
+            x="المعدة",
+            y="متوسط MTBF (أيام)",
+            title="⏱️ متوسط الوقت بين الأعطال (MTBF) - أيام",
+            text="متوسط MTBF (أيام)",
+            color="متوسط MTBF (أيام)",
+            color_continuous_scale="Greens"
+        )
+        fig.update_traces(textposition='outside')
+        charts.append(fig)
+    
+    # 6. أكثر الأعطال تكراراً
+    if not analysis["issue_counts"].empty:
+        fig = px.bar(
+            analysis["issue_counts"].head(10),
+            x="عدد المرات",
+            y="الحدث/العطل",
+            title="🔧 أكثر الأعطال تكراراً",
+            text="عدد المرات",
+            orientation='h',
+            color="عدد المرات",
+            color_continuous_scale="Purples"
+        )
+        fig.update_traces(textposition='outside')
+        charts.append(fig)
+    
+    return charts
+
+# ------------------------------- دوال الحصول على المعدات -------------------------------
 def get_equipment_list_from_sheet(df):
-    """استخراج قائمة المعدات الفريدة من عمود 'المعدة' في DataFrame"""
     if df is None or df.empty or "المعدة" not in df.columns:
         return []
-    # استخراج القيم الفريدة غير الفارغة
     equipment = df["المعدة"].dropna().unique()
     equipment = [str(e).strip() for e in equipment if str(e).strip() != ""]
     return sorted(equipment)
 
 def add_equipment_to_sheet_data(sheets_edit, sheet_name, new_equipment):
-    """إضافة معدة جديدة إلى الشيت (بإدراج صف فارغ يحتوي على اسم المعدة فقط)"""
     if sheet_name not in sheets_edit:
         return False, "الشيت غير موجود"
     
     df = sheets_edit[sheet_name]
-    # التحقق من وجود العمود
     if "المعدة" not in df.columns:
         return False, "عمود 'المعدة' غير موجود في هذا الشيت"
     
-    # التحقق من وجود المعدة مسبقاً
     existing = get_equipment_list_from_sheet(df)
     if new_equipment in existing:
         return False, f"المعدة '{new_equipment}' موجودة بالفعل"
     
-    # إنشاء صف جديد بجميع الأعمدة مع تعيين قيمة المعدة فقط
     new_row = {col: "" for col in df.columns}
     new_row["المعدة"] = new_equipment
     new_row_df = pd.DataFrame([new_row])
@@ -97,9 +395,6 @@ def add_equipment_to_sheet_data(sheets_edit, sheet_name, new_equipment):
     return True, f"تم إضافة المعدة '{new_equipment}' بنجاح"
 
 def remove_equipment_from_sheet_data(sheets_edit, sheet_name, equipment_name):
-    """حذف جميع السجلات التي تحمل اسم المعدة المحدد (اختياري - بحذر)"""
-    # ملاحظة: هذه الدالة تحذف كل الصفوف التي تحتوي على تلك المعدة. قد لا تكون مرغوبة.
-    # بدلاً من ذلك يمكن إخفاؤها أو وضع علامة. سنستخدمها فقط إذا أراد المستخدم الحذف الكامل.
     if sheet_name not in sheets_edit:
         return False, "الشيت غير موجود"
     df = sheets_edit[sheet_name]
@@ -108,13 +403,11 @@ def remove_equipment_from_sheet_data(sheets_edit, sheet_name, equipment_name):
     if equipment_name not in get_equipment_list_from_sheet(df):
         return False, "المعدة غير موجودة"
     
-    # حذف جميع الصفوف التي تحمل هذا الاسم
     new_df = df[df["المعدة"] != equipment_name]
     sheets_edit[sheet_name] = new_df
     return True, f"تم حذف جميع سجلات المعدة '{equipment_name}'"
 
 # ------------------------------- دوال المستخدمين -------------------------------
-# (نفس الكود السابق - تم اختصاره للطول ولكن يبقى كما هو)
 def download_users_from_github():
     try:
         response = requests.get(GITHUB_USERS_URL, timeout=10)
@@ -315,7 +608,6 @@ def load_sheets_for_edit():
         return None
 
 def save_to_github(sheets_dict, commit_message):
-    """حفظ الملف مباشرة إلى GitHub باستخدام PyGithub"""
     try:
         token = st.secrets.get("github", {}).get("token", None)
         if not token:
@@ -332,8 +624,7 @@ def save_to_github(sheets_dict, commit_message):
                 for name, sh in sheets_dict.items():
                     try:
                         sh.to_excel(writer, sheet_name=name, index=False)
-                    except Exception as e:
-                        st.warning(f"تحذير في شيت {name}: {e}")
+                    except Exception:
                         sh.astype(object).to_excel(writer, sheet_name=name, index=False)
         except Exception as e:
             st.error(f"❌ خطأ في إنشاء ملف Excel: {e}")
@@ -380,7 +671,6 @@ def display_sheet_data(sheet_name, df, unique_id):
     st.markdown(f"### {sheet_name}")
     st.info(f"عدد السجلات: {len(df)} | عدد الأعمدة: {len(df.columns)}")
     
-    # فلتر حسب المعدة (من القيم الموجودة في العمود)
     equipment_list = get_equipment_list_from_sheet(df)
     if equipment_list and "المعدة" in df.columns:
         st.markdown("#### فلتر حسب المعدة:")
@@ -399,7 +689,7 @@ def display_sheet_data(sheet_name, df, unique_id):
             display_df[col] = display_df[col].astype(str).apply(lambda x: x[:100] + "..." if len(x) > 100 else x)
     st.dataframe(display_df, use_container_width=True, height=400)
 
-def search_across_sheets(all_sheets, equipment_config_ignored):
+def search_across_sheets(all_sheets):
     st.subheader("بحث متقدم في السجلات")
     
     if not all_sheets:
@@ -412,7 +702,6 @@ def search_across_sheets(all_sheets, equipment_config_ignored):
         sheet_options = ["جميع الشيتات"] + list(all_sheets.keys())
         selected_sheet = st.selectbox("اختر الشيت للبحث:", sheet_options, key="search_sheet")
         
-        # الحصول على قائمة المعدات من الشيت المختار (أو من كل الشيتات)
         if selected_sheet != "جميع الشيتات":
             df_temp = all_sheets[selected_sheet]
             equipment_list = get_equipment_list_from_sheet(df_temp)
@@ -473,9 +762,10 @@ def search_across_sheets(all_sheets, equipment_config_ignored):
             combined_results = pd.concat(results, ignore_index=True)
             st.success(f"تم العثور على {len(combined_results)} نتيجة")
             st.dataframe(combined_results, use_container_width=True, height=500)
+            
             csv = combined_results.to_csv(index=False).encode('utf-8')
             st.download_button(
-                "تحميل النتائج كملف CSV",
+                "📥 تحميل نتائج البحث كملف CSV",
                 csv,
                 f"search_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
                 "text/csv",
@@ -484,9 +774,116 @@ def search_across_sheets(all_sheets, equipment_config_ignored):
         else:
             st.warning("لا توجد نتائج مطابقة للبحث")
 
+# ==================== تحليل الأعطال ====================
+def failures_analysis_tab(all_sheets):
+    """تبويب تحليل الأعطال"""
+    st.header("📊 تحليل الأعطال والإجراءات التصحيحية")
+    
+    if not all_sheets:
+        st.warning("لا توجد بيانات للتحليل")
+        return
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        sheet_options = list(all_sheets.keys())
+        selected_sheet = st.selectbox("اختر الشيت للتحليل:", sheet_options, key="analysis_sheet")
+    
+    with col2:
+        df = all_sheets[selected_sheet]
+        equipment_list = get_equipment_list_from_sheet(df)
+        equipment_options = ["جميع المعدات"] + equipment_list
+        selected_equipment = st.selectbox("اختر المعدة للتحليل:", equipment_options, key="analysis_equipment")
+    
+    if st.button("🔄 تشغيل التحليل", key="run_analysis", type="primary"):
+        with st.spinner("جاري تحليل البيانات..."):
+            analysis = analyze_failures(df, selected_equipment if selected_equipment != "جميع المعدات" else None)
+            
+            if analysis is None:
+                st.error("❌ لا توجد بيانات كافية للتحليل. تأكد من وجود بيانات في الشيت المحدد مع تواريخ صالحة.")
+                return
+            
+            # عرض الملخص
+            st.subheader("📈 ملخص التحليل")
+            col_a, col_b, col_c, col_d = st.columns(4)
+            with col_a:
+                st.metric("إجمالي الأعطال", analysis["total_failures"])
+            with col_b:
+                st.metric("عدد المعدات", analysis["unique_equipment"])
+            with col_c:
+                st.metric("من تاريخ", analysis["date_range"]["from"])
+            with col_d:
+                st.metric("إلى تاريخ", analysis["date_range"]["to"])
+            
+            # عرض الرسوم البيانية
+            st.subheader("📊 الرسوم البيانية")
+            
+            if PLOTLY_AVAILABLE:
+                charts = create_failure_charts_plotly(analysis)
+                for chart in charts:
+                    st.plotly_chart(chart, use_container_width=True)
+            elif MATPLOTLIB_AVAILABLE:
+                charts = create_failure_charts_matplotlib(analysis)
+                for chart in charts:
+                    st.pyplot(chart)
+                    plt.close(chart)
+            else:
+                st.warning("⚠️ مكتبات الرسم البياني غير متوفرة. يرجى تثبيت plotly أو matplotlib لعرض الرسوم البيانية.")
+            
+            # عرض الجداول التفصيلية
+            st.subheader("📋 الجداول التفصيلية")
+            
+            tab1, tab2, tab3, tab4, tab5 = st.tabs([
+                "معدل تكرار الأعطال", "أكثر الأعطال تكراراً", "MTBF", "التحليل الشهري", "الإجراءات التصحيحية"
+            ])
+            
+            with tab1:
+                if not analysis["failure_rate"].empty:
+                    st.dataframe(analysis["failure_rate"], use_container_width=True)
+                else:
+                    st.info("لا توجد بيانات")
+            
+            with tab2:
+                if not analysis["issue_counts"].empty:
+                    st.dataframe(analysis["issue_counts"], use_container_width=True)
+                else:
+                    st.info("لا توجد بيانات")
+            
+            with tab3:
+                if not analysis["mtbf"].empty:
+                    st.dataframe(analysis["mtbf"], use_container_width=True)
+                    st.caption("MTBF = متوسط الوقت بين الأعطال (Mean Time Between Failures) - بالأيام")
+                else:
+                    st.info("لا توجد بيانات كافية لحساب MTBF (يلزم على الأقل عطلين لكل معدة)")
+            
+            with tab4:
+                if not analysis["monthly"].empty:
+                    pivot = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
+                    st.dataframe(pivot, use_container_width=True)
+                else:
+                    st.info("لا توجد بيانات")
+            
+            with tab5:
+                if not analysis["correction_counts"].empty:
+                    st.dataframe(analysis["correction_counts"], use_container_width=True)
+                else:
+                    st.info("لا توجد بيانات")
+            
+            # زر تصدير التقرير
+            st.markdown("---")
+            st.subheader("📥 تصدير التقرير")
+            
+            excel_report = generate_excel_report(analysis, selected_sheet, selected_equipment)
+            st.download_button(
+                "📊 تحميل تقرير التحليل كملف Excel",
+                excel_report,
+                f"failure_analysis_{selected_sheet}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                key="download_analysis_report"
+            )
+
 # ==================== دوال إدارة الشيتات والأحداث ====================
 def add_new_sheet_to_github(sheets_edit):
-    """إضافة شيت جديد وحفظه مباشرة على GitHub"""
     st.subheader("➕ إضافة شيت جديد إلى GitHub")
     st.info("سيتم إضافة الشيت الجديد إلى ملف Excel الموجود على GitHub")
     
@@ -556,14 +953,12 @@ def add_new_sheet_to_github(sheets_edit):
     return sheets_edit
 
 def add_new_event(sheets_edit, sheet_name):
-    """إضافة حدث جديد مع اختيار المعدة من القائمة المستخرجة من البيانات"""
     st.markdown(f"### إضافة حدث جديد في شيت: {sheet_name}")
     df = sheets_edit[sheet_name]
     equipment_list = get_equipment_list_from_sheet(df)
     
     if not equipment_list:
-        st.warning("⚠ لا توجد معدات مسجلة بعد. يمكنك إضافة معدة جديدة عن طريق كتابة اسمها في الحقل المخصص (ستتم إضافتها تلقائياً).")
-        # نعطي خيار إضافة معدة جديدة مباشرة
+        st.warning("⚠ لا توجد معدات مسجلة بعد. يمكنك إضافة معدة جديدة عن طريق كتابة اسمها في الحقل المخصص.")
         new_equipment = st.text_input("➕ إضافة معدة جديدة (اكتب الاسم ثم استخدم الزر بالأسفل):", key="new_eq_fast")
         if st.button("إضافة المعدة أولاً", key="add_eq_fast"):
             if new_equipment:
@@ -594,18 +989,15 @@ def add_new_event(sheets_edit, sheet_name):
             tones = st.text_input("⚖️ الطن:")
         notes = st.text_area("📝 ملاحظات:")
         
-        # خيار إضافة معدة جديدة مباشرة في نفس النموذج
         add_new_equipment_inline = st.text_input("➕ أو أضف معدة جديدة (اختياري):", key="new_eq_inline", placeholder="اكتب اسم معدة غير موجودة")
         
         submitted = st.form_submit_button("✅ إضافة الحدث", type="primary")
         
         if submitted:
-            # إذا تم إدخال معدة جديدة غير موجودة، نضيفها أولاً
             if add_new_equipment_inline and add_new_equipment_inline not in equipment_list:
                 success, msg = add_equipment_to_sheet_data(sheets_edit, sheet_name, add_new_equipment_inline)
                 if success:
                     st.success(msg)
-                    # نعيد تحميل القائمة
                     df = sheets_edit[sheet_name]
                     equipment_list = get_equipment_list_from_sheet(df)
                     selected_equipment = add_new_equipment_inline
@@ -613,7 +1005,6 @@ def add_new_event(sheets_edit, sheet_name):
                     st.error(msg)
                     return sheets_edit
             
-            # إنشاء الصف الجديد
             new_row = {
                 "التاريخ": event_date.strftime("%Y-%m-%d"),
                 "المعدة": selected_equipment,
@@ -624,7 +1015,6 @@ def add_new_event(sheets_edit, sheet_name):
                 "الصور": "",
                 "ملاحظات": notes
             }
-            # إضافة أي أعمدة إضافية موجودة في DataFrame
             for col in df.columns:
                 if col not in new_row:
                     new_row[col] = ""
@@ -642,7 +1032,6 @@ def add_new_event(sheets_edit, sheet_name):
     return sheets_edit
 
 def manage_equipment(sheets_edit, sheet_name):
-    """إدارة المعدات: عرض، إضافة، حذف (تعتمد على البيانات الفعلية)"""
     st.markdown(f"### 🔧 إدارة المعدات في شيت: {sheet_name}")
     df = sheets_edit[sheet_name]
     equipment_list = get_equipment_list_from_sheet(df)
@@ -691,7 +1080,6 @@ def manage_equipment(sheets_edit, sheet_name):
                     st.error(msg)
 
 def manage_data_edit(sheets_edit):
-    """إدارة البيانات الرئيسية"""
     if sheets_edit is None:
         st.warning("الملف غير موجود. استخدم زر 'تحديث من GitHub' في الشريط الجانبي أولاً")
         return sheets_edit
@@ -734,9 +1122,6 @@ def manage_data_edit(sheets_edit):
 # ------------------------------- الواجهة الرئيسية -------------------------------
 st.set_page_config(page_title=APP_CONFIG["APP_TITLE"], layout="wide")
 
-# لا حاجة لتحميل equipment_config هنا لأننا سنعتمد على البيانات
-equipment_config = {}  # placeholder
-
 with st.sidebar:
     st.header("الجلسة")
     if not st.session_state.get("logged_in"):
@@ -768,17 +1153,18 @@ user_role = st.session_state.get("user_role", "viewer")
 user_permissions = st.session_state.get("user_permissions", ["view"])
 can_edit = (user_role == "admin" or user_role == "editor" or "edit" in user_permissions)
 
-tabs_list = ["🔍 بحث متقدم"]
+tabs_list = ["🔍 بحث متقدم", "📊 تحليل الأعطال"]
 if can_edit:
     tabs_list.append("🛠 تعديل وإدارة البيانات")
 
 tabs = st.tabs(tabs_list)
 
 with tabs[0]:
-    st.header("نظام البحث المتقدم")
-    search_across_sheets(all_sheets, equipment_config)  # equipment_config ليس مستخدماً فعلياً
+    search_across_sheets(all_sheets)
 
-if can_edit and len(tabs) > 1:
-    with tabs[1]:
-        st.header("تعديل وإدارة البيانات")
+with tabs[1]:
+    failures_analysis_tab(all_sheets)
+
+if can_edit and len(tabs) > 2:
+    with tabs[2]:
         sheets_edit = manage_data_edit(sheets_edit)
