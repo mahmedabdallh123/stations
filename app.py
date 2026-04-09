@@ -19,7 +19,6 @@ try:
     PLOTLY_AVAILABLE = True
 except ImportError:
     PLOTLY_AVAILABLE = False
-    # محاولة استيراد matplotlib كبديل
     try:
         import matplotlib.pyplot as plt
         import matplotlib.dates as mdates
@@ -159,6 +158,7 @@ def generate_excel_report(analysis, sheet_name, equipment_filter):
     output = io.BytesIO()
     
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        # ورقة الملخص
         summary_data = {
             "المعيار": ["إجمالي الأعطال", "عدد المعدات", "فترة التحليل من", "فترة التحليل إلى", "المعدة المفلترة"],
             "القيمة": [
@@ -172,200 +172,64 @@ def generate_excel_report(analysis, sheet_name, equipment_filter):
         summary_df = pd.DataFrame(summary_data)
         summary_df.to_excel(writer, sheet_name="الملخص", index=False)
         
+        # ورقة معدل تكرار الأعطال
         if not analysis["failure_rate"].empty:
             analysis["failure_rate"].to_excel(writer, sheet_name="معدل تكرار الأعطال", index=False)
         
+        # ورقة أكثر الأعطال تكراراً
         if not analysis["issue_counts"].empty:
             analysis["issue_counts"].to_excel(writer, sheet_name="أكثر الأعطال تكراراً", index=False)
         
+        # ورقة MTBF
         if not analysis["mtbf"].empty:
             analysis["mtbf"].to_excel(writer, sheet_name="متوسط الوقت بين الأعطال (MTBF)", index=False)
         
+        # ورقة التحليل الشهري
         if not analysis["monthly"].empty:
             pivot_monthly = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
             pivot_monthly.to_excel(writer, sheet_name="التحليل الشهري")
         
+        # ورقة تحليل أيام الأسبوع
         if not analysis["weekday"].empty:
             analysis["weekday"].to_excel(writer, sheet_name="تحليل أيام الأسبوع", index=False)
         
+        # ورقة الإجراءات التصحيحية
         if not analysis["correction_counts"].empty:
             analysis["correction_counts"].to_excel(writer, sheet_name="الإجراءات التصحيحية", index=False)
         
+        # ورقة البيانات الخام
         raw_export = analysis["raw_data"][["التاريخ", "المعدة", "الحدث/العطل", "الإجراء التصحيحي", "تم بواسطة", "الطن", "ملاحظات"]].copy()
         raw_export.to_excel(writer, sheet_name="البيانات الخام", index=False)
     
     output.seek(0)
     return output
 
-def create_failure_charts_matplotlib(analysis):
-    """إنشاء رسوم بيانية باستخدام matplotlib (بديل plotly)"""
-    charts = []
-    
-    if not PLOTLY_AVAILABLE and not MATPLOTLIB_AVAILABLE:
-        return charts
-    
-    # 1. أكثر المعدات تعطلاً
-    if not analysis["failure_rate"].empty:
-        fig, ax = plt.subplots(figsize=(10, 6))
-        top_equipment = analysis["failure_rate"].head(10)
-        colors = plt.cm.Reds(np.linspace(0.4, 0.9, len(top_equipment)))
-        bars = ax.barh(top_equipment["المعدة"], top_equipment["عدد الأعطال"], color=colors)
-        ax.set_xlabel("عدد الأعطال")
-        ax.set_title("أكثر المعدات تعطلاً", fontsize=14)
-        ax.invert_yaxis()
-        for bar, val in zip(bars, top_equipment["عدد الأعطال"]):
-            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
-        charts.append(fig)
-    
-    # 2. نسب الأعطال (دائري)
-    if not analysis["failure_rate"].empty:
-        fig, ax = plt.subplots(figsize=(8, 8))
-        top8 = analysis["failure_rate"].head(8)
-        wedges, texts, autotexts = ax.pie(
-            top8["عدد الأعطال"], 
-            labels=top8["المعدة"], 
-            autopct='%1.1f%%',
-            startangle=90
-        )
-        ax.set_title("نسب الأعطال حسب المعدة", fontsize=14)
-        charts.append(fig)
-    
-    # 3. التحليل الشهري
-    if not analysis["monthly"].empty:
-        fig, ax = plt.subplots(figsize=(12, 6))
-        pivot = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
-        pivot.plot(kind='line', marker='o', ax=ax)
-        ax.set_xlabel("الشهر")
-        ax.set_ylabel("عدد الأعطال")
-        ax.set_title("تطور الأعطال شهرياً", fontsize=14)
-        ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
-        plt.xticks(rotation=45)
-        charts.append(fig)
-    
-    # 4. أيام الأسبوع
-    if not analysis["weekday"].empty:
-        fig, ax = plt.subplots(figsize=(10, 6))
-        colors = plt.cm.Blues(np.linspace(0.4, 0.9, len(analysis["weekday"])))
-        bars = ax.bar(analysis["weekday"]["اليوم"], analysis["weekday"]["عدد الأعطال"], color=colors)
-        ax.set_xlabel("اليوم")
-        ax.set_ylabel("عدد الأعطال")
-        ax.set_title("توزيع الأعطال حسب أيام الأسبوع", fontsize=14)
-        for bar, val in zip(bars, analysis["weekday"]["عدد الأعطال"]):
-            ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5, str(val), ha='center')
-        charts.append(fig)
-    
-    # 5. MTBF
-    if not analysis["mtbf"].empty:
-        fig, ax = plt.subplots(figsize=(10, 6))
-        colors = plt.cm.Greens(np.linspace(0.4, 0.9, len(analysis["mtbf"])))
-        bars = ax.barh(analysis["mtbf"]["المعدة"], analysis["mtbf"]["متوسط MTBF (أيام)"], color=colors)
-        ax.set_xlabel("متوسط MTBF (أيام)")
-        ax.set_title("متوسط الوقت بين الأعطال", fontsize=14)
-        for bar, val in zip(bars, analysis["mtbf"]["متوسط MTBF (أيام)"]):
-            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, f'{val:.1f}', va='center')
-        charts.append(fig)
-    
-    # 6. أكثر الأعطال تكراراً
-    if not analysis["issue_counts"].empty:
-        fig, ax = plt.subplots(figsize=(10, 8))
-        top_issues = analysis["issue_counts"].head(10)
-        colors = plt.cm.Purples(np.linspace(0.4, 0.9, len(top_issues)))
-        bars = ax.barh(top_issues["الحدث/العطل"], top_issues["عدد المرات"], color=colors)
-        ax.set_xlabel("عدد المرات")
-        ax.set_title("أكثر الأعطال تكراراً", fontsize=14)
-        ax.invert_yaxis()
-        for bar, val in zip(bars, top_issues["عدد المرات"]):
-            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
-        charts.append(fig)
-    
-    return charts
+# ------------------------------- دوال تصدير البيانات إلى Excel -------------------------------
+def export_sheet_to_excel(sheets_dict, sheet_name):
+    """تصدير شيت محدد إلى ملف Excel"""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        df = sheets_dict[sheet_name]
+        df.to_excel(writer, sheet_name=sheet_name, index=False)
+    output.seek(0)
+    return output
 
-def create_failure_charts_plotly(analysis):
-    """إنشاء رسوم بيانية باستخدام plotly"""
-    charts = []
-    
-    # 1. أكثر المعدات تعطلاً
-    if not analysis["failure_rate"].empty:
-        fig = px.bar(
-            analysis["failure_rate"].head(10),
-            x="المعدة",
-            y="عدد الأعطال",
-            title="📊 أكثر المعدات تعطلاً",
-            text="عدد الأعطال",
-            color="عدد الأعطال",
-            color_continuous_scale="Reds"
-        )
-        fig.update_traces(textposition='outside')
-        fig.update_layout(showlegend=False)
-        charts.append(fig)
-    
-    # 2. رسم بياني دائري
-    if not analysis["failure_rate"].empty:
-        fig = px.pie(
-            analysis["failure_rate"].head(8),
-            values="عدد الأعطال",
-            names="المعدة",
-            title="🥧 نسب الأعطال حسب المعدة",
-            hole=0.3
-        )
-        charts.append(fig)
-    
-    # 3. التحليل الشهري
-    if not analysis["monthly"].empty:
-        fig = px.line(
-            analysis["monthly"],
-            x="الشهر",
-            y="عدد الأعطال",
-            color="المعدة",
-            title="📈 تطور الأعطال شهرياً",
-            markers=True
-        )
-        charts.append(fig)
-    
-    # 4. أيام الأسبوع
-    if not analysis["weekday"].empty:
-        fig = px.bar(
-            analysis["weekday"],
-            x="اليوم",
-            y="عدد الأعطال",
-            title="📅 توزيع الأعطال حسب أيام الأسبوع",
-            text="عدد الأعطال",
-            color="عدد الأعطال",
-            color_continuous_scale="Blues"
-        )
-        fig.update_traces(textposition='outside')
-        charts.append(fig)
-    
-    # 5. MTBF
-    if not analysis["mtbf"].empty:
-        fig = px.bar(
-            analysis["mtbf"],
-            x="المعدة",
-            y="متوسط MTBF (أيام)",
-            title="⏱️ متوسط الوقت بين الأعطال (MTBF) - أيام",
-            text="متوسط MTBF (أيام)",
-            color="متوسط MTBF (أيام)",
-            color_continuous_scale="Greens"
-        )
-        fig.update_traces(textposition='outside')
-        charts.append(fig)
-    
-    # 6. أكثر الأعطال تكراراً
-    if not analysis["issue_counts"].empty:
-        fig = px.bar(
-            analysis["issue_counts"].head(10),
-            x="عدد المرات",
-            y="الحدث/العطل",
-            title="🔧 أكثر الأعطال تكراراً",
-            text="عدد المرات",
-            orientation='h',
-            color="عدد المرات",
-            color_continuous_scale="Purples"
-        )
-        fig.update_traces(textposition='outside')
-        charts.append(fig)
-    
-    return charts
+def export_all_sheets_to_excel(sheets_dict):
+    """تصدير جميع الشيتات إلى ملف Excel واحد"""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        for sheet_name, df in sheets_dict.items():
+            df.to_excel(writer, sheet_name=sheet_name, index=False)
+    output.seek(0)
+    return output
+
+def export_filtered_results_to_excel(results_df, sheet_name):
+    """تصدير نتائج البحث إلى ملف Excel"""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        results_df.to_excel(writer, sheet_name=sheet_name, index=False)
+    output.seek(0)
+    return output
 
 # ------------------------------- دوال الحصول على المعدات -------------------------------
 def get_equipment_list_from_sheet(df):
@@ -667,7 +531,7 @@ def save_to_github(sheets_dict, commit_message):
         return False
 
 # ------------------------------- دوال العرض -------------------------------
-def display_sheet_data(sheet_name, df, unique_id):
+def display_sheet_data(sheet_name, df, unique_id, sheets_edit):
     st.markdown(f"### {sheet_name}")
     st.info(f"عدد السجلات: {len(df)} | عدد الأعمدة: {len(df.columns)}")
     
@@ -688,6 +552,27 @@ def display_sheet_data(sheet_name, df, unique_id):
         if display_df[col].dtype == 'object':
             display_df[col] = display_df[col].astype(str).apply(lambda x: x[:100] + "..." if len(x) > 100 else x)
     st.dataframe(display_df, use_container_width=True, height=400)
+    
+    # زر تصدير الشيت إلى Excel
+    col_btn1, col_btn2 = st.columns(2)
+    with col_btn1:
+        excel_file = export_sheet_to_excel({sheet_name: df}, sheet_name)
+        st.download_button(
+            "📥 تحميل هذا الشيت كملف Excel",
+            excel_file,
+            f"{sheet_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            key=f"export_sheet_{unique_id}"
+        )
+    with col_btn2:
+        all_sheets_excel = export_all_sheets_to_excel({sheet_name: df})
+        st.download_button(
+            "📥 تحميل جميع البيانات كملف Excel",
+            all_sheets_excel,
+            f"all_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            key=f"export_all_{unique_id}"
+        )
 
 def search_across_sheets(all_sheets):
     st.subheader("بحث متقدم في السجلات")
@@ -763,13 +648,14 @@ def search_across_sheets(all_sheets):
             st.success(f"تم العثور على {len(combined_results)} نتيجة")
             st.dataframe(combined_results, use_container_width=True, height=500)
             
-            csv = combined_results.to_csv(index=False).encode('utf-8')
+            # تصدير النتائج إلى Excel (بدلاً من CSV)
+            excel_file = export_filtered_results_to_excel(combined_results, "نتائج_البحث")
             st.download_button(
-                "📥 تحميل نتائج البحث كملف CSV",
-                csv,
-                f"search_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                "text/csv",
-                key='download-csv'
+                "📥 تحميل نتائج البحث كملف Excel",
+                excel_file,
+                f"search_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                key='download-excel'
             )
         else:
             st.warning("لا توجد نتائج مطابقة للبحث")
@@ -881,6 +767,179 @@ def failures_analysis_tab(all_sheets):
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 key="download_analysis_report"
             )
+
+def create_failure_charts_matplotlib(analysis):
+    """إنشاء رسوم بيانية باستخدام matplotlib"""
+    charts = []
+    
+    if not MATPLOTLIB_AVAILABLE:
+        return charts
+    
+    # 1. أكثر المعدات تعطلاً
+    if not analysis["failure_rate"].empty:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        top_equipment = analysis["failure_rate"].head(10)
+        colors = plt.cm.Reds(np.linspace(0.4, 0.9, len(top_equipment)))
+        bars = ax.barh(top_equipment["المعدة"], top_equipment["عدد الأعطال"], color=colors)
+        ax.set_xlabel("عدد الأعطال")
+        ax.set_title("أكثر المعدات تعطلاً", fontsize=14)
+        ax.invert_yaxis()
+        for bar, val in zip(bars, top_equipment["عدد الأعطال"]):
+            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
+        charts.append(fig)
+    
+    # 2. نسب الأعطال (دائري)
+    if not analysis["failure_rate"].empty:
+        fig, ax = plt.subplots(figsize=(8, 8))
+        top8 = analysis["failure_rate"].head(8)
+        wedges, texts, autotexts = ax.pie(
+            top8["عدد الأعطال"], 
+            labels=top8["المعدة"], 
+            autopct='%1.1f%%',
+            startangle=90
+        )
+        ax.set_title("نسب الأعطال حسب المعدة", fontsize=14)
+        charts.append(fig)
+    
+    # 3. التحليل الشهري
+    if not analysis["monthly"].empty:
+        fig, ax = plt.subplots(figsize=(12, 6))
+        pivot = analysis["monthly"].pivot(index="الشهر", columns="المعدة", values="عدد الأعطال").fillna(0)
+        pivot.plot(kind='line', marker='o', ax=ax)
+        ax.set_xlabel("الشهر")
+        ax.set_ylabel("عدد الأعطال")
+        ax.set_title("تطور الأعطال شهرياً", fontsize=14)
+        ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+        plt.xticks(rotation=45)
+        charts.append(fig)
+    
+    # 4. أيام الأسبوع
+    if not analysis["weekday"].empty:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        colors = plt.cm.Blues(np.linspace(0.4, 0.9, len(analysis["weekday"])))
+        bars = ax.bar(analysis["weekday"]["اليوم"], analysis["weekday"]["عدد الأعطال"], color=colors)
+        ax.set_xlabel("اليوم")
+        ax.set_ylabel("عدد الأعطال")
+        ax.set_title("توزيع الأعطال حسب أيام الأسبوع", fontsize=14)
+        for bar, val in zip(bars, analysis["weekday"]["عدد الأعطال"]):
+            ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5, str(val), ha='center')
+        charts.append(fig)
+    
+    # 5. MTBF
+    if not analysis["mtbf"].empty:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        colors = plt.cm.Greens(np.linspace(0.4, 0.9, len(analysis["mtbf"])))
+        bars = ax.barh(analysis["mtbf"]["المعدة"], analysis["mtbf"]["متوسط MTBF (أيام)"], color=colors)
+        ax.set_xlabel("متوسط MTBF (أيام)")
+        ax.set_title("متوسط الوقت بين الأعطال", fontsize=14)
+        for bar, val in zip(bars, analysis["mtbf"]["متوسط MTBF (أيام)"]):
+            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, f'{val:.1f}', va='center')
+        charts.append(fig)
+    
+    # 6. أكثر الأعطال تكراراً
+    if not analysis["issue_counts"].empty:
+        fig, ax = plt.subplots(figsize=(10, 8))
+        top_issues = analysis["issue_counts"].head(10)
+        colors = plt.cm.Purples(np.linspace(0.4, 0.9, len(top_issues)))
+        bars = ax.barh(top_issues["الحدث/العطل"], top_issues["عدد المرات"], color=colors)
+        ax.set_xlabel("عدد المرات")
+        ax.set_title("أكثر الأعطال تكراراً", fontsize=14)
+        ax.invert_yaxis()
+        for bar, val in zip(bars, top_issues["عدد المرات"]):
+            ax.text(val + 0.5, bar.get_y() + bar.get_height()/2, str(val), va='center')
+        charts.append(fig)
+    
+    return charts
+
+def create_failure_charts_plotly(analysis):
+    """إنشاء رسوم بيانية باستخدام plotly"""
+    charts = []
+    
+    if not PLOTLY_AVAILABLE:
+        return charts
+    
+    # 1. أكثر المعدات تعطلاً
+    if not analysis["failure_rate"].empty:
+        fig = px.bar(
+            analysis["failure_rate"].head(10),
+            x="المعدة",
+            y="عدد الأعطال",
+            title="📊 أكثر المعدات تعطلاً",
+            text="عدد الأعطال",
+            color="عدد الأعطال",
+            color_continuous_scale="Reds"
+        )
+        fig.update_traces(textposition='outside')
+        fig.update_layout(showlegend=False)
+        charts.append(fig)
+    
+    # 2. رسم بياني دائري
+    if not analysis["failure_rate"].empty:
+        fig = px.pie(
+            analysis["failure_rate"].head(8),
+            values="عدد الأعطال",
+            names="المعدة",
+            title="🥧 نسب الأعطال حسب المعدة",
+            hole=0.3
+        )
+        charts.append(fig)
+    
+    # 3. التحليل الشهري
+    if not analysis["monthly"].empty:
+        fig = px.line(
+            analysis["monthly"],
+            x="الشهر",
+            y="عدد الأعطال",
+            color="المعدة",
+            title="📈 تطور الأعطال شهرياً",
+            markers=True
+        )
+        charts.append(fig)
+    
+    # 4. أيام الأسبوع
+    if not analysis["weekday"].empty:
+        fig = px.bar(
+            analysis["weekday"],
+            x="اليوم",
+            y="عدد الأعطال",
+            title="📅 توزيع الأعطال حسب أيام الأسبوع",
+            text="عدد الأعطال",
+            color="عدد الأعطال",
+            color_continuous_scale="Blues"
+        )
+        fig.update_traces(textposition='outside')
+        charts.append(fig)
+    
+    # 5. MTBF
+    if not analysis["mtbf"].empty:
+        fig = px.bar(
+            analysis["mtbf"],
+            x="المعدة",
+            y="متوسط MTBF (أيام)",
+            title="⏱️ متوسط الوقت بين الأعطال (MTBF) - أيام",
+            text="متوسط MTBF (أيام)",
+            color="متوسط MTBF (أيام)",
+            color_continuous_scale="Greens"
+        )
+        fig.update_traces(textposition='outside')
+        charts.append(fig)
+    
+    # 6. أكثر الأعطال تكراراً
+    if not analysis["issue_counts"].empty:
+        fig = px.bar(
+            analysis["issue_counts"].head(10),
+            x="عدد المرات",
+            y="الحدث/العطل",
+            title="🔧 أكثر الأعطال تكراراً",
+            text="عدد المرات",
+            orientation='h',
+            color="عدد المرات",
+            color_continuous_scale="Purples"
+        )
+        fig.update_traces(textposition='outside')
+        charts.append(fig)
+    
+    return charts
 
 # ==================== دوال إدارة الشيتات والأحداث ====================
 def add_new_sheet_to_github(sheets_edit):
@@ -1093,7 +1152,7 @@ def manage_data_edit(sheets_edit):
             sheet_tabs = st.tabs(list(sheets_edit.keys()))
             for i, (sheet_name, df) in enumerate(sheets_edit.items()):
                 with sheet_tabs[i]:
-                    display_sheet_data(sheet_name, df, f"view_{sheet_name}")
+                    display_sheet_data(sheet_name, df, f"view_{sheet_name}", sheets_edit)
                     with st.expander("✏️ تعديل مباشر", expanded=False):
                         edited_df = st.data_editor(df.astype(str), num_rows="dynamic", use_container_width=True, key=f"editor_{sheet_name}")
                         if st.button(f"💾 حفظ", key=f"save_{sheet_name}"):
