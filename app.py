@@ -1838,24 +1838,28 @@ def preventive_maintenance_tab(sheets_edit):
                             st.error(msg)
 
     # إضافة بند صيانة جديد
+        # إضافة بند صيانة جديد (مع إمكانية تحديد تاريخ البدء)
     st.markdown("---")
     st.subheader("➕ إضافة بند صيانة جديد")
+    
+    # وضع checkbox خارج الـ form لتحديث الواجهة
+    use_custom_start = st.checkbox("📅 تحديد تاريخ بدء الصيانة", key="use_custom_start_checkbox")
+    start_date = None
+    if use_custom_start:
+        start_date = st.date_input("تاريخ البدء:", value=datetime.now().date(), key="maintenance_start_date")
+    
     with st.form(key="add_maintenance_form"):
         col1, col2 = st.columns(2)
         with col1:
             task_name = st.text_input("اسم البند:")
             period_hours = st.number_input("⏱️ عدد الساعات بين الصيانة:", min_value=1, step=1, value=24)
             st.caption(f"✅ الفترة: {period_hours} ساعة = {period_hours/24:.2f} يوم")
-            use_custom_start = st.checkbox("📅 تحديد تاريخ بدء الصيانة", value=False)
-            if use_custom_start:
-                start_date = st.date_input("تاريخ البدء:", value=datetime.now().date(), key="maintenance_start_date")
-            else:
-                start_date = None
             task_image = st.file_uploader("🖼️ صورة توضيحية:", type=APP_CONFIG["ALLOWED_IMAGE_TYPES"], key="maintenance_task_image")
         with col2:
             notes = st.text_area("ملاحظات:")
             default_spare = st.text_input("قطعة غيار افتراضية:", placeholder="اختياري")
         submitted = st.form_submit_button("➕ إضافة بند صيانة")
+
         if submitted:
             if not task_name:
                 st.error("❌ الرجاء إدخال اسم البند")
@@ -1864,6 +1868,7 @@ def preventive_maintenance_tab(sheets_edit):
                 if task_image:
                     task_id = str(uuid.uuid4())[:8]
                     image_url = upload_image_to_github(task_image, "maintenance_task", task_id)
+                # استخدم start_date من خارج النموذج
                 sheets_edit = add_maintenance_task(sheets_edit, selected_equipment, task_name, period_hours, start_date, notes, default_spare, image_url)
                 if save_and_push_to_github(sheets_edit, f"إضافة بند صيانة '{task_name}'"):
                     st.success("✅ تم إضافة البند بنجاح")
