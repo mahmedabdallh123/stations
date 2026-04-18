@@ -1023,7 +1023,6 @@ def search_across_sheets(all_sheets):
             start_date = None
             end_date = None
     
-    # خيار طريقة العرض
     view_mode = st.radio("طريقة العرض:", ["جدول", "بطاقات مع الصور"], horizontal=True, key="search_view_mode")
     
     if st.button("بحث", key="search_btn", type="primary"):
@@ -1060,11 +1059,9 @@ def search_across_sheets(all_sheets):
             st.success(f"تم العثور على {len(combined_results)} نتيجة")
             
             if view_mode == "جدول":
-                # العرض الجدولي: إخفاء عمود الصورة إن وجد لتجنب النص الطويل
                 display_cols = [c for c in combined_results.columns if c != "رابط الصورة"]
                 st.dataframe(combined_results[display_cols], use_container_width=True, height=500)
             else:
-                # العرض بالبطاقات مع الصور
                 for idx, row in combined_results.iterrows():
                     with st.container(border=True):
                         col_img, col_info = st.columns([1, 3])
@@ -1081,12 +1078,14 @@ def search_across_sheets(all_sheets):
                             st.markdown(f"**📁 القسم:** {row.get('القسم', '')}")
                             st.markdown(f"**📅 التاريخ:** {row.get('التاريخ', '')}")
                             st.markdown(f"**⚙️ المعدة:** {row.get('المعدة', '')}")
-                            st.markdown(f"**⚠️ العطل:** {row.get('الحدث/العطل', '')[:150]}")
-                            st.markdown(f"**🔧 الإجراء:** {row.get('الإجراء التصحيحي', '')[:150]}")
+                            # تحويل القيم إلى سلسلة نصية قبل التقطيع
+                            event_str = str(row.get('الحدث/العطل', ''))
+                            st.markdown(f"**⚠️ العطل:** {event_str[:150]}")
+                            correction_str = str(row.get('الإجراء التصحيحي', ''))
+                            st.markdown(f"**🔧 الإجراء:** {correction_str[:150]}")
                             if img_url:
                                 st.caption(f"[🔗 رابط الصورة]({img_url})")
             
-            # زر تحميل Excel (موجود في كلتا الحالتين)
             excel_file = export_filtered_results_to_excel(combined_results, "نتائج_البحث")
             st.download_button("📥 تحميل نتائج البحث كملف Excel", excel_file, f"search_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", key='download-excel')
         else:
