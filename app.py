@@ -15,7 +15,7 @@ from github import Github, GithubException
 
 # ------------------------------- الإعدادات الثابتة -------------------------------
 APP_CONFIG = {
-    "APP_TITLE": "نظام إدارة الصيانة - CMMS",
+    "APP_TITLE": " نظام إدارة الصيانة بيل يارن1 - CMMS",
     "APP_ICON": "🏭",
     "REPO_NAME": "mahmedabdallh123/stations",
     "BRANCH": "main",
