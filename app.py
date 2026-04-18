@@ -1666,7 +1666,6 @@ def preventive_maintenance_tab(sheets_edit):
     st.header("🛠 الصيانة الوقائية")
     st.info("إدارة بنود الصيانة الدورية. يمكنك تنفيذ الصيانة يدوياً مع تحديد تاريخ واسم المنفذ، وسيتم تحديث التاريخ التالي تلقائياً.")
 
-    # اختيار القسم أولاً
     sections = get_available_sections(sheets_edit)
     if not sections:
         st.warning("⚠️ لا توجد أقسام بها ماكينات. أضف قسم وماكينات أولاً.")
@@ -1681,7 +1680,7 @@ def preventive_maintenance_tab(sheets_edit):
 
     selected_equipment = st.selectbox("🔧 اختر المعدة:", equipment_list, key="pm_equipment")
 
-    # استخدام البيانات من sheets_edit مباشرة بدلاً من load_maintenance_tasks()
+    # استخدام البيانات من sheets_edit مباشرة
     if APP_CONFIG["MAINTENANCE_SHEET"] in sheets_edit:
         tasks_df = sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]].copy()
         tasks_df = tasks_df[tasks_df["المعدة"] == selected_equipment]
@@ -1721,7 +1720,9 @@ def preventive_maintenance_tab(sheets_edit):
                 original_idx = task_row["original_index"]
                 with st.expander(f"✏️ تعديل بند: {selected_task_name}"):
                     new_name = st.text_input("اسم البند", value=task_row["اسم_البند"], key="edit_task_name")
-                    new_period_hours = st.number_input("عدد الساعات بين الصيانة", min_value=1, value=int(task_row["الفترة_بالأيام"]*24), key="edit_period_hours")
+                    # حساب عدد الساعات من الفترة بالأيام مع التأكد من أن القيمة الافتراضية >= 1
+                    default_hours = max(1, int(round(task_row["الفترة_بالأيام"] * 24)))
+                    new_period_hours = st.number_input("عدد الساعات بين الصيانة", min_value=1, value=default_hours, key="edit_period_hours")
                     new_notes = st.text_area("ملاحظات", value=task_row["ملاحظات"] if pd.notna(task_row["ملاحظات"]) else "", key="edit_task_notes")
                     if st.button("💾 حفظ التغييرات", key="save_task_edit"):
                         new_period_days = new_period_hours / 24.0
@@ -1744,7 +1745,7 @@ def preventive_maintenance_tab(sheets_edit):
                         st.success("تم الحذف")
                         st.rerun()
         else:
-            # عرض البطاقات (مع أزرار تعديل وحذف) - نفس الكود السابق لكن استخدم original_index
+            # وضع البطاقات
             cols_per_row = 2
             for i in range(0, len(tasks_display), cols_per_row):
                 row_cols = st.columns(cols_per_row)
@@ -1785,7 +1786,8 @@ def preventive_maintenance_tab(sheets_edit):
                                 if st.session_state.get(f"edit_task_mode_{row['original_index']}", False):
                                     with st.form(key=f"edit_task_form_{row['original_index']}"):
                                         new_name = st.text_input("اسم البند", value=row['اسم_البند'])
-                                        new_period_hours = st.number_input("عدد الساعات", min_value=1, value=int(row['الفترة_بالأيام']*24))
+                                        default_hours = max(1, int(round(row['الفترة_بالأيام'] * 24)))
+                                        new_period_hours = st.number_input("عدد الساعات", min_value=1, value=default_hours)
                                         new_notes = st.text_area("ملاحظات", value=row['ملاحظات'] if pd.notna(row['ملاحظات']) else "")
                                         if st.form_submit_button("💾 حفظ"):
                                             new_period_days = new_period_hours / 24.0
@@ -1804,7 +1806,7 @@ def preventive_maintenance_tab(sheets_edit):
                                             else:
                                                 st.error("فشل الحفظ")
         
-        # ------------------- تنفيذ صيانة -------------------
+        # تنفيذ صيانة (بدون تغيير)
         st.markdown("---")
         st.subheader("✅ تنفيذ صيانة")
         task_options = tasks_df["اسم_البند"].tolist()
@@ -1813,7 +1815,7 @@ def preventive_maintenance_tab(sheets_edit):
             if selected_task:
                 execution_date = st.date_input("📅 تاريخ التنفيذ:", value=datetime.now().date(), key="execution_date_input")
                 performed_by = st.text_input("👨‍🔧 تم بواسطة:", key="maintenance_performed_by", placeholder="اسم الشخص الذي نفذ الصيانة")
-                spare_parts_list = get_spare_parts_for_equipment(selected_equipment)
+                spare_parts_list = get_spare_parts_for_equipment(selected_equipment, sheets_edit)
                 st.markdown("**🔩 استهلاك قطع غيار (اختياري)**")
                 part_name = ""
                 consume_qty = 0
@@ -1845,10 +1847,10 @@ def preventive_maintenance_tab(sheets_edit):
                         if execution_image:
                             maint_id = str(uuid.uuid4())[:8]
                             image_url = upload_image_to_github(execution_image, "maintenance_execution", maint_id)
-                        success, msg = execute_maintenance_with_date(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, part_name, consume_qty, image_url)
+                        success, msg = execute_maintenance_with_date(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, selected_section, part_name, consume_qty, image_url)
                         if success:
                             if link_to_event:
-                                event_success, event_msg = add_maintenance_as_event(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, part_name, consume_qty, image_url)
+                                event_success, event_msg = add_maintenance_as_event(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, selected_section, part_name, consume_qty, image_url)
                                 if event_success:
                                     st.success(f"✅ {msg} وتم تسجيله كحدث عطل")
                                 else:
@@ -1865,16 +1867,13 @@ def preventive_maintenance_tab(sheets_edit):
         else:
             st.info("لا توجد بنود صيانة لتنفيذها")
 
-    # ------------------- إضافة بند صيانة جديد -------------------
+    # إضافة بند صيانة جديد (بدون تغيير)
     st.markdown("---")
     st.subheader("➕ إضافة بند صيانة جديد")
-    
-    # وضع checkbox خارج الـ form لتحديث الواجهة
     use_custom_start = st.checkbox("📅 تحديد تاريخ بدء الصيانة", key="use_custom_start_checkbox")
     start_date = None
     if use_custom_start:
         start_date = st.date_input("تاريخ البدء:", value=datetime.now().date(), key="maintenance_start_date")
-    
     with st.form(key="add_maintenance_form"):
         col1, col2 = st.columns(2)
         with col1:
@@ -1886,7 +1885,6 @@ def preventive_maintenance_tab(sheets_edit):
             notes = st.text_area("ملاحظات:")
             default_spare = st.text_input("قطعة غيار افتراضية:", placeholder="اختياري")
         submitted = st.form_submit_button("➕ إضافة بند صيانة")
-
         if submitted:
             if not task_name:
                 st.error("❌ الرجاء إدخال اسم البند")
