@@ -1861,7 +1861,7 @@ def preventive_maintenance_tab(sheets_edit):
                         success, msg = execute_maintenance_with_date(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, part_name, consume_qty, image_url)
                         if success:
                             if link_to_event:
-                                event_success, event_msg = add_maintenance_as_event(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, selected_section, part_name, consume_qty, image_url)
+                                event_success, event_msg = add_maintenance_as_event(sheets_edit, selected_equipment, selected_task, execution_date, performed_by, part_name, consume_qty, image_url)
                                 if event_success:
                                     st.success(f"✅ {msg} وتم تسجيله كحدث عطل")
                                 else:
