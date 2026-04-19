@@ -1826,7 +1826,7 @@ def preventive_maintenance_tab(sheets_edit):
             if selected_task:
                 execution_date = st.date_input("📅 تاريخ التنفيذ:", value=datetime.now().date(), key="execution_date_input")
                 performed_by = st.text_input("👨‍🔧 تم بواسطة:", key="maintenance_performed_by", placeholder="اسم الشخص الذي نفذ الصيانة")
-                spare_parts_list = get_spare_parts_for_equipment(selected_equipment, sheets_edit)
+                spare_parts_list = get_spare_parts_for_equipment(selected_equipment)
                 st.markdown("**🔩 استهلاك قطع غيار (اختياري)**")
                 part_name = ""
                 consume_qty = 0
