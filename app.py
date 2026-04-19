@@ -189,10 +189,12 @@ def load_maintenance_tasks():
     try:
         df = pd.read_excel(APP_CONFIG["LOCAL_FILE"], sheet_name=APP_CONFIG["MAINTENANCE_SHEET"])
         df.columns = df.columns.astype(str).str.strip()
+        # التأكد من وجود جميع الأعمدة
         for col in APP_CONFIG["MAINTENANCE_COLUMNS"]:
             if col not in df.columns:
                 df[col] = ""
         df = df.fillna("")
+        # تحويل الأعمدة إلى أنواع صحيحة
         if "آخر_تنفيذ" in df.columns:
             df["آخر_تنفيذ"] = pd.to_datetime(df["آخر_تنفيذ"], errors='coerce')
         if "التاريخ_التالي" in df.columns:
@@ -200,7 +202,8 @@ def load_maintenance_tasks():
         if "الفترة_بالأيام" in df.columns:
             df["الفترة_بالأيام"] = pd.to_numeric(df["الفترة_بالأيام"], errors='coerce').fillna(0)
         return df
-    except Exception:
+    except Exception as e:
+        st.error(f"خطأ في تحميل مهام الصيانة: {e}")
         return pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
 
 def get_tasks_for_equipment(equipment_name):
@@ -866,6 +869,9 @@ def save_excel_locally(sheets_dict):
         if "temp_spare_parts_df" in st.session_state:
             sheets_dict[APP_CONFIG["SPARE_PARTS_SHEET"]] = st.session_state.temp_spare_parts_df
             del st.session_state.temp_spare_parts_df
+        # التأكد من وجود شيت الصيانة
+        if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_dict:
+            sheets_dict[APP_CONFIG["MAINTENANCE_SHEET"]] = load_maintenance_tasks()
         with pd.ExcelWriter(APP_CONFIG["LOCAL_FILE"], engine="openpyxl") as writer:
             for name, sh in sheets_dict.items():
                 try:
@@ -876,7 +882,6 @@ def save_excel_locally(sheets_dict):
     except Exception as e:
         st.error(f"❌ خطأ في الحفظ المحلي: {e}")
         return False
-
 def push_to_github():
     try:
         token = st.secrets.get("github", {}).get("token", None)
@@ -1664,8 +1669,9 @@ def add_maintenance_as_event(sheets_edit, equipment_name, task_name, execution_d
 # ------------------------------- تبويب الصيانة الوقائية -------------------------------
 def preventive_maintenance_tab(sheets_edit):
     st.header("🛠 الصيانة الوقائية")
-    st.info("إدارة بنود الصيانة الدورية. يمكنك تنفيذ الصيانة يدوياً مع تحديد تاريخ واسم المنفذ، وسيتم تحديث التاريخ التالي تلقائياً.")
+    st.info("إدارة بنود الصيانة الدورية. يتم حفظ البيانات تلقائياً في ملف Excel.")
 
+    # اختيار القسم أولاً
     sections = get_available_sections(sheets_edit)
     if not sections:
         st.warning("⚠️ لا توجد أقسام بها ماكينات. أضف قسم وماكينات أولاً.")
@@ -1680,17 +1686,22 @@ def preventive_maintenance_tab(sheets_edit):
 
     selected_equipment = st.selectbox("🔧 اختر المعدة:", equipment_list, key="pm_equipment")
 
-    # استخدام البيانات من sheets_edit مباشرة
+    # تحميل البيانات من sheets_edit (إذا كانت موجودة) أو من الملف
     if APP_CONFIG["MAINTENANCE_SHEET"] in sheets_edit:
         tasks_df = sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]].copy()
-        tasks_df = tasks_df[tasks_df["المعدة"] == selected_equipment]
     else:
-        tasks_df = pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
+        tasks_df = load_maintenance_tasks()
+        sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = tasks_df
+
+    tasks_df = tasks_df[tasks_df["المعدة"] == selected_equipment].copy()
 
     st.subheader(f"📋 بنود الصيانة لـ {selected_equipment}")
     if tasks_df.empty:
         st.info("لا توجد بنود صيانة مسجلة لهذه المعدة. يمكنك إضافة بند جديد أدناه.")
     else:
+        # ... (باقي الكود كما هو، مع التأكد من أن التعديلات تُطبق على sheets_edit)
+        # عند تنفيذ الصيانة، يجب تحديث sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]]
+        # عند إضافة بند جديد، استخدم add_maintenance_task التي تُحدّث sheets_edit
         view_mode = st.radio("طريقة العرض:", ["جدول", "بطاقات مع الصور"], horizontal=True, key="maintenance_view_mode")
         today = datetime.now().date()
         tasks_display = tasks_df.copy()
