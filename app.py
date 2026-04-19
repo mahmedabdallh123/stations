@@ -1778,8 +1778,18 @@ def preventive_maintenance_tab(sheets_edit):
                                 st.markdown(f"**{row['اسم_البند']}**")
                                 st.markdown(f"**نوع الصيانة:** {row['نوع_الصيانة']}")
                                 st.markdown(f"**الفترة:** {row['الفترة_بالأيام']:.2f} يوم")
-                                st.markdown(f"**آخر تنفيذ:** {row['آخر_تنفيذ'].strftime('%Y-%m-%d') if pd.notna(row['آخر_تنفيذ']) else 'لم تنفذ بعد'}")
-                                st.markdown(f"**التاريخ التالي:** {row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else 'غير محدد'}")
+                                last_exec = row['آخر_تنفيذ']
+                                if pd.notna(last_exec) and hasattr(last_exec, 'strftime'):
+                                   last_exec_str = last_exec.strftime('%Y-%m-%d')
+                                else:
+                                    last_exec_str = 'لم تنفذ بعد'
+                                st.markdown(f"**آخر تنفيذ:** {last_exec_str}")
+                                next_date = row['التاريخ_التالي']
+                                if pd.notna(next_date) and hasattr(next_date, 'strftime'):
+                                    next_date_str = next_date.strftime('%Y-%m-%d')
+                                else:
+                                    next_date_str = 'غير محدد'
+                                st.markdown(f"**التاريخ التالي:** {next_date_str}")
                                 st.markdown(f"**الحالة:** {row['الحالة']}")
                                 
                                 col_btn1, col_btn2 = st.columns(2)
