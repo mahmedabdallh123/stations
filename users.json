@@ -1,29 +1,109 @@
 {
-    "admin": {
-        "active": false,
-        "created_at": "2026-01-30T12:14:01.487794",
-        "password": "0000",
-        "permissions": [
-            "all"
-        ],
-        "role": "admin"
+  "admin": {
+    "password": "1234",
+    "role": "admin",
+    "permissions": {
+      "all_sections": true
     },
-    "editor": {
-        "created_at": "2026-04-08T19:25:53.311023",
-        "password": "ef5e5a1fb95055e0e56cccf98a41e784a132c14e7f6e1ba244302f0e72b29baf",
-        "permissions": [
-            "view",
-            "edit",
-            "manage_sheets"
-        ],
-        "role": "editor"
+    "sections_permissions": {}
+  },
+  "مدير_صيانة": {
+    "password": "12345",
+    "role": "admin",
+    "permissions": {
+      "all_sections": true
     },
-    "viewer": {
-        "created_at": "2026-04-08T19:25:53.311009",
-        "password": "65375049b9e4d7cad6c9ba286fdeb9394b28135a3e84136404cfccfdcc438894",
-        "permissions": [
-            "view"
-        ],
-        "role": "viewer"
+    "sections_permissions": {}
+  },
+  "مشرف_التفتيح": {
+    "password": "123456",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "التفتيح": ["view", "edit", "add_event"]
     }
+  },
+  "مشرف_التمشيط": {
+    "password": "1234567",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "تمشيط": ["view", "edit", "add_event"],
+      "ملفات": ["view", "edit", "add_event"],
+      "سحب1": ["view", "edit", "add_event"],
+      "سحب2": ["view", "edit", "add_event"],
+      "محطه التمشيط": ["view", "add_event"]
+    }
+  },
+  "مشرف_البرم": {
+    "password": "12345678",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "البرم": ["view", "edit", "add_event", "manage_machines"],
+      "محطه البرم": ["view", "add_event"]
+    }
+  },
+  "مشرف_الغزل": {
+    "password": "123456789",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "الغزل": ["view", "edit", "add_event"],
+      "محطه غزل 1": ["view"],
+      "محطه غزل 2": ["view"]
+    }
+  },
+  "مشرف_الكرد": {
+    "password": "1111",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "الكرد": ["view", "edit", "add_event", "manage_machines"],
+      "محطه كرد1": ["view", "edit", "add_event", "manage_machines"],
+      "محطه كرد2": ["view", "add_event"],
+      "محطه ترطيب الكرد": ["view"]
+    }
+  },
+  "مشرف_المكابس": {
+    "password": "2222",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "المكبس": ["view", "edit", "add_event"]
+    }
+  },
+  "مشرف_الضواغط": {
+    "password": "3333",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "الضواغط": ["view", "edit", "add_event"]
+    }
+  },
+  "مشرف_تحضيرات": {
+    "password": "5555",
+    "role": "user",
+    "permissions": {
+      "all_sections": false
+    },
+    "sections_permissions": {
+      "الكرد": ["view", "edit", "add_event"],
+      "التفتيح": ["view", "edit", "add_event"]
+    }
+  }
 }
