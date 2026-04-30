@@ -34,5 +34,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
+  },
+  {
+    "timestamp": "2026-04-30T06:09:19.461461",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض 3/2غزل"
   }
 ]
