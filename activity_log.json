@@ -106,5 +106,11 @@
     "username": "مدير_صيانة",
     "action_type": "add_event",
     "details": "تم إضافة عطل: 1 للماكينة كفته"
+  },
+  {
+    "timestamp": "2026-04-30T17:47:08.666060",
+    "username": "مدير_صيانة",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم الكرد "
   }
 ]
