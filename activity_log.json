@@ -40,5 +40,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة حوض 3/2غزل"
+  },
+  {
+    "timestamp": "2026-04-30T06:11:42.167043",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم الكرد "
   }
 ]
