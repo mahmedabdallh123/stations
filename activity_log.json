@@ -10,5 +10,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم الكرد "
+  },
+  {
+    "timestamp": "2026-04-30T05:57:31.535426",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم الكرد"
   }
 ]
