@@ -112,5 +112,11 @@
     "username": "مدير_صيانة",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم الكرد "
+  },
+  {
+    "timestamp": "2026-04-30T17:47:46.396544",
+    "username": "مدير_صيانة",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم الكرد "
   }
 ]
