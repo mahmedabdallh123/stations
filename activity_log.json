@@ -58,5 +58,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'زيت جير بوكس عنود دوران خزنتين' للماكينة مكبس السايلوهات بواسطة تيم المحطات"
+  },
+  {
+    "timestamp": "2026-04-30T06:20:44.572005",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'زيت جير بوكس الحصيرة ' للماكينة مكبس السايلوهات (فترة 21900 ساعة)"
   }
 ]
