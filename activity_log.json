@@ -430,5 +430,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'فلتر هواءصغير' للقسم الضواغط (الرصيد: 1)"
+  },
+  {
+    "timestamp": "2026-05-02T20:31:56.866437",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'فاصل زيت صغير' للقسم الضواغط (الرصيد: 0)"
   }
 ]
