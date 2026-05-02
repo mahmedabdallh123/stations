@@ -376,5 +376,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة دنابر محطه غزل1"
+  },
+  {
+    "timestamp": "2026-05-02T11:48:33.796562",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة مكبس السايلوهات"
   }
 ]
