@@ -394,5 +394,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'فلتر هواء كبير' للقسم الضواغط (الرصيد: 1)"
+  },
+  {
+    "timestamp": "2026-05-02T20:23:36.496730",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'فلتر زيت (كبيروصغير)' للقسم الضواغط (الرصيد: 3)"
   }
 ]
