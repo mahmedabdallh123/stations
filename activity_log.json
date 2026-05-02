@@ -382,5 +382,17 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة مكبس السايلوهات"
+  },
+  {
+    "timestamp": "2026-05-02T20:16:16.519542",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'فلتر هواء كبير' للقسم الضواغط (الرصيد: 1)"
+  },
+  {
+    "timestamp": "2026-05-02T20:22:12.711762",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'فلتر هواء كبير' للقسم الضواغط (الرصيد: 1)"
   }
 ]
