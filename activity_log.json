@@ -466,5 +466,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'فلتر مجفف بعد' للقسم الضواغط (الرصيد: 0)"
+  },
+  {
+    "timestamp": "2026-05-02T20:49:03.221703",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'فاصل زيت كبير' للقسم الضواغط (الرصيد: 0)"
   }
 ]
