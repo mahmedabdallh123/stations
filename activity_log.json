@@ -406,5 +406,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'فاصل زيت كبير' للقسم الضواغط (الرصيد: 3)"
+  },
+  {
+    "timestamp": "2026-05-02T20:26:04.844994",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم تعديل قطعة غيار 'فاصل زيت كبير' للقسم الضواغط"
   }
 ]
