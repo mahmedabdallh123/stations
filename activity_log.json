@@ -460,5 +460,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'فلتر مجفف بعد' للقسم الضواغط (الرصيد: 0)"
+  },
+  {
+    "timestamp": "2026-05-02T20:46:54.058530",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'فلتر مجفف بعد' للقسم الضواغط (الرصيد: 0)"
   }
 ]
