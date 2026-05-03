@@ -502,5 +502,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'سير سلندر يمين مكنه' للقسم الكرد (الرصيد: 0)"
+  },
+  {
+    "timestamp": "2026-05-03T06:13:44.092829",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'سير  فيد رول يمين مكنه من خلف' للقسم الكرد (الرصيد: 0)"
   }
 ]
