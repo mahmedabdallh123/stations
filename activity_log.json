@@ -550,5 +550,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'سير 3 ليكر ان ' للقسم الكرد (الرصيد: 0)"
+  },
+  {
+    "timestamp": "2026-05-03T06:23:29.859219",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'سير فرشه  تنظيف فلاتس سريعه خلفيه' للقسم الكرد (الرصيد: 0)"
   }
 ]
