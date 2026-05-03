@@ -592,5 +592,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'سير نقل حركه من موتور للمضاربclx' للقسم التفتيح (الرصيد: 1)"
+  },
+  {
+    "timestamp": "2026-05-03T06:41:39.180083",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'سير نقل حركه بين مضربين' للقسم التفتيح (الرصيد: 1)"
   }
 ]
