@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T06:16:46.482980",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'زيت جير بوكس عنود دوران خزنتين' للماكينة مكبس السايلوهات (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-04-30T06:19:30.099571",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: اداره مخاطر للماكينة TS-T5-2"
+  },
+  {
+    "timestamp": "2026-05-03T11:42:06.593639",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: اداره مخاطر للماكينة BO-R"
   }
 ]
