@@ -490,5 +490,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'سير حركه دوفر نفسه يمين مكنه' للقسم الكرد (الرصيد: 0)"
+  },
+  {
+    "timestamp": "2026-05-03T06:11:51.822384",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'سير مضرب تفتيح دفك ' للقسم الكرد (الرصيد: 0)"
   }
 ]
