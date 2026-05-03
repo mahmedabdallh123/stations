@@ -586,5 +586,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'سير قاعده اسطوانه كويلر ' للقسم الكرد (الرصيد: 0)"
+  },
+  {
+    "timestamp": "2026-05-03T06:40:41.179018",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم إضافة قطعة غيار 'سير نقل حركه من موتور للمضاربclx' للقسم التفتيح (الرصيد: 1)"
   }
 ]
