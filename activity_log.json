@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T06:08:46.733760",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
-  },
-  {
     "timestamp": "2026-04-30T06:09:19.461461",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: اداره مخاطر للماكينة MIX-1"
+  },
+  {
+    "timestamp": "2026-05-03T11:40:00.626709",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: اداره مخاطر للماكينة MIX-2"
   }
 ]
