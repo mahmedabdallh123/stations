@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T06:02:01.550992",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-04-30T06:07:56.602277",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: اداره مخاطر للماكينة CLX-1"
+  },
+  {
+    "timestamp": "2026-05-03T11:38:41.272595",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: اداره مخاطر للماكينة CLX-2"
   }
 ]
