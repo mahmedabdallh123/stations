@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T05:52:51.128447",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم الكرد "
-  },
-  {
     "timestamp": "2026-04-30T05:53:18.375352",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم إضافة قطعة غيار 'سير نقل حركه بين مضربين' للقسم التفتيح (الرصيد: 1)"
+  },
+  {
+    "timestamp": "2026-05-03T11:36:52.994513",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: اداره مخاطر للماكينة CLU-1"
   }
 ]
