@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T06:27:17.404388",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'زيت جير بوكس الحصيرة ' للماكينة مكبس التمشيط بواسطة تيم المحطات"
-  },
-  {
     "timestamp": "2026-04-30T06:28:26.523562",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة تمشيط 4"
+  },
+  {
+    "timestamp": "2026-05-04T10:21:01.108802",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة تمشيط2"
   }
 ]
