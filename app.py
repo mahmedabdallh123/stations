@@ -14,9 +14,9 @@ from github import Github, GithubException
 
 # ------------------------------- الإعدادات الثابتة -------------------------------
 APP_CONFIG = {
-    "APP_TITLE": "بيل يارن 1- CMMS",
+    "APP_TITLE": "القدس - CMMS",
     "APP_ICON": "🏭",
-    "REPO_NAME": "mahmedabdallh123/stations",
+    "REPO_NAME": "mahmedabdallh123/Elqds",
     "BRANCH": "main",
     "FILE_PATH": "l9.xlsx",
     "LOCAL_FILE": "l9.xlsx",
@@ -29,6 +29,7 @@ APP_CONFIG = {
     "SPARE_PARTS_SHEET": "قطع_الغيار",
     "SPARE_PARTS_COLUMNS": ["اسم القطعة", "المقاس", "قوه الشد", "الرصيد الموجود", "مدة التوريد", "ضرورية", "القسم", "رابط_الصورة"],
     "MAINTENANCE_SHEET": "صيانة_وقائية",
+    "SPARE_PARTS_COLUMNS": ["اسم القطعة", "المقاس", "قوه الشد", "الرصيد الموجود", "مدة التوريد", "ضرورية", "القسم", "رابط_الصورة", "حد_الإنذار"],
     "MAINTENANCE_COLUMNS": ["المعدة", "نوع_الصيانة", "اسم_البند", "الفترة_بالأيام", "آخر_تنفيذ", "التاريخ_التالي", "ملاحظات", "قطع_غيار_مستخدمة_افتراضية", "رابط_الصورة"],
     "GENERAL_SECTION": "عام"
 }
@@ -60,8 +61,8 @@ IMAGES_FOLDER = APP_CONFIG["IMAGES_FOLDER"]
 EQUIPMENT_CONFIG_FILE = "equipment_config.json"
 
 GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
-GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/stations/refs/heads/main/users.json"
-GITHUB_REPO_USERS = "mahmedabdallh123/stations"
+GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/Elqds/refs/heads/main/users.json"
+GITHUB_REPO_USERS = "mahmedabdallh123/Elqds"
 GITHUB_TOKEN = st.secrets.get("github", {}).get("token", None)
 GITHUB_AVAILABLE = GITHUB_TOKEN is not None
 ACTIVITY_LOG_FILE = "activity_log.json"
@@ -118,6 +119,10 @@ def load_spare_parts():
                 df[col] = ""
         df = df.fillna("")
         df["الرصيد الموجود"] = pd.to_numeric(df["الرصيد الموجود"], errors='coerce').fillna(0)
+        if "حد_الإنذار" not in df.columns:
+            df["حد_الإنذار"] = 1
+        else:
+            df["حد_الإنذار"] = pd.to_numeric(df["حد_الإنذار"], errors='coerce').fillna(1)
         return df
     except Exception:
         return pd.DataFrame(columns=APP_CONFIG["SPARE_PARTS_COLUMNS"])
@@ -151,17 +156,24 @@ def get_critical_spare_parts():
     df = load_spare_parts()
     if df.empty:
         return []
+    # تنظيف البيانات
     df["الرصيد الموجود"] = pd.to_numeric(df["الرصيد الموجود"], errors='coerce').fillna(0)
     if "حد_الإنذار" not in df.columns:
         df["حد_الإنذار"] = 1
     else:
         df["حد_الإنذار"] = pd.to_numeric(df["حد_الإنذار"], errors='coerce').fillna(1)
-    # استبعاد القطع التي ليس لها قسم
-    df = df[df["القسم"].notna() & (df["القسم"] != "")]
-    critical = df[df["الرصيد الموجود"] < df["حد_الإنذار"]]
+    # التأكد من أن عمود "القسم" موجود وليس فارغاً
+    if "القسم" not in df.columns:
+        return []
+    df["القسم"] = df["القسم"].fillna("").astype(str)
+    # فقط القطع التي لها قسم صالح (غير فارغ)
+    df = df[df["القسم"].str.strip() != ""]
+    # فقط القطع الضرورية
+    df["ضرورية"] = df["ضرورية"].astype(str).str.strip()
+    critical = df[(df["ضرورية"] == "نعم") & (df["الرصيد الموجود"] < df["حد_الإنذار"])]
     result = critical[["اسم القطعة", "القسم", "الرصيد الموجود", "حد_الإنذار"]].to_dict('records')
     return result
-
+    
 # ------------------------------- دوال سجل النشاطات -------------------------------
 ACTIVITY_LOG_FILE = "activity_log.json"
 
@@ -884,12 +896,19 @@ def search_across_sheets(all_sheets):
     # خيار نوع البحث
     search_type = st.selectbox("نوع البيانات المراد البحث فيها:", ["الأقسام (الأعطال)", "قطع الغيار", "الصيانة الوقائية"], key="search_type")
 
-    # الحصول على الأقسام المسموحة (للبحث في الأقسام فقط)
-    allowed_sections = get_allowed_sections(all_sheets, username, "view") if search_type == "الأقسام (الأعطال)" else []
+    # الأقسام المسموحة للمستخدم (لجميع أنواع البحث)
+    allowed_sections = get_allowed_sections(all_sheets, username, "view")
+    
+    # متغير لتخزين القسم المختار (لقطع الغيار والصيانة)
+    selected_section_filter = "جميع الأقسام"
+    if search_type in ["قطع الغيار", "الصيانة الوقائية"] and allowed_sections:
+        section_options = ["جميع الأقسام"] + allowed_sections
+        selected_section_filter = st.selectbox("🏭 القسم:", section_options, key="section_filter")
 
     col1, col2 = st.columns(2)
     with col1:
         if search_type == "الأقسام (الأعطال)":
+            # قائمة الأقسام للبحث في الأعطال
             sheet_options = ["جميع الأقسام"] + allowed_sections
             selected_sheet = st.selectbox("اختر القسم للبحث:", sheet_options, key="search_sheet")
             if selected_sheet != "جميع الأقسام":
@@ -903,7 +922,8 @@ def search_across_sheets(all_sheets):
                 equipment_list = sorted(all_eq)
             filter_equipment = st.selectbox("فلتر حسب الماكينة:", ["الكل"] + equipment_list, key="search_eq")
         else:
-            filter_equipment = "الكل"  # لا نطبق فلتر ماكينة لقطع الغيار أو الصيانة
+            # لقطع الغيار والصيانة، لا نحتاج فلتر ماكينة هنا (سيتم من خلال القسم)
+            filter_equipment = "الكل"
         search_term = st.text_input("كلمة البحث:", placeholder="أدخل نصاً للبحث...", key="search_term")
         
     with col2:
@@ -924,8 +944,8 @@ def search_across_sheets(all_sheets):
     if st.button("بحث", key="search_btn", type="primary"):
         results = []
         
+        # ---------- البحث في الأقسام (الأعطال) ----------
         if search_type == "الأقسام (الأعطال)":
-            # البحث في الأقسام (نفس الكود القديم ولكن مع تحسين التواريخ)
             sheets_to_search = []
             if selected_sheet != "جميع الأقسام":
                 sheets_to_search = [(selected_sheet, all_sheets[selected_sheet])]
@@ -957,15 +977,18 @@ def search_across_sheets(all_sheets):
                 if not df_filtered.empty:
                     df_filtered["القسم"] = sheet_name
                     results.append(df_filtered)
-                    
+        
+        # ---------- البحث في قطع الغيار ----------
         elif search_type == "قطع الغيار":
-            # البحث في شيت قطع الغيار
             spare_df = load_spare_parts()
             if spare_df.empty:
                 st.warning("لا توجد بيانات في قطع الغيار")
                 return
             df_filtered = spare_df.copy()
-            # تحويل التواريخ إذا وجدت (مدة التوريد قد تكون نص)
+            # فلتر القسم
+            if selected_section_filter != "جميع الأقسام":
+                df_filtered = df_filtered[df_filtered["القسم"] == selected_section_filter]
+            # فلتر النص
             if search_term:
                 search_columns = ["اسم القطعة", "المقاس", "قوه الشد", "مدة التوريد", "القسم", "رابط_الصورة"]
                 mask = pd.Series([False] * len(df_filtered))
@@ -975,25 +998,42 @@ def search_across_sheets(all_sheets):
                 df_filtered = df_filtered[mask]
             if not df_filtered.empty:
                 results.append(df_filtered)
-                
+        
+        # ---------- البحث في الصيانة الوقائية ----------
         else:  # الصيانة الوقائية
-            # البحث في شيت الصيانة الوقائية
+            # بناء علاقة الماكينة -> القسم من الأقسام المسموحة
+            equipment_to_section = {}
+            for sheet_name in allowed_sections:
+                df_sheet = all_sheets[sheet_name]
+                if "المعدة" in df_sheet.columns:
+                    for eq in df_sheet["المعدة"].dropna().unique():
+                        equipment_to_section[str(eq).strip()] = sheet_name
+            
             maint_df = load_maintenance_tasks()
             if maint_df.empty:
                 st.warning("لا توجد بيانات في الصيانة الوقائية")
                 return
             df_filtered = maint_df.copy()
-            # فلترة حسب التاريخ (آخر_تنفيذ أو التاريخ_التالي)
+            # فلتر القسم (بناءً على الماكينة)
+            if selected_section_filter != "جميع الأقسام":
+                # الاحتفاظ فقط بالمهام التي تنتمي ماكينتها للقسم المختار
+                allowed_equipment = [eq for eq, sec in equipment_to_section.items() if sec == selected_section_filter]
+                df_filtered = df_filtered[df_filtered["المعدة"].isin(allowed_equipment)]
+            
+            # فلتر التاريخ
             if use_date_filter and start_date and end_date:
+                date_col = None
                 if "آخر_تنفيذ" in df_filtered.columns:
-                    df_filtered["آخر_تنفيذ"] = flexible_date_parser(df_filtered["آخر_تنفيذ"])
-                    mask = (df_filtered["آخر_تنفيذ"] >= pd.to_datetime(start_date)) & (df_filtered["آخر_تنفيذ"] <= pd.to_datetime(end_date) + timedelta(days=1))
-                    df_filtered = df_filtered[mask]
+                    date_col = "آخر_تنفيذ"
                 elif "التاريخ_التالي" in df_filtered.columns:
-                    df_filtered["التاريخ_التالي"] = flexible_date_parser(df_filtered["التاريخ_التالي"])
-                    mask = (df_filtered["التاريخ_التالي"] >= pd.to_datetime(start_date)) & (df_filtered["التاريخ_التالي"] <= pd.to_datetime(end_date) + timedelta(days=1))
+                    date_col = "التاريخ_التالي"
+                if date_col:
+                    df_filtered[date_col] = flexible_date_parser(df_filtered[date_col])
+                    df_filtered = df_filtered.dropna(subset=[date_col])
+                    mask = (df_filtered[date_col] >= pd.to_datetime(start_date)) & (df_filtered[date_col] <= pd.to_datetime(end_date) + timedelta(days=1))
                     df_filtered = df_filtered[mask]
             
+            # فلتر النص
             if search_term:
                 search_columns = ["المعدة", "نوع_الصيانة", "اسم_البند", "ملاحظات", "قطع_غيار_مستخدمة_افتراضية", "رابط_الصورة"]
                 mask = pd.Series([False] * len(df_filtered))
@@ -1001,29 +1041,43 @@ def search_across_sheets(all_sheets):
                     if col in df_filtered.columns:
                         mask = mask | df_filtered[col].astype(str).str.contains(search_term, case=False, na=False)
                 df_filtered = df_filtered[mask]
+            
             if not df_filtered.empty:
+                # إضافة عمود القسم (من العلاقة) للعرض
+                df_filtered["القسم"] = df_filtered["المعدة"].map(equipment_to_section).fillna("غير محدد")
                 results.append(df_filtered)
         
+        # ---------- معالجة النتائج وعرضها ----------
         if results:
             combined_results = pd.concat(results, ignore_index=True)
+            
+            # توحيد اسم عمود الصورة
+            if "رابط الصورة" in combined_results.columns:
+                combined_results["رابط_الصورة_موحد"] = combined_results["رابط الصورة"]
+                combined_results = combined_results.drop(columns=["رابط الصورة"])
+            elif "رابط_الصورة" in combined_results.columns:
+                combined_results["رابط_الصورة_موحد"] = combined_results["رابط_الصورة"]
+                combined_results = combined_results.drop(columns=["رابط_الصورة"])
+            else:
+                combined_results["رابط_الصورة_موحد"] = ""
+            
             st.success(f"تم العثور على {len(combined_results)} نتيجة")
             
-            # ترتيب النتائج حسب الاقتضاء
+            # ترتيب النتائج (للأعطال فقط)
             if search_type == "الأقسام (الأعطال)" and "التاريخ" in combined_results.columns:
                 combined_results["التاريخ"] = pd.to_datetime(combined_results["التاريخ"], errors='coerce')
                 combined_results = combined_results.dropna(subset=["التاريخ"])
                 combined_results = combined_results.sort_values(by=["المعدة", "التاريخ"], ascending=[True, False])
             
             if view_mode == "جدول":
-                # إخفاء عمود رابط الصورة إن وجد لتجنب النص الطويل
-                display_cols = [c for c in combined_results.columns if c != "رابط_الصورة"]
+                display_cols = [c for c in combined_results.columns if c != "رابط_الصورة_موحد"]
                 st.dataframe(combined_results[display_cols], use_container_width=True, height=500)
             else:
                 # عرض بطاقات مع الصور
                 for idx, row in combined_results.iterrows():
                     with st.container(border=True):
                         col_img, col_info = st.columns([1, 3])
-                        img_url = row.get("رابط_الصورة", "")
+                        img_url = row.get("رابط_الصورة_موحد", "")
                         with col_img:
                             if img_url and isinstance(img_url, str) and img_url.strip():
                                 try:
@@ -1033,7 +1087,6 @@ def search_across_sheets(all_sheets):
                             else:
                                 st.write("📄 لا توجد صورة")
                         with col_info:
-                            # عرض الأعمدة الأساسية حسب نوع البحث
                             if search_type == "الأقسام (الأعطال)":
                                 st.markdown(f"**📁 القسم:** {row.get('القسم', '')}")
                                 st.markdown(f"**📅 التاريخ:** {row.get('التاريخ', '')}")
@@ -1055,11 +1108,13 @@ def search_across_sheets(all_sheets):
                                 st.markdown(f"**📅 آخر تنفيذ:** {row.get('آخر_تنفيذ', '')}")
                                 st.markdown(f"**📅 التاريخ التالي:** {row.get('التاريخ_التالي', '')}")
                                 st.markdown(f"**📝 ملاحظات:** {str(row.get('ملاحظات', ''))[:150]}")
+                                st.markdown(f"**🏭 القسم:** {row.get('القسم', '')}")
                             if img_url:
                                 st.caption(f"[🔗 رابط الصورة]({img_url})")
             
-            # تصدير النتائج
-            excel_file = export_filtered_results_to_excel(combined_results, "نتائج_البحث")
+            # تصدير Excel (بدون العمود الموحد)
+            export_df = combined_results.drop(columns=["رابط_الصورة_موحد"])
+            excel_file = export_filtered_results_to_excel(export_df, "نتائج_البحث")
             st.download_button("📥 تحميل نتائج البحث كملف Excel", excel_file, f"search_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", key='download-excel')
         else:
             st.warning("لا توجد نتائج مطابقة للبحث")
@@ -1179,25 +1234,24 @@ def add_new_department(sheets_edit):
 
         st.markdown("---")
         st.subheader("🗑️ حذف قسم موجود")
-        st.warning("⚠️ انتبه: حذف القسم سيؤدي إلى حذف جميع بياناته بما فيها الماكينات والأعطال وقطع الغيار المرتبطة به نهائياً ولا يمكن استرجاعها.")
+        st.warning("⚠️ انتبه: حذف القسم سيؤدي إلى حذف جميع بياناته (ماكينات، أعطال، قطع غيار) نهائياً ولا يمكن استرجاعها.")
         deletable_sections = [name for name in sheets_edit.keys() if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
         if not deletable_sections:
             st.info("لا توجد أقسام قابلة للحذف.")
         else:
             selected_dept = st.selectbox("اختر القسم المراد حذفه:", deletable_sections, key="delete_department_select")
             if selected_dept:
-                st.error(f"🔴 أنت على وشك حذف قسم **'{selected_dept}'** نهائياً. سيتم حذف جميع البيانات المرتبطة به.")
+                st.error(f"🔴 أنت على وشك حذف قسم **'{selected_dept}'** نهائياً.")
                 confirm = st.text_input("لتأكيد الحذف، اكتب اسم القسم هنا:", key="delete_confirm")
                 if confirm == selected_dept:
                     if st.button("🗑️ حذف القسم نهائياً", key="delete_department_btn", type="primary"):
-                        # ========== إضافة: حذف قطع الغيار المرتبطة بهذا القسم ==========
+                        # 1. حذف قطع الغيار المرتبطة بهذا القسم
                         spare_df = load_spare_parts()
                         if not spare_df.empty:
-                            # حذف الصفوف التي تحمل نفس اسم القسم
                             spare_df = spare_df[spare_df["القسم"] != selected_dept]
                             sheets_edit[APP_CONFIG["SPARE_PARTS_SHEET"]] = spare_df
-                            st.info(f"🗑️ تم حذف قطع الغيار المرتبطة بالقسم '{selected_dept}'.")
-                        # ========== نهاية الإضافة ==========
+                            st.info(f"🗑️ تم حذف قطع الغيار التابعة للقسم '{selected_dept}'.")
+                        # 2. حذف القسم نفسه (الشيت)
                         del sheets_edit[selected_dept]
                         if save_and_push_to_github(sheets_edit, f"حذف قسم: {selected_dept}"):
                             log_activity("delete_section", f"تم حذف القسم '{selected_dept}' وقطع الغيار التابعة له")
@@ -1219,7 +1273,7 @@ def add_new_department(sheets_edit):
     else:
         st.info("لا توجد أقسام بعد")
     return sheets_edit
-
+    
 def add_new_machine(sheets_edit, sheet_name):
     st.markdown(f"### 🔧 إضافة ماكينة جديدة في قسم: {sheet_name}")
     df = sheets_edit[sheet_name]
@@ -1507,6 +1561,7 @@ def manage_spare_parts_tab(sheets_edit):
                     new_qty = st.number_input("الرصيد", value=int(part_row["الرصيد الموجود"]), step=1, key="edit_qty")
                     new_lead = st.text_input("مدة التوريد", value=part_row["مدة التوريد"], key="edit_lead")
                     new_critical = st.checkbox("قطعة ضرورية", value=(part_row["ضرورية"] == "نعم"), key="edit_critical")
+                    new_threshold = st.number_input("حد الإنذار", value=int(part_row.get("حد_الإنذار", 1)), step=1, key="edit_threshold")
                     if st.button("💾 حفظ التغييرات", key="save_edit_part"):
                         original_idx = part_row["original_index"]
                         spare_df.loc[original_idx, "اسم القطعة"] = new_name
@@ -1514,6 +1569,7 @@ def manage_spare_parts_tab(sheets_edit):
                         spare_df.loc[original_idx, "الرصيد الموجود"] = new_qty
                         spare_df.loc[original_idx, "مدة التوريد"] = new_lead
                         spare_df.loc[original_idx, "ضرورية"] = "نعم" if new_critical else "لا"
+                        spare_df.loc[original_idx, "حد_الإنذار"] = new_threshold
                         sheets_edit[APP_CONFIG["SPARE_PARTS_SHEET"]] = spare_df
                         if save_and_push_to_github(sheets_edit, f"تعديل قطعة: {selected_part_name}"):
                             log_activity("add_spare_part", f"تم تعديل قطعة غيار '{selected_part_name}' للقسم {selected_section}")
@@ -1583,7 +1639,7 @@ def manage_spare_parts_tab(sheets_edit):
                                                 st.rerun()
                                             else:
                                                 st.error("فشل الحفظ")
-    st.subheader("➕ إضافة قطعة غيار جديدة")
+        st.subheader("➕ إضافة قطعة غيار جديدة")
     with st.form(key="add_spare_part_form"):
         col1, col2 = st.columns(2)
         with col1:
@@ -1593,7 +1649,8 @@ def manage_spare_parts_tab(sheets_edit):
         with col2:
             initial_qty = st.number_input("📦 الرصيد الموجود:", min_value=0, step=1, value=0)
             lead_time = st.text_input("⏱️ مدة التوريد (أيام أو نص):")
-            is_critical = st.checkbox("⚠️ قطعة ضرورية")
+            is_critical = st.checkbox("⚠️ قطعة ضرورية (ستظهر في الإشعارات حال نقص الرصيد)")
+            critical_threshold = st.number_input("⚠️ حد الإنذار (عند نقص الرصيد عن هذا الرقم):", min_value=1, step=1, value=1, help="مثال: 2 يعني إذا أصبح الرصيد 1 أو أقل تصبح حرجة")
         submitted = st.form_submit_button("✅ إضافة قطعة")
         if submitted:
             if not part_name:
@@ -1612,9 +1669,14 @@ def manage_spare_parts_tab(sheets_edit):
                         else:
                             st.warning("⚠️ فشل رفع الصورة")
                     new_row = pd.DataFrame([{
-                        "اسم القطعة": part_name, "المقاس": part_size, "الرصيد الموجود": initial_qty,
-                        "مدة التوريد": lead_time, "ضرورية": "نعم" if is_critical else "لا",
-                        "القسم": selected_section, "رابط_الصورة": image_url or ""
+                        "اسم القطعة": part_name,
+                        "المقاس": part_size,
+                        "الرصيد الموجود": initial_qty,
+                        "مدة التوريد": lead_time,
+                        "ضرورية": "نعم" if is_critical else "لا",
+                        "القسم": selected_section,
+                        "رابط_الصورة": image_url or "",
+                        "حد_الإنذار": critical_threshold
                     }])
                     new_spare_df = pd.concat([spare_df, new_row], ignore_index=True)
                     sheets_edit[APP_CONFIG["SPARE_PARTS_SHEET"]] = new_spare_df
