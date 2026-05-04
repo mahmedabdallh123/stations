@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T06:26:33.767837",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'زيت جير بوكس الحصيرة ' للماكينة مكبس التمشيط (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-04-30T06:27:17.404388",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة تمشيط13"
+  },
+  {
+    "timestamp": "2026-05-04T10:20:26.695102",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة تمشيط 4"
   }
 ]
