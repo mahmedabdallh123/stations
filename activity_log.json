@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T06:28:26.523562",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'زيت جير بوكس  عمود دوران خزنتين' للماكينة مكبس التمشيط (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-04-30T06:29:23.809277",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة تمشيط2"
+  },
+  {
+    "timestamp": "2026-05-04T10:23:24.794548",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة '(   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق)صيانه شهريه ' للماكينة تمشيط6 (فترة 720 ساعة)"
   }
 ]
