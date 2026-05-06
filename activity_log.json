@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T11:43:02.186549",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة دنابر محطه غزل1"
-  },
-  {
     "timestamp": "2026-05-02T11:48:33.796562",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صوت اهتزاز علي ف شداد سير7 للماكينة MIX-2"
+  },
+  {
+    "timestamp": "2026-05-06T17:22:27.488601",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفس  للماكينة كرد5"
   }
 ]
