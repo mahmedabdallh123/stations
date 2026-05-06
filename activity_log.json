@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T06:42:37.608354",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف سير 1200 فلات للماكينة كرد11"
-  },
-  {
     "timestamp": "2026-05-02T11:37:01.865981",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-06T12:16:46.660602",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد1 (فترة 2120 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-06T12:17:10.572826",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد1 (فترة 2120 ساعة)"
