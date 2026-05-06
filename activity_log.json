@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-01T06:56:34.621183",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 3كبير"
-  },
-  {
     "timestamp": "2026-05-01T06:56:58.374040",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة ماكينه2"
+  },
+  {
+    "timestamp": "2026-05-06T11:03:34.670707",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط 5 (فترة 720 ساعة)"
   }
 ]
