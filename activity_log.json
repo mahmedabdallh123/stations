@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T11:37:01.865981",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بليه مضرب تفتيح dfk جنب شمال للماكينة كرد22"
-  },
-  {
     "timestamp": "2026-05-02T11:38:47.582399",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد1 (فترة 2120 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-06T12:18:54.388387",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد1 بواسطة محمود ايهاب "
   }
 ]
