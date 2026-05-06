@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T17:50:15.478053",
-    "username": "مدير_صيانة",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس حصيره اماميه' للماكينة BO-R (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-04-30T17:51:40.943032",
     "username": "مدير_صيانة",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم تعديل قطعة غيار 'فاصل زيت كبير' للقسم الضواغط"
+  },
+  {
+    "timestamp": "2026-05-06T07:52:52.580948",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه 2000 للماكينة كمبروسر 1صغير"
   }
 ]
