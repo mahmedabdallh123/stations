@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T17:51:40.943032",
-    "username": "مدير_صيانة",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس حصيره مسننه تفتيح العوادم ' للماكينة BO-R (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-04-30T17:53:06.293096",
     "username": "مدير_صيانة",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه 2000 للماكينة كمبروسر 1صغير"
+  },
+  {
+    "timestamp": "2026-05-06T07:56:16.361305",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'صيانه2000(تغير فلتر زيت وفلتر هواء صغير)' للماكينة كمبروسر 1صغير (فترة 2300 ساعة)"
   }
 ]
