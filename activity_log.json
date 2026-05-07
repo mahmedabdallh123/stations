@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T20:30:26.534911",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'فلتر هواءصغير' للقسم الضواغط (الرصيد: 1)"
-  },
-  {
     "timestamp": "2026-05-02T20:31:56.866437",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه الفواصل للماكينة حوض التنظيف"
+  },
+  {
+    "timestamp": "2026-05-07T21:06:50.388590",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1200 مسنن طرفين للماكينة كرد11"
   }
 ]
