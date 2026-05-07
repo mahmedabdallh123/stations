@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T11:48:33.796562",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة مكبس السايلوهات"
-  },
-  {
     "timestamp": "2026-05-02T20:16:16.519542",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفس  للماكينة كرد5"
+  },
+  {
+    "timestamp": "2026-05-07T05:28:51.457708",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير"
   }
 ]
