@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T20:31:56.866437",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'فاصل زيت صغير' للقسم الضواغط (الرصيد: 0)"
-  },
-  {
     "timestamp": "2026-05-02T20:34:18.727557",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 1200 مسنن طرفين للماكينة كرد11"
+  },
+  {
+    "timestamp": "2026-05-07T21:28:07.631373",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس فايبرسيباراتور' للماكينة سيلو3 بواسطة شريف"
   }
 ]
