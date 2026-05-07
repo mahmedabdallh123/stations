@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T20:27:18.117834",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'شحم كيزر' للقسم الضواغط (الرصيد: 1)"
-  },
-  {
     "timestamp": "2026-05-02T20:28:19.960622",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سيرفيس تغير اول جريده خلفيه240' للماكينة كرد2 (فترة 2120 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-07T14:48:56.872335",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سيرفيس تغير اول جريده خلفيه240' للماكينة كرد2 بواسطة محمود ايهاب"
   }
 ]
