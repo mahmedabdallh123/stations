@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T20:24:39.179258",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'فاصل زيت كبير' للقسم الضواغط (الرصيد: 3)"
-  },
-  {
     "timestamp": "2026-05-02T20:26:04.844994",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس ' للماكينة MIX-2 (فترة 21900 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-07T06:03:48.430050",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس ' للماكينة MIX-2 بواسطة تيم الكرد "
   }
 ]
