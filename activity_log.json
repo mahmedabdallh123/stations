@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T20:16:16.519542",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'فلتر هواء كبير' للقسم الضواغط (الرصيد: 1)"
-  },
-  {
     "timestamp": "2026-05-02T20:22:12.711762",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير"
+  },
+  {
+    "timestamp": "2026-05-07T06:00:03.067034",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس ' للماكينة MIX-1 (فترة 21900 ساعة)"
   }
 ]
