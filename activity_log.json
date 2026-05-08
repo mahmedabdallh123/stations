@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T06:05:51.936387",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'سير فرشه نازع امامي يوجد شمال ماكينه   ' للقسم الكرد (الرصيد: 0)"
-  },
-  {
     "timestamp": "2026-05-03T06:09:23.333110",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه3 بواسطة تيم التمشيط "
+  },
+  {
+    "timestamp": "2026-05-08T10:33:03.521720",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة تمشيط2"
   }
 ]
