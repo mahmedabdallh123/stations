@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T11:37:18.842355",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: اداره مخاطر للماكينة CLU-2"
-  },
-  {
     "timestamp": "2026-05-03T11:38:07.145177",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم تعديل قطعة غيار 'فاصل زيت صغير' للقسم الضواغط"
+  },
+  {
+    "timestamp": "2026-05-09T17:32:02.292902",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم تعديل قطعة غيار 'فلتر زيت (كبيروصغير)' للقسم الضواغط"
   }
 ]
