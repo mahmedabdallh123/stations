@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T06:29:08.939558",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'سير كويلر مسنن ' للقسم الكرد (الرصيد: 0)"
-  },
-  {
     "timestamp": "2026-05-03T06:29:55.709429",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد8 (فترة 4640 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-09T15:47:20.085763",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد8 (فترة 2320 ساعة)"
   }
 ]
