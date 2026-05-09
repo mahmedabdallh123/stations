@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T06:40:41.179018",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'سير نقل حركه من موتور للمضاربclx' للقسم التفتيح (الرصيد: 1)"
-  },
-  {
     "timestamp": "2026-05-03T06:41:39.180083",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد9 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-09T15:50:55.998932",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد9 (فترة 4640 ساعة)"
   }
 ]
