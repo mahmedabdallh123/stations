@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T06:29:55.709429",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'سير قاعده اسطوانه كويلر ' للقسم الكرد (الرصيد: 0)"
-  },
-  {
     "timestamp": "2026-05-03T06:40:41.179018",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد8 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-09T15:50:09.323306",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد9 (فترة 2320 ساعة)"
   }
 ]
