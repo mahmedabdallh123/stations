@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T06:18:33.848512",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم إضافة قطعة غيار 'سير تحريك عصارتين خروج شريط يوجد داخل شاسيه امامي' للقسم الكرد (الرصيد: 0)"
-  },
-  {
     "timestamp": "2026-05-03T06:19:46.869717",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة تيم التمشيط "
+  },
+  {
+    "timestamp": "2026-05-09T05:31:05.775867",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد3 (فترة 2120 ساعة)"
   }
 ]
