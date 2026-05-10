@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T11:39:37.133309",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: اداره مخاطر للماكينة MIX-1"
-  },
-  {
     "timestamp": "2026-05-03T11:40:00.626709",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد5 بواسطة محمود ايهاب"
+  },
+  {
+    "timestamp": "2026-05-10T05:56:12.148137",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد5 (فترة 4640 ساعة)"
   }
 ]
