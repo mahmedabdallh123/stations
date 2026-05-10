@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T11:38:07.145177",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: اداره مخاطر للماكينة CLX-1"
-  },
-  {
     "timestamp": "2026-05-03T11:38:41.272595",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_spare_part",
     "details": "تم تعديل قطعة غيار 'فلتر زيت (كبيروصغير)' للقسم الضواغط"
+  },
+  {
+    "timestamp": "2026-05-10T05:53:44.296500",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة محمود ايهاب"
   }
 ]
