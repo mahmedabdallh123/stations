@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T09:51:23.670353",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه3 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-08T09:51:53.316593",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: مرجعة العيارات للماكينة كرد10"
+  },
+  {
+    "timestamp": "2026-05-11T15:25:54.422753",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
   }
 ]
