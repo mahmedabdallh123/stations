@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-06T10:52:22.172253",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط 5 بواسطة تيم تمشيط"
-  },
-  {
     "timestamp": "2026-05-06T10:53:16.507625",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T07:49:21.689667",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد24 (فترة 2320 ساعة)"
   }
 ]
