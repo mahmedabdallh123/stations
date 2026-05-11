@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-07T14:52:09.192163",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه الفواصل للماكينة حوض التنظيف"
-  },
-  {
     "timestamp": "2026-05-07T21:06:50.388590",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد7 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T12:20:52.039609",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد8 (فترة 12000 ساعة)"
   }
 ]
