@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-07T21:06:50.388590",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1200 مسنن طرفين للماكينة كرد11"
-  },
-  {
     "timestamp": "2026-05-07T21:28:07.631373",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد8 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T12:21:19.347835",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد9 (فترة 12000 ساعة)"
   }
 ]
