@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-07T06:03:20.168933",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس ' للماكينة MIX-2 (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-05-07T06:03:48.430050",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد3 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T12:19:06.966191",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد4 (فترة 12000 ساعة)"
   }
 ]
