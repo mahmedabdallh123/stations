@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-07T21:28:07.631373",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس فايبرسيباراتور' للماكينة سيلو3 بواسطة شريف"
-  },
-  {
     "timestamp": "2026-05-08T09:47:01.349155",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد9 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T12:22:10.767421",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد10 (فترة 12000 ساعة)"
   }
 ]
