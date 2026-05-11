@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-07T05:28:51.457708",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير"
-  },
-  {
     "timestamp": "2026-05-07T06:00:03.067034",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفس لف السلندر  للماكينة كرد10"
+  },
+  {
+    "timestamp": "2026-05-11T12:15:14.803090",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد1 (فترة 10000 ساعة)"
   }
 ]
