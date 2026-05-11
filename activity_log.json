@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-07T14:48:56.872335",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سيرفيس تغير اول جريده خلفيه240' للماكينة كرد2 بواسطة محمود ايهاب"
-  },
-  {
     "timestamp": "2026-05-07T14:52:09.192163",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد6 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T12:20:16.185088",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد7 (فترة 12000 ساعة)"
   }
 ]
