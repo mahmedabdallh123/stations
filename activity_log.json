@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-06T11:06:29.082851",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-06T11:06:59.165006",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد15 (فترة 4640 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T08:07:49.237839",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد16 (فترة 4640 ساعة)"
   }
 ]
