@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-06T11:50:32.775552",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة تمشيط3"
-  },
-  {
     "timestamp": "2026-05-06T11:54:35.010615",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد15 (فترة 7100 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T08:18:57.371795",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد14 (فترة 7100 ساعة)"
   }
 ]
