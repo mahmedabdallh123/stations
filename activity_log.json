@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-06T07:52:52.580948",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه 2000 للماكينة كمبروسر 1صغير"
-  },
-  {
     "timestamp": "2026-05-06T07:56:16.361305",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد18 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T07:46:29.167269",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد19 (فترة 2320 ساعة)"
   }
 ]
