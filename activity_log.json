@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-04T10:15:56.767175",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة تمشيط1"
-  },
-  {
     "timestamp": "2026-05-04T10:16:23.100831",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 1465 للماكينة كرد2"
+  },
+  {
+    "timestamp": "2026-05-11T07:32:58.618250",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد6 (فترة 2320 ساعة)"
   }
 ]
