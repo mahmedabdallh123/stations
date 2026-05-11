@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T09:49:52.644105",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط 21 بواسطة تيم التمشيط "
-  },
-  {
     "timestamp": "2026-05-08T09:51:23.670353",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغيير زيت جيربوكس الفلاتس' للماكينة كرد12 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T12:44:48.250725",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: مرجعة العيارات للماكينة كرد10"
   }
 ]
