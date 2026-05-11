@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-06T07:56:36.070935",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'صيانه2000(تغير فلتر زيت وفلتر هواء صغير)' للماكينة كمبروسر 1صغير (فترة 2300 ساعة)"
-  },
-  {
     "timestamp": "2026-05-06T10:50:38.752755",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد20 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T07:47:47.543515",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد21 (فترة 2320 ساعة)"
   }
 ]
