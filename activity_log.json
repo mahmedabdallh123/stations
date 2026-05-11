@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-05T19:08:29.722996",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'فاصل زيت كبير' للقسم الضواغط"
-  },
-  {
     "timestamp": "2026-05-06T07:52:52.580948",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد17 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T07:45:53.851359",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد18 (فترة 2320 ساعة)"
   }
 ]
