@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-06T11:48:38.546694",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط8 بواسطة تيم التمشيط"
-  },
-  {
     "timestamp": "2026-05-06T11:50:13.174407",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد20 (فترة 7100 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-11T08:18:01.645614",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد16 (فترة 7100 ساعة)"
   }
 ]
