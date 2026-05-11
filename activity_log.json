@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-04T10:21:01.108802",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة تمشيط2"
-  },
-  {
     "timestamp": "2026-05-04T10:23:24.794548",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة ايهاب"
+  },
+  {
+    "timestamp": "2026-05-11T07:37:53.612813",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد11 (فترة 2320 ساعة)"
   }
 ]
