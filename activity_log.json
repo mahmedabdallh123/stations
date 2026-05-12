@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T09:51:53.316593",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه3 بواسطة تيم التمشيط "
-  },
-  {
     "timestamp": "2026-05-08T10:33:03.521720",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
+  },
+  {
+    "timestamp": "2026-05-12T04:53:36.415305",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش (فترة 175 ساعة)"
   }
 ]
