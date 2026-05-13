@@ -885,7 +885,9 @@ def display_sheet_data(sheet_name, df, unique_id, sheets_edit):
         all_sheets_excel = export_all_sheets_to_excel({sheet_name: df})
         st.download_button("📥 تحميل جميع البيانات كملف Excel", all_sheets_excel, f"all_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", key=f"export_all_{unique_id}")
 
-def search_across_sheets(all_sheets):
+search_columns = ["المعدة", "نوع_الصيانة", "اسم_البند", "ملاحظات", "قطع_غيار_مستخدمة_افتراضية", "رابط_الصورة"]
+            mask = pd.Series([False] * len(df_filtered))
+            fodef search_across_sheets(all_sheets):
     st.subheader("بحث متقدم في السجلات")
     if not all_sheets:
         st.warning("لا توجد بيانات للبحث")
@@ -1086,24 +1088,38 @@ def search_across_sheets(all_sheets):
             allowed_equipment = [eq for eq, sec in equipment_to_section.items() if sec == selected_section_filter]
             df_filtered = df_filtered[df_filtered["المعدة"].isin(allowed_equipment)]
         
-        # حقل البحث الخاص بالصيانة الوقائية
-        search_term = st.text_input("🔍 كلمة البحث (المعدة، البند، الملاحظات...):", key="search_term_maintenance")
-        if search_term:
-            search_columns = ["المعدة", "نوع_الصيانة", "اسم_البند", "ملاحظات", "قطع_غيار_مستخدمة_افتراضية", "رابط_الصورة"]
-            mask = pd.Series([False] * len(df_filtered))
-            for col in search_columns:
-                if col in df_filtered.columns:
-                    mask = mask | df_filtered[col].astype(str).str.contains(search_term, case=False, na=False)
-            df_filtered = df_filtered[mask]
-        
-        if not df_filtered.empty:
-            df_filtered["القسم"] = df_filtered["المعدة"].map(equipment_to_section).fillna("غير محدد")
-            st.success(f"تم العثور على {len(df_filtered)} مهمة صيانة")
-            st.dataframe(df_filtered, use_container_width=True)
-            excel_file = export_filtered_results_to_excel(df_filtered, "صيانة_وقائية")
-            st.download_button("📥 تحميل النتائج", excel_file, f"maintenance_search_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-        else:
-            st.warning("لا توجد نتائج")
+    # حقل البحث الخاص بالصيانة الوقائية
+search_term = st.text_input("🔍 كلمة البحث (المعدة، البند، الملاحظات...):", key="search_term_maintenance")
+
+if search_term:
+    mask = pd.Series([False] * len(df_filtered))  # تهيئة القناع
+    search_columns = ["المعدة", "البند", "الملاحظات"]  # حدد الأعمدة التي تريد البحث فيها
+    for col in search_columns:
+        if col in df_filtered.columns:
+            mask = mask | df_filtered[col].astype(str).str.contains(search_term, case=False, na=False)
+    df_filtered = df_filtered[mask]
+
+if not df_filtered.empty:
+    # إضافة عمود القسم (الكود الأصلي موجود مرتين، نتركه مرة واحدة)
+    df_filtered["القسم"] = df_filtered["المعدة"].map(equipment_to_section).fillna("غير محدد")
+    
+    # 🔽 الترتيب حسب التاريخ من الأقرب (الأقدم) إلى الأبعد (الأحدث) 🔽
+    if "التاريخ" in df_filtered.columns:  # استبدل "التاريخ" باسم العمود الفعلي في بياناتك
+        df_filtered = df_filtered.sort_values(by="التاريخ", ascending=True)  # True = تصاعدي = من القديم إلى الجديد
+    else:
+        st.warning("⚠️ عمود 'التاريخ' غير موجود في البيانات، تم عرض النتائج بدون ترتيب زمني")
+    
+    st.success(f"تم العثور على {len(df_filtered)} مهمة صيانة")
+    st.dataframe(df_filtered, use_container_width=True)
+    excel_file = export_filtered_results_to_excel(df_filtered, "صيانة_وقائية")
+    st.download_button(
+        "📥 تحميل النتائج",
+        excel_file,
+        f"maintenance_search_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+else:
+    st.warning("لا توجد نتائج")
 # ------------------------------- دوال إدارة المعدات والأقسام -------------------------------
 def load_equipment_config():
     if not os.path.exists(EQUIPMENT_CONFIG_FILE):
