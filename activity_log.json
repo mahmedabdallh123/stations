@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T10:33:03.521720",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة تمشيط2"
-  },
-  {
     "timestamp": "2026-05-08T10:33:50.486967",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش (فترة 175 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-13T06:41:40.743123",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض البرم"
   }
 ]
