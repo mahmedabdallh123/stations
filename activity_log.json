@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T10:33:50.486967",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير2260 للماكينة تمشيط2"
-  },
-  {
     "timestamp": "2026-05-08T10:34:42.400350",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة حوض البرم"
+  },
+  {
+    "timestamp": "2026-05-13T06:43:47.634083",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1350 بسبب وجود زكمه. ف البكر ان للماكينة كرد14"
   }
 ]
