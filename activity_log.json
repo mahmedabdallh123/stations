@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T13:02:03.520045",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط11 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-08T13:02:30.295784",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة م.محمد،شريف"
+  },
+  {
+    "timestamp": "2026-05-14T06:11:03.381395",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1200مسنن دوبل للماكينة كرد2"
   }
 ]
