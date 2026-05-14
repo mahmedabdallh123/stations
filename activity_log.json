@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-08T13:05:02.068494",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة تيم التمشيط "
-  },
-  {
     "timestamp": "2026-05-09T05:31:05.775867",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'زياره مهندس احمد علي ' للماكينة تفتيش (فترة 2 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-14T09:14:02.337634",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1465 للماكينة كرد19"
   }
 ]
