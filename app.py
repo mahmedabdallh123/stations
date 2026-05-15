@@ -2051,14 +2051,14 @@ with tabs[-1]:
     
     st.markdown("---")
     
-    # 5. رفع الصورة (مرة واحدة فقط، ثم يختفي الخيار نهائياً)
+    # 5. رفع الصورة (مرة واحدة فقط، ثم لا يمكن تغييرها أبداً)
     support_config = load_support_config()
     current_image_url = support_config.get("image_url", "")
     
     st.subheader("🖼️ صورة المطور")
     
     if current_image_url and current_image_url.strip():
-        # الصورة موجودة مسبقاً -> عرضها فقط
+        # الصورة موجودة مسبقاً -> عرضها فقط (بدون أي خيار للحذف أو التغيير)
         try:
             st.image(current_image_url, use_container_width=True)
             st.caption("✅ تم رفع الصورة (لا يمكن تغييرها بعد الآن)")
