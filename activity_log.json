@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-09T05:31:05.775867",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد3 (فترة 2120 ساعة)"
-  },
-  {
     "timestamp": "2026-05-09T10:56:27.250049",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 1465 للماكينة كرد19"
+  },
+  {
+    "timestamp": "2026-05-15T10:32:00.910886",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: وجود عطل ف سيفتي ريلاي للماكينة BO-P"
   }
 ]
