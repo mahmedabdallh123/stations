@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-09T11:09:22.061689",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد13"
-  },
-  {
     "timestamp": "2026-05-09T11:20:59.357846",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس عند1238طن للماكينة كرد20"
+  },
+  {
+    "timestamp": "2026-05-16T11:26:31.715779",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد20 (فترة 3210 ساعة)"
   }
 ]
