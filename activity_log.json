@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-09T15:40:13.823538",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد5 (فترة 2320 ساعة)"
-  },
-  {
     "timestamp": "2026-05-09T15:45:26.384932",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس ' للماكينة كرد15 (فترة 3110 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-17T09:46:05.839752",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس عند 1253طن للماكينة كرد15"
   }
 ]
