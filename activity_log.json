@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-09T15:46:35.851804",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد8 (فترة 4640 ساعة)"
-  },
-  {
     "timestamp": "2026-05-09T15:47:20.085763",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد15 بواسطة م.محمد عبدالله "
+  },
+  {
+    "timestamp": "2026-05-17T22:04:55.394156",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1200مسسن دوبل للماكينة كرد12"
   }
 ]
