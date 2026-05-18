@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-09T15:51:32.754733",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد9 (فترة 2320 ساعة)"
-  },
-  {
     "timestamp": "2026-05-09T17:31:30.888314",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 بواسطة ف.محمود ايهاب"
+  },
+  {
+    "timestamp": "2026-05-18T15:45:23.218731",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد23 بواسطة ف.محمود ايهاب"
   }
 ]
