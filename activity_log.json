@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-10T05:58:31.562877",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد5 بواسطة محمود ايهاب"
-  },
-  {
     "timestamp": "2026-05-11T05:28:02.830317",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد1 (فترة 3110 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-19T10:22:09.604559",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد23"
   }
 ]
