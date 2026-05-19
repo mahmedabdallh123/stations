@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-10T05:58:04.940862",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد4 بواسطة محمود ايهاب"
-  },
-  {
     "timestamp": "2026-05-10T05:58:31.562877",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس فيدرولل' للماكينة سيلوا4 بواسطة شريف"
+  },
+  {
+    "timestamp": "2026-05-19T06:02:53.475509",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد1 (فترة 3110 ساعة)"
   }
 ]
