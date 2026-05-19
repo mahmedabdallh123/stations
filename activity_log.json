@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T05:28:02.830317",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1465 للماكينة كرد2"
-  },
-  {
     "timestamp": "2026-05-11T07:32:58.618250",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة كرد23"
+  },
+  {
+    "timestamp": "2026-05-19T10:22:33.418632",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد9"
   }
 ]
