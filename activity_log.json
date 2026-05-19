@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T07:36:56.981489",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة ايهاب"
-  },
-  {
     "timestamp": "2026-05-11T07:37:53.612813",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد1 (فترة 720 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-19T11:29:51.557483",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد9 (فترة 720 ساعة)"
   }
 ]
