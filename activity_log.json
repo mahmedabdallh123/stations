@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T07:41:02.321050",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفي240' للماكينة كرد15 (فترة 2320 ساعة)"
-  },
-  {
     "timestamp": "2026-05-11T07:41:41.787161",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغيير زيت جير بوكس الفيدرولل' للماكينة سيلو1 بواسطة شريف "
+  },
+  {
+    "timestamp": "2026-05-19T12:43:17.429699",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغيير زيت جير بوكس الفيدرولل' للماكينة سيلو3 (فترة 21900 ساعة)"
   }
 ]
