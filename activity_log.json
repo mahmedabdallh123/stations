@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T08:14:53.555976",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد23 (فترة 7100 ساعة)"
-  },
-  {
     "timestamp": "2026-05-11T08:15:24.727391",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد18 (فترة 2800 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-21T17:39:31.423059",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد18 (فترة 7100 ساعة)"
   }
 ]
