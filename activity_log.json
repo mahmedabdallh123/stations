@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T08:04:04.394684",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد11 (فترة 4640 ساعة)"
-  },
-  {
     "timestamp": "2026-05-11T08:04:36.944895",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 700 للماكينة كرد17"
+  },
+  {
+    "timestamp": "2026-05-21T16:21:04.896973",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد17 (فترة 720 ساعة)"
   }
 ]
