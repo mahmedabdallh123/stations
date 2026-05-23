@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T12:16:19.294041",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد2 (فترة 12000 ساعة)"
-  },
-  {
     "timestamp": "2026-05-11T12:17:17.184516",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفس  للماكينة كرد13"
+  },
+  {
+    "timestamp": "2026-05-23T17:32:28.874154",
+    "username": "مشرف_التمشيط",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: بلي شداد بايظ للماكينة تمشيط2"
   }
 ]
