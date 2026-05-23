@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T12:20:52.039609",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد8 (فترة 12000 ساعة)"
-  },
-  {
     "timestamp": "2026-05-11T12:21:19.347835",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد13 (فترة 720 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-23T19:55:11.536502",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد13 بواسطة مصطفى "
   }
 ]
