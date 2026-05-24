@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-13T10:16:31.459442",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة م.محمد،شريف"
-  },
-  {
     "timestamp": "2026-05-14T06:11:03.381395",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-24T09:47:21.602150",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم المحطات "
+  },
+  {
+    "timestamp": "2026-05-24T09:47:54.194545",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم المحطات "
