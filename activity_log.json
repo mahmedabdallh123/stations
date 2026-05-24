@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-14T07:15:09.399241",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'زياره مهندس احمد علي ' للماكينة تفتيش (فترة 2 ساعة)"
-  },
-  {
     "timestamp": "2026-05-14T09:14:02.337634",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد22 بواسطة محمود ايهاب"
+  },
+  {
+    "timestamp": "2026-05-24T12:16:46.280166",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد22 بواسطة محمود ايهاب"
   }
 ]
