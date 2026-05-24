@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T12:30:44.287812",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغيير زيت جيربوكس الفلاتس' للماكينة كرد11 (فترة 12000 ساعة)"
-  },
-  {
     "timestamp": "2026-05-11T12:31:12.520694",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير753 للماكينة كرد12"
+  },
+  {
+    "timestamp": "2026-05-24T05:50:33.991960",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد15"
   }
 ]
