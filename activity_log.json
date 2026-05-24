@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-13T06:41:40.743123",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة حوض البرم"
-  },
-  {
     "timestamp": "2026-05-13T06:43:47.634083",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-24T05:58:23.320045",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم المحطات"
+  },
+  {
+    "timestamp": "2026-05-24T05:58:42.886719",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم المحطات"
