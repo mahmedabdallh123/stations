@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-11T12:44:48.250725",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: مرجعة العيارات للماكينة كرد10"
-  },
-  {
     "timestamp": "2026-05-11T15:25:54.422753",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-24T05:56:39.243356",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم المحطات"
+  },
+  {
+    "timestamp": "2026-05-24T05:57:25.346306",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم المحطات"
