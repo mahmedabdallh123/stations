@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-13T06:44:28.262184",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل:  للمره تانيه قطع سير 1350 بسبب وجود زكمه. ف البكر  للماكينة كرد14"
-  },
-  {
     "timestamp": "2026-05-13T06:46:18.210193",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم المحطات"
+  },
+  {
+    "timestamp": "2026-05-24T05:59:35.527120",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال التنظيف بواسطة تيم المحطات"
   }
 ]
