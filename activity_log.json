@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-18T16:47:13.819398",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس فيدرولل' للماكينة سيلو2 بواسطة شريف"
-  },
-  {
     "timestamp": "2026-05-18T16:47:57.327090",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-25T09:53:00.090087",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد18 بواسطة محمود ايهاب"
+  },
+  {
+    "timestamp": "2026-05-25T09:53:17.870976",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد18 بواسطة محمود ايهاب"
