@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-18T15:48:51.257074",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد23"
-  },
-  {
     "timestamp": "2026-05-18T15:51:01.571691",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد17 بواسطة محمود إيهاب "
+  },
+  {
+    "timestamp": "2026-05-25T09:51:28.512057",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد18 (فترة 720 ساعة)"
   }
 ]
