@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-17T22:04:55.394156",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1200مسسن دوبل للماكينة كرد12"
-  },
-  {
     "timestamp": "2026-05-18T05:22:50.717799",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-25T05:06:48.386794",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد15 (فترة 720 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-25T05:07:04.310526",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد15 (فترة 720 ساعة)"
