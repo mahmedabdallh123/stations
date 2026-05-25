@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-19T10:22:09.604559",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد23"
-  },
-  {
     "timestamp": "2026-05-19T10:22:33.418632",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-25T12:16:34.857903",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد18 بواسطة م- محمد / ايهاب "
+  },
+  {
+    "timestamp": "2026-05-25T12:19:08.224466",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد18 بواسطة م- محمد / ايهاب "
