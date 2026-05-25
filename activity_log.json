@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-18T15:51:01.571691",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد23"
-  },
-  {
     "timestamp": "2026-05-18T16:46:41.983290",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-25T09:51:28.512057",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد18 (فترة 720 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-25T09:52:21.836281",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد18 (فترة 720 ساعة)"
