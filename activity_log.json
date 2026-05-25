@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-17T09:46:05.839752",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس عند 1253طن للماكينة كرد15"
-  },
-  {
     "timestamp": "2026-05-17T10:51:04.946639",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-25T05:06:01.666035",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد22 بواسطة محمود ايهاب"
+  },
+  {
+    "timestamp": "2026-05-25T05:06:19.905505",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد22 بواسطة محمود ايهاب"
