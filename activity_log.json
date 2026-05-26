@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-19T11:30:19.096597",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد23 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-19T12:41:06.902772",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت مكبس' للماكينة مكبس التمشيط (فترة 21900 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-26T16:51:00.572897",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت مكبس التمشيط ' للماكينة مكبس التمشيط (فترة 21900 ساعة)"
   }
 ]
