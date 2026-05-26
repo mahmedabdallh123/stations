@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-19T12:41:36.715637",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغيير زيت جير بوكس الفيدرولل' للماكينة سيلو1 بواسطة شريف "
-  },
-  {
     "timestamp": "2026-05-19T12:43:17.429699",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت مكبس التمشيط ' للماكينة مكبس التمشيط (فترة 21900 ساعة)"
+  },
+  {
+    "timestamp": "2026-05-26T17:21:56.339958",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت مكبس التمشيط ' للماكينة مكبس التمشيط بواسطة تيم محطات"
   }
 ]
