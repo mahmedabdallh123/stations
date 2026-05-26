@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-19T10:25:51.493533",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1200 للماكينة كرد9"
-  },
-  {
     "timestamp": "2026-05-19T11:29:13.670816",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه(تغير زيت) للماكينة مكبس التمشيط"
+  },
+  {
+    "timestamp": "2026-05-26T16:48:22.995367",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه (تغير زيت) للماكينة مكبس التمشيط"
   }
 ]
