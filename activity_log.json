@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-20T16:21:34.673386",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس  للماكينة كرد16"
-  },
-  {
     "timestamp": "2026-05-20T16:22:47.893300",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم الكرد"
+  },
+  {
+    "timestamp": "2026-05-26T17:50:00.708027",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم الكرد"
   }
 ]
