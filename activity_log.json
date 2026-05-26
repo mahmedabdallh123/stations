@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-19T10:22:33.418632",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد9"
-  },
-  {
     "timestamp": "2026-05-19T10:23:00.603586",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد18 بواسطة م- محمد / ايهاب "
+  },
+  {
+    "timestamp": "2026-05-26T16:38:58.697856",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه(تغير زيت) للماكينة مكبس التمشيط"
   }
 ]
