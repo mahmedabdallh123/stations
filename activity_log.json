@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-19T10:25:04.039570",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد1"
-  },
-  {
     "timestamp": "2026-05-19T10:25:51.493533",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه(قطع كسوه روتاري فلتر) للماكينة روتاري فلتر كرد1"
+  },
+  {
+    "timestamp": "2026-05-26T16:43:58.713488",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه(تغير زيت) للماكينة مكبس التمشيط"
   }
 ]
