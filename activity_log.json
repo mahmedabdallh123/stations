@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-20T16:27:03.457971",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص عيارات رولين الكويلر ومنطقه الديلفري الخاصين بسير700,1270' للماكينة كرد24 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-20T19:15:02.628379",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-05-26T17:51:40.994847",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم الكرد"
+  },
+  {
+    "timestamp": "2026-05-26T17:52:15.450287",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم الكرد"
