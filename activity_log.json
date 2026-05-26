@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-20T16:16:49.996420",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'سن الفلاتس ' للماكينة كرد16 (فترة 2850 ساعة)"
-  },
-  {
     "timestamp": "2026-05-20T16:18:06.929500",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة تيم الكرد"
+  },
+  {
+    "timestamp": "2026-05-26T17:49:22.447476",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم الكرد"
   }
 ]
