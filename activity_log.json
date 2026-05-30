@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-20T19:15:02.628379",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فحص عيارات رولين الكويلر ومنطقه الديلفري الخاصين بسير700,1270' للماكينة كرد24 بواسطة حسام ،محمود ايهاب"
-  },
-  {
     "timestamp": "2026-05-20T19:18:17.249665",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم الكرد"
+  },
+  {
+    "timestamp": "2026-05-30T08:14:54.409951",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد18"
   }
 ]
