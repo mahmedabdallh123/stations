@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-20T19:18:17.249665",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص عيارات رولين الكويلر ومنطقه الديلفري الخاصين بسير700,1270' للماكينة كرد16 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-20T19:37:38.611110",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير700 للماكينة كرد18"
+  },
+  {
+    "timestamp": "2026-05-30T14:37:51.909750",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد5"
   }
 ]
