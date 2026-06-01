@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-21T17:38:50.065107",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد18 (فترة 2800 ساعة)"
-  },
-  {
     "timestamp": "2026-05-21T17:39:31.423059",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد19 بواسطة محمود ايهاب "
+  },
+  {
+    "timestamp": "2026-06-01T09:59:29.092011",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد19"
   }
 ]
