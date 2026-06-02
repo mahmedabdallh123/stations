@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-22T11:16:50.693857",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: عطل حساس ضغط للماكينة CLU-1"
-  },
-  {
     "timestamp": "2026-05-22T18:53:44.849329",
     "username": "مشرف_التمشيط",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تجربه للماكينة كرد20"
+  },
+  {
+    "timestamp": "2026-06-02T12:26:32.574714",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: ثقب ف شاسيه مروحه للماكينة موتور شفط التراب لجهاز DS=184"
   }
 ]
