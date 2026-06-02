@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-22T06:28:57.297985",
-    "username": "مدير_صيانة",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد17"
-  },
-  {
     "timestamp": "2026-05-22T11:13:22.357001",
     "username": "مشرف_المكابس",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير بري فلتر كرد2 للماكينة بري فلتر كرد2"
+  },
+  {
+    "timestamp": "2026-06-02T10:33:31.821217",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بلي موتور رصاص الكويلر  للماكينة كرد12"
   }
 ]
