@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-22T06:28:16.662080",
-    "username": "مدير_صيانة",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد4"
-  },
-  {
     "timestamp": "2026-05-22T06:28:57.297985",
     "username": "مدير_صيانة",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد20 بواسطة محمود ايهاب "
+  },
+  {
+    "timestamp": "2026-06-02T10:18:24.402420",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير بري فلتر كرد2 للماكينة بري فلتر كرد2"
   }
 ]
