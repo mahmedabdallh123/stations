@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-23T12:28:33.082862",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'سن الفلاتس ' للماكينة كرد22 (فترة 2800 ساعة)"
-  },
-  {
     "timestamp": "2026-05-23T16:28:51.607875",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-03T10:23:54.561078",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 (فترة 2800 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-03T10:24:14.584220",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 (فترة 2800 ساعة)"
