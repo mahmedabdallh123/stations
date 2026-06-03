@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-23T12:23:08.376319",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد13 بواسطة حسام،مصطفي"
-  },
-  {
     "timestamp": "2026-05-23T12:28:15.239429",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-03T10:21:40.259180",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفيه240' للماكينة كرد12 بواسطة محمود ايهاب"
+  },
+  {
+    "timestamp": "2026-06-03T10:22:04.667842",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفيه240' للماكينة كرد12 بواسطة محمود ايهاب"
