@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-24T05:50:33.991960",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد15"
-  },
-  {
     "timestamp": "2026-05-24T05:56:39.243356",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط2 بواسطة تيم تمشيط "
+  },
+  {
+    "timestamp": "2026-06-04T15:12:36.780471",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط1 بواسطة تيم تمشيط "
   }
 ]
