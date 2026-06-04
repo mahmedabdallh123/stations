@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-23T16:33:27.464987",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفس  للماكينة كرد13"
-  },
-  {
     "timestamp": "2026-05-23T17:32:28.874154",
     "username": "مشرف_التمشيط",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير700 للماكينة كرد9"
+  },
+  {
+    "timestamp": "2026-06-04T10:05:57.451577",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة BO-P"
   }
 ]
