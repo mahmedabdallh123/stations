@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-23T16:28:51.607875",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد13 بواسطة م/محمد - حسام- مصطفي"
-  },
-  {
     "timestamp": "2026-05-23T16:33:27.464987",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 (فترة 2800 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-04T10:02:21.317648",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد9"
   }
 ]
