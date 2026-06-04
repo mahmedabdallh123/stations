@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-24T05:56:39.243356",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم المحطات"
-  },
-  {
     "timestamp": "2026-05-24T05:57:25.346306",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط1 بواسطة تيم تمشيط "
+  },
+  {
+    "timestamp": "2026-06-04T15:13:15.403555",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم الملفات)' للماكينة ماكينه 1 بواسطة تيم تمشيط "
   }
 ]
