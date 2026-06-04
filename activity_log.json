@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-23T17:32:28.874154",
-    "username": "مشرف_التمشيط",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: بلي شداد بايظ للماكينة تمشيط2"
-  },
-  {
     "timestamp": "2026-05-23T17:33:54.569447",
     "username": "مشرف_التمشيط",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة BO-P"
+  },
+  {
+    "timestamp": "2026-06-04T10:12:36.022401",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد11 (فترة 720 ساعة)"
   }
 ]
