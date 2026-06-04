@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-24T05:58:42.886719",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم المحطات"
-  },
-  {
     "timestamp": "2026-05-24T05:59:06.434356",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة تيم تمشيط "
+  },
+  {
+    "timestamp": "2026-06-04T15:14:42.421505",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة تيم تمشيط "
   }
 ]
