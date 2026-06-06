@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-24T12:15:37.695163",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد22 بواسطة محمود ايهاب"
-  },
-  {
     "timestamp": "2026-05-24T12:16:46.280166",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير753 للماكينة كرد17"
+  },
+  {
+    "timestamp": "2026-06-06T11:11:13.522706",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد9 بواسطة محمود ايهاب"
   }
 ]
