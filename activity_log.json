@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-24T12:17:12.259102",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد22 بواسطة محمود ايهاب"
-  },
-  {
     "timestamp": "2026-05-24T15:19:06.537488",
     "username": "مشرف_التمشيط",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-07T07:31:54.630701",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس ' للماكينة كرد6 (فترة 2800 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-07T07:32:16.014206",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس ' للماكينة كرد6 (فترة 2800 ساعة)"
