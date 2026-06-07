@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-25T05:05:02.642964",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير700وسير1270' للماكينة كرد22 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-05-25T05:05:25.284718",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة موتور شفط التراب لجهاز DS=184"
+  },
+  {
+    "timestamp": "2026-06-07T07:41:06.768247",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد6 بواسطة محمود ايهاب "
   }
 ]
