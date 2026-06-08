@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-26T16:38:58.697856",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه(تغير زيت) للماكينة مكبس التمشيط"
-  },
-  {
     "timestamp": "2026-05-26T16:40:47.800343",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد8 بواسطة تيم الكرد "
+  },
+  {
+    "timestamp": "2026-06-08T10:49:32.716323",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد9 بواسطة تيم الكرد "
   }
 ]
