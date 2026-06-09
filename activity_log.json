@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-26T17:20:41.768177",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت مكبس التمشيط ' للماكينة مكبس التمشيط (فترة 21900 ساعة)"
-  },
-  {
     "timestamp": "2026-05-26T17:21:56.339958",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل:  سوسته قفل احد رولين كويلر باظت للماكينة كرد7"
+  },
+  {
+    "timestamp": "2026-06-09T18:17:22.681814",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير753 فلات للماكينة كرد14"
   }
 ]
