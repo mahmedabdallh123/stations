@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-02T10:33:31.821217",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي موتور رصاص الكويلر  للماكينة كرد12"
-  },
-  {
     "timestamp": "2026-06-02T10:35:58.455286",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد20 بواسطة تيم كرد "
+  },
+  {
+    "timestamp": "2026-06-10T17:22:35.281525",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد22 بواسطة تيم كرد "
   }
 ]
