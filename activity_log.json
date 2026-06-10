@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-26T17:51:12.700320",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-05-26T17:51:40.994847",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تركيب للماكينة حوض التنظيف"
+  },
+  {
+    "timestamp": "2026-06-10T16:54:47.168059",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد13 بواسطة تيم كرد"
   }
 ]
