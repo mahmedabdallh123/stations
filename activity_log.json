@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-26T17:50:56.507134",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-05-26T17:51:12.700320",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: كسر لوح اكليريك عند جنزير  للماكينة مكبس السايلوهات"
+  },
+  {
+    "timestamp": "2026-06-10T16:26:51.213905",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تركيب للماكينة حوض التنظيف"
   }
 ]
