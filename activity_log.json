@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-02T10:16:29.007192",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد20 بواسطة محمود ايهاب "
-  },
-  {
     "timestamp": "2026-06-02T10:18:24.402420",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد18 بواسطة تيم كرد "
+  },
+  {
+    "timestamp": "2026-06-10T17:21:45.356705",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد20 بواسطة تيم كرد "
   }
 ]
