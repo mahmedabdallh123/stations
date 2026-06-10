@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-05-26T17:48:00.241953",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-05-26T17:48:29.894511",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد4"
+  },
+  {
+    "timestamp": "2026-06-10T08:46:03.590128",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1800فلات للماكينة كرد14"
   }
 ]
