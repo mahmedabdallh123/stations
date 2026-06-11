@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-03T10:23:54.561078",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 (فترة 2800 ساعة)"
-  },
-  {
     "timestamp": "2026-06-03T10:24:14.584220",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مدير_صيانة",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير شريط الشاشه ١٨٠٠ للماكينة كرد10"
+  },
+  {
+    "timestamp": "2026-06-11T19:44:01.755511",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1800فلات للماكينة كرد10"
   }
 ]
