@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-02T15:38:28.451968",
-    "username": "مشرف_البرم",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تركيب باب جديد عينه  للماكينة ماكينه 8"
-  },
-  {
     "timestamp": "2026-06-03T10:19:36.844887",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة BO-P"
+  },
+  {
+    "timestamp": "2026-06-11T11:54:41.481125",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
   }
 ]
