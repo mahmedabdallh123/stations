@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T10:05:57.451577",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة BO-P"
-  },
-  {
     "timestamp": "2026-06-04T10:12:36.022401",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف حساس سيفتي باب معادن  للماكينة SP-MF"
+  },
+  {
+    "timestamp": "2026-06-13T22:27:09.414981",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير دوفر مسنن الطرفين 1200 للماكينة كرد14"
   }
 ]
