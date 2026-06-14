@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T14:39:16.287365",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط11 بواسطة تيم تمشيط "
-  },
-  {
     "timestamp": "2026-06-04T14:39:37.486081",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 4كبير"
+  },
+  {
+    "timestamp": "2026-06-14T10:10:21.931102",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور 209 خاص بشفط عوادم روتاري فلتر لجهاز تراب"
   }
 ]
