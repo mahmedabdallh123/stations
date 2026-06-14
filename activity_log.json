@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T15:13:15.403555",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم الملفات)' للماكينة ماكينه 1 بواسطة تيم تمشيط "
-  },
-  {
     "timestamp": "2026-06-04T15:13:20.236109",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد19 بواسطة مصطفي ،سلامه"
+  },
+  {
+    "timestamp": "2026-06-14T14:55:52.834655",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل:  تغيير متور كويلر المتور الملفوف جديد و المبينه ال للماكينة كرد21"
   }
 ]
