@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T15:12:08.814458",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط2 بواسطة تيم تمشيط "
-  },
-  {
     "timestamp": "2026-06-04T15:12:36.780471",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد19"
+  },
+  {
+    "timestamp": "2026-06-14T14:38:07.403193",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد19 بواسطة مصطفي ،سلامه"
   }
 ]
