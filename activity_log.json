@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T15:14:20.675369",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة تيم تمشيط "
-  },
-  {
     "timestamp": "2026-06-04T15:14:42.421505",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير700 للماكينة كرد2"
+  },
+  {
+    "timestamp": "2026-06-15T09:17:21.447357",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد2 بواسطة حسام "
   }
 ]
