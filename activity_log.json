@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T15:14:42.421505",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة تيم تمشيط "
-  },
-  {
     "timestamp": "2026-06-04T15:15:07.899001",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد2 بواسطة حسام "
+  },
+  {
+    "timestamp": "2026-06-15T14:38:40.209097",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض 3/1غزل"
   }
 ]
