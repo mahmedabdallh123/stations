@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-04T15:15:48.610542",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط3 بواسطة تيم تمشيط "
-  },
-  {
     "timestamp": "2026-06-05T17:18:38.024694",
     "username": "admin",
     "action_type": "add_spare_part",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-15T19:07:26.050004",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
+  },
+  {
+    "timestamp": "2026-06-15T19:09:28.870403",
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
