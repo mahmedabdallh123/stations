@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-06T11:09:39.121489",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير753 للماكينة كرد17"
-  },
-  {
     "timestamp": "2026-06-06T11:11:13.522706",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير1200مسنن للماكينة كرد24"
+  },
+  {
+    "timestamp": "2026-06-16T10:34:38.397091",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9"
   }
 ]
