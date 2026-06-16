@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-06T08:30:36.921328",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1200فلات للماكينة كرد1"
-  },
-  {
     "timestamp": "2026-06-06T11:09:39.121489",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
+  },
+  {
+    "timestamp": "2026-06-16T10:33:52.896319",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1200مسنن للماكينة كرد24"
   }
 ]
