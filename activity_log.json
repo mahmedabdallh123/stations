@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-08T10:42:01.185706",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد10 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-06-08T10:42:31.041473",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-16T12:44:47.900423",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل (فترة 2900 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-16T12:45:13.429310",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل (فترة 2900 ساعة)"
