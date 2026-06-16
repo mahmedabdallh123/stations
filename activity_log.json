@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-06T11:11:13.522706",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد9 بواسطة محمود ايهاب"
-  },
-  {
     "timestamp": "2026-06-07T07:31:54.630701",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد9"
+  },
+  {
+    "timestamp": "2026-06-16T10:37:30.527541",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: خلع مساحه فلاتس داخليه  للماكينة كرد9"
   }
 ]
