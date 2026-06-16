@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-07T07:41:23.832717",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد6 بواسطة محمود ايهاب "
-  },
-  {
     "timestamp": "2026-06-08T05:46:59.534258",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-16T10:53:32.389391",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف (فترة 2900 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-16T10:53:57.210904",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف (فترة 2900 ساعة)"
