@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-08T10:45:32.184746",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد3 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-06-08T10:45:53.063371",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة محمود ايهاب ،سعيد"
+  },
+  {
+    "timestamp": "2026-06-17T12:05:13.671585",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد10"
   }
 ]
