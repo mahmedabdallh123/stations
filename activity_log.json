@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-08T10:50:08.519808",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد7 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-06-08T10:50:29.570317",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد21 بواسطة ايهاب،حسام"
+  },
+  {
+    "timestamp": "2026-06-17T12:15:53.456132",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بستم مجموعه مساحة دليفري للماكينة كرد14"
   }
 ]
