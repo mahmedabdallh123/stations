@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-08T10:50:29.570317",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد7 بواسطة تيم الكرد "
-  },
-  {
     "timestamp": "2026-06-08T10:50:59.462811",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بستم مجموعه مساحة دليفري للماكينة كرد14"
+  },
+  {
+    "timestamp": "2026-06-17T14:34:20.636706",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة م.عبدالله"
   }
 ]
