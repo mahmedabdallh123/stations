@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-08T10:47:22.303168",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد5 بواسطة تيم الكرد "
-  },
-  {
     "timestamp": "2026-06-08T10:48:08.555668",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: كسر مسمار تثبيت اول حريده240 للماكينة كرد21"
+  },
+  {
+    "timestamp": "2026-06-17T12:08:03.059507",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: كسر حافه طاره 1270مسننه للماكينة كرد21"
   }
 ]
