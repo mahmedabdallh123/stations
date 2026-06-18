@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-09T18:17:22.681814",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير753 فلات للماكينة كرد14"
-  },
-  {
     "timestamp": "2026-06-10T05:39:15.911383",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: حدوث زكمه ف سلندر ووجود كسر ق مسمار طاره نقل حركه  للماكينة كرد21"
+  },
+  {
+    "timestamp": "2026-06-18T10:09:18.613697",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
   }
 ]
