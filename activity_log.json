@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-10T08:49:51.140216",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد4 بواسطة محمود ايهاب "
-  },
-  {
     "timestamp": "2026-06-10T08:50:18.704933",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-18T10:22:29.866932",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد3 بواسطة ايهاب"
+  },
+  {
+    "timestamp": "2026-06-18T10:22:47.649041",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد3 بواسطة ايهاب"
