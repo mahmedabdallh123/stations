@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-10T08:44:26.090720",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد4"
-  },
-  {
     "timestamp": "2026-06-10T08:46:03.590128",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-18T10:21:39.569724",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد3 (فترة 2800 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-18T10:21:57.060397",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد3 (فترة 2800 ساعة)"
