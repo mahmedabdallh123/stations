@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-08T10:53:47.298417",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل:  سوسته قفل احد رولين كويلر باظت للماكينة كرد7"
-  },
-  {
     "timestamp": "2026-06-09T18:17:22.681814",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد3"
+  },
+  {
+    "timestamp": "2026-06-18T09:55:07.851357",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: حدوث زكمه ف سلندر ووجود كسر ق مسمار طاره نقل حركه  للماكينة كرد21"
   }
 ]
