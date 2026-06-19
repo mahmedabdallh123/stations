@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-10T16:59:11.486189",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد14 (فترة 720 ساعة)"
-  },
-  {
     "timestamp": "2026-06-10T16:59:43.057489",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد24"
+  },
+  {
+    "timestamp": "2026-06-19T00:28:27.021866",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير  للماكينة كرد15"
   }
 ]
