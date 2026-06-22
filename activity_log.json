@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-10T17:09:34.926306",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد24 بواسطة تيم كرد"
-  },
-  {
     "timestamp": "2026-06-10T17:19:57.199585",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك1غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم محطات"
+  },
+  {
+    "timestamp": "2026-06-22T10:55:15.314093",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد11 بواسطة ايهاب،حسام "
   }
 ]
