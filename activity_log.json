@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-10T17:22:35.281525",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد22 بواسطة تيم كرد "
-  },
-  {
     "timestamp": "2026-06-10T17:23:06.111393",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد11"
+  },
+  {
+    "timestamp": "2026-06-22T15:26:32.767683",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور315 شفط الغزل لسايلو5"
   }
 ]
