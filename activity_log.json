@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-11T11:54:41.481125",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
-  },
-  {
     "timestamp": "2026-06-11T11:56:16.138195",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تبديل للماكينة كرد8"
+  },
+  {
+    "timestamp": "2026-06-22T17:36:57.653971",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور شفط  بلور1"
   }
 ]
