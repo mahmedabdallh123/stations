@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-10T17:21:45.356705",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد20 بواسطة تيم كرد "
-  },
-  {
     "timestamp": "2026-06-10T17:22:01.583519",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-22T10:57:40.588351",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد11 بواسطة ايهاب،حسام "
+  },
+  {
+    "timestamp": "2026-06-22T10:58:35.708695",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد11 بواسطة ايهاب،حسام "
