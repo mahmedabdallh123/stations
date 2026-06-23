@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-11T16:02:15.743537",
-    "username": "مدير_صيانة",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير شريط الشاشه ١٨٠٠ للماكينة كرد10"
-  },
-  {
     "timestamp": "2026-06-11T19:44:01.755511",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: كسر باب محطه الترطيب  للماكينة حوض البرم"
+  },
+  {
+    "timestamp": "2026-06-23T18:46:09.478140",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير رشاشات بلوك 2غزل3/2' للماكينة حوض 3/2غزل (فترة 2900 ساعة)"
   }
 ]
