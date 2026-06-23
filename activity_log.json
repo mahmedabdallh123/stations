@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-11T19:44:01.755511",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1800فلات للماكينة كرد10"
-  },
-  {
     "timestamp": "2026-06-13T15:17:57.786284",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-23T18:46:09.478140",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير رشاشات بلوك 2غزل3/2' للماكينة حوض 3/2غزل (فترة 2900 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-23T18:46:31.684506",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير رشاشات بلوك 2غزل3/2' للماكينة حوض 3/2غزل (فترة 2900 ساعة)"
