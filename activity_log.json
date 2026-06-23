@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-11T11:56:16.138195",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تهنيج ف حساس شد ديتاتشر للماكينة BO-P"
-  },
-  {
     "timestamp": "2026-06-11T15:45:25.088377",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور شفط  بلور1"
+  },
+  {
+    "timestamp": "2026-06-23T00:27:29.153073",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد11 بواسطة ايهاب"
   }
 ]
