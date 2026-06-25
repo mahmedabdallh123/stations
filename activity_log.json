@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-16T10:34:38.397091",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9"
-  },
-  {
     "timestamp": "2026-06-16T10:37:30.527541",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير1200مسنن للماكينة كرد2"
+  },
+  {
+    "timestamp": "2026-06-25T15:39:43.161677",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة فني ورديه"
   }
 ]
