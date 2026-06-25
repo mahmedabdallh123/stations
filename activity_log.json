@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-14T10:10:21.931102",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور 209 خاص بشفط عوادم روتاري فلتر لجهاز تراب"
-  },
-  {
     "timestamp": "2026-06-14T14:35:45.232319",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-25T11:45:36.096078",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة علي،عبدالعظيم "
+  },
+  {
+    "timestamp": "2026-06-25T11:45:48.338331",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة علي،عبدالعظيم "
