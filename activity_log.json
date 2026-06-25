@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-15T19:09:28.870403",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
-  },
-  {
     "timestamp": "2026-06-15T19:18:13.389603",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة روتاري فلتر كرد1"
+  },
+  {
+    "timestamp": "2026-06-25T11:55:59.745400",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة روتاري فلتر كرد2"
   }
 ]
