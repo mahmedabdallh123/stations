@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-14T10:04:23.771816",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 3كبير"
-  },
-  {
     "timestamp": "2026-06-14T10:04:42.384035",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-25T11:44:59.066371",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة علي،عبدالعظيم "
+  },
+  {
+    "timestamp": "2026-06-25T11:45:16.829041",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة علي،عبدالعظيم "
