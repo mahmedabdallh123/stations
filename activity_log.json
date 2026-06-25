@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-15T09:17:21.447357",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد2 بواسطة حسام "
-  },
-  {
     "timestamp": "2026-06-15T14:38:40.209097",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة بري فلتر التنظيف"
+  },
+  {
+    "timestamp": "2026-06-25T11:50:50.032583",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة روتاري فلتر كرد1"
   }
 ]
