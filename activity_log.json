@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-16T10:51:42.260195",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف (فترة 120 ساعة)"
-  },
-  {
     "timestamp": "2026-06-16T10:53:32.389391",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم كرد "
+  },
+  {
+    "timestamp": "2026-06-27T12:50:00.525689",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير جير بوكس عربات للماكينة روتاري فلتر تدوير2"
   }
 ]
