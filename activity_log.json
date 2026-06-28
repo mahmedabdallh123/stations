@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-16T12:44:47.900423",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل (فترة 2900 ساعة)"
-  },
-  {
     "timestamp": "2026-06-16T12:45:13.429310",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد15"
+  },
+  {
+    "timestamp": "2026-06-28T08:35:59.887210",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد15"
   }
 ]
