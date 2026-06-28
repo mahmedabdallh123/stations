@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-17T12:05:13.671585",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد10"
-  },
-  {
     "timestamp": "2026-06-17T12:06:27.215968",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بلي شداد سلندر للماكينة كرد1"
+  },
+  {
+    "timestamp": "2026-06-28T19:14:34.415580",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور152  سايلوا كرد"
   }
 ]
