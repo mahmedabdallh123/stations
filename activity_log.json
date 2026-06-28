@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-16T12:44:09.049995",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل (فترة 2900 ساعة)"
-  },
-  {
     "timestamp": "2026-06-16T12:44:47.900423",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد15 بواسطة م.محمد ,ايهاب"
+  },
+  {
+    "timestamp": "2026-06-28T08:34:51.720884",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد15"
   }
 ]
