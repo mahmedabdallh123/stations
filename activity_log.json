@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-16T10:53:57.210904",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف (فترة 2900 ساعة)"
-  },
-  {
     "timestamp": "2026-06-16T12:43:52.720612",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد10"
+  },
+  {
+    "timestamp": "2026-06-28T08:31:48.339400",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد15 بواسطة م.محمد ,ايهاب"
   }
 ]
