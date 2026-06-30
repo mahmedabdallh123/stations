@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-23T18:44:23.915914",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: كسر باب محطه الترطيب  للماكينة حوض البرم"
-  },
-  {
     "timestamp": "2026-06-23T18:46:09.478140",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد24"
+  },
+  {
+    "timestamp": "2026-06-30T07:19:06.986239",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد12"
   }
 ]
