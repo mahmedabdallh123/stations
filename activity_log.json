@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-17T12:15:53.456132",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بستم مجموعه مساحة دليفري للماكينة كرد14"
-  },
-  {
     "timestamp": "2026-06-17T14:34:20.636706",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_المكابس",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تنظيف وتشحيم الحصيره' للماكينة مكبس السايلوهات (فترة 240 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-30T06:05:47.469755",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وتشحيم الحصيره' للماكينة مكبس التمشيط بواسطة علي"
   }
 ]
