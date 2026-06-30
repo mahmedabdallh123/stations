@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-19T00:28:27.021866",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير  للماكينة كرد15"
-  },
-  {
     "timestamp": "2026-06-20T12:11:12.019841",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-30T06:48:27.779996",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلابه' للماكينة CLU-2 بواسطة تيم الكرد"
+  },
+  {
+    "timestamp": "2026-06-30T06:48:49.554322",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلابه' للماكينة CLU-2 بواسطة تيم الكرد"
