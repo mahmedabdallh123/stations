@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-18T09:50:39.972562",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة حوض التنظيف"
-  },
-  {
     "timestamp": "2026-06-18T09:52:28.983414",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-06-30T06:07:16.621429",
+    "username": "مشرف_المكابس",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تنظيف وتشحيم الحصيره' للماكينة مكبس السايلوهات (فترة 240 ساعة)"
+  },
+  {
+    "timestamp": "2026-06-30T06:07:48.885889",
     "username": "مشرف_المكابس",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تنظيف وتشحيم الحصيره' للماكينة مكبس السايلوهات (فترة 240 ساعة)"
