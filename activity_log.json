@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-17T12:06:27.215968",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد21"
-  },
-  {
     "timestamp": "2026-06-17T12:07:16.798702",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "مشرف_المكابس",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور152  سايلوا كرد"
+  },
+  {
+    "timestamp": "2026-06-30T05:57:41.489686",
+    "username": "مشرف_المكابس",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت مكبس السايلوهات' للماكينة مكبس السايلوهات (فترة 22000 ساعة)"
   }
 ]
