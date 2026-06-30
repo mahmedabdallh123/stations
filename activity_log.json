@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-18T10:21:57.060397",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد3 (فترة 2800 ساعة)"
-  },
-  {
     "timestamp": "2026-06-18T10:22:29.866932",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس فايبرسيباراتور' للماكينة مكبس السايلوهات بواسطة علي"
+  },
+  {
+    "timestamp": "2026-06-30T06:12:12.725372",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وتشحيم الحصيره' للماكينة مكبس السايلوهات بواسطة علي"
   }
 ]
