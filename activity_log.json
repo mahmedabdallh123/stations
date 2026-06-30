@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-24T12:09:52.460891",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1520 للماكينة كرد20"
-  },
-  {
     "timestamp": "2026-06-24T12:10:39.128901",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد17"
+  },
+  {
+    "timestamp": "2026-06-30T12:14:06.925192",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: كسر  حامل مساحه خروج الشريط  للماكينة كرد7"
   }
 ]
