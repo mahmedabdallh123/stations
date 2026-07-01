@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-24T12:11:24.216400",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك 3غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم محطات "
-  },
-  {
     "timestamp": "2026-06-24T12:11:36.676932",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-01T19:22:12.469914",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم (فترة 336 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-01T19:22:38.445445",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم (فترة 336 ساعة)"
