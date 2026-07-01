@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-25T11:44:59.066371",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة علي،عبدالعظيم "
-  },
-  {
     "timestamp": "2026-06-25T11:45:16.829041",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-01T19:23:09.683384",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة انس"
+  },
+  {
+    "timestamp": "2026-07-01T19:25:28.364944",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة انس"
