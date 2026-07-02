@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-25T11:46:25.320904",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة علي،عبدالعظيم "
-  },
-  {
     "timestamp": "2026-06-25T11:46:43.974703",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد4"
+  },
+  {
+    "timestamp": "2026-07-02T20:53:15.452790",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير  للماكينة بري فلتر تمشيط1"
   }
 ]
