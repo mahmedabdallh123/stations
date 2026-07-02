@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-25T11:45:48.338331",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة علي،عبدالعظيم "
-  },
-  {
     "timestamp": "2026-06-25T11:46:12.432808",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف عصارة خروج شريط الخامة  للماكينة كرد18"
+  },
+  {
+    "timestamp": "2026-07-02T20:47:37.548441",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تعديلات  للماكينة روتاري فلتر تمشيط 1"
   }
 ]
