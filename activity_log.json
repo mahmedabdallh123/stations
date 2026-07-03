@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-27T15:30:33.314588",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد10"
-  },
-  {
     "timestamp": "2026-06-28T08:31:48.339400",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه3 بواسطة ل"
+  },
+  {
+    "timestamp": "2026-07-03T12:37:19.120097",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم الملفات)' للماكينة ماكينه 1 بواسطة ب"
   }
 ]
