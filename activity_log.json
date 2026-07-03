@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-25T12:01:55.196682",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1200مسنن للماكينة كرد2"
-  },
-  {
     "timestamp": "2026-06-25T15:39:43.161677",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة '(   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق)صيانه شهريه ' للماكينة تمشيط6 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-07-03T09:53:45.165666",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط7 بواسطة ب"
   }
 ]
