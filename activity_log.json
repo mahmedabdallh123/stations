@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-27T12:50:00.525689",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير جير بوكس عربات للماكينة روتاري فلتر تدوير2"
-  },
-  {
     "timestamp": "2026-06-27T15:30:33.314588",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ل"
+  },
+  {
+    "timestamp": "2026-07-03T09:56:36.950185",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه3 بواسطة ل"
   }
 ]
