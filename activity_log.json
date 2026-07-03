@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-27T11:17:53.969334",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم كرد "
-  },
-  {
     "timestamp": "2026-06-27T12:50:00.525689",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة ل"
+  },
+  {
+    "timestamp": "2026-07-03T09:56:18.539416",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ل"
   }
 ]
