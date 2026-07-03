@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-25T11:55:59.745400",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة روتاري فلتر كرد2"
-  },
-  {
     "timestamp": "2026-06-25T11:58:54.625899",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط2 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-07-03T09:52:45.860586",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط3 بواسطة ب"
   }
 ]
