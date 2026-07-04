@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-30T06:05:47.469755",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وتشحيم الحصيره' للماكينة مكبس التمشيط بواسطة علي"
-  },
-  {
     "timestamp": "2026-06-30T06:06:26.921919",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط8 بواسطة y"
+  },
+  {
+    "timestamp": "2026-07-04T10:02:55.543387",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد17"
   }
 ]
