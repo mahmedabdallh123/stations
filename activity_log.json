@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-28T19:14:34.415580",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور152  سايلوا كرد"
-  },
-  {
     "timestamp": "2026-06-30T05:57:41.489686",
     "username": "مشرف_المكابس",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط 5 بواسطة l"
+  },
+  {
+    "timestamp": "2026-07-04T08:39:46.975880",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط11 بواسطة l"
   }
 ]
