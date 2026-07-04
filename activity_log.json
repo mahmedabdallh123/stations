@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-28T15:35:35.595020",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي شداد سلندر للماكينة كرد1"
-  },
-  {
     "timestamp": "2026-06-28T19:14:34.415580",
     "username": "مشرف_المكابس",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-04T08:39:05.088734",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط 5 بواسطة l"
+  },
+  {
+    "timestamp": "2026-07-04T08:39:18.082665",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط 5 بواسطة l"
