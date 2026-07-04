@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-28T08:31:48.339400",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد15 بواسطة م.محمد ,ايهاب"
-  },
-  {
     "timestamp": "2026-06-28T08:32:17.201777",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم الملفات)' للماكينة ماكينه 1 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-07-04T08:36:31.414239",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة ;"
   }
 ]
