@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-28T08:37:58.924526",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد15 بواسطة م.محمد ,ايهاب"
-  },
-  {
     "timestamp": "2026-06-28T08:39:06.990875",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ;"
+  },
+  {
+    "timestamp": "2026-07-04T08:37:40.654139",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه3 بواسطة ;"
   }
 ]
