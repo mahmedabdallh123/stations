@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-30T06:11:10.048096",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس فايبرسيباراتور' للماكينة مكبس السايلوهات بواسطة علي"
-  },
-  {
     "timestamp": "2026-06-30T06:12:12.725372",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور 154 راجع سايلو1"
+  },
+  {
+    "timestamp": "2026-07-05T04:59:54.802706",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد22"
   }
 ]
