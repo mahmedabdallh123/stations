@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-30T06:16:41.247312",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: ارتفاع ضغط جهاز تراب وحدوث زكمات متكرره للماكينة جهاز التراب"
-  },
-  {
     "timestamp": "2026-06-30T06:20:26.066877",
     "username": "مشرف_المكابس",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد22 بواسطة L"
+  },
+  {
+    "timestamp": "2026-07-06T05:06:05.309963",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير (فترة 300 ساعة)"
   }
 ]
