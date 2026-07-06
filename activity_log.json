@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-30T06:47:03.698067",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-06-30T06:47:36.021829",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-06T11:33:42.632726",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد18 بواسطة م.محمد ,ايهاب"
+  },
+  {
+    "timestamp": "2026-07-06T11:34:19.160790",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد18 بواسطة م.محمد ,ايهاب"
