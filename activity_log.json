@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T08:39:59.542455",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط11 بواسطة l"
-  },
-  {
     "timestamp": "2026-07-04T08:40:40.363820",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس' للماكينة كرد5 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T11:38:48.152703",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد5 بواسطة م.محمد ,ايهاب"
   }
 ]
