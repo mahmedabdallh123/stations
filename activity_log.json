@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-06-30T07:04:25.459039",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد10 بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-06-30T07:04:58.402994",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد14 (فترة 12000 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T07:06:55.251643",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 (فترة 12000 ساعة)"
   }
 ]
