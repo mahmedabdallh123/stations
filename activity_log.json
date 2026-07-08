@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T10:04:08.855150",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد21"
-  },
-  {
     "timestamp": "2026-07-04T11:04:45.086099",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغيير كسوة السلندر' للماكينة كرد4 (فترة 16000 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T12:04:19.955034",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغيير كسوة السلندر' للماكينة كرد4 بواسطة م.كمال و ولده"
   }
 ]
