@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-03T09:56:18.539416",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ل"
-  },
-  {
     "timestamp": "2026-07-03T09:56:36.950185",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد2 (فترة 4320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T07:30:13.367615",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد19 (فترة 4320 ساعة)"
   }
 ]
