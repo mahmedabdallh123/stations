@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T11:05:03.021897",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة عبدالعظيم"
-  },
-  {
     "timestamp": "2026-07-04T12:32:17.049166",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-08T12:07:18.618234",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفز للماكينة كرد5"
+  },
+  {
+    "timestamp": "2026-07-08T12:07:43.459762",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفز للماكينة كرد5"
