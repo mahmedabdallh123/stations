@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-03T09:51:46.147835",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط12 بواسطة ل"
-  },
-  {
     "timestamp": "2026-07-03T09:52:23.914447",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد6 (فترة 4320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T07:24:11.122641",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد5 (فترة 4320 ساعة)"
   }
 ]
