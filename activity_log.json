@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-02T20:49:26.480402",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد4"
-  },
-  {
     "timestamp": "2026-07-02T20:53:15.452790",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-08T07:20:12.353032",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد8 (فترة 4320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T07:20:26.159086",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد8 (فترة 4320 ساعة)"
