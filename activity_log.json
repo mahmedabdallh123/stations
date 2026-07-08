@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-02T20:53:15.452790",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير  للماكينة بري فلتر تمشيط1"
-  },
-  {
     "timestamp": "2026-07-03T09:48:57.685868",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد8 (فترة 4320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-08T07:21:01.781095",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد7 (فترة 4320 ساعة)"
   }
 ]
