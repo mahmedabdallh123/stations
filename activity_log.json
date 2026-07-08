@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T12:32:17.049166",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل (فترة 333 ساعة)"
-  },
-  {
     "timestamp": "2026-07-04T12:32:30.533009",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفز للماكينة كرد5"
+  },
+  {
+    "timestamp": "2026-07-08T12:54:52.161408",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة عبدالله"
   }
 ]
