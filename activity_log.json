@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T08:39:18.082665",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط 5 بواسطة l"
-  },
-  {
     "timestamp": "2026-07-04T08:39:46.975880",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بليه حصيره UC207شمال ناحيه سايلو للماكينة مكبس السايلوهات"
+  },
+  {
+    "timestamp": "2026-07-08T11:33:07.843696",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد5 بواسطة م.محمد ,ايهاب"
   }
 ]
