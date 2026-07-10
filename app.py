@@ -14,9 +14,9 @@ from github import Github, GithubException
 
 # ------------------------------- الإعدادات الثابتة -------------------------------
 APP_CONFIG = {
-    "APP_TITLE": "بيل يارن1- CMMS",
+    "APP_TITLE": "zahra- CMMS",
     "APP_ICON": "🏭",
-    "REPO_NAME": "mahmedabdallh123/stations",
+    "REPO_NAME": "mahmedabdallh123/zahra",
     "BRANCH": "main",
     "FILE_PATH": "l9.xlsx",
     "LOCAL_FILE": "l9.xlsx",
@@ -61,8 +61,8 @@ EQUIPMENT_CONFIG_FILE = "equipment_config.json"
 SUPPORT_CONFIG_FILE = "support_config.json"
 
 GITHUB_EXCEL_URL = f"https://github.com/{APP_CONFIG['REPO_NAME'].split('/')[0]}/{APP_CONFIG['REPO_NAME'].split('/')[1]}/raw/{APP_CONFIG['BRANCH']}/{APP_CONFIG['FILE_PATH']}"
-GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/stations/refs/heads/main/users.json"
-GITHUB_REPO_USERS = "mahmedabdallh123/stations"
+GITHUB_USERS_URL = "https://raw.githubusercontent.com/mahmedabdallh123/zahra/refs/heads/main/users.json"
+GITHUB_REPO_USERS = "mahmedabdallh123/zahra"
 GITHUB_TOKEN = st.secrets.get("github", {}).get("token", None)
 GITHUB_AVAILABLE = GITHUB_TOKEN is not None
 ACTIVITY_LOG_FILE = "activity_log.json"
@@ -208,6 +208,202 @@ def get_critical_spare_parts():
     result = critical[["اسم القطعة", "القسم", "الرصيد الموجود", "حد_الإنذار"]].to_dict('records')
     return result
 
+# ------------------------------- دوال إدارة المستخدمين من داخل التطبيق -------------------------------
+def load_users_from_github():
+    """تحميل users.json من GitHub مباشرة مع معالجة الصلاحيات"""
+    try:
+        response = requests.get(GITHUB_USERS_URL, timeout=10)
+        response.raise_for_status()
+        users_data = response.json()
+        for username, info in users_data.items():
+            if "permissions" in info and isinstance(info["permissions"], list):
+                if "all" in info["permissions"]:
+                    info["permissions"] = {"all_sections": True}
+                else:
+                    info["permissions"] = {"all_sections": False}
+            elif "permissions" not in info:
+                info["permissions"] = {"all_sections": False}
+            if "sections_permissions" not in info:
+                info["sections_permissions"] = {}
+        return users_data
+    except Exception as e:
+        st.error(f"فشل تحميل المستخدمين من GitHub: {e}")
+        if os.path.exists(USERS_FILE):
+            with open(USERS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        return {"admin": {"password": "1234", "role": "admin", "permissions": {"all_sections": True}, "sections_permissions": {}}}
+
+def save_users_to_github(users_data):
+    """رفع users.json إلى GitHub"""
+    try:
+        token = st.secrets.get("github", {}).get("token", None)
+        if not token:
+            st.error("❌ GitHub token غير متوفر")
+            return False
+        g = Github(token)
+        repo = g.get_repo(GITHUB_REPO_USERS)
+        users_json = json.dumps(users_data, indent=4, ensure_ascii=False, sort_keys=True)
+        try:
+            contents = repo.get_contents("users.json", ref="main")
+            repo.update_file(path="users.json", message="تحديث صلاحيات المستخدمين", content=users_json, sha=contents.sha, branch="main")
+        except GithubException as e:
+            if e.status == 404:
+                repo.create_file(path="users.json", message="إنشاء ملف المستخدمين", content=users_json, branch="main")
+            else:
+                raise
+        return True
+    except Exception as e:
+        st.error(f"❌ فشل رفع المستخدمين: {e}")
+        return False
+
+def get_all_sections_from_excel():
+    """استخراج جميع أقسام الماكينات من ملف Excel الحالي"""
+    sheets = load_all_sheets()
+    if not sheets:
+        return []
+    sections = [name for name in sheets.keys() if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
+    return sections
+
+def admin_users_management_tab():
+    st.header("👥 إدارة المستخدمين والصلاحيات")
+    st.info("هنا يمكنك إضافة، تعديل، أو حذف المستخدمين وتحديد صلاحياتهم على الأقسام.")
+    
+    users = load_users_from_github()
+    sections_list = get_all_sections_from_excel()
+    
+    if not sections_list:
+        st.warning("⚠️ لا توجد أقسام متاحة حالياً. قم بإضافة قسم أولاً من تبويب 'إضافة قسم جديد'.")
+    
+    # ==================== عرض المستخدمين الحاليين ====================
+    st.subheader("📋 قائمة المستخدمين")
+    
+    for username, info in users.items():
+        with st.expander(f"👤 {username} (الدور: {info.get('role', 'viewer')})"):
+            col1, col2 = st.columns(2)
+            
+            # ----- تغيير كلمة المرور -----
+            with col1:
+                new_password = st.text_input(f"كلمة المرور الجديدة", type="password", key=f"pass_{username}")
+                if new_password:
+                    if st.button(f"🔐 تغيير كلمة المرور", key=f"change_pass_{username}"):
+                        users[username]["password"] = new_password
+                        if save_users_to_github(users):
+                            st.success(f"✅ تم تغيير كلمة مرور {username}")
+                            st.rerun()
+                        else:
+                            st.error("❌ فشل حفظ التغييرات")
+            
+            # ----- تغيير الدور (admin/editor/viewer) -----
+            with col2:
+                current_role = info.get("role", "viewer")
+                role_options = ["admin", "editor", "viewer"]
+                if current_role not in role_options:
+                    current_role = "viewer"
+                new_role = st.selectbox(f"الدور", role_options, index=role_options.index(current_role), key=f"role_{username}")
+                if new_role != info.get("role"):
+                    users[username]["role"] = new_role
+                    if save_users_to_github(users):
+                        st.success(f"✅ تم تغيير دور {username} إلى {new_role}")
+                        st.rerun()
+            
+            # ----- صلاحيات الأقسام -----
+            st.markdown("#### 🏭 صلاحيات الأقسام")
+            
+            all_sections_access = st.checkbox(
+                "منح الوصول إلى جميع الأقسام (بدون تفصيل)", 
+                value=info.get("permissions", {}).get("all_sections", False), 
+                key=f"all_sections_{username}"
+            )
+            
+            if all_sections_access:
+                users[username]["permissions"] = {"all_sections": True}
+                users[username]["sections_permissions"] = {}
+                st.info("✅ هذا المستخدم لديه صلاحية الوصول إلى جميع الأقسام الحالية والمستقبلية.")
+            else:
+                users[username]["permissions"] = {"all_sections": False}
+                if "sections_permissions" not in users[username]:
+                    users[username]["sections_permissions"] = {}
+                
+                if sections_list:
+                    for section in sections_list:
+                        current_perms = users[username]["sections_permissions"].get(section, [])
+                        st.markdown(f"**{section}**")
+                        c1, c2, c3, c4 = st.columns(4)
+                        with c1:
+                            view_perm = st.checkbox("عرض", value=("view" in current_perms), key=f"view_{username}_{section}")
+                        with c2:
+                            edit_perm = st.checkbox("تعديل", value=("edit" in current_perms), key=f"edit_{username}_{section}")
+                        with c3:
+                            add_event_perm = st.checkbox("إضافة حدث", value=("add_event" in current_perms), key=f"add_{username}_{section}")
+                        with c4:
+                            manage_perm = st.checkbox("إدارة ماكينات", value=("manage_machines" in current_perms), key=f"manage_{username}_{section}")
+                        
+                        new_perms = []
+                        if view_perm: new_perms.append("view")
+                        if edit_perm: new_perms.append("edit")
+                        if add_event_perm: new_perms.append("add_event")
+                        if manage_perm: new_perms.append("manage_machines")
+                        users[username]["sections_permissions"][section] = new_perms
+                else:
+                    st.info("لا توجد أقسام متاحة حالياً.")
+            
+            # حفظ صلاحيات هذا المستخدم
+            if st.button(f"💾 حفظ صلاحيات {username}", key=f"save_perms_{username}"):
+                if save_users_to_github(users):
+                    st.success(f"✅ تم حفظ صلاحيات {username}")
+                    st.rerun()
+                else:
+                    st.error("❌ فشل الحفظ")
+            
+            # حذف المستخدم (لا يمكن حذف admin)
+            if username != "admin":
+                st.markdown("---")
+                if st.button(f"🗑️ حذف المستخدم {username}", key=f"delete_{username}"):
+                    confirm = st.text_input(f"تأكيد الحذف - اكتب YES", key=f"confirm_{username}")
+                    if confirm == "YES":
+                        del users[username]
+                        if save_users_to_github(users):
+                            st.success(f"✅ تم حذف {username}")
+                            st.rerun()
+                        else:
+                            st.error("❌ فشل الحذف")
+    
+    # ==================== إضافة مستخدم جديد ====================
+    st.markdown("---")
+    st.subheader("➕ إضافة مستخدم جديد")
+    
+    with st.form("add_user_form"):
+        col1, col2 = st.columns(2)
+        with col1:
+            new_username = st.text_input("اسم المستخدم (حروف إنجليزية أو أرقام فقط)")
+            new_password = st.text_input("كلمة المرور", type="password")
+        with col2:
+            new_role = st.selectbox("الدور الافتراضي", ["viewer", "editor", "admin"])
+            st.caption("يمكنك لاحقاً تعديل صلاحياته على الأقسام")
+        
+        submitted = st.form_submit_button("➕ إضافة المستخدم", type="primary")
+        
+        if submitted:
+            if not new_username or not new_password:
+                st.error("❌ اسم المستخدم وكلمة المرور مطلوبة")
+            elif new_username in users:
+                st.error(f"❌ المستخدم '{new_username}' موجود بالفعل")
+            elif not new_username.replace("_", "").isalnum():
+                st.error("❌ اسم المستخدم يجب أن يحتوي على حروف إنجليزية أو أرقام فقط")
+            else:
+                users[new_username] = {
+                    "password": new_password,
+                    "role": new_role,
+                    "permissions": {"all_sections": False},
+                    "sections_permissions": {}
+                }
+                if save_users_to_github(users):
+                    st.success(f"✅ تم إضافة المستخدم {new_username}")
+                    st.balloons()
+                    st.rerun()
+                else:
+                    st.error("❌ فشل حفظ المستخدم الجديد")
+
 # ------------------------------- دوال سجل النشاطات -------------------------------
 def log_activity(action_type, details, username=None):
     if username is None:
@@ -256,11 +452,9 @@ def load_activity_log():
 
 # ------------------------------- دوال الصيانة الوقائية -------------------------------
 def load_maintenance_tasks():
-    """تحميل مهام الصيانة الوقائية مع معالجة خطأ عدم وجود الورقة"""
     if not os.path.exists(APP_CONFIG["LOCAL_FILE"]):
         return pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
     try:
-        # محاولة قراءة الورقة المحددة
         df = pd.read_excel(APP_CONFIG["LOCAL_FILE"], sheet_name=APP_CONFIG["MAINTENANCE_SHEET"])
         df.columns = df.columns.astype(str).str.strip()
         for col in APP_CONFIG["MAINTENANCE_COLUMNS"]:
@@ -274,9 +468,7 @@ def load_maintenance_tasks():
         if "الفترة_بالأيام" in df.columns:
             df["الفترة_بالأيام"] = pd.to_numeric(df["الفترة_بالأيام"], errors='coerce').fillna(0)
         return df
-    except Exception as e:
-        # إذا لم توجد الورقة، نرجع DataFrame فارغ بدون رسالة خطأ
-        # (الخطأ يحدث فقط عند محاولة القراءة، نتعامل معه بهدوء)
+    except Exception:
         return pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
 
 def get_tasks_for_equipment(equipment_name):
@@ -286,7 +478,6 @@ def get_tasks_for_equipment(equipment_name):
     return df[df["المعدة"] == equipment_name]
 
 def add_maintenance_task(sheets_edit, equipment, task_name, period_hours, start_date=None, notes="", default_spare="", image_url=None):
-    # التأكد من وجود الورقة في sheets_edit
     if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_edit:
         sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
     df = sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]]
@@ -757,7 +948,6 @@ def save_excel_locally(sheets_dict):
         if "temp_spare_parts_df" in st.session_state:
             sheets_dict[APP_CONFIG["SPARE_PARTS_SHEET"]] = st.session_state.temp_spare_parts_df
             del st.session_state.temp_spare_parts_df
-        # التأكد من وجود ورقة الصيانة الوقائية إذا كانت فارغة ولكن موجودة في sheets_dict
         if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_dict:
             sheets_dict[APP_CONFIG["MAINTENANCE_SHEET"]] = load_maintenance_tasks()
         with pd.ExcelWriter(APP_CONFIG["LOCAL_FILE"], engine="openpyxl") as writer:
@@ -914,6 +1104,34 @@ def search_across_sheets(all_sheets):
         with col2:
             technician_search = st.text_input("👨‍🔧 بحث بالفني (تم بواسطة):", placeholder="أدخل اسم الفني...")
         
+        # ===== إضافة فلتر نوع العطل =====
+        st.markdown("#### 🏷️ فلتر نوع العطل")
+        # استخلاص قائمة بأنواع الأعطال المتاحة من الأقسام المختارة
+        all_fault_types = set()
+        if selected_sheet != "جميع الأقسام":
+            df_temp = all_sheets[selected_sheet]
+            if "نوع العطل" in df_temp.columns:
+                all_fault_types.update(df_temp["نوع العطل"].dropna().unique())
+        else:
+            for sh_name in allowed_sections:
+                df_temp = all_sheets[sh_name]
+                if "نوع العطل" in df_temp.columns:
+                    all_fault_types.update(df_temp["نوع العطل"].dropna().unique())
+        fault_type_options = sorted([str(t).strip() for t in all_fault_types if str(t).strip() != ""])
+        
+        # إما اختيار من القائمة أو كتابة نوع مخصص
+        use_multiselect = st.checkbox("اختيار من القائمة", value=True, key="fault_type_multiselect_check")
+        selected_fault_types = []
+        custom_fault_type = ""
+        if use_multiselect:
+            if fault_type_options:
+                selected_fault_types = st.multiselect("اختر نوع العطل (يمكن اختيار أكثر من واحد):", fault_type_options, key="fault_type_multiselect")
+            else:
+                st.info("لا توجد أنواع أعطال مسجلة مسبقاً.")
+        else:
+            custom_fault_type = st.text_input("أو اكتب نوع العطل المطلوب (مطابقة تامة أو جزئية):", key="custom_fault_type_input", placeholder="مثال: كهربائي, ميكانيكي...")
+        # ====================================
+        
         st.markdown("#### نطاق التاريخ")
         use_date_filter = st.checkbox("تفعيل البحث بالتاريخ", key="use_date_filter_failures")
         if use_date_filter:
@@ -966,6 +1184,19 @@ def search_across_sheets(all_sheets):
                         mask_tech = df_filtered[tech_col].astype(str).str.contains(technician_search, case=False, na=False)
                         df_filtered = df_filtered[mask_tech]
                 
+                # ===== تطبيق فلتر نوع العطل =====
+                if use_multiselect and selected_fault_types:
+                    if "نوع العطل" in df_filtered.columns:
+                        # استخدام contains مع أي من الأنواع المختارة
+                        pattern = '|'.join(selected_fault_types)
+                        mask_fault = df_filtered["نوع العطل"].astype(str).str.contains(pattern, case=False, na=False)
+                        df_filtered = df_filtered[mask_fault]
+                elif custom_fault_type:
+                    if "نوع العطل" in df_filtered.columns:
+                        mask_fault = df_filtered["نوع العطل"].astype(str).str.contains(custom_fault_type, case=False, na=False)
+                        df_filtered = df_filtered[mask_fault]
+                # ==================================
+                
                 if not df_filtered.empty:
                     df_filtered["القسم"] = sheet_name
                     results.append(df_filtered)
@@ -1011,6 +1242,8 @@ def search_across_sheets(all_sheets):
                                 st.markdown(f"**⚠️ العطل:** {str(row.get('الحدث/العطل', ''))[:150]}")
                                 st.markdown(f"**🔧 الإجراء:** {str(row.get('الإجراء التصحيحي', ''))[:150]}")
                                 st.markdown(f"**👨‍🔧 تم بواسطة:** {row.get('تم بواسطة', '')}")
+                                # عرض نوع العطل في البطاقة
+                                st.markdown(f"**🏷️ نوع العطل:** {row.get('نوع العطل', '')}")
                                 if img_url:
                                     st.caption(f"[🔗 رابط الصورة]({img_url})")
                 
@@ -1278,7 +1511,6 @@ def manage_machines(sheets_edit, sheet_name, unique_suffix=""):
         st.info("لا توجد ماكينات مسجلة في هذا القسم بعد")
     st.markdown("---")
     
-    # إضافة ماكينة جديدة
     with st.form(key=f"add_machine_form_{sheet_name}_{unique_suffix}"):
         new_machine = st.text_input("➕ اسم الماكينة الجديدة:", key=f"new_machine_input_{sheet_name}_{unique_suffix}")
         submitted_add = st.form_submit_button("➕ إضافة ماكينة")
@@ -1297,7 +1529,6 @@ def manage_machines(sheets_edit, sheet_name, unique_suffix=""):
             else:
                 st.warning("يرجى إدخال اسم الماكينة")
     
-    # حذف ماكينة
     if equipment_list:
         st.markdown("#### 🗑️ حذف ماكينة")
         if st.session_state.get("username") == "admin":
@@ -1328,23 +1559,67 @@ def add_new_event(sheets_edit, sheet_name):
     if not equipment_list:
         st.warning("⚠ لا توجد ماكينات مسجلة في هذا القسم. يرجى إضافة ماكينة أولاً من تبويب 'إدارة الماكينات'")
         return sheets_edit
-    if "selected_equipment_temp" not in st.session_state:
-        st.session_state.selected_equipment_temp = equipment_list[0] if equipment_list else ""
-    selected_equipment = st.selectbox("🔧 اختر الماكينة:", equipment_list, index=equipment_list.index(st.session_state.selected_equipment_temp) if st.session_state.selected_equipment_temp in equipment_list else 0, key="equipment_select")
-    if selected_equipment != st.session_state.selected_equipment_temp:
-        st.session_state.selected_equipment_temp = selected_equipment
-        st.rerun()
+
+    # اختيار الماكينة
+    selected_equipment = st.selectbox("🔧 اختر الماكينة:", equipment_list, key="equipment_select")
+    
+    # عند تغيير الماكينة، نمسح القيم المخزنة في session_state الخاصة بالحقول
+    if "last_selected_equipment" not in st.session_state:
+        st.session_state.last_selected_equipment = selected_equipment
+    if st.session_state.last_selected_equipment != selected_equipment:
+        st.session_state.last_selected_equipment = selected_equipment
+        # مسح المحتوى المخزن في حقول النص
+        if "event_desc_area" in st.session_state:
+            del st.session_state.event_desc_area
+        if "correction_desc_area" in st.session_state:
+            del st.session_state.correction_desc_area
+
+    # استخراج الأعطال السابقة للماكينة المختارة
+    df_equip = df[df["المعدة"] == selected_equipment]
+    previous_events = df_equip["الحدث/العطل"].dropna().unique()
+    previous_events = [str(e).strip() for e in previous_events if str(e).strip() != ""]
+    
+    if not previous_events:
+        st.info("ℹ️ لا توجد أعطال سابقة لهذه الماكينة. يمكنك كتابة حدث جديد.")
+    
+    event_options = ["-- اختر من السابق --"] + sorted(previous_events)
+    selected_event_option = st.selectbox("اختر حدث/عطل سابق:", event_options, key="event_old_select")
+
+    if selected_event_option != "-- اختر من السابق --":
+        # تعيين القيمة مباشرة في session_state المرتبط بـ text_area
+        st.session_state.event_desc_area = selected_event_option
+
+    # استخراج الإجراءات التصحيحية السابقة
+    previous_corrections = df_equip["الإجراء التصحيحي"].dropna().unique()
+    previous_corrections = [str(c).strip() for c in previous_corrections if str(c).strip() != ""]
+    
+    if not previous_corrections:
+        st.info("ℹ️ لا توجد إجراءات تصحيحية سابقة لهذه الماكينة.")
+    
+    correction_options = ["-- اختر من السابق --"] + sorted(previous_corrections)
+    selected_correction_option = st.selectbox("اختر إجراء تصحيحي سابق:", correction_options, key="correction_old_select")
+
+    if selected_correction_option != "-- اختر من السابق --":
+        st.session_state.correction_desc_area = selected_correction_option
+
+    # تعريف متغيرات قطع الغيار بقيم افتراضية
+    part_name = ""
+    consume_qty = 0
+    warning_msg = ""
+
     spare_parts_list = get_spare_parts_for_section(sheet_name)
+
     with st.form(key="add_event_form"):
         col1, col2 = st.columns(2)
         with col1:
             event_date = st.date_input("📅 التاريخ:", value=datetime.now())
             repair_duration = st.number_input("⏱️ مدة الإصلاح (ساعات):", min_value=0.0, step=0.5, format="%.1f")
-            event_desc = st.text_area("📝 الحدث/العطل:", height=100)
-            fault_type = st.selectbox("🏷️ نوع العطل:", ["", "ميكانيكي", "كهربائي", "إلكتروني", "هيدروليكي", "هوائي", "هيكلي", "آخر"])
+            # استخدام key فقط، وقراءة القيمة من session_state لاحقاً
+            st.text_area("📝 الحدث/العطل:", height=100, key="event_desc_area")
+            fault_type = st.selectbox("🏷️ نوع العطل:", ["ميكانيكي", "كهربائي", "إلكتروني", "هيدروليكي", "سيرفيس", "صيانه", "آخر"])
             uploaded_image = st.file_uploader("🖼️ رفع صورة (اختياري):", type=APP_CONFIG["ALLOWED_IMAGE_TYPES"])
         with col2:
-            correction_desc = st.text_area("🔧 الإجراء التصحيحي:", height=100)
+            st.text_area("🔧 الإجراء التصحيحي:", height=100, key="correction_desc_area")
             servised_by = st.text_input("👨‍🔧 تم بواسطة:")
             technician_rating = st.select_slider("⭐ قدرة الفني (حل/تفكير/مبادرة/قرار):", options=[1, 2, 3, 4, 5], value=3)
             safety_compliance = st.selectbox("🛡️ الالتزام بتعليمات السلامة:", ["", "ملتزم بالكامل", "ملتزم جزئياً", "غير ملتزم", "غير مطبق"])
@@ -1369,10 +1644,15 @@ def add_new_event(sheets_edit, sheet_name):
                 st.info("لا توجد قطع غيار مسجلة لهذا القسم. يمكنك إضافتها من تبويب 'قطع الغيار'.")
                 part_name = ""
                 consume_qty = 0
+
         submitted = st.form_submit_button("✅ إضافة الحدث", type="primary")
         if submitted:
+            # قراءة القيم من session_state الخاصة بالـ text_area
+            event_desc = st.session_state.get("event_desc_area", "")
+            correction_desc = st.session_state.get("correction_desc_area", "")
+
+            # استهلاك قطعة الغيار إذا تم اختيارها
             spare_part_used = ""
-            warning_msg = ""
             if part_name and consume_qty > 0:
                 success, msg, new_qty = consume_spare_part(part_name, consume_qty)
                 if success:
@@ -1385,6 +1665,8 @@ def add_new_event(sheets_edit, sheet_name):
                 else:
                     st.error(msg)
                     return sheets_edit
+
+            # رفع الصورة (اختياري)
             image_url = None
             if uploaded_image is not None:
                 event_id = str(uuid.uuid4())[:8]
@@ -1393,6 +1675,8 @@ def add_new_event(sheets_edit, sheet_name):
                     st.success("✅ تم رفع الصورة بنجاح!")
                 else:
                     st.warning("⚠️ فشل رفع الصورة، سيتم حفظ الحدث بدون صورة")
+
+            # إنشاء الصف الجديد
             new_row = {
                 "مده الاصلاح": repair_duration if repair_duration > 0 else "",
                 "التاريخ": event_date.strftime("%Y-%m-%d"),
@@ -1406,18 +1690,30 @@ def add_new_event(sheets_edit, sheet_name):
                 "الالتزام بتعليمات السلامة": safety_compliance if safety_compliance else "",
                 "رابط الصورة": image_url or ""
             }
+            # إضافة الأعمدة المفقودة
             for col in df.columns:
                 if col not in new_row:
                     new_row[col] = ""
+
             new_row_df = pd.DataFrame([new_row])
             df_new = pd.concat([df, new_row_df], ignore_index=True)
             sheets_edit[sheet_name] = df_new
+
+            # تحديث قطع الغيار إذا تم التعديل
             if "temp_spare_parts_df" in st.session_state:
                 sheets_edit[APP_CONFIG["SPARE_PARTS_SHEET"]] = st.session_state.temp_spare_parts_df
                 del st.session_state.temp_spare_parts_df
-            if save_and_push_to_github(sheets_edit, f"إضافة حدث عطل مع استخدام قطعة {part_name}"):
+
+            commit_message = f"إضافة حدث عطل مع استخدام قطعة {part_name}" if part_name else "إضافة حدث عطل بدون قطع غيار"
+
+            if save_and_push_to_github(sheets_edit, commit_message):
                 st.cache_data.clear()
                 log_activity("add_event", f"تم إضافة عطل: {event_desc[:50]} للماكينة {selected_equipment}")
+                # مسح القيم المخزنة في session_state (حذف المفاتيح)
+                if "event_desc_area" in st.session_state:
+                    del st.session_state.event_desc_area
+                if "correction_desc_area" in st.session_state:
+                    del st.session_state.correction_desc_area
                 st.success("✅ تم إضافة الحدث بنجاح ورفعه إلى GitHub!")
                 if warning_msg:
                     st.warning(warning_msg)
@@ -1425,10 +1721,8 @@ def add_new_event(sheets_edit, sheet_name):
             else:
                 st.error("❌ فشل الحفظ")
     return sheets_edit
-
 # ------------------------------- دوال مساعدة للصيانة الوقائية -------------------------------
 def execute_maintenance_with_date(sheets_edit, equipment_name, task_name, execution_date, performed_by, used_spare_part="", used_quantity=1, image_url=None):
-    # التأكد من وجود ورقة الصيانة الوقائية
     if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_edit:
         sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
     df = sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]]
@@ -1901,7 +2195,6 @@ def manage_data_edit(sheets_edit):
         sheets_edit[APP_CONFIG["SPARE_PARTS_SHEET"]] = load_spare_parts()
     if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_edit:
         sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = load_maintenance_tasks()
-    # إزالة تبويب إضافة حدث عطل لأنه أصبح مستقلاً
     tab_names = ["📋 عرض الأقسام", "🔧 إدارة الماكينات", "➕ إضافة قسم جديد", "📦 قطع الغيار", "🛠 الصيانة الوقائية"]
     tabs_edit = st.tabs(tab_names)
     with tabs_edit[0]:
@@ -1997,19 +2290,22 @@ if can_manage_machines:
     tabs_list.append("🔧 إدارة الماكينات")
 if can_edit_data:
     tabs_list.append("🛠 تعديل وإدارة البيانات")
+if username == "admin":
+    tabs_list.append("👥 إدارة المستخدمين")
 tabs_list.append("📞 الدعم الفني")
+
 tabs = st.tabs(tabs_list)
+idx = 0
 
-# ------------------------------- تبويب البحث -------------------------------
-with tabs[0]:
+with tabs[idx]:
     search_across_sheets(all_sheets)
+idx += 1
 
-# ------------------------------- تبويب تحليل الأعطال -------------------------------
-with tabs[1]:
+with tabs[idx]:
     failures_analysis_tab(all_sheets)
+idx += 1
 
-# ------------------------------- تبويب الإشعارات -------------------------------
-with tabs[2]:
+with tabs[idx]:
     st.header("🔔 الإشعارات")
     if st.session_state.get("username") == "admin":
         st.subheader("📋 آخر النشاطات")
@@ -2060,12 +2356,10 @@ with tabs[2]:
                 st.write(f"- {row['المعدة']}: {row['اسم_البند']} (بعد {days} يوم)")
         else:
             st.info("✅ لا توجد صيانات قادمة")
+idx += 1
 
-# ------------------------------- تبويب إضافة حدث عطل -------------------------------
 if can_add_event:
-    # حساب الفهرس المناسب: بعد أول 3 تبويبات ثابتة
-    idx_add = 3
-    with tabs[idx_add]:
+    with tabs[idx]:
         if sheets_edit:
             allowed_for_add = []
             for sheet_name in sheets_edit.keys():
@@ -2074,17 +2368,16 @@ if can_add_event:
                 if has_section_permission(username, sheet_name, "add_event"):
                     allowed_for_add.append(sheet_name)
             if allowed_for_add:
-                sheet_name = st.selectbox("اختر القسم:", allowed_for_add, key="add_event_sheet_main")  # مفتاح فريد
+                sheet_name = st.selectbox("اختر القسم:", allowed_for_add, key="add_event_sheet_main")
                 sheets_edit = add_new_event(sheets_edit, sheet_name)
             else:
                 st.warning("لا توجد أقسام مسموح لك بإضافة أحداث فيها.")
         else:
             st.warning("لا توجد بيانات")
+    idx += 1
 
-# ------------------------------- تبويب إدارة الماكينات -------------------------------
 if can_manage_machines:
-    idx_manage = 3 + (1 if can_add_event else 0)
-    with tabs[idx_manage]:
+    with tabs[idx]:
         if sheets_edit:
             allowed_for_machines = []
             for sheet_name in sheets_edit.keys():
@@ -2093,22 +2386,25 @@ if can_manage_machines:
                 if has_section_permission(username, sheet_name, "manage_machines"):
                     allowed_for_machines.append(sheet_name)
             if allowed_for_machines:
-                sheet_name = st.selectbox("اختر القسم:", allowed_for_machines, key="manage_machines_sheet_main")  # مفتاح فريد
+                sheet_name = st.selectbox("اختر القسم:", allowed_for_machines, key="manage_machines_sheet_main")
                 manage_machines(sheets_edit, sheet_name, unique_suffix="main")
             else:
                 st.warning("لا توجد أقسام مسموح لك بإدارة الماكينات فيها.")
         else:
             st.warning("لا توجد بيانات")
+    idx += 1
 
-# ------------------------------- تبويب تعديل وإدارة البيانات الكاملة -------------------------------
 if can_edit_data:
-    idx_edit = 3 + (1 if can_add_event else 0) + (1 if can_manage_machines else 0)
-    with tabs[idx_edit]:
+    with tabs[idx]:
         sheets_edit = manage_data_edit(sheets_edit)
+    idx += 1
 
-# ------------------------------- تبويب الدعم الفني -------------------------------
-idx_support = len(tabs_list) - 1
-with tabs[idx_support]:
+if username == "admin":
+    with tabs[idx]:
+        admin_users_management_tab()
+    idx += 1
+
+with tabs[idx]:
     st.header("📞 الدعم الفني")
     st.markdown("### تم تصميم وتنفيذ هذا السيستم بواسطه **م.محمد عبدالله**")
     st.markdown("#### رئيس قسم المحطات والتحضيرات بمصنع بيل يارن1")
@@ -2121,11 +2417,11 @@ with tabs[idx_support]:
     st.markdown("---")
     support_config = load_support_config()
     current_image_url = support_config.get("image_url", "")
-    st.subheader("🖼️ ")
+    st.subheader("🖼️ صورة المطور")
     if current_image_url and current_image_url.strip():
         try:
             st.image(current_image_url, use_container_width=True)
-            st.caption("✅ ")
+            st.caption("✅ صورة المطور الحالية")
         except:
             st.warning("⚠️ تعذر عرض الصورة المحفوظة")
     else:
