@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T07:22:04.727276",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد6 (فترة 4320 ساعة)"
-  },
-  {
     "timestamp": "2026-07-08T07:22:19.878780",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد6 بواسطة ايهاب"
+  },
+  {
+    "timestamp": "2026-07-11T11:48:26.964409",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفز للماكينة كرد6"
   }
 ]
