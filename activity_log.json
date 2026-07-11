@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T12:32:30.533009",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل (فترة 333 ساعة)"
-  },
-  {
     "timestamp": "2026-07-04T12:34:44.820887",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة عبدالله"
+  },
+  {
+    "timestamp": "2026-07-11T07:54:56.256040",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK' للماكينة كرد1 (فترة 26500 ساعة)"
   }
 ]
