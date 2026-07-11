@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-07T11:40:41.333631",
-    "username": "مدير_صيانة",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد14"
-  },
-  {
     "timestamp": "2026-07-07T11:44:17.565414",
     "username": "مدير_صيانة",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK (CLP 220=2.2L)' للماكينة كرد4 (فترة 27000 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-11T08:38:17.955508",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK (CLP 220=2.2L)' للماكينة كرد5 (فترة 27000 ساعة)"
   }
 ]
