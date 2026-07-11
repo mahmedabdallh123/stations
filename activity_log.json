@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-04T12:34:44.820887",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي موتور للماكينة موتور 154 راجع سايلو1"
-  },
-  {
     "timestamp": "2026-07-05T04:59:54.802706",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK' للماكينة كرد1 (فترة 26500 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-11T07:56:07.064820",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK    ' للماكينة كرد1 (فترة 26500 ساعة)"
   }
 ]
