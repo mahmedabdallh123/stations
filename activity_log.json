@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T07:19:22.593693",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد9 (فترة 4320 ساعة)"
-  },
-  {
     "timestamp": "2026-07-08T07:19:34.763158",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول Feed Roll (CLP 220=.45L)' للماكينة كرد11 (فترة 27000 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-11T08:58:47.775941",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول Feed Roll (CLP 220=.45L)' للماكينة كرد10 (فترة 27000 ساعة)"
   }
 ]
