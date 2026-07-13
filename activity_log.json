@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T07:34:34.380592",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد11 (فترة 4320 ساعة)"
-  },
-  {
     "timestamp": "2026-07-08T07:34:58.435756",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك1غزل3/2' للماكينة حوض 3/2غزل بواسطة فتحي"
+  },
+  {
+    "timestamp": "2026-07-13T05:31:36.915062",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة فتحي"
   }
 ]
