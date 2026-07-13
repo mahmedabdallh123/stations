@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T11:33:07.843696",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد5 بواسطة م.محمد ,ايهاب"
-  },
-  {
     "timestamp": "2026-07-08T11:38:17.973814",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد7 بواسطة م.محمد ,مصطفي"
+  },
+  {
+    "timestamp": "2026-07-13T12:32:00.610547",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد7 (فترة 2320 ساعة)"
   }
 ]
