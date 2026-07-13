@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T10:52:12.968630",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بليه حصيره UC207شمال ناحيه سايلو للماكينة مكبس السايلوهات"
-  },
-  {
     "timestamp": "2026-07-08T11:33:07.843696",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد7 (فترة 720 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-13T12:25:29.413960",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد7 بواسطة م.محمد ,مصطفي"
   }
 ]
