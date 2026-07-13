@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T07:35:20.890647",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد1 (فترة 4320 ساعة)"
-  },
-  {
     "timestamp": "2026-07-08T10:52:12.968630",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد7 بواسطة م.محمد ,مصطفي"
+  },
+  {
+    "timestamp": "2026-07-13T12:23:58.038736",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد7 (فترة 720 ساعة)"
   }
 ]
