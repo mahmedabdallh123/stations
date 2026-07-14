@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T12:02:44.661828",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغيير كسوة السلندر' للماكينة كرد4 (فترة 16000 ساعة)"
-  },
-  {
     "timestamp": "2026-07-08T12:04:19.955034",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تجربه للماكينة جهاز التراب"
+  },
+  {
+    "timestamp": "2026-07-14T09:16:06.363666",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد21 بواسطة حسام"
   }
 ]
