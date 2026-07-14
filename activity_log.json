@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T12:07:43.459762",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفز للماكينة كرد5"
-  },
-  {
     "timestamp": "2026-07-08T12:54:52.161408",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة CLU-1"
+  },
+  {
+    "timestamp": "2026-07-14T12:15:21.839064",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة CLU-2"
   }
 ]
