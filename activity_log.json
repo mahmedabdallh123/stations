@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T07:54:56.256040",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK' للماكينة كرد1 (فترة 26500 ساعة)"
-  },
-  {
     "timestamp": "2026-07-11T07:56:07.064820",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير السلندر للماكينة كرد14"
+  },
+  {
+    "timestamp": "2026-07-14T12:18:08.354169",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 753 للماكينة كرد14"
   }
 ]
