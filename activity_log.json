@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T11:46:14.397387",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1200 مسنن بسبب زكمه للماكينة كرد11"
-  },
-  {
     "timestamp": "2026-07-08T11:47:59.302216",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير رشاشات بلوك4غزل3/2' للماكينة حوض 3/2غزل (فترة 2900 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-14T09:12:15.367598",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك4غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم"
   }
 ]
