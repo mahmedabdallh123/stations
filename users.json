@@ -89,12 +89,23 @@
         },
         "role": "viewer",
         "sections_permissions": {
+            "البرم": [],
+            "التفتيح": [],
+            "الضواغط": [],
             "الغزل": [
                 "view",
                 "edit",
                 "add_event",
                 "manage_machines"
-            ]
+            ],
+            "الكرد": [],
+            "المحطات": [],
+            "المكبس": [],
+            "تمشيط": [],
+            "سحب اول": [],
+            "سحب ثاني": [],
+            "محطه تحليه المياه": [],
+            "ملفات": []
         }
     },
     "مشرف_المكابس": {
@@ -102,7 +113,7 @@
         "permissions": {
             "all_sections": false
         },
-        "role": "user",
+        "role": "viewer",
         "sections_permissions": {
             "الضواغط": [
                 "view",
