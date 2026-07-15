@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T08:03:53.225676",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK (CLP 220=2.2L)' للماكينة كرد11 (فترة 27000 ساعة)"
-  },
-  {
     "timestamp": "2026-07-11T08:04:29.681942",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 753  للماكينة كرد4"
+  },
+  {
+    "timestamp": "2026-07-15T11:14:55.046790",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد8 بواسطة مصطفي. ايهاب"
   }
 ]
