@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T08:40:23.998042",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول DFK (CLP 220=2.2L)' للماكينة كرد6 (فترة 27000 ساعة)"
-  },
-  {
     "timestamp": "2026-07-11T08:40:55.523121",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة زيزو"
+  },
+  {
+    "timestamp": "2026-07-17T09:04:50.056770",
+    "username": "مشرف_المكابس",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير (فترة 2890 ساعة)"
   }
 ]
