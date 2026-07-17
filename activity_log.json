@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T08:45:25.461425",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير زيت جير بوكس فيد رول Feed Roll (CLP 220=.45L)' للماكينة كرد6 (فترة 27000 ساعة)"
-  },
-  {
     "timestamp": "2026-07-11T08:46:13.405020",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-17T09:05:46.506110",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة انس"
+  },
+  {
+    "timestamp": "2026-07-17T09:06:07.461918",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة انس"
