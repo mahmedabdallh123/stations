@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T09:02:57.474641",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير اول جريده 240' للماكينة كرد1 (فترة 2320 ساعة)"
-  },
-  {
     "timestamp": "2026-07-11T09:04:47.496181",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بلي موتور جير بوكس الفلاتس للماكينة كرد20"
+  },
+  {
+    "timestamp": "2026-07-22T12:38:28.063156",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد12"
   }
 ]
