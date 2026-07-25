@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T11:54:33.497541",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تجربة بستم  للماكينة كرد19"
-  },
-  {
     "timestamp": "2026-07-11T22:09:53.346165",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم محطه"
+  },
+  {
+    "timestamp": "2026-07-25T07:50:25.676294",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم محطه"
   }
 ]
