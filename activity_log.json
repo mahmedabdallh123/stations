@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-12T05:32:18.935837",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير جرائد اماميه550' للماكينة كرد7 (فترة 7500 ساعة)"
-  },
-  {
     "timestamp": "2026-07-12T05:34:01.473814",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم محطات"
+  },
+  {
+    "timestamp": "2026-07-25T07:55:54.944746",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم محطات"
   }
 ]
