@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T09:04:47.496181",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد1 (فترة 4640 ساعة)"
-  },
-  {
     "timestamp": "2026-07-11T09:07:11.674129",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد12"
+  },
+  {
+    "timestamp": "2026-07-25T06:39:41.386763",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: عطل تلامس متكرر علي السلندر ( t con ) للماكينة كرد4"
   }
 ]
