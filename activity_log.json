@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-11T11:48:26.964409",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفز للماكينة كرد6"
-  },
-  {
     "timestamp": "2026-07-11T11:50:22.174492",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: عطل في سويتش باب الشوت فيد للماكينة كرد16"
+  },
+  {
+    "timestamp": "2026-07-25T06:54:31.966871",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 3530 سلندر للماكينة كرد19"
   }
 ]
