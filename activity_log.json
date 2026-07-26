@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-13T12:14:50.342453",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد7 بواسطة م.محمد ,مصطفي"
-  },
-  {
     "timestamp": "2026-07-13T12:23:58.038736",
     "username": "مشرف_تحضيرات",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-26T10:44:09.679986",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة روتاري فلتر غزل1.3"
+  },
+  {
+    "timestamp": "2026-07-26T10:44:24.439002",
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة روتاري فلتر غزل1.3"
