@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-14T05:49:49.211986",
-    "username": "مشرف_المكابس",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'غسل وتنظيف' للماكينة شيلر1 (فترة 170 ساعة)"
-  },
-  {
     "timestamp": "2026-07-14T09:11:47.909137",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة كرد4"
+  },
+  {
+    "timestamp": "2026-07-26T11:17:52.920441",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد5"
   }
 ]
