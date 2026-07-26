@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-13T12:36:07.110265",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفس للماكينة كرد7"
-  },
-  {
     "timestamp": "2026-07-13T16:53:22.521750",
     "username": "مشرف_المكابس",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة كرد12"
+  },
+  {
+    "timestamp": "2026-07-26T11:16:55.675599",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد3"
   }
 ]
