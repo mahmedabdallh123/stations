@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-17T09:05:46.506110",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة انس"
-  },
-  {
     "timestamp": "2026-07-17T09:06:07.461918",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_المكابس",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل1.1"
+  },
+  {
+    "timestamp": "2026-07-28T09:20:18.190922",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل2.1"
   }
 ]
