@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-22T05:58:24.968724",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سيرعصارات1800 للماكينة كرد19"
-  },
-  {
     "timestamp": "2026-07-22T06:00:24.479011",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد10 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-28T09:43:23.654106",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جرايد اماميه550' للماكينة كرد10 (فترة 7500 ساعة)"
   }
 ]
