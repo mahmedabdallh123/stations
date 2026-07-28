@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-25T07:07:57.408314",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: عطل في حساس شفط الفلاتس  للماكينة كرد1"
-  },
-  {
     "timestamp": "2026-07-25T07:48:38.146618",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة كرد20"
+  },
+  {
+    "timestamp": "2026-07-28T12:46:29.998421",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد21"
   }
 ]
