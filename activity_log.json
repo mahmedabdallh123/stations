@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-25T06:43:09.363323",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 974 للماكينة كرد19"
-  },
-  {
     "timestamp": "2026-07-25T06:47:27.924748",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-28T09:49:13.008965",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير جرايد اماميه550' للماكينة كرد12 (فترة 7500 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-28T09:49:26.014748",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير جرايد اماميه550' للماكينة كرد12 (فترة 7500 ساعة)"
