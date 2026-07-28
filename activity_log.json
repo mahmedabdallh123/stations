@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-22T05:57:18.692783",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير سلندر للماكينة كرد19"
-  },
-  {
     "timestamp": "2026-07-22T05:58:24.968724",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-28T09:39:56.230032",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد10 (فترة 2320 ساعة)"
+  },
+  {
+    "timestamp": "2026-07-28T09:40:14.319915",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'سن الفلاتس المتحركه' للماكينة كرد10 (فترة 2320 ساعة)"
