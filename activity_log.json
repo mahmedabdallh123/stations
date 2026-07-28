@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-20T14:46:47.561797",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: عطل ف كاميراf1 للماكينة TS-T5-1"
-  },
-  {
     "timestamp": "2026-07-20T15:02:22.796858",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-28T09:29:24.583893",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة ايهاب"
+  },
+  {
+    "timestamp": "2026-07-28T09:29:36.982144",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة ايهاب"
