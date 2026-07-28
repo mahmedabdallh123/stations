@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-19T10:43:07.548683",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد5"
-  },
-  {
     "timestamp": "2026-07-19T11:38:32.814557",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل1.2"
+  },
+  {
+    "timestamp": "2026-07-28T09:23:47.578624",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر برم2"
   }
 ]
