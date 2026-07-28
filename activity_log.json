@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-22T12:38:28.063156",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد12"
-  },
-  {
     "timestamp": "2026-07-25T06:39:41.386763",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-28T09:47:12.382620",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 بواسطة تيم كرد"
+  },
+  {
+    "timestamp": "2026-07-28T09:47:26.480359",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 بواسطة تيم كرد"
