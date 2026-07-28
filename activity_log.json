@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-20T15:02:22.796858",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي سلندر للماكينة كرد8"
-  },
-  {
     "timestamp": "2026-07-20T15:04:33.849061",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة ايهاب"
+  },
+  {
+    "timestamp": "2026-07-28T09:30:08.415617",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد10 بواسطة ايهاب"
   }
 ]
