@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-25T07:49:58.003778",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم محطه"
-  },
-  {
     "timestamp": "2026-07-25T07:50:25.676294",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد9"
+  },
+  {
+    "timestamp": "2026-07-30T13:12:45.285008",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد21 بواسطة ايهاب"
   }
 ]
