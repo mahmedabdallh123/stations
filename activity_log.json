@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-25T07:53:51.749850",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم محطات"
-  },
-  {
     "timestamp": "2026-07-25T07:54:19.330721",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-07-31T07:00:00.399100",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة انس"
+  },
+  {
+    "timestamp": "2026-07-31T07:00:20.067421",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة انس"
