@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-25T07:51:14.384391",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة م عبدالله"
-  },
-  {
     "timestamp": "2026-07-25T07:53:51.749850",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد21 بواسطة ايهاب"
+  },
+  {
+    "timestamp": "2026-07-31T07:00:00.399100",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة انس"
   }
 ]
