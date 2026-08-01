@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-26T11:20:04.390767",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد9"
-  },
-  {
     "timestamp": "2026-07-26T11:21:23.921598",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد7 بواسطة تيم كرد"
+  },
+  {
+    "timestamp": "2026-08-01T11:01:21.086617",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد8 بواسطة تيم كرد"
   }
 ]
