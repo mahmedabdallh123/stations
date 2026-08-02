@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-27T10:32:58.702752",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد4 بواسطة حسام.ايهاب"
-  },
-  {
     "timestamp": "2026-07-27T10:34:07.207730",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر تدوير2"
+  },
+  {
+    "timestamp": "2026-08-02T11:35:10.599227",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد4"
   }
 ]
