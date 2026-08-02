@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-27T10:34:07.207730",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد3 بواسطة حسام.ايهاب"
-  },
-  {
     "timestamp": "2026-07-27T10:34:32.615610",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد4"
+  },
+  {
+    "timestamp": "2026-08-02T11:36:41.993148",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد4 بواسطة تيم كرد"
   }
 ]
