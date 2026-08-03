@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-27T10:39:46.634215",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم الكرد"
-  },
-  {
     "timestamp": "2026-07-27T10:40:48.845874",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_البرم",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تشحيم السلندرات +الجير بوكس(ep2)' للماكينة برم3 (فترة 360 ساعة)"
+  },
+  {
+    "timestamp": "2026-08-03T12:16:59.618839",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1465 للماكينة كرد22"
   }
 ]
