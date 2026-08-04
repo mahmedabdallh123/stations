@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-29T11:40:54.939155",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد9"
-  },
-  {
     "timestamp": "2026-07-30T13:12:45.285008",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-04T16:25:26.753440",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-08-04T16:25:29.841056",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ب"
