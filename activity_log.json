@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T09:47:12.382620",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس المتحركه' للماكينة كرد12 بواسطة تيم كرد"
-  },
-  {
     "timestamp": "2026-07-28T09:47:26.480359",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-04T16:22:47.644338",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط8 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-08-04T16:23:00.202106",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة تمشيط8 بواسطة ب"
