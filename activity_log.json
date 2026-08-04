@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T12:46:55.985313",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد22"
-  },
-  {
     "timestamp": "2026-07-28T12:47:22.921332",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه (صيانه وتشحيم)' للماكينة ماكينه 4 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-08-04T16:25:13.972604",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه2 بواسطة ب"
   }
 ]
