@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T09:50:40.619638",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد12 (فترة 7500 ساعة)"
-  },
-  {
     "timestamp": "2026-07-28T09:51:34.915305",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه 9 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-08-04T16:24:02.839980",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم الملفات)' للماكينة ماكينه 1 بواسطة ب"
   }
 ]
