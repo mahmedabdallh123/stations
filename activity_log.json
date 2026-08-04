@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T09:23:47.578624",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر برم2"
-  },
-  {
     "timestamp": "2026-07-28T09:27:37.667219",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد14 بواسطة حسام.ايهاب"
+  },
+  {
+    "timestamp": "2026-08-04T16:15:05.208014",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة 10تمشيط بواسطة ي"
   }
 ]
