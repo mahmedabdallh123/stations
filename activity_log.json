@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T09:38:29.449637",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد10 (فترة 9000 ساعة)"
-  },
-  {
     "timestamp": "2026-07-28T09:38:43.200116",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-04T16:19:51.537686",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط2 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-08-04T16:20:05.196696",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط2 بواسطة ب"
