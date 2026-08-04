@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-28T09:49:26.014748",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير جرايد اماميه550' للماكينة كرد12 (فترة 7500 ساعة)"
-  },
-  {
     "timestamp": "2026-07-28T09:50:40.619638",
     "username": "admin",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-04T16:23:28.323388",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه 9 بواسطة ب"
+  },
+  {
+    "timestamp": "2026-08-04T16:23:34.949632",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه(صيانه وتشحيم )' للماكينة ماكينه 9 بواسطة ب"
