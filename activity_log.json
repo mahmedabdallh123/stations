@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-31T07:00:20.067421",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة انس"
-  },
-  {
     "timestamp": "2026-07-31T07:02:17.965326",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف بليه نازع للماكينة كرد2"
+  },
+  {
+    "timestamp": "2026-08-05T12:20:36.408315",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد22 بواسطة حسام.ايهاب"
   }
 ]
