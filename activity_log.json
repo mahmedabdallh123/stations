@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-31T07:38:22.749346",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم كرد"
-  },
-  {
     "timestamp": "2026-07-31T07:38:49.304503",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-06T10:48:31.934298",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه2000(تغير فلتر زيت وفلتر هواء صغير)' للماكينة كمبروسر 1صغير بواسطة توكيل"
+  },
+  {
+    "timestamp": "2026-08-06T10:48:46.386574",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه2000(تغير فلتر زيت وفلتر هواء صغير)' للماكينة كمبروسر 1صغير بواسطة توكيل"
