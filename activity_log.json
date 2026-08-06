@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-01T04:49:18.683127",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة ans"
-  },
-  {
     "timestamp": "2026-08-01T04:49:43.098984",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 2صغير"
+  },
+  {
+    "timestamp": "2026-08-06T10:49:45.873183",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 3كبير"
   }
 ]
