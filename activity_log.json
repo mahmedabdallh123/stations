@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-31T07:38:49.304503",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم كرد"
-  },
-  {
     "timestamp": "2026-08-01T04:49:18.683127",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه2000(تغير فلتر زيت وفلتر هواء صغير)' للماكينة كمبروسر 1صغير بواسطة توكيل"
+  },
+  {
+    "timestamp": "2026-08-06T10:49:28.881886",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 2صغير"
   }
 ]
