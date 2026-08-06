@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-07-31T07:37:57.594266",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة تيم كرد"
-  },
-  {
     "timestamp": "2026-07-31T07:38:22.749346",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه4000ساعه وتشمل(تغير 2فلتر زيت،فلتر هواء كبير،فاصل زيت كبير,تشحيم موتور ضاغط20ضغطه،وموتورين تبريد5ضغطه)' للماكينة كمبروسر 4كبير بواسطة توكيل"
+  },
+  {
+    "timestamp": "2026-08-06T10:48:31.934298",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه2000(تغير فلتر زيت وفلتر هواء صغير)' للماكينة كمبروسر 1صغير بواسطة توكيل"
   }
 ]
