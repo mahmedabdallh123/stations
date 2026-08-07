@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-01T10:58:30.173509",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد7 بواسطة تيم كرد"
-  },
-  {
     "timestamp": "2026-08-01T11:01:21.086617",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف ميكانيكل سيل للماكينة طرمبه مياه صغيره 1"
+  },
+  {
+    "timestamp": "2026-08-07T17:35:14.255430",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف شيك ڤالڤ للماكينة طرمبه مياه  كبيرة 3"
   }
 ]
