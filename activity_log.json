@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-02T11:33:16.433628",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر تدوير2"
-  },
-  {
     "timestamp": "2026-08-02T11:35:10.599227",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-10T11:48:32.457785",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم"
+  },
+  {
+    "timestamp": "2026-08-10T11:48:56.467239",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم"
