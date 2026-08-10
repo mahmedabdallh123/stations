@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-02T11:37:30.558788",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد4 (فترة 9000 ساعة)"
-  },
-  {
     "timestamp": "2026-08-02T15:15:32.740346",
     "username": "admin",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة تيم"
+  },
+  {
+    "timestamp": "2026-08-10T11:49:57.857992",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم"
   }
 ]
