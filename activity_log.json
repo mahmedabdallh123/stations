@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-01T20:15:13.234756",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: 2,0 x 50 x  3530\nقطع سير سلندر للماكينة كرد1"
-  },
-  {
     "timestamp": "2026-08-02T11:33:16.433628",
     "username": "admin",
     "action_type": "add_event",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-10T11:48:12.876897",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم"
+  },
+  {
+    "timestamp": "2026-08-10T11:48:32.457785",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم"
