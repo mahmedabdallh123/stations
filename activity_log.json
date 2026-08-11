@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-03T12:16:59.618839",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1465 للماكينة كرد22"
-  },
-  {
     "timestamp": "2026-08-04T12:15:16.265691",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-11T10:25:37.220478",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير كسوه سلندر' للماكينة كرد15 بواسطة كمال شريف وتيم كرد"
+  },
+  {
+    "timestamp": "2026-08-11T10:25:53.155961",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير كسوه سلندر' للماكينة كرد15 بواسطة كمال شريف وتيم كرد"
