@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-03T07:36:17.544241",
-    "username": "مشرف_البرم",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تشحيم السلندرات +الجير بوكس(ep2)' للماكينة برم3 (فترة 360 ساعة)"
-  },
-  {
     "timestamp": "2026-08-03T12:16:59.618839",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير كسوه سلندر' للماكينة كرد15 (فترة 16000 ساعة)"
+  },
+  {
+    "timestamp": "2026-08-11T10:25:37.220478",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير كسوه سلندر' للماكينة كرد15 بواسطة كمال شريف وتيم كرد"
   }
 ]
