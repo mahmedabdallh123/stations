@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-02T16:25:52.684318",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة مكبس التمشيط"
-  },
-  {
     "timestamp": "2026-08-03T07:36:17.544241",
     "username": "مشرف_البرم",
     "action_type": "add_maintenance_task",
@@ -595,6 +589,12 @@
   },
   {
     "timestamp": "2026-08-11T10:24:48.061787",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير كسوه سلندر' للماكينة كرد15 (فترة 16000 ساعة)"
+  },
+  {
+    "timestamp": "2026-08-11T10:25:03.097670",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير كسوه سلندر' للماكينة كرد15 (فترة 16000 ساعة)"
