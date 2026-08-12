@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-04T12:29:43.018524",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد8 بواسطة حسام.ايهاب"
-  },
-  {
     "timestamp": "2026-08-04T12:30:35.738372",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 1270 للماكينة كرد17"
+  },
+  {
+    "timestamp": "2026-08-12T12:34:38.386763",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة فتحي"
   }
 ]
