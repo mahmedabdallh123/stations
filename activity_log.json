@@ -1,11 +1,5 @@
 [
   {
-    "timestamp": "2026-08-04T16:16:23.536840",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة '   اتشحيم سلندرات التغزيه والقطع والوصل وعمود الدعم والفرش والدرافت من فوق' للماكينة تمشيط 21 بواسطة ب"
-  },
-  {
     "timestamp": "2026-08-04T16:16:58.613550",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -598,5 +592,11 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل2.1"
+  },
+  {
+    "timestamp": "2026-08-13T06:22:10.387452",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل2.2"
   }
 ]
