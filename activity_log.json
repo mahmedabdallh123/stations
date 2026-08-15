@@ -19,5 +19,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة تبم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-15T18:48:34.868449",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة تبم",
+    "section": "المحطات"
   }
 ]
