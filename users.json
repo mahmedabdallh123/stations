@@ -15,32 +15,6 @@
         "role": "admin",
         "sections_permissions": {}
     },
-    "مشرف_البرم": {
-        "password": "12345678",
-        "permissions": {
-            "all_sections": false
-        },
-        "role": "viewer",
-        "sections_permissions": {
-            "البرم": [
-                "view",
-                "edit",
-                "add_event",
-                "manage_machines"
-            ],
-            "التفتيح": [],
-            "الضواغط": [],
-            "الغزل": [],
-            "الكرد": [],
-            "المحطات": [],
-            "المكبس": [],
-            "تمشيط": [],
-            "سحب اول": [],
-            "سحب ثاني": [],
-            "محطه تحليه المياه": [],
-            "ملفات": []
-        }
-    },
     "مشرف_التمشيط": {
         "password": "1234567",
         "permissions": {
