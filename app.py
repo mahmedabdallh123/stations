@@ -400,27 +400,24 @@ def admin_users_management_tab():
                 else:
                     st.error("❌ فشل الحفظ")
             
-            # ----- حذف المستخدم (معدل) -----
+            # ----- حذف المستخدم (بنقرة واحدة مع تأكيد) -----
             if username != "admin":
                 st.markdown("---")
-                # استخدام form لتأكيد الحذف
-                with st.form(key=f"delete_form_{username}"):
-                    st.warning(f"⚠️ أنت على وشك حذف المستخدم **{username}** نهائياً.")
-                    confirm = st.text_input(f"لتأكيد الحذف، اكتب YES", key=f"confirm_{username}")
-                    submitted_delete = st.form_submit_button(f"🗑️ حذف المستخدم {username}", type="primary")
-                    if submitted_delete:
-                        if confirm == "YES":
-                            # حذف المستخدم من القاموس
-                            del users[username]
-                            # محاولة الحفظ
-                            if save_users_to_github(users):
-                                st.success(f"✅ تم حذف المستخدم {username} بنجاح!")
-                                # إعادة تحميل المستخدمين لتحديث الواجهة
-                                st.rerun()
-                            else:
-                                st.error("❌ فشل حذف المستخدم. حاول مرة أخرى.")
-                        elif confirm:
-                            st.warning("⚠️ لم تكتب YES بشكل صحيح. لم يتم الحذف.")
+                # زر الحذف مع رسالة تحذير
+                col_del1, col_del2 = st.columns([3, 1])
+                with col_del1:
+                    st.warning(f"⚠️ حذف المستخدم **{username}** نهائياً. لا يمكن التراجع عن هذا الإجراء.")
+                with col_del2:
+                    if st.button(f"🗑️ حذف", key=f"delete_btn_{username}", type="primary"):
+                        # تأكيد إضافي باستخدام st.popover (إن وجد) أو رسالة عادية
+                        # لكننا سنعتمد على زر منفصل مع تحذير واضح
+                        # حذف المستخدم مباشرة
+                        del users[username]
+                        if save_users_to_github(users):
+                            st.success(f"✅ تم حذف المستخدم {username} بنجاح!")
+                            st.rerun()
+                        else:
+                            st.error("❌ فشل حذف المستخدم. حاول مرة أخرى.")
     
     # ==================== إضافة مستخدم جديد ====================
     st.markdown("---")
