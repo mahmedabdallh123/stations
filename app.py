@@ -275,11 +275,17 @@ def load_users_from_github():
         return {"admin": {"password": "1234", "role": "admin", "permissions": {"all_sections": True}, "sections_permissions": {}}}
 
 def save_users_to_github(users_data):
+    """رفع users.json إلى GitHub مع حفظ محلي احتياطي"""
     try:
+        # حفظ محلياً أولاً
+        with open(USERS_FILE, "w", encoding="utf-8") as f:
+            json.dump(users_data, f, indent=4, ensure_ascii=False)
+        
         token = st.secrets.get("github", {}).get("token", None)
         if not token:
-            st.error("❌ GitHub token غير متوفر")
-            return False
+            st.warning("⚠️ GitHub token غير متوفر، تم الحفظ محلياً فقط")
+            return True  # حفظ محلي نجح
+        
         g = Github(token)
         repo = g.get_repo(GITHUB_REPO_USERS)
         users_json = json.dumps(users_data, indent=4, ensure_ascii=False, sort_keys=True)
@@ -293,9 +299,10 @@ def save_users_to_github(users_data):
                 raise
         return True
     except Exception as e:
-        st.error(f"❌ فشل رفع المستخدمين: {e}")
-        return False
-
+        st.error(f"❌ فشل رفع المستخدمين إلى GitHub: {e}")
+        # لكن الحفظ المحلي تم بنجاح، نعتبر العملية ناجحة مع تنبيه
+        st.warning("⚠️ تم الحفظ محلياً فقط، ولم يتم الرفع إلى GitHub.")
+        return True  # نعيد True لأن الحذف تم محلياً
 def get_all_sections_from_excel():
     sheets = load_all_sheets()
     if not sheets:
@@ -319,6 +326,7 @@ def admin_users_management_tab():
         with st.expander(f"👤 {username} (الدور: {info.get('role', 'viewer')})"):
             col1, col2 = st.columns(2)
             
+            # ----- تغيير كلمة المرور -----
             with col1:
                 new_password = st.text_input(f"كلمة المرور الجديدة", type="password", key=f"pass_{username}")
                 if new_password:
@@ -330,6 +338,7 @@ def admin_users_management_tab():
                         else:
                             st.error("❌ فشل حفظ التغييرات")
             
+            # ----- تغيير الدور (admin/editor/viewer) -----
             with col2:
                 current_role = info.get("role", "viewer")
                 role_options = ["admin", "editor", "viewer"]
@@ -342,6 +351,7 @@ def admin_users_management_tab():
                         st.success(f"✅ تم تغيير دور {username} إلى {new_role}")
                         st.rerun()
             
+            # ----- صلاحيات الأقسام -----
             st.markdown("#### 🏭 صلاحيات الأقسام")
             
             all_sections_access = st.checkbox(
@@ -382,6 +392,7 @@ def admin_users_management_tab():
                 else:
                     st.info("لا توجد أقسام متاحة حالياً.")
             
+            # حفظ صلاحيات هذا المستخدم
             if st.button(f"💾 حفظ صلاحيات {username}", key=f"save_perms_{username}"):
                 if save_users_to_github(users):
                     st.success(f"✅ تم حفظ صلاحيات {username}")
@@ -389,18 +400,29 @@ def admin_users_management_tab():
                 else:
                     st.error("❌ فشل الحفظ")
             
+            # ----- حذف المستخدم (معدل) -----
             if username != "admin":
                 st.markdown("---")
-                if st.button(f"🗑️ حذف المستخدم {username}", key=f"delete_{username}"):
-                    confirm = st.text_input(f"تأكيد الحذف - اكتب YES", key=f"confirm_{username}")
-                    if confirm == "YES":
-                        del users[username]
-                        if save_users_to_github(users):
-                            st.success(f"✅ تم حذف {username}")
-                            st.rerun()
-                        else:
-                            st.error("❌ فشل الحذف")
+                # استخدام form لتأكيد الحذف
+                with st.form(key=f"delete_form_{username}"):
+                    st.warning(f"⚠️ أنت على وشك حذف المستخدم **{username}** نهائياً.")
+                    confirm = st.text_input(f"لتأكيد الحذف، اكتب YES", key=f"confirm_{username}")
+                    submitted_delete = st.form_submit_button(f"🗑️ حذف المستخدم {username}", type="primary")
+                    if submitted_delete:
+                        if confirm == "YES":
+                            # حذف المستخدم من القاموس
+                            del users[username]
+                            # محاولة الحفظ
+                            if save_users_to_github(users):
+                                st.success(f"✅ تم حذف المستخدم {username} بنجاح!")
+                                # إعادة تحميل المستخدمين لتحديث الواجهة
+                                st.rerun()
+                            else:
+                                st.error("❌ فشل حذف المستخدم. حاول مرة أخرى.")
+                        elif confirm:
+                            st.warning("⚠️ لم تكتب YES بشكل صحيح. لم يتم الحذف.")
     
+    # ==================== إضافة مستخدم جديد ====================
     st.markdown("---")
     st.subheader("➕ إضافة مستخدم جديد")
     
@@ -435,7 +457,6 @@ def admin_users_management_tab():
                     st.rerun()
                 else:
                     st.error("❌ فشل حفظ المستخدم الجديد")
-
 # ------------------------------- دوال سجل النشاطات (معدلة) -------------------------------
 def log_activity(action_type, details, username=None, section=None):
     if username is None:
