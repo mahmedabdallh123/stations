@@ -131,5 +131,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-16T10:41:51.511004",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
+    "section": "المحطات"
   }
 ]
