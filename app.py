@@ -1255,6 +1255,11 @@ def search_across_sheets(all_sheets):
             for sheet_name, df in sheets_to_search:
                 df_filtered = df.copy()
                 
+                # تنظيف النصوص من المسافات الزائدة
+                for col in df_filtered.columns:
+                    if df_filtered[col].dtype == 'object':
+                        df_filtered[col] = df_filtered[col].astype(str).str.strip()
+                
                 if filter_equipment != "الكل" and "المعدة" in df_filtered.columns:
                     df_filtered = df_filtered[df_filtered["المعدة"] == filter_equipment]
                 
@@ -1266,29 +1271,32 @@ def search_across_sheets(all_sheets):
                         df_filtered = df_filtered[mask]
                 
                 if general_search:
+                    search_clean = general_search.strip()
                     event_col = "الحدث/العطل"
                     action_col = "الإجراء التصحيحي"
                     mask_general = pd.Series([False] * len(df_filtered))
                     if event_col in df_filtered.columns:
-                        mask_general = mask_general | df_filtered[event_col].astype(str).str.contains(general_search, case=False, na=False)
+                        mask_general = mask_general | df_filtered[event_col].astype(str).str.contains(search_clean, case=False, na=False)
                     if action_col in df_filtered.columns:
-                        mask_general = mask_general | df_filtered[action_col].astype(str).str.contains(general_search, case=False, na=False)
+                        mask_general = mask_general | df_filtered[action_col].astype(str).str.contains(search_clean, case=False, na=False)
                     df_filtered = df_filtered[mask_general]
                 
                 if technician_search:
+                    tech_clean = technician_search.strip()
                     tech_col = "تم بواسطة"
                     if tech_col in df_filtered.columns:
-                        mask_tech = df_filtered[tech_col].astype(str).str.contains(technician_search, case=False, na=False)
+                        mask_tech = df_filtered[tech_col].astype(str).str.contains(tech_clean, case=False, na=False)
                         df_filtered = df_filtered[mask_tech]
                 
                 if use_multiselect and selected_fault_types:
                     if "نوع العطل" in df_filtered.columns:
-                        pattern = '|'.join(selected_fault_types)
+                        pattern = '|'.join([t.strip() for t in selected_fault_types])
                         mask_fault = df_filtered["نوع العطل"].astype(str).str.contains(pattern, case=False, na=False)
                         df_filtered = df_filtered[mask_fault]
                 elif custom_fault_type:
+                    custom_clean = custom_fault_type.strip()
                     if "نوع العطل" in df_filtered.columns:
-                        mask_fault = df_filtered["نوع العطل"].astype(str).str.contains(custom_fault_type, case=False, na=False)
+                        mask_fault = df_filtered["نوع العطل"].astype(str).str.contains(custom_clean, case=False, na=False)
                         df_filtered = df_filtered[mask_fault]
                 
                 if not df_filtered.empty:
@@ -1351,17 +1359,24 @@ def search_across_sheets(all_sheets):
         if spare_df.empty:
             st.warning("لا توجد بيانات في قطع الغيار")
             return
+        
+        # تنظيف النصوص من المسافات الزائدة
+        for col in spare_df.columns:
+            if spare_df[col].dtype == 'object':
+                spare_df[col] = spare_df[col].astype(str).str.strip()
+        
         df_filtered = spare_df.copy()
         if selected_section_filter != "جميع الأقسام":
             df_filtered = df_filtered[df_filtered["القسم"] == selected_section_filter]
         
         search_term = st.text_input("🔍 كلمة البحث (اسم القطعة، المقاس، القسم...):", key="search_term_spare")
         if search_term:
+            search_clean = search_term.strip()
             search_columns = ["اسم القطعة", "المقاس", "قوه الشد", "مدة التوريد", "القسم", "رابط_الصورة"]
             mask = pd.Series([False] * len(df_filtered))
             for col in search_columns:
                 if col in df_filtered.columns:
-                    mask = mask | df_filtered[col].astype(str).str.contains(search_term, case=False, na=False)
+                    mask = mask | df_filtered[col].astype(str).str.contains(search_clean, case=False, na=False)
             df_filtered = df_filtered[mask]
         
         if not df_filtered.empty:
@@ -1372,11 +1387,16 @@ def search_across_sheets(all_sheets):
         else:
             st.warning("لا توجد نتائج")
 
-    else:  # الصيانة الوقائية
+    else:  # الصيانة الوقائية - معدل بالكامل
         maint_df = load_maintenance_tasks()
         if maint_df.empty:
             st.warning("لا توجد بيانات في الصيانة الوقائية")
             return
+        
+        # تنظيف النصوص من المسافات الزائدة
+        for col in maint_df.columns:
+            if maint_df[col].dtype == 'object':
+                maint_df[col] = maint_df[col].astype(str).str.strip()
         
         equipment_to_section = {}
         for sheet_name in allowed_sections:
@@ -1392,24 +1412,76 @@ def search_across_sheets(all_sheets):
         
         search_term = st.text_input("🔍 كلمة البحث (المعدة، البند، الملاحظات...):", key="search_term_maintenance")
         if search_term:
+            search_clean = search_term.strip()
             mask = pd.Series([False] * len(df_filtered))
             search_columns = ["المعدة", "اسم_البند", "ملاحظات"]
             for col in search_columns:
                 if col in df_filtered.columns:
-                    mask = mask | df_filtered[col].astype(str).str.contains(search_term, case=False, na=False)
+                    mask = mask | df_filtered[col].astype(str).str.contains(search_clean, case=False, na=False)
             df_filtered = df_filtered[mask]
         
+        # فلتر التاريخ
+        st.markdown("#### نطاق التاريخ")
+        use_date_filter_maint = st.checkbox("تفعيل البحث بالتاريخ", key="use_date_filter_maintenance")
+        
+        if use_date_filter_maint:
+            date_col_options = ["آخر_تنفيذ", "التاريخ_التالي"]
+            # اختيار العمود المتاح فعلياً
+            available_date_cols = [col for col in date_col_options if col in df_filtered.columns]
+            if not available_date_cols:
+                st.warning("⚠️ لا توجد أعمدة تاريخ في بيانات الصيانة الوقائية")
+                date_col_maint = None
+            else:
+                date_col_maint = st.selectbox("اختر عمود التاريخ:", available_date_cols, key="date_col_maintenance")
+            
+            if date_col_maint:
+                col_date1, col_date2 = st.columns(2)
+                with col_date1:
+                    start_date_maint = st.date_input("من تاريخ:", value=None, key="start_date_maintenance")
+                with col_date2:
+                    end_date_maint = st.date_input("إلى تاريخ:", value=None, key="end_date_maintenance")
+            else:
+                start_date_maint = None
+                end_date_maint = None
+        else:
+            date_col_maint = None
+            start_date_maint = None
+            end_date_maint = None
+        
+        # تطبيق فلتر التاريخ (مع تحويل قوي)
+        if use_date_filter_maint and date_col_maint and start_date_maint and end_date_maint:
+            try:
+                # تحويل العمود إلى تاريخ
+                df_filtered[date_col_maint] = pd.to_datetime(df_filtered[date_col_maint], errors='coerce')
+                # إزالة الصفوف التي فشل تحويلها
+                df_filtered = df_filtered.dropna(subset=[date_col_maint])
+                # تطبيق الفلتر
+                mask_date = (df_filtered[date_col_maint] >= pd.to_datetime(start_date_maint)) & (df_filtered[date_col_maint] <= pd.to_datetime(end_date_maint) + timedelta(days=1))
+                df_filtered = df_filtered[mask_date]
+                st.success(f"✅ تم تطبيق فلتر التاريخ: من {start_date_maint} إلى {end_date_maint}")
+            except Exception as e:
+                st.warning(f"⚠️ خطأ في فلترة التاريخ: {e}")
+        
+        # عرض النتائج
         if not df_filtered.empty:
             df_filtered["القسم"] = df_filtered["المعدة"].map(equipment_to_section).fillna("غير محدد")
-            if "التاريخ" in df_filtered.columns:
-                df_filtered = df_filtered.sort_values(by="التاريخ", ascending=True)
+            if date_col_maint and date_col_maint in df_filtered.columns:
+                try:
+                    df_filtered = df_filtered.sort_values(by=date_col_maint, ascending=True)
+                except:
+                    pass
+            elif "التاريخ" in df_filtered.columns:
+                try:
+                    df_filtered = df_filtered.sort_values(by="التاريخ", ascending=True)
+                except:
+                    pass
+            
             st.success(f"تم العثور على {len(df_filtered)} مهمة صيانة")
             st.dataframe(df_filtered, use_container_width=True)
             excel_file = export_filtered_results_to_excel(df_filtered, "صيانة_وقائية")
             st.download_button("📥 تحميل النتائج", excel_file, f"maintenance_search_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         else:
             st.warning("لا توجد نتائج")
-
 # ------------------------------- دوال إدارة المعدات والأقسام -------------------------------
 def load_equipment_config():
     if not os.path.exists(EQUIPMENT_CONFIG_FILE):
