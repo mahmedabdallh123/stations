@@ -89,5 +89,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة كرد2",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-16T06:53:16.667774",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة كرد21",
+    "section": "الكرد"
   }
 ]
