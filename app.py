@@ -2001,7 +2001,8 @@ def manage_spare_parts_tab(sheets_edit):
             selected_part_name = st.selectbox("اختر القطعة:", part_options, key="edit_part_name_select")
             if selected_part_name:
                 part_row = filtered_df[filtered_df["اسم القطعة"] == selected_part_name].iloc[0]
-                with st.expander(f"✏️ تعديل قطعة: {selected_part_name}"):
+                with st.expander(f"✏️ تعديل قطعة: {selected_part_name}", expanded=True):
+                    # ملء الحقول تلقائياً
                     new_name = st.text_input("اسم القطعة", value=part_row["اسم القطعة"], key="edit_name")
                     new_size = st.text_input("المقاس", value=part_row["المقاس"], key="edit_size")
                     new_qty = st.number_input("الرصيد", value=int(part_row["الرصيد الموجود"]), step=1, key="edit_qty")
@@ -2134,7 +2135,6 @@ def manage_spare_parts_tab(sheets_edit):
                     else:
                         st.error("❌ فشل الحفظ")
     return sheets_edit
-
 # ------------------------------- تبويب الصيانة الوقائية (معدل) -------------------------------
 def preventive_maintenance_tab(sheets_edit):
     st.header("🛠 الصيانة الوقائية")
@@ -2183,7 +2183,8 @@ def preventive_maintenance_tab(sheets_edit):
             if selected_task_name:
                 task_row = tasks_display[tasks_display["اسم_البند"] == selected_task_name].iloc[0]
                 original_idx = task_row["original_index"]
-                with st.expander(f"✏️ تعديل بند: {selected_task_name}"):
+                with st.expander(f"✏️ تعديل بند: {selected_task_name}", expanded=True):
+                    # ملء الحقول تلقائياً من الصف المختار
                     new_name = st.text_input("اسم البند", value=task_row["اسم_البند"], key="edit_task_name")
                     new_period_hours = st.number_input("عدد الساعات بين الصيانة", min_value=1, value=int(task_row["الفترة_بالأيام"]*24), key="edit_period_hours")
                     new_notes = st.text_area("ملاحظات", value=task_row["ملاحظات"] if pd.notna(task_row["ملاحظات"]) else "", key="edit_task_notes")
@@ -2210,7 +2211,7 @@ def preventive_maintenance_tab(sheets_edit):
                     if save_and_push_to_github(sheets_edit, f"حذف بند صيانة: {selected_task_name}"):
                         st.success("تم الحذف")
                         st.rerun()
-        else:
+        else:  # عرض البطاقات
             cols_per_row = 2
             for i in range(0, len(tasks_display), cols_per_row):
                 row_cols = st.columns(cols_per_row)
