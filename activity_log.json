@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": "2026-08-17T10:31:02.816719",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة مصطفى ",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-17T10:30:50.204442",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة مصطفى ",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-08-16T15:55:04.374706",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -47,75 +61,5 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة حوض التنظيف",
     "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T11:19:26.821226",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل2.2",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T11:18:36.191625",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تجربه للماكينة روتاري فلتر برم2",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T10:42:55.098810",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد24 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-16T10:42:43.367866",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد24 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-16T10:41:57.233704",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T10:41:51.511004",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T10:41:47.697637",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T10:41:36.265271",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-17T10:30:50.204442",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة مصطفى ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-17T10:31:02.816719",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة مصطفى ",
-    "section": "الكرد"
   }
 ]
