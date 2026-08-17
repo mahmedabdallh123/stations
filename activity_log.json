@@ -19,19 +19,5 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة مصطفى ",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-16T15:55:04.374706",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1800 للماكينة كرد19",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-16T15:52:56.965353",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 753 للماكينة كرد9",
-    "section": "الكرد"
   }
 ]
