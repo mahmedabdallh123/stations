@@ -180,40 +180,5 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد1 بواسطة حسام/ايهاب",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-16T05:07:20.145063",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة عبده",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T05:07:08.614275",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة عبده",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-15T18:48:34.868449",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة تبم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-15T18:48:28.819931",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة تبم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-15T18:48:11.082352",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة تبم",
-    "section": "المحطات"
   }
 ]
