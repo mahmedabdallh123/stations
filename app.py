@@ -2371,7 +2371,6 @@ def preventive_maintenance_tab(sheets_edit):
                 else:
                     st.error("❌ فشل الحفظ")
     return sheets_edit
-
 # ------------------------------- دالة إدارة البيانات الرئيسية (معدلة بالكامل) -------------------------------
 def manage_data_edit(sheets_edit):
     if sheets_edit is None:
