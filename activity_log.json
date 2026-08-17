@@ -1,5 +1,12 @@
 [
   {
+    "timestamp": "2026-08-17T11:47:22.953033",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة حوض التنظيف",
+    "section": "المحطات"
+  },
+  {
     "timestamp": "2026-08-17T10:31:02.816719",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -26,47 +33,5 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 753 للماكينة كرد9",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-16T12:21:58.510728",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T12:21:52.910704",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T12:21:46.288349",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T12:21:37.245281",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات وتنظيفها' للماكينة حوض التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-16T12:21:03.082276",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة حوض التنظيف",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-17T11:47:22.953033",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة حوض التنظيف",
-    "section": "المحطات"
   }
 ]
