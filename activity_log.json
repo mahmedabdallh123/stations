@@ -61,5 +61,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة حوض التنظيف",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-17T11:47:22.953033",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة حوض التنظيف",
+    "section": "المحطات"
   }
 ]
