@@ -103,5 +103,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-17T10:30:50.204442",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة مصطفى ",
+    "section": "الكرد"
   }
 ]
