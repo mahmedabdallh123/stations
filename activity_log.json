@@ -26,5 +26,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-18T09:44:22.924974",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد1 بواسطة تيم كرد ",
+    "section": "الكرد"
   }
 ]
