@@ -103,5 +103,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير دوفر 1200 للماكينة كرد19",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-20T09:16:29.067159",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف سيفتي ريلاي للماكينة كرد19",
+    "section": "الكرد"
   }
 ]
