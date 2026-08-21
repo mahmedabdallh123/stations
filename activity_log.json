@@ -26,54 +26,5 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف سير1465 للماكينة كرد17",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-20T09:35:04.937861",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد23 بواسطة ايهاب،حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-20T09:34:21.170589",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 بواسطة ايهاب،حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-20T09:34:06.586448",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 بواسطة ايهاب،حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-20T09:33:06.868008",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد12 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-20T09:32:54.357164",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد12 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-20T09:32:05.004121",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة انس",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-20T09:31:46.411871",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة انس",
-    "section": "المحطات"
   }
 ]
