@@ -1,5 +1,12 @@
 [
   {
+    "timestamp": "2026-08-21T07:56:42.416978",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: 753سبب العطل قطع سير  للماكينة كرد18",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-08-20T16:03:46.001708",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -68,19 +75,5 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة انس",
     "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-20T09:16:29.067159",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف سيفتي ريلاي للماكينة كرد19",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-21T07:56:42.416978",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: 753سبب العطل قطع سير  للماكينة كرد18",
-    "section": "الكرد"
   }
 ]
