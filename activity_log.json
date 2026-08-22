@@ -1,100 +1,9 @@
 [
   {
-    "timestamp": "2026-08-21T12:42:00.119927",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب (فترة 340 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-22T10:35:07.470192",
-    "username": "admin",
+    "timestamp": "2026-08-22T12:22:50.134130",
+    "username": "مشرف_تحضيرات",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد4",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T10:36:33.399253",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد4",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T10:39:32.197632",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد4",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T10:43:30.416950",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد5",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T10:44:55.201876",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد7",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T10:49:22.255416",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد8",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T10:49:49.448818",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 753 للماكينة كرد8",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T11:35:30.605490",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير5900*3.2*13.5 للماكينة بري فلتر التنظيف",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-22T11:36:39.072091",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير جير بوكس للماكينة روتاري فلتر كرد2",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-22T11:37:24.541728",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة زيزو",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-22T11:38:38.155252",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد10",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T11:39:32.764595",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص وتنظيف' للماكينة BO-R (فترة 340 ساعة)",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-08-22T11:39:47.559747",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فحص وتنظيف' للماكينة BO-R بواسطة زيزو",
+    "details": "تم إضافة عطل: تلف سير  للماكينة BO-P",
     "section": "التفتيح"
   },
   {
@@ -105,10 +14,94 @@
     "section": "التفتيح"
   },
   {
-    "timestamp": "2026-08-22T12:22:50.134130",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف سير  للماكينة BO-P",
+    "timestamp": "2026-08-22T11:39:47.559747",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص وتنظيف' للماكينة BO-R بواسطة زيزو",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-22T11:39:32.764595",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص وتنظيف' للماكينة BO-R (فترة 340 ساعة)",
+    "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-22T11:38:38.155252",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد10",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T11:37:24.541728",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة زيزو",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-22T11:36:39.072091",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير جير بوكس للماكينة روتاري فلتر كرد2",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-22T11:35:30.605490",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير5900*3.2*13.5 للماكينة بري فلتر التنظيف",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-22T10:49:49.448818",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 753 للماكينة كرد8",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:49:22.255416",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد8",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:44:55.201876",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد7",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:43:30.416950",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد5",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:39:32.197632",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 1200 للماكينة كرد4",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:36:33.399253",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد4",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:35:07.470192",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد4",
+    "section": "الكرد"
   }
 ]
