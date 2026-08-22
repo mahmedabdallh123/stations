@@ -5,12 +5,5 @@
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب (فترة 340 ساعة)",
     "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-21T07:56:42.416978",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: 753سبب العطل قطع سير  للماكينة كرد18",
-    "section": "الكرد"
   }
 ]
