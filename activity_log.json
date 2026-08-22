@@ -82,5 +82,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد10",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T11:39:32.764595",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص وتنظيف' للماكينة BO-R (فترة 340 ساعة)",
+    "section": "التفتيح"
   }
 ]
