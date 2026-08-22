@@ -54,5 +54,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 753 للماكينة كرد8",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T11:35:30.605490",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير5900*3.2*13.5 للماكينة بري فلتر التنظيف",
+    "section": "المحطات"
   }
 ]
