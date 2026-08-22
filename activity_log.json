@@ -103,5 +103,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فحص وتنظيف' للماكينة BO-R بواسطة زيزو",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-22T12:22:50.134130",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف سير  للماكينة BO-P",
+    "section": "التفتيح"
   }
 ]
