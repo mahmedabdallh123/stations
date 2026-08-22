@@ -68,5 +68,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير جير بوكس للماكينة روتاري فلتر كرد2",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-22T11:37:24.541728",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة زيزو",
+    "section": "المكبس"
   }
 ]
