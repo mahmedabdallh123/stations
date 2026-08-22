@@ -12,5 +12,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير700 للماكينة كرد4",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-22T10:36:33.399253",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد4",
+    "section": "الكرد"
   }
 ]
