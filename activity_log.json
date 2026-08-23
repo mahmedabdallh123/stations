@@ -26,5 +26,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة تيم",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-23T20:50:45.600702",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
