@@ -7,6 +7,14 @@
         "role": "admin",
         "sections_permissions": {}
     },
+    "belyarn": {
+        "password": "00000",
+        "permissions": {
+            "all_sections": false
+        },
+        "role": "admin",
+        "sections_permissions": {}
+    },
     "مدير_صيانة": {
         "password": "12345",
         "permissions": {
