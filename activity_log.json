@@ -1,31 +1,10 @@
 [
   {
-    "timestamp": "2026-08-22T17:56:15.690275",
+    "timestamp": "2026-08-23T15:43:36.420929",
     "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: تم ايقاف الما كينه بسبب قطع سير 753 للماكينة كرد16",
+    "details": "تم إضافة عطل: زياره توكيل للماكينة كرد4",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T17:51:14.904113",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل:  للماكينة كرد16",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-22T17:47:43.332915",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل:  للماكينة كرد15",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-23T15:38:36.672813",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة تيم كرد",
-    "section": "المحطات"
   },
   {
     "timestamp": "2026-08-23T15:38:54.252827",
@@ -35,10 +14,10 @@
     "section": "المحطات"
   },
   {
-    "timestamp": "2026-08-23T15:43:36.420929",
+    "timestamp": "2026-08-23T15:38:36.672813",
     "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل للماكينة كرد4",
-    "section": "الكرد"
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة تيم كرد",
+    "section": "المحطات"
   }
 ]
