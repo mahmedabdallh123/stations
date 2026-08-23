@@ -2359,6 +2359,7 @@ def manage_data_edit(sheets_edit):
     
     username = st.session_state.get("username")
     
+    # ---------- التبويب 1: عرض وتعديل الأقسام ----------
     with tabs_edit[0]:
         st.subheader("🗂️ عرض وتعديل بيانات الأقسام")
         st.info("🔍 يمكنك البحث والفلترة (بالنص، التاريخ، الماكينة) ثم تعديل البيانات مباشرة. يتم الحفظ والرفع إلى GitHub تلقائياً عند الضغط على '💾 حفظ التغييرات'.")
@@ -2415,11 +2416,9 @@ def manage_data_edit(sheets_edit):
             
             df_filtered = df_original.copy()
             
-            # فلتر الماكينة
             if selected_equipment != "الكل" and "المعدة" in df_filtered.columns:
                 df_filtered = df_filtered[df_filtered["المعدة"] == selected_equipment]
             
-            # فلتر النص العام
             if search_text:
                 mask = pd.Series([False] * len(df_filtered), index=df_filtered.index)
                 for col in df_filtered.columns:
@@ -2427,7 +2426,6 @@ def manage_data_edit(sheets_edit):
                         mask |= df_filtered[col].astype(str).str.contains(search_text, case=False, na=False)
                 df_filtered = df_filtered[mask]
             
-            # فلتر التاريخ
             if use_date_filter and date_col and start_date and end_date:
                 try:
                     df_filtered[date_col] = pd.to_datetime(df_filtered[date_col], errors='coerce')
@@ -2568,6 +2566,7 @@ def manage_data_edit(sheets_edit):
                         for fault, count in top_faults.items():
                             st.write(f"- {fault}: {count}")
     
+    # باقي التبويبات
     with tabs_edit[1]:
         if sheets_edit:
             all_dept_names = [name for name in sheets_edit.keys() if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
@@ -2663,31 +2662,15 @@ idx = 0
 with tabs[idx]:
     search_across_sheets(all_sheets)
 idx += 1
-
 with tabs[idx]:
     failures_analysis_tab(all_sheets)
 idx += 1
 
-# ------------------------------- تبويب الإشعارات (مع تحديث تلقائي وتمرير تلقائي) -------------------------------
+# ------------------------------- تبويب الإشعارات (مع تمرير مستمر تلقائي - أبطأ وأكبر) -------------------------------
 with tabs[idx]:
     st.header("🔔 الإشعارات والتنبيهات")
-    
-    # عنصر وهمي للتمرير إليه
-    st.markdown('<div id="maintenance-scroll-target"></div>', unsafe_allow_html=True)
-    
-    # سكريبت التمرير التلقائي
-    st.components.v1.html("""
-    <script>
-    setTimeout(function() {
-        var target = document.getElementById('maintenance-scroll-target');
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 800);
-    </script>
-    """, height=0)
-    
-    # خيار التحديث التلقائي
+
+    # ----- خيار التحديث التلقائي -----
     auto_refresh = st.checkbox("🔄 تفعيل التحديث التلقائي (كل 30 ثانية)", value=True, key="auto_refresh_checkbox")
     if auto_refresh:
         st.components.v1.html("""
@@ -2698,7 +2681,7 @@ with tabs[idx]:
         </script>
         """, height=0)
         st.info("✅ التحديث التلقائي مفعّل. سيتم تحديث الصفحة كل 30 ثانية.")
-    
+
     clean_old_activity_log(days_to_keep=1)
     
     username = st.session_state.get("username")
@@ -2706,7 +2689,7 @@ with tabs[idx]:
     all_sheets = load_all_sheets()
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
     
-    # ---------- عرض تنبيهات الصيانة ----------
+    # ---------- عرض تنبيهات الصيانة بشكل مميز مع تمرير مستمر ----------
     st.subheader("🛠️ تنبيهات الصيانة الوقائية")
     
     allowed_equipment = []
@@ -2723,47 +2706,85 @@ with tabs[idx]:
         overdue = overdue[overdue["المعدة"].isin(allowed_equipment)]
         upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)]
     
-    # 1. الصيانة المتأخرة
-    with st.container(border=True):
-        st.markdown("#### 🔴 صيانة متأخرة")
-        if not overdue.empty:
-            with st.container(height=250):
-                for _, row in overdue.iterrows():
-                    eq = row['المعدة']
-                    task = row['اسم_البند']
-                    due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
-                    section = "غير محدد"
-                    for sheet_name in allowed_sections:
-                        if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
-                            section = sheet_name
-                            break
-                    st.error(f"⚠️ **{eq}** (قسم: {section}) - {task} (مستحق: {due_date})")
-        else:
-            st.success("✅ لا توجد صيانات متأخرة.")
+    # دمج الصيانة المتأخرة والقادمة في قائمة واحدة للتمرير
+    maintenance_items = []
+    for _, row in overdue.iterrows():
+        eq = row['المعدة']
+        task = row['اسم_البند']
+        due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
+        section = "غير محدد"
+        for sheet_name in allowed_sections:
+            if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
+                section = sheet_name
+                break
+        maintenance_items.append(f"🔴 متأخرة: {eq} ({section}) - {task} (مستحق: {due_date})")
     
-    # 2. الصيانة القادمة خلال 3 أيام
-    with st.container(border=True):
-        st.markdown("#### 🟡 صيانة قادمة خلال 3 أيام")
-        if not upcoming.empty:
-            with st.container(height=250):
-                for _, row in upcoming.iterrows():
-                    eq = row['المعدة']
-                    task = row['اسم_البند']
-                    days = (row['التاريخ_التالي'].date() - datetime.now().date()).days
-                    due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
-                    section = "غير محدد"
-                    for sheet_name in allowed_sections:
-                        if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
-                            section = sheet_name
-                            break
-                    st.warning(f"🔹 **{eq}** (قسم: {section}) - {task} (بعد {days} يوم - {due_date})")
-        else:
-            st.info("✅ لا توجد صيانات قادمة خلال الأيام الثلاثة القادمة.")
+    for _, row in upcoming.iterrows():
+        eq = row['المعدة']
+        task = row['اسم_البند']
+        days = (row['التاريخ_التالي'].date() - datetime.now().date()).days
+        due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
+        section = "غير محدد"
+        for sheet_name in allowed_sections:
+            if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
+                section = sheet_name
+                break
+        maintenance_items.append(f"🟡 قادمة: {eq} ({section}) - {task} (بعد {days} يوم - {due_date})")
+    
+    if maintenance_items:
+        # إنشاء نص طويل يحتوي على جميع التنبيهات مع فواصل
+        text_to_scroll = " | ".join(maintenance_items)
+        
+        # تطبيق CSS للتمرير المستمر (الماركيز) مع جعله أبطأ وأكبر
+        st.markdown(f"""
+        <style>
+        @keyframes scroll-text {{
+            0% {{ transform: translateX(-100%); }}
+            100% {{ transform: translateX(100%); }}
+        }}
+        .scrolling-wrapper {{
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: #f8f9fa;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            margin: 10px 0;
+        }}
+        .scrolling-content {{
+            display: inline-block;
+            animation: scroll-text 1110s linear infinite;  /* زيادة المدة من 20s إلى 45s (أبطأ) */
+            font-size: 40px;  /* زيادة حجم الخط من 18px إلى 26px */
+            font-weight: bold;
+            color: #1a1a2e;
+            padding-left: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }}
+        .scrolling-content:hover {{
+            animation-play-state: paused;
+        }}
+        /* تحسين شكل النص عند التمرير */
+        .scrolling-content span {{
+            display: inline-block;
+            padding: 0 10px;
+        }}
+        </style>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content">
+                {text_to_scroll}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.success("✅ لا توجد صيانات متأخرة أو قادمة.")
     
     st.markdown("---")
     st.subheader("📋 أحداث وقطع غيار")
     
-    # 3. آخر الأحداث
+    # 1. آخر الأحداث (مطوية)
     with st.expander("📋 آخر الأحداث المسجلة", expanded=False):
         activity_log = load_activity_log()
         filtered_log = []
@@ -2803,7 +2824,7 @@ with tabs[idx]:
         else:
             st.info("لا توجد أحداث مسجلة خلال الـ 24 ساعة الماضية.")
     
-    # 4. قطع الغيار الحرجة
+    # 2. قطع الغيار الحرجة (مطوية)
     with st.expander("⚠️ قطع غيار حرجة", expanded=False):
         critical = get_critical_spare_parts()
         if username != "admin" and user_role != "admin":
@@ -2823,7 +2844,6 @@ with tabs[idx]:
         st.rerun()
     
 idx += 1
-
 # باقي التبويبات (إضافة عطل، إدارة الماكينات، تعديل البيانات، إدارة المستخدمين، الدعم الفني) كما هي
 if can_add_event:
     with tabs[idx]:
