@@ -2666,7 +2666,7 @@ with tabs[idx]:
     failures_analysis_tab(all_sheets)
 idx += 1
 
-# ------------------------------- تبويب الإشعارات (مع تمرير مستمر تلقائي - أبطأ وأكبر) -------------------------------
+# ------------------------------- تبويب الإشعارات (عرض إعلان أو قائمة) -------------------------------
 with tabs[idx]:
     st.header("🔔 الإشعارات والتنبيهات")
 
@@ -2689,8 +2689,16 @@ with tabs[idx]:
     all_sheets = load_all_sheets()
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
     
-    # ---------- عرض تنبيهات الصيانة بشكل مميز مع تمرير مستمر ----------
+    # ---------- خيارات العرض ----------
     st.subheader("🛠️ تنبيهات الصيانة الوقائية")
+    
+    # اختيار نمط العرض
+    display_mode = st.radio(
+        "اختر طريقة العرض:",
+        ["📢 عرض إعلان (شريط متحرك)", "📋 عرض قائمة (جدول)"],
+        horizontal=True,
+        key="maintenance_display_mode"
+    )
     
     allowed_equipment = []
     for sheet_name in allowed_sections:
@@ -2706,7 +2714,7 @@ with tabs[idx]:
         overdue = overdue[overdue["المعدة"].isin(allowed_equipment)]
         upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)]
     
-    # دمج الصيانة المتأخرة والقادمة في قائمة واحدة للتمرير
+    # دمج الصيانة المتأخرة والقادمة في قائمة واحدة
     maintenance_items = []
     for _, row in overdue.iterrows():
         eq = row['المعدة']
@@ -2717,7 +2725,13 @@ with tabs[idx]:
             if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
                 section = sheet_name
                 break
-        maintenance_items.append(f"🔴 متأخرة: {eq} ({section}) - {task} (مستحق: {due_date})")
+        maintenance_items.append({
+            "المعدة": eq,
+            "الحالة": "🔴 متأخرة",
+            "البند": task,
+            "التاريخ": due_date,
+            "القسم": section
+        })
     
     for _, row in upcoming.iterrows():
         eq = row['المعدة']
@@ -2729,55 +2743,66 @@ with tabs[idx]:
             if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
                 section = sheet_name
                 break
-        maintenance_items.append(f"🟡 قادمة: {eq} ({section}) - {task} (بعد {days} يوم - {due_date})")
+        maintenance_items.append({
+            "المعدة": eq,
+            "الحالة": f"🟡 قادمة (بعد {days} يوم)",
+            "البند": task,
+            "التاريخ": due_date,
+            "القسم": section
+        })
     
     if maintenance_items:
-        # إنشاء نص طويل يحتوي على جميع التنبيهات مع فواصل
-        text_to_scroll = " | ".join(maintenance_items)
-        
-        # تطبيق CSS للتمرير المستمر (الماركيز) مع جعله أبطأ وأكبر
-        st.markdown(f"""
-        <style>
-        @keyframes scroll-text {{
-            0% {{ transform: translateX(-100%); }}
-            100% {{ transform: translateX(100%); }}
-        }}
-        .scrolling-wrapper {{
-            overflow: hidden;
-            white-space: nowrap;
-            background-color: #f8f9fa;
-            border: 2px solid #ffc107;
-            border-radius: 8px;
-            padding: 15px 0;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            margin: 10px 0;
-        }}
-        .scrolling-content {{
-            display: inline-block;
-            animation: scroll-text 1110s linear infinite;  /* زيادة المدة من 20s إلى 45s (أبطأ) */
-            font-size: 40px;  /* زيادة حجم الخط من 18px إلى 26px */
-            font-weight: bold;
-            color: #1a1a2e;
-            padding-left: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-        }}
-        .scrolling-content:hover {{
-            animation-play-state: paused;
-        }}
-        /* تحسين شكل النص عند التمرير */
-        .scrolling-content span {{
-            display: inline-block;
-            padding: 0 10px;
-        }}
-        </style>
-        <div class="scrolling-wrapper">
-            <div class="scrolling-content">
-                {text_to_scroll}
+        if display_mode == "📢 عرض إعلان (شريط متحرك)":
+            # عرض الشريط المتحرك
+            text_parts = []
+            for item in maintenance_items:
+                text_parts.append(
+                    f"{item['المعدة']} {item['الحالة']} - {item['البند']} (تاريخ: {item['التاريخ']}) [قسم: {item['القسم']}]"
+                )
+            text_to_scroll = " | ".join(text_parts)
+            
+            st.markdown(f"""
+            <style>
+            @keyframes scroll-text {{
+                0% {{ transform: translateX(-100%); }}
+                100% {{ transform: translateX(100%); }}
+            }}
+            .scrolling-wrapper {{
+                overflow: hidden;
+                white-space: nowrap;
+                background-color: #f8f9fa;
+                border: 2px solid #ffc107;
+                border-radius: 8px;
+                padding: 15px 0;
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                margin: 10px 0;
+            }}
+            .scrolling-content {{
+                display: inline-block;
+                animation: scroll-text 60s linear infinite;
+                font-size: 26px;
+                font-weight: bold;
+                color: #1a1a2e;
+                padding-left: 100%;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            }}
+            .scrolling-content:hover {{
+                animation-play-state: paused;
+            }}
+            </style>
+            <div class="scrolling-wrapper">
+                <div class="scrolling-content">
+                    {text_to_scroll}
+                </div>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
+        else:
+            # عرض قائمة (جدول)
+            import pandas as pd
+            df_display = pd.DataFrame(maintenance_items)
+            st.dataframe(df_display, use_container_width=True, height=400)
     else:
         st.success("✅ لا توجد صيانات متأخرة أو قادمة.")
     
