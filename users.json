@@ -12,7 +12,7 @@
         "permissions": {
             "all_sections": false
         },
-        "role": "admin",
+        "role": "viewer",
         "sections_permissions": {}
     },
     "مدير_صيانة": {
