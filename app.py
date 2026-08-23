@@ -2780,7 +2780,7 @@ with tabs[idx]:
             }}
             .scrolling-content {{
                 display: inline-block;
-                animation: scroll-text 60s linear infinite;
+                animation: scroll-text 1110s linear infinite;
                 font-size: 26px;
                 font-weight: bold;
                 color: #1a1a2e;
