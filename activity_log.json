@@ -159,5 +159,12 @@
     "action_type": "add_spare_part",
     "details": "تم تعديل قطعة غيار 'سير تحرك رولين نازع بمنطقه دوفر' للقسم الكرد",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-24T10:44:11.638812",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم تعديل قطعة غيار 'سير كويلر مسنن ' للقسم الكرد",
+    "section": "الكرد"
   }
 ]
