@@ -194,5 +194,12 @@
     "action_type": "add_spare_part",
     "details": "تم تعديل قطعة غيار 'فلتر هواءصغير' للقسم الضواغط",
     "section": "الضواغط"
+  },
+  {
+    "timestamp": "2026-08-24T11:50:03.029216",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم تعديل قطعة غيار 'فلتر هواء كبير' للقسم الضواغط",
+    "section": "الضواغط"
   }
 ]
