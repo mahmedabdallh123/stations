@@ -2666,7 +2666,7 @@ with tabs[idx]:
     failures_analysis_tab(all_sheets)
 idx += 1
 
-# ------------------------------- تبويب الإشعارات (عرض إعلان أو قائمة) -------------------------------
+# ------------------------------- تبويب الإشعارات (شريط إعلاني + جدول) -------------------------------
 with tabs[idx]:
     st.header("🔔 الإشعارات والتنبيهات")
 
@@ -2689,16 +2689,8 @@ with tabs[idx]:
     all_sheets = load_all_sheets()
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
     
-    # ---------- خيارات العرض ----------
-    st.subheader("🛠️ تنبيهات الصيانة الوقائية")
-    
-    # اختيار نمط العرض
-    display_mode = st.radio(
-        "اختر طريقة العرض:",
-        ["📢 عرض إعلان (شريط متحرك)", "📋 عرض قائمة (جدول)"],
-        horizontal=True,
-        key="maintenance_display_mode"
-    )
+    # ---------- عرض الشريط الإعلاني للصيانة وقطع الغيار الحرجة ----------
+    st.subheader("🛠️ تنبيهات الصيانة الوقائية وقطع الغيار الحرجة")
     
     allowed_equipment = []
     for sheet_name in allowed_sections:
@@ -2714,8 +2706,8 @@ with tabs[idx]:
         overdue = overdue[overdue["المعدة"].isin(allowed_equipment)]
         upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)]
     
-    # دمج الصيانة المتأخرة والقادمة في قائمة واحدة
-    maintenance_items = []
+    # جمع بيانات الصيانة للنص
+    maintenance_text_parts = []
     for _, row in overdue.iterrows():
         eq = row['المعدة']
         task = row['اسم_البند']
@@ -2725,11 +2717,89 @@ with tabs[idx]:
             if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
                 section = sheet_name
                 break
-        maintenance_items.append({
+        maintenance_text_parts.append(f"🔴 متأخرة: {eq} - {task} (مستحق: {due_date}) [قسم: {section}]")
+    
+    for _, row in upcoming.iterrows():
+        eq = row['المعدة']
+        task = row['اسم_البند']
+        days = (row['التاريخ_التالي'].date() - datetime.now().date()).days
+        due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
+        section = "غير محدد"
+        for sheet_name in allowed_sections:
+            if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
+                section = sheet_name
+                break
+        maintenance_text_parts.append(f"🟡 قادمة: {eq} - {task} (بعد {days} يوم - {due_date}) [قسم: {section}]")
+    
+    # جمع قطع الغيار الحرجة
+    critical = get_critical_spare_parts()
+    if username != "admin" and user_role != "admin":
+        critical = [part for part in critical if part.get("القسم", "") in allowed_sections]
+    
+    for part in critical:
+        maintenance_text_parts.append(f"⚠️ قطعة حرجة: {part['اسم القطعة']} (رصيد: {part['الرصيد الموجود']} < حد الإنذار: {part['حد_الإنذار']}) [قسم: {part['القسم']}]")
+    
+    if maintenance_text_parts:
+        text_to_scroll = " | ".join(maintenance_text_parts)
+        st.markdown(f"""
+        <style>
+        @keyframes scroll-text {{
+            0% {{ transform: translateX(-100%); }}
+            100% {{ transform: translateX(100%); }}
+        }}
+        .scrolling-wrapper {{
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: #f8f9fa;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            margin: 10px 0;
+        }}
+        .scrolling-content {{
+            display: inline-block;
+            animation: scroll-text 120s linear infinite;
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a1a2e;
+            padding-left: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }}
+        .scrolling-content:hover {{
+            animation-play-state: paused;
+        }}
+        </style>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content">
+                {text_to_scroll}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.success("✅ لا توجد صيانات متأخرة أو قادمة، ولا توجد قطع غيار حرجة.")
+    
+    st.markdown("---")
+    st.subheader("📋 تفاصيل الصيانة (جدول)")
+    
+    # بناء DataFrame للصيانة لعرضه في جدول
+    maintenance_df_data = []
+    for _, row in overdue.iterrows():
+        eq = row['المعدة']
+        task = row['اسم_البند']
+        due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
+        section = "غير محدد"
+        for sheet_name in allowed_sections:
+            if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
+                section = sheet_name
+                break
+        maintenance_df_data.append({
             "المعدة": eq,
             "الحالة": "🔴 متأخرة",
             "البند": task,
-            "التاريخ": due_date,
+            "التاريخ المستحق": due_date,
             "القسم": section
         })
     
@@ -2743,71 +2813,22 @@ with tabs[idx]:
             if sheet_name in all_sheets and eq in all_sheets[sheet_name]["المعدة"].values:
                 section = sheet_name
                 break
-        maintenance_items.append({
+        maintenance_df_data.append({
             "المعدة": eq,
             "الحالة": f"🟡 قادمة (بعد {days} يوم)",
             "البند": task,
-            "التاريخ": due_date,
+            "التاريخ المستحق": due_date,
             "القسم": section
         })
     
-    if maintenance_items:
-        if display_mode == "📢 عرض إعلان (شريط متحرك)":
-            # عرض الشريط المتحرك
-            text_parts = []
-            for item in maintenance_items:
-                text_parts.append(
-                    f"{item['المعدة']} {item['الحالة']} - {item['البند']} (تاريخ: {item['التاريخ']}) [قسم: {item['القسم']}]"
-                )
-            text_to_scroll = " | ".join(text_parts)
-            
-            st.markdown(f"""
-            <style>
-            @keyframes scroll-text {{
-                0% {{ transform: translateX(-100%); }}
-                100% {{ transform: translateX(100%); }}
-            }}
-            .scrolling-wrapper {{
-                overflow: hidden;
-                white-space: nowrap;
-                background-color: #f8f9fa;
-                border: 2px solid #ffc107;
-                border-radius: 8px;
-                padding: 15px 0;
-                width: 100%;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-                margin: 10px 0;
-            }}
-            .scrolling-content {{
-                display: inline-block;
-                animation: scroll-text 1110s linear infinite;
-                font-size: 26px;
-                font-weight: bold;
-                color: #1a1a2e;
-                padding-left: 100%;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-            }}
-            .scrolling-content:hover {{
-                animation-play-state: paused;
-            }}
-            </style>
-            <div class="scrolling-wrapper">
-                <div class="scrolling-content">
-                    {text_to_scroll}
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        else:
-            # عرض قائمة (جدول)
-            import pandas as pd
-            df_display = pd.DataFrame(maintenance_items)
-            st.dataframe(df_display, use_container_width=True, height=400)
+    if maintenance_df_data:
+        df_display = pd.DataFrame(maintenance_df_data)
+        st.dataframe(df_display, use_container_width=True, height=400)
     else:
-        st.success("✅ لا توجد صيانات متأخرة أو قادمة.")
+        st.info("لا توجد بيانات صيانة لعرضها في الجدول.")
     
     st.markdown("---")
-    st.subheader("📋 أحداث وقطع غيار")
+    st.subheader("📋 أحداث وقطع غيار (مطوية)")
     
     # 1. آخر الأحداث (مطوية)
     with st.expander("📋 آخر الأحداث المسجلة", expanded=False):
@@ -2849,8 +2870,8 @@ with tabs[idx]:
         else:
             st.info("لا توجد أحداث مسجلة خلال الـ 24 ساعة الماضية.")
     
-    # 2. قطع الغيار الحرجة (مطوية)
-    with st.expander("⚠️ قطع غيار حرجة", expanded=False):
+    # 2. قطع الغيار الحرجة (مطوية) – نعرضها هنا أيضاً للرجوع إليها بسهولة
+    with st.expander("⚠️ قطع غيار حرجة (تفاصيل)", expanded=False):
         critical = get_critical_spare_parts()
         if username != "admin" and user_role != "admin":
             critical = [part for part in critical if part.get("القسم", "") in allowed_sections]
@@ -2869,6 +2890,7 @@ with tabs[idx]:
         st.rerun()
     
 idx += 1
+
 # باقي التبويبات (إضافة عطل، إدارة الماكينات، تعديل البيانات، إدارة المستخدمين، الدعم الفني) كما هي
 if can_add_event:
     with tabs[idx]:
