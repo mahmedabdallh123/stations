@@ -54,5 +54,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-24T09:18:59.809215",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
+    "section": "المحطات"
   }
 ]
