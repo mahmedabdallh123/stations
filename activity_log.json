@@ -180,5 +180,12 @@
     "action_type": "add_spare_part",
     "details": "تم تعديل قطعة غيار 'سير كويلر مسنن ' للقسم الكرد",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-24T10:47:19.218927",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم تعديل قطعة غيار 'سير كويلر مسنن ' للقسم الكرد",
+    "section": "الكرد"
   }
 ]
