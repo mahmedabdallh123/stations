@@ -138,5 +138,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة ت",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-24T10:40:28.079756",
+    "username": "admin",
+    "action_type": "add_spare_part",
+    "details": "تم تعديل قطعة غيار 'فلتر هواءصغير' للقسم الضواغط",
+    "section": "الضواغط"
   }
 ]
