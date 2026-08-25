@@ -1,163 +1,9 @@
 [
   {
-    "timestamp": "2026-08-24T11:50:03.029216",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'فلتر هواء كبير' للقسم الضواغط",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-08-24T11:49:49.781184",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'فلتر هواءصغير' للقسم الضواغط",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-08-24T10:47:19.218927",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'سير كويلر مسنن ' للقسم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-24T10:47:03.287083",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'سير كويلر مسنن ' للقسم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-24T10:45:20.230075",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'فلتر هواءصغير' للقسم الضواغط",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-08-24T10:44:11.638812",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'سير كويلر مسنن ' للقسم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-24T10:43:21.498105",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'سير تحرك رولين نازع بمنطقه دوفر' للقسم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-24T10:42:24.284690",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'سير حركه دوفر نفسه يمين مكنه' للقسم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-24T10:40:28.079756",
-    "username": "admin",
-    "action_type": "add_spare_part",
-    "details": "تم تعديل قطعة غيار 'فلتر هواءصغير' للقسم الضواغط",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-08-24T10:36:35.114858",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة ت",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:35:03.095454",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة ن",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:33:04.569895",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة ت",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:29:11.639138",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:28:44.191339",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:28:15.200601",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:28:03.219276",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:27:27.915673",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:27:15.754221",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:26:12.085732",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T10:25:59.703489",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T09:18:59.809215",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-24T09:18:49.622650",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-25T03:42:49.583783",
+    "timestamp": "2026-08-25T03:48:29.965550",
     "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: توقفت بسبب قطع سير سيلندر  للماكينة كرد13",
+    "details": "تم إضافة عطل: توقفت بسبب قطع سير سيلندر للماكينة كرد13",
     "section": "الكرد"
   },
   {
@@ -168,10 +14,10 @@
     "section": "الكرد"
   },
   {
-    "timestamp": "2026-08-25T03:48:29.965550",
+    "timestamp": "2026-08-25T03:42:49.583783",
     "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: توقفت بسبب قطع سير سيلندر للماكينة كرد13",
+    "details": "تم إضافة عطل: توقفت بسبب قطع سير سيلندر  للماكينة كرد13",
     "section": "الكرد"
   }
 ]
