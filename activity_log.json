@@ -152,5 +152,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-25T03:42:49.583783",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: توقفت بسبب قطع سير سيلندر  للماكينة كرد13",
+    "section": "الكرد"
   }
 ]
