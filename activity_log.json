@@ -26,5 +26,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: f للماكينة 7.5موتورkw",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-27T12:25:00.168856",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة e",
+    "section": "التفتيح"
   }
 ]
