@@ -19,5 +19,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: d للماكينة 7.5موتورkw",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-27T12:21:41.578068",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: f للماكينة 7.5موتورkw",
+    "section": "المكبس"
   }
 ]
