@@ -124,5 +124,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-28T15:35:20.071064",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
+    "section": "المحطات"
   }
 ]
