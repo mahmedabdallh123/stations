@@ -215,5 +215,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد19 بواسطة تيم",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-28T15:46:07.352568",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد19 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
