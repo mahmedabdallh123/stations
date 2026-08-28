@@ -1,51 +1,69 @@
 [
   {
-    "timestamp": "2026-08-27T13:09:55.648434",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: س للماكينة 7.5موتورkw",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-27T13:11:05.498299",
+    "timestamp": "2026-08-14T18:53:36.354626",
     "username": "admin",
     "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد15 بواسطة س",
-    "section": "الكرد"
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة س"
   },
   {
-    "timestamp": "2026-08-27T13:18:55.092976",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: س للماكينة سيلو3",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-27T13:36:18.369036",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: ل للماكينة 7.5موتورkw",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-27T13:37:36.401615",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: ل للماكينة 7.5موتورkw",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-27T13:38:24.515277",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تنظيف ' للماكينة 7.5موتورkw (فترة 2 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-27T13:39:09.048544",
+    "timestamp": "2026-08-14T18:53:28.814364",
     "username": "admin",
     "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف ' للماكينة 7.5موتورkw بواسطة ل",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة س"
+  },
+  {
+    "timestamp": "2026-08-14T18:53:24.202917",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد10 بواسطة س"
+  },
+  {
+    "timestamp": "2026-08-14T18:51:13.676521",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: ش للماكينة 7.5موتورkw"
+  },
+  {
+    "timestamp": "2026-08-14T18:50:50.717272",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: ش للماكينة 7.5موتورkw"
+  },
+  {
+    "timestamp": "2026-08-14T18:42:34.287238",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد1 بواسطة ي"
+  },
+  {
+    "timestamp": "2026-08-14T18:42:17.054489",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد1 بواسطة ي"
+  },
+  {
+    "timestamp": "2026-08-14T13:47:51.774117",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد1 بواسطة بل"
+  },
+  {
+    "timestamp": "2026-08-14T13:47:43.874567",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد1 بواسطة بل"
+  },
+  {
+    "timestamp": "2026-08-14T13:46:11.312457",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم تشغيل الماكينه اول مره للماكينة كرد1"
+  },
+  {
+    "timestamp": "2026-08-28T08:26:15.790901",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: ي للماكينة 7.5موتورkw",
     "section": "المكبس"
   }
 ]
