@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,6 +11,116 @@ import io
 import uuid
 from PIL import Image
 from github import Github, GithubException
+
+# ------------------------------- دوال البريد الإلكتروني (جديدة) -------------------------------
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from typing import List, Optional
+
+def get_email_config():
+    """استخراج إعدادات البريد من secrets."""
+    try:
+        host = st.secrets["email"]["host"]
+        port = int(st.secrets["email"]["port"])
+        username = st.secrets["email"]["username"]
+        password = st.secrets["email"]["password"]
+        recipients_str = st.secrets["email"]["recipients"]
+        recipients = [r.strip() for r in recipients_str.split(",") if r.strip()]
+        return {
+            "host": host,
+            "port": port,
+            "username": username,
+            "password": password,
+            "recipients": recipients
+        }
+    except Exception:
+        return None
+
+def send_email(subject: str, body: str, recipients: Optional[List[str]] = None) -> bool:
+    """
+    إرسال بريد إلكتروني باستخدام إعدادات SMTP.
+    إذا لم يتم تحديد المستلمين، يتم استخدام القائمة من secrets.
+    """
+    config = get_email_config()
+    if not config:
+        st.warning("⚠️ إعدادات البريد الإلكتروني غير مكتملة. لن يتم إرسال الإشعارات.")
+        return False
+
+    if recipients is None:
+        recipients = config["recipients"]
+
+    if not recipients:
+        st.warning("⚠️ لا يوجد مستلمين للبريد الإلكتروني.")
+        return False
+
+    try:
+        msg = MIMEMultipart()
+        msg["From"] = config["username"]
+        msg["To"] = ", ".join(recipients)
+        msg["Subject"] = subject
+
+        msg.attach(MIMEText(body, "plain", "utf-8"))
+
+        server = smtplib.SMTP(config["host"], config["port"])
+        server.starttls()
+        server.login(config["username"], config["password"])
+        server.sendmail(config["username"], recipients, msg.as_string())
+        server.quit()
+        return True
+    except Exception as e:
+        st.error(f"❌ فشل إرسال البريد الإلكتروني: {e}")
+        return False
+
+def get_current_notifications_text() -> str:
+    """
+    تجميع الإشعارات الحالية (الصيانة المتأخرة، القادمة، قطع الغيار الحرجة)
+    وإرجاعها كنص منسق لإضافته إلى البريد الإلكتروني.
+    """
+    all_sheets = load_all_sheets()
+    if not all_sheets:
+        return "لا توجد بيانات حالياً."
+
+    username = st.session_state.get("username")
+    allowed_sections = get_allowed_sections(all_sheets, username, "view")
+    allowed_equipment = []
+    for sheet_name in allowed_sections:
+        df = all_sheets.get(sheet_name)
+        if df is not None and "المعدة" in df.columns:
+            allowed_equipment.extend(df["المعدة"].dropna().unique())
+    allowed_equipment = [str(eq).strip() for eq in allowed_equipment if str(eq).strip() != ""]
+
+    overdue, upcoming = get_upcoming_maintenance(3)
+
+    if username != "admin":
+        overdue = overdue[overdue["المعدة"].isin(allowed_equipment)]
+        upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)]
+
+    parts = []
+
+    for _, row in overdue.iterrows():
+        eq = row['المعدة']
+        task = row['اسم_البند']
+        due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
+        parts.append(f"🔴 متأخرة: {eq} - {task} (مستحق: {due_date})")
+
+    for _, row in upcoming.iterrows():
+        eq = row['المعدة']
+        task = row['اسم_البند']
+        days = (row['التاريخ_التالي'].date() - datetime.now().date()).days
+        due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
+        parts.append(f"🟡 قادمة: {eq} - {task} (بعد {days} يوم - {due_date})")
+
+    critical = get_critical_spare_parts()
+    if username != "admin":
+        critical = [p for p in critical if p.get("القسم", "") in allowed_sections]
+
+    for part in critical:
+        parts.append(f"⚠️ قطعة حرجة: {part['اسم القطعة']} (رصيد: {part['الرصيد الموجود']} < حد الإنذار: {part['حد_الإنذار']}) [قسم: {part['القسم']}]")
+
+    if not parts:
+        return "✅ لا توجد إشعارات حرجة حالياً."
+    return "\n".join(parts)
 
 # ------------------------------- الإعدادات الثابتة -------------------------------
 APP_CONFIG = {
@@ -1852,6 +1961,28 @@ def add_new_event(sheets_edit, sheet_name):
                 st.success("✅ تم إضافة الحدث بنجاح ورفعه إلى GitHub!")
                 if warning_msg:
                     st.warning(warning_msg)
+
+                # --- إرسال بريد إلكتروني بالإشعار (جديد) ---
+                try:
+                    subject = f"🆕 حدث عطل جديد - {selected_equipment} في {sheet_name}"
+                    body = f"""
+تم إضافة حدث عطل جديد في نظام CMMS:
+
+📅 التاريخ: {event_date.strftime('%Y-%m-%d')}
+🏭 القسم: {sheet_name}
+⚙️ المعدة: {selected_equipment}
+⚠️ العطل: {event_desc}
+🔧 الإجراء التصحيحي: {correction_desc}
+👨‍🔧 تم بواسطة: {servised_by}
+🔩 قطع غيار مستخدمة: {spare_part_used if spare_part_used else 'لا يوجد'}
+
+--- الإشعارات الحالية ---
+{get_current_notifications_text()}
+                    """
+                    send_email(subject, body)
+                except Exception as e:
+                    st.warning(f"⚠️ لم نتمكن من إرسال البريد الإلكتروني: {e}")
+
                 st.rerun()
             else:
                 st.error("❌ فشل الحفظ")
@@ -1908,6 +2039,27 @@ def execute_maintenance_with_date(sheets_edit, equipment_name, task_name, execut
 
     log_activity("execute_maintenance", f"تم تنفيذ صيانة '{task_name}' للماكينة {equipment_name} بواسطة {performed_by}", section=section)
     result_msg = f"تم تنفيذ الصيانة '{task_name}' بتاريخ {execution_date.strftime('%Y-%m-%d')} بواسطة {performed_by}. التاريخ التالي: {next_date.strftime('%Y-%m-%d')}" + (f" {warning_msg}" if warning_msg else "")
+
+    # --- إرسال بريد إلكتروني (جديد) ---
+    try:
+        subject = f"✅ تم تنفيذ صيانة وقائية - {equipment_name} - {task_name}"
+        body = f"""
+تم تنفيذ صيانة وقائية في نظام CMMS:
+
+⚙️ المعدة: {equipment_name}
+🛠️ البند: {task_name}
+📅 تاريخ التنفيذ: {execution_date.strftime('%Y-%m-%d')}
+👨‍🔧 تم بواسطة: {performed_by}
+🔩 قطع غيار مستخدمة: {used_spare_part if used_spare_part else 'لا يوجد'}
+📌 التاريخ التالي: {next_date.strftime('%Y-%m-%d')}
+
+--- الإشعارات الحالية ---
+{get_current_notifications_text()}
+        """
+        send_email(subject, body)
+    except Exception as e:
+        st.warning(f"⚠️ لم نتمكن من إرسال البريد الإلكتروني: {e}")
+
     return True, result_msg
 
 def add_maintenance_as_event(sheets_edit, equipment_name, task_name, execution_date, performed_by, used_spare_part="", used_quantity=1, image_url=None):
@@ -2975,3 +3127,24 @@ with tabs[idx]:
                         st.error("❌ فشل رفع الصورة، حاول مرة أخرى.")
         else:
             st.info("📷 لم يتم رفع صورة المطور بعد. سيتم رفعها بواسطة مدير النظام.")
+    
+    # --- زر اختبار البريد الإلكتروني (جديد) ---
+    st.markdown("---")
+    st.subheader("📧 اختبار البريد الإلكتروني")
+    if st.button("📧 إرسال بريد اختباري"):
+        test_subject = "🧪 اختبار البريد الإلكتروني من نظام CMMS"
+        test_body = f"""
+هذه رسالة اختبارية من نظام CMMS.
+
+تم إرسالها في: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+المستخدم: {st.session_state.get('username', 'غير معروف')}
+
+إذا وصلتك هذه الرسالة، فهذا يعني أن إعدادات البريد الإلكتروني تعمل بشكل صحيح.
+
+--- الإشعارات الحالية ---
+{get_current_notifications_text()}
+        """
+        if send_email(test_subject, test_body):
+            st.success("✅ تم إرسال البريد الاختباري بنجاح!")
+        else:
+            st.error("❌ فشل إرسال البريد الاختباري. تأكد من إعدادات SMTP في secrets.")
