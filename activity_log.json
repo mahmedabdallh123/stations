@@ -1,5 +1,40 @@
 [
   {
+    "timestamp": "2026-08-29T13:21:47.378441",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة ل",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-29T11:09:10.248459",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف جلبه بليه للماكينة كرد23",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T11:02:22.079893",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد22 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T10:56:30.919257",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد23 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T10:55:02.998620",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد10 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-08-29T07:45:18.050600",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -61,271 +96,5 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف الحصيرة العلويه للماكينة مكبس التمشيط",
     "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-28T15:49:24.694019",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس  للماكينة كرد19",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:48:11.935900",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل  للماكينة كرد4",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:46:07.352568",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد19 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:45:46.531377",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد19 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:44:46.913519",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد19 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:44:32.237175",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد19 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:43:10.035947",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:42:56.586665",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:42:52.715129",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:42:28.849422",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد4 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-28T15:38:53.994116",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة تيم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-28T15:38:40.527656",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة تيم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-08-28T15:37:43.826399",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:37:32.166708",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'المرور والتفتيش ع محطات بالكامل' للماكينة تفتيش بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:35:32.184238",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:35:20.071064",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:34:11.968276",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:33:58.707982",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:33:20.983723",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك1غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:33:08.247706",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك1غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:32:35.517846",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:32:23.021737",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:30:04.279183",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:29:52.510486",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال التنظيف بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:29:17.807942",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:29:05.797521",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:28:34.651418",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:28:26.325028",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:28:13.098676",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال تمشيط1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:27:39.502772",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:27:26.175393",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:26:58.559992",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-28T15:26:48.741392",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-29T10:55:02.998620",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد10 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-29T10:56:30.919257",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد23 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-29T11:02:22.079893",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد22 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-29T11:09:10.248459",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف جلبه بليه للماكينة كرد23",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-29T13:21:47.378441",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة ل",
-    "section": "المحطات"
   }
 ]
