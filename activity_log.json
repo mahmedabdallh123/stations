@@ -75,5 +75,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم الكرد",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-30T05:39:00.395813",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم الكرد",
+    "section": "التفتيح"
   }
 ]
