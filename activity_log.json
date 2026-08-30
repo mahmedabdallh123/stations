@@ -89,5 +89,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد10",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T09:21:57.873783",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير753 للماكينة كرد11",
+    "section": "الكرد"
   }
 ]
