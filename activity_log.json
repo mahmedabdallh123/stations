@@ -215,5 +215,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة ل",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-30T11:11:17.491067",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد17",
+    "section": "الكرد"
   }
 ]
