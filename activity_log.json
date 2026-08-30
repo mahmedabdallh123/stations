@@ -1,5 +1,26 @@
 [
   {
+    "timestamp": "2026-08-30T11:01:47.688362",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد13",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T10:58:54.027830",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد12",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T10:57:09.225382",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد12",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-08-30T10:55:40.461448",
     "username": "admin",
     "action_type": "add_event",
@@ -193,34 +214,6 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف جلبه بليه للماكينة كرد23",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-29T11:02:22.079893",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد22 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T10:57:09.225382",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد12",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T10:58:54.027830",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد12",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:01:47.688362",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد13",
     "section": "الكرد"
   }
 ]
