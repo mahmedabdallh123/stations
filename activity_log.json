@@ -1,5 +1,54 @@
 [
   {
+    "timestamp": "2026-08-30T11:31:57.559937",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 700 للماكينة كرد23",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:28:42.460849",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير 700 للماكينة كرد22",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:25:50.108192",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد21",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:22:09.825903",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير مسنن الطرفين 1200 للماكينة كرد20",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:19:56.463266",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد19",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:16:47.146243",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير دوفر 1200 للماكينة كرد19",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:11:17.491067",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد17",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-08-30T11:07:30.271473",
     "username": "admin",
     "action_type": "add_event",
@@ -208,61 +257,5 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة حسام",
     "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-08-29T13:21:47.378441",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة ل",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-30T11:11:17.491067",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1350 للماكينة كرد17",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:16:47.146243",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير دوفر 1200 للماكينة كرد19",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:19:56.463266",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد19",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:22:09.825903",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير مسنن الطرفين 1200 للماكينة كرد20",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:25:50.108192",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد21",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:28:42.460849",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 700 للماكينة كرد22",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-30T11:31:57.559937",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 700 للماكينة كرد23",
-    "section": "الكرد"
   }
 ]
