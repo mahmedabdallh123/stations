@@ -159,5 +159,12 @@
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R (فترة 300 ساعة)",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-30T09:52:59.632143",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R (فترة 300 ساعة)",
+    "section": "التفتيح"
   }
 ]
