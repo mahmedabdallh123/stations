@@ -243,5 +243,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير مسنن الطرفين 1200 للماكينة كرد20",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-30T11:25:50.108192",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد21",
+    "section": "الكرد"
   }
 ]
