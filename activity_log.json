@@ -82,5 +82,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-08-30T09:20:49.288944",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير1270 للماكينة كرد10",
+    "section": "الكرد"
   }
 ]
