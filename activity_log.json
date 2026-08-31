@@ -61,5 +61,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد14 بواسطة حسام",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-31T12:33:31.019216",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم",
+    "section": "التفتيح"
   }
 ]
