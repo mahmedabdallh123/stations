@@ -152,5 +152,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير1532lw للماكينة BO-R",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-31T09:38:20.283489",
+    "username": "admin",
+    "action_type": "delete_section",
+    "details": "تم حذف القسم 'ملفات' وقطع الغيار التابعة له",
+    "section": "ملفات"
   }
 ]
