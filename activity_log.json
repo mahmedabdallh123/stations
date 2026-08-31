@@ -1,107 +1,128 @@
 [
   {
-    "timestamp": "2026-08-31T09:38:20.283489",
+    "timestamp": "2026-08-29T16:32:53.619229",
     "username": "admin",
-    "action_type": "delete_section",
-    "details": "تم حذف القسم 'ملفات' وقطع الغيار التابعة له",
-    "section": "ملفات"
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف ' للماكينة 7.5موتورkw بواسطة ش",
+    "section": "المكبس"
   },
   {
-    "timestamp": "2026-08-31T08:53:42.499409",
+    "timestamp": "2026-08-29T16:32:39.868871",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف ' للماكينة 7.5موتورkw بواسطة ش",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-29T16:27:14.620496",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: س للماكينة 7.5موتورkw",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-29T17:02:02.825816",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: ب للماكينة 7.5موتورkw",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-29T17:03:39.959395",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد1 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:03:53.668889",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد1 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:04:06.618921",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد1 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:10:09.982392",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد10 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:10:26.989031",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد10 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:10:41.014743",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم بلي السلندر 15جم لكل جانب وتشحيم الدوفر 8 جم لكل جانب' للماكينة كرد10 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:16:15.634829",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'صيانه شهرين' للماكينة كرد10 (فترة 24 ساعة)",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:16:29.987509",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'صيانه شهرين' للماكينة كرد10 (فترة 24 ساعة)",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:16:56.939456",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'صيانه شهرين' للماكينة كرد10 (فترة 24 ساعة)",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:17:53.248486",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد10 بواسطة ا",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-08-29T17:18:27.728384",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: ب للماكينة 7.5موتورkw",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-08-29T17:46:20.346326",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة ل",
+    "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-29T17:46:48.512348",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة ل",
+    "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-08-31T16:18:25.228162",
     "username": "admin",
     "action_type": "delete_section",
-    "details": "تم حذف القسم 'تمشيط' وقطع الغيار التابعة له",
+    "details": "تم حذف القسم 'تمشيط' وكل ما يتعلق به من ماكينات وقطع غيار ومهام صيانة",
     "section": "تمشيط"
-  },
-  {
-    "timestamp": "2026-08-31T12:26:59.183238",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد9 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:27:53.676571",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد11 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:28:40.242114",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد7 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:29:39.307147",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد6 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:30:17.467686",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد5 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:31:00.010762",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد8 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:31:41.164529",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد14 بواسطة حسام",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:33:31.019216",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-08-31T12:34:28.336638",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف مسمير الكلاتش  للماكينة BO-P",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-08-31T12:36:23.502244",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة زيزو",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-08-31T12:37:15.403786",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف بلي متور كويلر علوي  للماكينة كرد17",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:39:08.805023",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص لوحه كهرباء' للماكينة كرد1 (فترة 150 ساعة)",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-08-31T12:39:22.667305",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'فحص لوحه كهرباء' للماكينة كرد1 (فترة 150 ساعة)",
-    "section": "الكرد"
   }
 ]
