@@ -1,5 +1,54 @@
 [
   {
+    "timestamp": "2026-09-03T15:28:34.946376",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد10 بواسطة تيم",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:27:40.007004",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد9 بواسطة تيم",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:26:46.053305",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد8 بواسطة تيم",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:25:46.639470",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد7 بواسطة تيم",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:24:43.066084",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة كرد8",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:00:27.918995",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد6 بواسطة تيم الكرد",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:00:13.765521",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد6 بواسطة تيم الكرد",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-09-03T04:14:01.003714",
     "username": "admin",
     "action_type": "add_event",
@@ -11,62 +60,6 @@
     "username": "admin",
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد24",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-02T19:29:55.024861",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1350 للماكينة كرد11",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:00:13.765521",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد6 بواسطة تيم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:00:27.918995",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد6 بواسطة تيم الكرد",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:24:43.066084",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه  للماكينة كرد8",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:25:46.639470",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد7 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:26:46.053305",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد8 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:27:40.007004",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد9 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-03T15:28:34.946376",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد10 بواسطة تيم",
     "section": "الكرد"
   }
 ]
