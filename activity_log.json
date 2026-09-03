@@ -40,5 +40,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة كرد8",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-03T15:25:46.639470",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد7 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
