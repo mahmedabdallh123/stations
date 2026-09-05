@@ -40,5 +40,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد14 بواسطة تيم",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-05T15:39:14.014589",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد14 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
