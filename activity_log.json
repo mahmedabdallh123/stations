@@ -82,40 +82,5 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير شريط الشاشه فلات 1800 للماكينة كرد13",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:56:29.345728",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة كرد24",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:55:13.790830",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير753 للماكينة كرد24",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:54:09.743011",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد16 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:39:14.014589",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد14 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:37:55.566844",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد14 بواسطة تيم",
-    "section": "الكرد"
   }
 ]
