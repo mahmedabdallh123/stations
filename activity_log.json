@@ -1,5 +1,82 @@
 [
   {
+    "timestamp": "2026-09-06T11:22:40.109086",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-06T11:22:29.229881",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-06T11:22:19.679774",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-06T11:21:04.341137",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفيه240' للماكينة كرد12 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-06T11:20:11.512959",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغيير زيت جيربوكس الفلاتس' للماكينة كرد12 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-06T11:19:18.486967",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد12 بواسطة ايهاب",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-06T08:24:51.436992",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة شيلر1",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-06T08:21:23.680506",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل:  للماكينة شيلر1",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-06T08:15:59.178256",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانة وقائية: غسل وتنظيف للماكينة شيلر1",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-06T08:12:58.899861",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل1.3",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-06T08:07:56.192707",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل1.1",
+    "section": "المحطات"
+  },
+  {
     "timestamp": "2026-09-05T23:32:06.663902",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -39,97 +116,6 @@
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد14 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:36:20.624301",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد14 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-05T15:35:50.535806",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغيير زيت جيربوكس الفلاتس' للماكينة كرد11 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-06T08:07:56.192707",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل1.1",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-06T08:12:58.899861",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة روتاري فلتر غزل1.3",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-06T08:15:59.178256",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانة وقائية: غسل وتنظيف للماكينة شيلر1",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-06T08:21:23.680506",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل:  للماكينة شيلر1",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-06T08:24:51.436992",
-    "username": "مشرف_المكابس",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة شيلر1",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-06T11:19:18.486967",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد12 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-06T11:20:11.512959",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغيير زيت جيربوكس الفلاتس' للماكينة كرد12 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-06T11:21:04.341137",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفيه240' للماكينة كرد12 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-06T11:22:19.679774",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-06T11:22:29.229881",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-06T11:22:40.109086",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد15 بواسطة ايهاب",
     "section": "الكرد"
   }
 ]
