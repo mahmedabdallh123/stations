@@ -82,5 +82,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل:  للماكينة شيلر1",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-06T08:24:51.436992",
+    "username": "مشرف_المكابس",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة شيلر1",
+    "section": "المحطات"
   }
 ]
