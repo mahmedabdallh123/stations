@@ -33,5 +33,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس الفلاتس' للماكينة كرد17 بواسطة ايهاب/عمر",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-07T14:54:05.135734",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير 1120 للماكينة كرد21",
+    "section": "الكرد"
   }
 ]
