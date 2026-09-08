@@ -121,35 +121,53 @@ def get_current_notifications_text() -> str:
     all_sheets = load_all_sheets()
     if not all_sheets:
         return "لا توجد بيانات حالياً."
+    
+    # ✅ الحصول على أسماء الأقسام الموجودة حالياً
+    existing_sections = [name for name in all_sheets.keys() 
+                        if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
+    
     username = st.session_state.get("username")
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
+    
+    # ✅ فلترة الأقسام المسموح بها مع الأقسام الموجودة
+    allowed_sections = [sec for sec in allowed_sections if sec in existing_sections]
+    
     allowed_equipment = []
     for sheet_name in allowed_sections:
         df = all_sheets.get(sheet_name)
         if df is not None and "المعدة" in df.columns:
             allowed_equipment.extend(df["المعدة"].dropna().unique())
     allowed_equipment = [str(eq).strip() for eq in allowed_equipment if str(eq).strip() != ""]
+    
     overdue, upcoming = get_upcoming_maintenance(3)
+    
+    # ✅ فلترة الصيانة حسب المعدات الموجودة في الأقسام الحالية
     if username != "admin":
-        overdue = overdue[overdue["المعدة"].isin(allowed_equipment)]
-        upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)]
+        overdue = overdue[overdue["المعدة"].isin(allowed_equipment)] if not overdue.empty else overdue
+        upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)] if not upcoming.empty else upcoming
+    
     parts = []
     for _, row in overdue.iterrows():
         eq = row['المعدة']
         task = row['اسم_البند']
         due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
         parts.append(f"🔴 متأخرة: {eq} - {task} (مستحق: {due_date})")
+    
     for _, row in upcoming.iterrows():
         eq = row['المعدة']
         task = row['اسم_البند']
         days = (row['التاريخ_التالي'].date() - datetime.now().date()).days
         due_date = row['التاريخ_التالي'].strftime('%Y-%m-%d') if pd.notna(row['التاريخ_التالي']) else "غير محدد"
         parts.append(f"🟡 قادمة: {eq} - {task} (بعد {days} يوم - {due_date})")
+    
+    # ✅ فلترة قطع الغيار حسب الأقسام الموجودة
     critical = get_critical_spare_parts()
     if username != "admin":
         critical = [p for p in critical if p.get("القسم", "") in allowed_sections]
+    
     for part in critical:
         parts.append(f"⚠️ قطعة حرجة: {part['اسم القطعة']} (رصيد: {part['الرصيد الموجود']} < حد الإنذار: {part['حد_الإنذار']}) [قسم: {part['القسم']}]")
+    
     if not parts:
         return "✅ لا توجد إشعارات حرجة حالياً."
     return "\n".join(parts)
@@ -1192,7 +1210,13 @@ def search_across_sheets(all_sheets):
         return
     username = st.session_state.get("username")
     search_type = st.selectbox("نوع البيانات المراد البحث فيها:", ["الأقسام (الأعطال)", "قطع الغيار", "الصيانة الوقائية"], key="search_type")
+    
+    # ✅ الحصول على الأقسام الموجودة فقط
+    existing_sections = [name for name in all_sheets.keys() 
+                        if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
+    allowed_sections = [sec for sec in allowed_sections if sec in existing_sections]
+    
     selected_section_filter = "جميع الأقسام"
     if search_type in ["قطع الغيار", "الصيانة الوقائية"] and allowed_sections:
         section_options = ["جميع الأقسام"] + allowed_sections
@@ -2758,7 +2782,12 @@ with tabs[idx]:
     username = st.session_state.get("username")
     user_role = st.session_state.get("user_role", "viewer")
     all_sheets = load_all_sheets()
+    
+    # ✅ الحصول على الأقسام الموجودة فعلياً
+    existing_sections = [name for name in all_sheets.keys() 
+                        if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
+    allowed_sections = [sec for sec in allowed_sections if sec in existing_sections]
     
     # ---------- عرض الشريط الإعلاني للصيانة وقطع الغيار الحرجة ----------
     st.subheader("🛠️ تنبيهات الصيانة الوقائية وقطع الغيار الحرجة")
@@ -2774,8 +2803,8 @@ with tabs[idx]:
     overdue, upcoming = get_upcoming_maintenance(3)
     
     if username != "admin" and user_role != "admin":
-        overdue = overdue[overdue["المعدة"].isin(allowed_equipment)]
-        upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)]
+        overdue = overdue[overdue["المعدة"].isin(allowed_equipment)] if not overdue.empty else overdue
+        upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)] if not upcoming.empty else upcoming
     
     # جمع بيانات الصيانة للنص
     maintenance_text_parts = []
@@ -2910,7 +2939,7 @@ with tabs[idx]:
             if username == "admin" or user_role == "admin":
                 filtered_log.append(entry)
             else:
-                if not section or section in allowed_sections:
+                if not section or section in existing_sections:
                     filtered_log.append(entry)
         recent_log = filtered_log[:20]
         
