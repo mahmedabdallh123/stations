@@ -61,5 +61,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 4كبير",
     "section": "الضواغط"
+  },
+  {
+    "timestamp": "2026-09-08T11:13:47.235056",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
+    "section": "المحطات"
   }
 ]
