@@ -66,7 +66,7 @@ GITHUB_TOKEN = st.secrets.get("github", {}).get("token", None)
 GITHUB_AVAILABLE = GITHUB_TOKEN is not None
 ACTIVITY_LOG_FILE = "activity_log.json"
 
-# ------------------------------- دوال البريد الإلكتروني (جديدة) -------------------------------
+# ------------------------------- دوال البريد الإلكتروني -------------------------------
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -126,23 +126,36 @@ def get_current_notifications_text() -> str:
     existing_sections = [name for name in all_sheets.keys() 
                         if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
     
+    # ✅ بناء قائمة بالمعدات الموجودة في الأقسام الحالية
+    existing_equipment = []
+    for sheet_name in existing_sections:
+        df = all_sheets.get(sheet_name)
+        if df is not None and "المعدة" in df.columns:
+            existing_equipment.extend(df["المعدة"].dropna().unique())
+    existing_equipment = [str(eq).strip() for eq in existing_equipment if str(eq).strip() != ""]
+    
     username = st.session_state.get("username")
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
     
     # ✅ فلترة الأقسام المسموح بها مع الأقسام الموجودة
     allowed_sections = [sec for sec in allowed_sections if sec in existing_sections]
     
-    allowed_equipment = []
-    for sheet_name in allowed_sections:
-        df = all_sheets.get(sheet_name)
-        if df is not None and "المعدة" in df.columns:
-            allowed_equipment.extend(df["المعدة"].dropna().unique())
-    allowed_equipment = [str(eq).strip() for eq in allowed_equipment if str(eq).strip() != ""]
-    
     overdue, upcoming = get_upcoming_maintenance(3)
     
-    # ✅ فلترة الصيانة حسب المعدات الموجودة في الأقسام الحالية
+    # ✅ فلترة الصيانة حسب المعدات الموجودة في الأقسام الحالية فقط
+    if not overdue.empty and "المعدة" in overdue.columns:
+        overdue = overdue[overdue["المعدة"].isin(existing_equipment)]
+    if not upcoming.empty and "المعدة" in upcoming.columns:
+        upcoming = upcoming[upcoming["المعدة"].isin(existing_equipment)]
+    
+    # ✅ فلترة إضافية حسب صلاحيات المستخدم
     if username != "admin":
+        allowed_equipment = []
+        for sheet_name in allowed_sections:
+            df = all_sheets.get(sheet_name)
+            if df is not None and "المعدة" in df.columns:
+                allowed_equipment.extend(df["المعدة"].dropna().unique())
+        allowed_equipment = [str(eq).strip() for eq in allowed_equipment if str(eq).strip() != ""]
         overdue = overdue[overdue["المعدة"].isin(allowed_equipment)] if not overdue.empty else overdue
         upcoming = upcoming[upcoming["المعدة"].isin(allowed_equipment)] if not upcoming.empty else upcoming
     
@@ -665,6 +678,34 @@ def get_upcoming_maintenance(days_ahead=3):
     overdue = df[df["التاريخ_التالي"] < pd.Timestamp(today)]
     upcoming = df[(df["التاريخ_التالي"] >= pd.Timestamp(today)) & (df["التاريخ_التالي"] <= pd.Timestamp(today + timedelta(days=days_ahead)))]
     return overdue, upcoming
+
+def clean_orphan_maintenance_tasks(sheets_edit):
+    """حذف جميع مهام الصيانة للمعدات التي لا تنتمي لأي قسم موجود."""
+    if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_edit:
+        return sheets_edit
+    
+    df_maintenance = sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]]
+    if df_maintenance.empty or "المعدة" not in df_maintenance.columns:
+        return sheets_edit
+    
+    # ✅ بناء قائمة المعدات الموجودة في جميع الأقسام
+    existing_equipment = []
+    for sheet_name, df in sheets_edit.items():
+        if sheet_name in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]:
+            continue
+        if "المعدة" in df.columns:
+            existing_equipment.extend(df["المعدة"].dropna().unique())
+    existing_equipment = [str(eq).strip() for eq in existing_equipment if str(eq).strip() != ""]
+    
+    # ✅ حذف مهام الصيانة للمعدات غير الموجودة
+    if existing_equipment:
+        df_maintenance = df_maintenance[df_maintenance["المعدة"].isin(existing_equipment)]
+    else:
+        # إذا لم توجد أي معدات، احذف كل المهام
+        df_maintenance = pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
+    
+    sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = df_maintenance
+    return sheets_edit
 
 # ------------------------------- دوال تحليل الأعطال -------------------------------
 def flexible_date_parser(date_series):
@@ -1499,6 +1540,34 @@ def delete_maintenance_tasks_for_section(section_name, sheets_edit):
         if not df_maintenance.empty and "المعدة" in df_maintenance.columns:
             df_maintenance = df_maintenance[~df_maintenance["المعدة"].isin(equipment_list)]
             sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = df_maintenance
+    return sheets_edit
+
+def clean_orphan_maintenance_tasks(sheets_edit):
+    """حذف جميع مهام الصيانة للمعدات التي لا تنتمي لأي قسم موجود."""
+    if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_edit:
+        return sheets_edit
+    
+    df_maintenance = sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]]
+    if df_maintenance.empty or "المعدة" not in df_maintenance.columns:
+        return sheets_edit
+    
+    # ✅ بناء قائمة المعدات الموجودة في جميع الأقسام
+    existing_equipment = []
+    for sheet_name, df in sheets_edit.items():
+        if sheet_name in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]:
+            continue
+        if "المعدة" in df.columns:
+            existing_equipment.extend(df["المعدة"].dropna().unique())
+    existing_equipment = [str(eq).strip() for eq in existing_equipment if str(eq).strip() != ""]
+    
+    # ✅ حذف مهام الصيانة للمعدات غير الموجودة
+    if existing_equipment:
+        df_maintenance = df_maintenance[df_maintenance["المعدة"].isin(existing_equipment)]
+    else:
+        # إذا لم توجد أي معدات، احذف كل المهام
+        df_maintenance = pd.DataFrame(columns=APP_CONFIG["MAINTENANCE_COLUMNS"])
+    
+    sheets_edit[APP_CONFIG["MAINTENANCE_SHEET"]] = df_maintenance
     return sheets_edit
 # =====================================================================
 
@@ -2444,6 +2513,9 @@ def manage_data_edit(sheets_edit):
         st.warning("الملف غير موجود. استخدم زر 'تحديث من GitHub' في الشريط الجانبي أولاً")
         return sheets_edit
     
+    # ✅ تنظيف مهام الصيانة اليتيمة (المعدات غير الموجودة)
+    sheets_edit = clean_orphan_maintenance_tasks(sheets_edit)
+    
     if APP_CONFIG["SPARE_PARTS_SHEET"] not in sheets_edit:
         sheets_edit[APP_CONFIG["SPARE_PARTS_SHEET"]] = load_spare_parts()
     if APP_CONFIG["MAINTENANCE_SHEET"] not in sheets_edit:
@@ -2786,6 +2858,16 @@ with tabs[idx]:
     # ✅ الحصول على الأقسام الموجودة فعلياً
     existing_sections = [name for name in all_sheets.keys() 
                         if name not in [APP_CONFIG["SPARE_PARTS_SHEET"], APP_CONFIG["MAINTENANCE_SHEET"]]]
+    
+    # ✅ بناء قائمة المعدات الموجودة في الأقسام الحالية
+    existing_equipment = []
+    for sheet_name in existing_sections:
+        if sheet_name in all_sheets:
+            df = all_sheets[sheet_name]
+            if "المعدة" in df.columns:
+                existing_equipment.extend(df["المعدة"].dropna().unique())
+    existing_equipment = [str(eq).strip() for eq in existing_equipment if str(eq).strip() != ""]
+    
     allowed_sections = get_allowed_sections(all_sheets, username, "view")
     allowed_sections = [sec for sec in allowed_sections if sec in existing_sections]
     
@@ -2801,6 +2883,12 @@ with tabs[idx]:
     allowed_equipment = [str(eq).strip() for eq in allowed_equipment if str(eq).strip() != ""]
     
     overdue, upcoming = get_upcoming_maintenance(3)
+    
+    # ✅ فلترة الصيانة حسب المعدات الموجودة فقط
+    if not overdue.empty and "المعدة" in overdue.columns:
+        overdue = overdue[overdue["المعدة"].isin(existing_equipment)]
+    if not upcoming.empty and "المعدة" in upcoming.columns:
+        upcoming = upcoming[upcoming["المعدة"].isin(existing_equipment)]
     
     if username != "admin" and user_role != "admin":
         overdue = overdue[overdue["المعدة"].isin(allowed_equipment)] if not overdue.empty else overdue
