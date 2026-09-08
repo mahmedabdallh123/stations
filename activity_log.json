@@ -40,5 +40,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه 4000 للماكينة كمبروسر 1صغير",
     "section": "الضواغط"
+  },
+  {
+    "timestamp": "2026-09-08T19:59:48.568108",
+    "username": "admin",
+    "action_type": "delete_section",
+    "details": "تم حذف القسم 'البرم' وكل ما يتعلق به من ماكينات وقطع غيار ومهام صيانة",
+    "section": "البرم"
   }
 ]
