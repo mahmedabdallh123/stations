@@ -1,45 +1,10 @@
 [
   {
-    "timestamp": "2026-09-08T11:14:00.645964",
+    "timestamp": "2026-09-09T06:02:50.629887",
     "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير",
     "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-08T11:13:47.235056",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-08T11:12:32.753197",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 4كبير",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-09-08T11:12:09.203065",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 3كبير",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-09-08T11:11:45.261582",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 2صغير",
-    "section": "الضواغط"
-  },
-  {
-    "timestamp": "2026-09-08T11:11:10.230608",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه 4000 للماكينة كمبروسر 1صغير",
-    "section": "الضواغط"
   },
   {
     "timestamp": "2026-09-08T19:59:48.568108",
@@ -47,12 +12,5 @@
     "action_type": "delete_section",
     "details": "تم حذف القسم 'البرم' وكل ما يتعلق به من ماكينات وقطع غيار ومهام صيانة",
     "section": "البرم"
-  },
-  {
-    "timestamp": "2026-09-09T06:02:50.629887",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير",
-    "section": "المحطات"
   }
 ]
