@@ -1,5 +1,12 @@
 [
   {
+    "timestamp": "2026-09-10T12:47:02.412342",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد20 بواسطة تيم",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-09-10T12:46:24.048530",
     "username": "admin",
     "action_type": "execute_maintenance",
@@ -144,20 +151,6 @@
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف سير فلات كويلر1465 للماكينة كرد1",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-09T12:48:16.484703",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف سير فلات كويلر1465 للماكينة كرد8",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-10T12:47:02.412342",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد20 بواسطة تيم",
     "section": "الكرد"
   }
 ]
