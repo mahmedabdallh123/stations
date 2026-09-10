@@ -1,5 +1,12 @@
 [
   {
+    "timestamp": "2026-09-10T03:49:30.050746",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير العصرات700 للماكينة كرد14",
+    "section": "الكرد"
+  },
+  {
     "timestamp": "2026-09-09T12:50:45.616844",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
@@ -46,20 +53,6 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فحص عيارات ومسافات رولين الكويلر والديليفري الخاصين بسير المسنن' للماكينة كرد1 بواسطة مصطفى فتحي ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-09T06:02:50.629887",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: صيانه للماكينة حوض التدوير",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-10T03:49:30.050746",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير العصرات700 للماكينة كرد14",
     "section": "الكرد"
   }
 ]
