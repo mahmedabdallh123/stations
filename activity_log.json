@@ -26,5 +26,12 @@
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تشحيم بلي الرولات' للماكينة BO-R (فترة 4320 ساعة)",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-09-15T05:28:50.281005",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تشحيم بلي الرولات ' للماكينة BO-R (فترة 4320 ساعة)",
+    "section": "التفتيح"
   }
 ]
