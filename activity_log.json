@@ -131,5 +131,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد21 بواسطة حسام/ايهاب ",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-15T13:12:56.591764",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد21 بواسطة حسام/ايهاب ",
+    "section": "الكرد"
   }
 ]
