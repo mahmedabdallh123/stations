@@ -96,5 +96,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد10 بواسطة حسام/ايهاب",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-15T06:10:35.479850",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تالف بلية uc208D للماكينة BO-R",
+    "section": "التفتيح"
   }
 ]
