@@ -103,5 +103,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة شريف",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-16T11:08:27.325948",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة شريف",
+    "section": "المحطات"
   }
 ]
