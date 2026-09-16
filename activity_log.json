@@ -166,5 +166,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد19 بواسطة ايهاب/عمر",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-16T12:02:59.712506",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تالف سير 753 فلات للماكينة كرد22",
+    "section": "الكرد"
   }
 ]
