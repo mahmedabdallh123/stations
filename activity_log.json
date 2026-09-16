@@ -152,5 +152,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد19 بواسطة ايهاب/عمر",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-16T12:01:10.424847",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد19 بواسطة ايهاب/عمر",
+    "section": "الكرد"
   }
 ]
