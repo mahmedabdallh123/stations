@@ -138,5 +138,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تم تغير منظم هواء للماكينة جهاز التراب",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-09-16T13:15:57.483832",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير اول جريده خلفيه240' للماكينة كرد11 (فترة 2320 ساعة)",
+    "section": "الكرد"
   }
 ]
