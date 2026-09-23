@@ -5,5 +5,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد22 بواسطة ايهاب ",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-23T10:40:56.650015",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد22 بواسطة ايهاب ",
+    "section": "الكرد"
   }
 ]
