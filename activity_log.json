@@ -5,5 +5,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير مسنن الطرفين 700 للماكينة كرد5",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-26T03:56:47.022785",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير سيلندر 3530 للماكينة كرد9",
+    "section": "الكرد"
   }
 ]
