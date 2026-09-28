@@ -1,19 +1,5 @@
 [
   {
-    "timestamp": "2026-09-27T10:46:39.524141",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد24 بواسطة حسام/ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-27T10:47:14.064852",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد24 بواسطة حسام/ايهاب",
-    "section": "الكرد"
-  },
-  {
     "timestamp": "2026-09-27T23:12:00.397043",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
