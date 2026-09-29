@@ -1,5 +1,54 @@
 [
   {
+    "timestamp": "2026-09-29T10:47:29.863116",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل:  للماكينة اعاره",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-29T08:23:10.830904",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة عبدالعظيم ",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-09-29T08:22:24.060466",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة عبدالعظيم ",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-09-29T05:35:25.731085",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-29T05:35:03.681923",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-29T05:34:41.486900",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-09-29T05:34:15.381531",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
+    "section": "المحطات"
+  },
+  {
     "timestamp": "2026-09-28T18:07:32.681974",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
@@ -53,97 +102,6 @@
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد11 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-28T12:19:52.368648",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-28T12:19:29.792625",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس ' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-28T12:18:42.847309",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-28T12:18:20.437574",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-28T12:17:30.104884",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-28T12:17:06.171052",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-09-29T05:34:15.381531",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-29T05:34:41.486900",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-29T05:35:03.681923",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-29T05:35:25.731085",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة زيزو",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-09-29T08:22:24.060466",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة عبدالعظيم ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-09-29T08:23:10.830904",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة عبدالعظيم ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-09-29T10:47:29.863116",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل:  للماكينة اعاره",
     "section": "الكرد"
   }
 ]
