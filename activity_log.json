@@ -33,5 +33,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن فلاتس ' للماكينة كرد14 بواسطة ايهاب",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-09-30T11:19:47.956872",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن فلاتس ' للماكينة كرد14 بواسطة ايهاب",
+    "section": "الكرد"
   }
 ]
