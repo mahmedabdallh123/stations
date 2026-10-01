@@ -117,5 +117,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم ",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-01T10:41:25.330984",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد22",
+    "section": "الكرد"
   }
 ]
