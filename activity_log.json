@@ -1,33 +1,5 @@
 [
   {
-    "timestamp": "2026-10-02T09:09:32.138161",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير فلات 1350 للماكينة كرد2",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-01T17:44:00.104228",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة انس",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-01T17:43:44.934930",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة انس",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-01T15:58:45.291248",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير700 للماكينة كرد11",
-    "section": "الكرد"
-  },
-  {
     "timestamp": "2026-10-02T11:01:16.513950",
     "username": "مشرف_المكابس",
     "action_type": "execute_maintenance",
