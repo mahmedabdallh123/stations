@@ -61,5 +61,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-06T15:11:56.436043",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم",
+    "section": "التفتيح"
   }
 ]
