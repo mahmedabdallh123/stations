@@ -145,5 +145,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تشحيم البلي' للماكينة روتاري فلتر التنظيف بواسطة تيم ",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-08T07:24:50.901771",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم كراسي التحميل' للماكينة روتاري فلتر برم1 بواسطة تيم ",
+    "section": "المحطات"
   }
 ]
