@@ -257,5 +257,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تشحيم كراسي التحميل' للماكينة روتاري فلتر تمشيط 2 بواسطة تيم ",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-08T07:32:34.299864",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تشحيم كراسي التحميل' للماكينة روتاري فلتر غزل1.1 بواسطة تيم ",
+    "section": "المحطات"
   }
 ]
