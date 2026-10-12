@@ -5,7 +5,24 @@
             "all_sections": false
         },
         "role": "viewer",
-        "sections_permissions": {}
+        "sections_permissions": {
+            "البرم": [
+                "view",
+                "edit",
+                "add_event",
+                "manage_machines"
+            ],
+            "التفتيح": [],
+            "الضواغط": [],
+            "الغزل": [],
+            "الكرد": [],
+            "الكهرباء": [],
+            "المحطات": [],
+            "المكبس": [],
+            "سحب اول": [],
+            "سحب ثاني": [],
+            "محطه تحليه المياه": []
+        }
     },
     "admin": {
         "password": "1234",
