@@ -4,7 +4,7 @@
         "permissions": {
             "all_sections": false
         },
-        "role": "editor",
+        "role": "viewer",
         "sections_permissions": {}
     },
     "admin": {
