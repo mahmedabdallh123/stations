@@ -1,12 +1,4 @@
 {
-    "Abdo": {
-        "password": "9999",
-        "permissions": {
-            "all_sections": false
-        },
-        "role": "editor",
-        "sections_permissions": {}
-    },
     "admin": {
         "password": "1234",
         "permissions": {
