@@ -68,5 +68,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-13T16:35:01.314029",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
+    "section": "المحطات"
   }
 ]
