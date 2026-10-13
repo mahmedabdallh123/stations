@@ -5,5 +5,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير كويلر مسنن دبل 700 للماكينة كرد9",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-13T16:23:01.630573",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: 3530قطع سير سلندر للماكينة كرد22",
+    "section": "الكرد"
   }
 ]
