@@ -33,5 +33,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد1",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-13T16:30:28.493333",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد6",
+    "section": "الكرد"
   }
 ]
