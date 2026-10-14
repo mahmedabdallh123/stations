@@ -180,5 +180,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-14T12:24:58.686816",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
+    "section": "المكبس"
   }
 ]
