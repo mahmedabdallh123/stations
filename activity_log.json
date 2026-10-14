@@ -145,5 +145,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد21 بواسطة ايهاب ",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-14T07:44:51.502786",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد21 بواسطة ايهاب ",
+    "section": "الكرد"
   }
 ]
