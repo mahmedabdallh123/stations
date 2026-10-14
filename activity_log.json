@@ -131,5 +131,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة محمود",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-14T07:43:46.944723",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة محمود",
+    "section": "المحطات"
   }
 ]
