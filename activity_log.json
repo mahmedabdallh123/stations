@@ -1,191 +1,16 @@
 [
   {
-    "timestamp": "2026-10-13T16:20:16.624341",
-    "username": "admin",
+    "timestamp": "2026-10-14T12:41:40.858720",
+    "username": "مشرف_تحضيرات",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير كويلر مسنن دبل 700 للماكينة كرد9",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد21",
     "section": "الكرد"
   },
   {
-    "timestamp": "2026-10-13T16:23:01.630573",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: 3530قطع سير سلندر للماكينة كرد22",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:25:13.772942",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير فلات1350 للماكينة كرد6",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:27:07.293545",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تجربه للماكينة كرد18",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:29:46.754886",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد1",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:30:28.493333",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد6",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:30:56.726519",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد15",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:31:26.535370",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد20",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:32:05.449873",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف شفاط ترس الفلاتس للماكينة كرد24",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-13T16:34:40.982774",
+    "timestamp": "2026-10-14T12:25:44.506005",
     "username": "admin",
     "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:35:01.314029",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:35:29.386467",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 3رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:36:19.215532",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 3رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:36:45.608279",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 4رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:37:12.252515",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:37:16.830450",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك 1رشاشات' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:37:42.301248",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-13T16:37:57.050575",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-14T07:43:32.999037",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة محمود",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-14T07:43:46.944723",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة محمود",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-14T07:44:39.209994",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد21 بواسطة ايهاب ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-14T07:44:51.502786",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد21 بواسطة ايهاب ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-14T07:46:12.472324",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف سير 3590 للماكينة BO-P",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-10-14T12:22:58.005424",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة ة",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-14T12:23:15.118427",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة ة",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-14T12:24:43.010132",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-14T12:24:58.686816",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
+    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة محروس ",
     "section": "المكبس"
   },
   {
@@ -196,17 +21,66 @@
     "section": "المكبس"
   },
   {
-    "timestamp": "2026-10-14T12:25:44.506005",
+    "timestamp": "2026-10-14T12:24:58.686816",
     "username": "admin",
     "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة محروس ",
+    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
     "section": "المكبس"
   },
   {
-    "timestamp": "2026-10-14T12:41:40.858720",
-    "username": "مشرف_تحضيرات",
+    "timestamp": "2026-10-14T12:24:43.010132",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-14T12:23:15.118427",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة ة",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-14T12:22:58.005424",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة ة",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-14T07:46:12.472324",
+    "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد21",
+    "details": "تم إضافة عطل: تلف سير 3590 للماكينة BO-P",
+    "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-14T07:44:51.502786",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد21 بواسطة ايهاب ",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-14T07:44:39.209994",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد21 بواسطة ايهاب ",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-14T07:43:46.944723",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة محمود",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-14T07:43:32.999037",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل الحوض وتنظيفه' للماكينة حوض 3/2غزل بواسطة محمود",
+    "section": "المحطات"
   }
 ]
