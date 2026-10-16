@@ -1,62 +1,13 @@
 [
   {
-    "timestamp": "2026-10-14T12:41:40.858720",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد21",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-14T12:25:44.506005",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة محروس ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-14T12:25:29.755961",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة محروس ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-14T12:24:58.686816",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-14T12:24:43.010132",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة محروس ",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-14T12:23:15.118427",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة ة",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-14T12:22:58.005424",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلو 2رشاشات' للماكينة حوض 3/1غزل بواسطة ة",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-15T11:37:56.560116",
+    "timestamp": "2026-10-15T11:38:35.330998",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد4 بواسطة ايهاب",
     "section": "الكرد"
   },
   {
-    "timestamp": "2026-10-15T11:38:35.330998",
+    "timestamp": "2026-10-15T11:37:56.560116",
     "username": "مشرف_تحضيرات",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جريدتين علويتين خلفي320,240' للماكينة كرد4 بواسطة ايهاب",
