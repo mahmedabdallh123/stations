@@ -75,5 +75,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة زيزو ",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-17T15:48:29.306216",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملء الحوض' للماكينة حوض البرم بواسطة زيزو ",
+    "section": "المحطات"
   }
 ]
