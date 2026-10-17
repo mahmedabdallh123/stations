@@ -103,5 +103,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة زيزو ",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-17T21:14:47.528856",
+    "username": "مشرف_المكابس",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'غسل وتنظيف' للماكينة شيلر1 بواسطة زيزو ",
+    "section": "المحطات"
   }
 ]
