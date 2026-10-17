@@ -54,5 +54,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد5 بواسطة ايهاب//عمر",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-17T12:37:24.311840",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة ايهاب//عمر",
+    "section": "التفتيح"
   }
 ]
