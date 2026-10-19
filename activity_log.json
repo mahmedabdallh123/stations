@@ -166,5 +166,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تلف سير 3590 للماكينة BO-P",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-19T14:46:43.361201",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف جوان حائط  للماكينة بري فلتر التنظيف",
+    "section": "المحطات"
   }
 ]
