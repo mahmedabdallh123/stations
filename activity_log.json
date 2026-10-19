@@ -159,5 +159,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير 1800 فلات للماكينة كرد5",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-19T13:02:28.248230",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف سير 3590 للماكينة BO-P",
+    "section": "التفتيح"
   }
 ]
