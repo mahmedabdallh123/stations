@@ -5,5 +5,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد20 بواسطة تيم",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-22T12:55:25.125229",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد1 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
