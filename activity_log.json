@@ -5,5 +5,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد14",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-26T19:23:00.761782",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد2",
+    "section": "الكرد"
   }
 ]
