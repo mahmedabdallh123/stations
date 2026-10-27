@@ -75,5 +75,12 @@
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:18:20.457776",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط بواسطة شريف",
+    "section": "المكبس"
   }
 ]
