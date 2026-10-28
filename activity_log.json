@@ -1,125 +1,27 @@
 [
   {
-    "timestamp": "2026-10-26T19:22:07.922703",
+    "timestamp": "2026-10-27T15:29:11.931344",
     "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد14",
-    "section": "الكرد"
+    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 4كبير",
+    "section": "الضواغط"
   },
   {
-    "timestamp": "2026-10-26T19:23:00.761782",
+    "timestamp": "2026-10-27T15:28:08.755796",
     "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير كويلر مسنن 1270 للماكينة كرد2",
-    "section": "الكرد"
+    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 2صغير",
+    "section": "الضواغط"
   },
   {
-    "timestamp": "2026-10-26T20:08:56.144627",
-    "username": "مشرف_تحضيرات",
+    "timestamp": "2026-10-27T15:27:35.574594",
+    "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير مسنن من طرف واحد 1120 للماكينة كرد24",
-    "section": "الكرد"
+    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 1صغير",
+    "section": "الضواغط"
   },
   {
-    "timestamp": "2026-10-26T20:09:57.206413",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير مسنن من طرف واحد 1120 للماكينة كرد24",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-10-27T14:26:54.158440",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-27T15:15:04.340503",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-27T15:15:17.733852",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-27T15:15:22.513943",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-10-27T15:17:28.059670",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:17:41.982285",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:17:56.916268",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:18:20.457776",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط بواسطة شريف",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:18:40.275980",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط بواسطة شريف",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:20:10.377888",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:20:24.888854",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:20:38.785730",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:20:52.372667",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-10-27T15:21:56.276886",
+    "timestamp": "2026-10-27T15:23:54.165186",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس السايلوهات (فترة 8000 ساعة)",
@@ -133,31 +35,101 @@
     "section": "المكبس"
   },
   {
-    "timestamp": "2026-10-27T15:23:54.165186",
+    "timestamp": "2026-10-27T15:21:56.276886",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس السايلوهات (فترة 8000 ساعة)",
     "section": "المكبس"
   },
   {
-    "timestamp": "2026-10-27T15:27:35.574594",
+    "timestamp": "2026-10-27T15:20:52.372667",
     "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 1صغير",
-    "section": "الضواغط"
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
+    "section": "المكبس"
   },
   {
-    "timestamp": "2026-10-27T15:28:08.755796",
+    "timestamp": "2026-10-27T15:20:38.785730",
     "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 2صغير",
-    "section": "الضواغط"
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
+    "section": "المكبس"
   },
   {
-    "timestamp": "2026-10-27T15:29:11.931344",
+    "timestamp": "2026-10-27T15:20:24.888854",
     "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: زياره توكيل(صيانه شهريه) للماكينة كمبروسر 4كبير",
-    "section": "الضواغط"
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:20:10.377888",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر بخار زيت ' للماكينة مكبس التمشيط (فترة 8000 ساعة)",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:18:40.275980",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط بواسطة شريف",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:18:20.457776",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط بواسطة شريف",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:17:56.916268",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:17:41.982285",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:17:28.059670",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير فلتر زيت ' للماكينة مكبس التمشيط (فترة 4000 ساعة)",
+    "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-27T15:15:22.513943",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-27T15:15:17.733852",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-27T15:15:04.340503",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد2 بواسطة تيم",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-10-27T14:26:54.158440",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه (تشحيم+نظافه)' للماكينة مروحه راديال كرد1 بواسطة تيم ",
+    "section": "المحطات"
   }
 ]
