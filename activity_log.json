@@ -145,5 +145,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-29T17:32:01.042581",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: (F1)عطل ف كاميرا للماكينة TS-T5-1",
+    "section": "التفتيح"
   }
 ]
