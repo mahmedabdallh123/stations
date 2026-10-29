@@ -152,5 +152,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: (F1)عطل ف كاميرا للماكينة TS-T5-1",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-29T17:33:21.936953",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد24",
+    "section": "الكرد"
   }
 ]
