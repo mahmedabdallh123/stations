@@ -47,5 +47,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تسريب زيت مكبس للماكينة مكبس التمشيط",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-10-29T10:42:54.088119",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد24 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
