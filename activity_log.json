@@ -40,5 +40,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل:  للماكينة كرد8",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-29T10:41:57.453999",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تسريب زيت مكبس للماكينة مكبس التمشيط",
+    "section": "المكبس"
   }
 ]
