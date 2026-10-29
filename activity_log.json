@@ -89,5 +89,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد24 بواسطة تيم",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-10-29T11:45:37.783014",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير زيت جير بوكس حصيره اماميه' للماكينة BO-R بواسطة تيم",
+    "section": "التفتيح"
   }
 ]
