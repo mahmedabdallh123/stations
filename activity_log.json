@@ -26,5 +26,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم ",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-10-30T21:52:49.209778",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1270 للماكينة كرد9",
+    "section": "الكرد"
   }
 ]
