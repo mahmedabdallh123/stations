@@ -40,5 +40,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-11-03T11:20:15.069010",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم",
+    "section": "التفتيح"
   }
 ]
