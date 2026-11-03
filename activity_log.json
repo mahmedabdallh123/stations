@@ -47,5 +47,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-11-03T11:21:45.611191",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد1 بواسطة ايهاب",
+    "section": "الكرد"
   }
 ]
