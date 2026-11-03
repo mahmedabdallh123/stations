@@ -89,5 +89,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم",
     "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-11-03T11:25:26.416228",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
+    "section": "المحطات"
   }
 ]
