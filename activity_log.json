@@ -1,115 +1,10 @@
 [
   {
-    "timestamp": "2026-11-03T11:25:45.015019",
+    "timestamp": "2026-11-04T09:40:28.947399",
     "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-03T11:25:40.954748",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-03T11:25:26.416228",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-03T11:24:24.316373",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:24:10.900883",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-1 بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:23:11.786978",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد15 بواسطة ايهاب",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف حساس icfdيمين  للماكينة كرد24",
     "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-03T11:22:57.753713",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد15 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-03T11:22:00.418343",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد1 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-03T11:21:45.611191",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده 240' للماكينة كرد1 بواسطة ايهاب",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-03T11:20:15.069010",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:20:00.933442",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة MIX-2 بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:19:07.545344",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:18:51.634584",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-1 بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:18:12.972351",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-03T11:17:51.044717",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة BO-P بواسطة تيم",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-04T09:37:01.289435",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم",
-    "section": "التفتيح"
   },
   {
     "timestamp": "2026-11-04T09:37:17.670244",
@@ -119,10 +14,10 @@
     "section": "التفتيح"
   },
   {
-    "timestamp": "2026-11-04T09:40:28.947399",
+    "timestamp": "2026-11-04T09:37:01.289435",
     "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تلف حساس icfdيمين  للماكينة كرد24",
-    "section": "الكرد"
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'صيانه شهريه' للماكينة CLU-2 بواسطة تيم",
+    "section": "التفتيح"
   }
 ]
