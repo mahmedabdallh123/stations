@@ -1,104 +1,6 @@
 [
   {
-    "timestamp": "2026-11-14T10:45:12.732144",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:45:35.810634",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس السايلوهات بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:46:32.931145",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس السايلوهات بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:46:56.324397",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير فلتر زيت ' للماكينة مكبس السايلوهات بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:48:47.263071",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:49:15.575018",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:49:40.320651",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-14T10:50:05.622652",
-    "username": "مشرف_المكابس",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة ' فك و تنظيف الحصيره' للماكينة مكبس التمشيط بواسطة تبم",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-15T09:25:53.271339",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:26:33.181095",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:27:41.323673",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:27:54.936741",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:28:07.168643",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:28:47.029781",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:29:01.723035",
+    "timestamp": "2026-11-15T09:29:28.410194",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
@@ -112,10 +14,52 @@
     "section": "الكرد"
   },
   {
-    "timestamp": "2026-11-15T09:29:28.410194",
+    "timestamp": "2026-11-15T09:29:01.723035",
     "username": "admin",
     "action_type": "add_maintenance_task",
     "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T09:28:47.029781",
+    "username": "admin",
+    "action_type": "add_maintenance_task",
+    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T09:28:07.168643",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T09:27:54.936741",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T09:27:41.323673",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T09:26:33.181095",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T09:25:53.271339",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
     "section": "الكرد"
   }
 ]
