@@ -61,5 +61,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T11:07:51.442643",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: اختبار للماكينة كرد6",
+    "section": "الكرد"
   }
 ]
