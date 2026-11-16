@@ -68,5 +68,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة تيم ",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-11-16T10:45:52.247414",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم ",
+    "section": "التفتيح"
   }
 ]
