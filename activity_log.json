@@ -1,55 +1,76 @@
 [
   {
-    "timestamp": "2026-11-15T20:53:11.794743",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1800  فلات  للماكينة كرد17",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:52:22.191498",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-15T20:50:27.322719",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير السلندر 3530 للماكينة كرد9",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:51:50.684076",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك2 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-15T20:48:42.614364",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير 1800 فلات  للماكينة كرد9",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:51:15.206750",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك1 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-15T20:47:28.943786",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1200\n للماكينة كرد9",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:49:24.138658",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-15T20:46:37.314093",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1270\n للماكينة كرد9",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:49:00.745717",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك2 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-15T20:44:35.984324",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 700 للماكينة كرد9",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:48:45.417430",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك1 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-15T11:07:51.442643",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: اختبار للماكينة كرد6",
-    "section": "الكرد"
+    "timestamp": "2026-11-16T10:47:55.280988",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك4غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم ",
+    "section": "المحطات"
   },
   {
-    "timestamp": "2026-11-16T10:43:45.337359",
+    "timestamp": "2026-11-16T10:47:41.446567",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك4غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم ",
+    "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-11-16T10:46:06.284952",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم ",
+    "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-11-16T10:45:52.247414",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم ",
+    "section": "التفتيح"
+  },
+  {
+    "timestamp": "2026-11-16T10:44:15.649615",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة تيم ",
@@ -63,80 +84,10 @@
     "section": "المكبس"
   },
   {
-    "timestamp": "2026-11-16T10:44:15.649615",
+    "timestamp": "2026-11-16T10:43:45.337359",
     "username": "admin",
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'فك وتنظيف الفلاتر' للماكينة جهاز التراب بواسطة تيم ",
     "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-16T10:45:52.247414",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم ",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-16T10:46:06.284952",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'فحص وتنظيف الحصيره' للماكينة BO-R بواسطة تيم ",
-    "section": "التفتيح"
-  },
-  {
-    "timestamp": "2026-11-16T10:47:41.446567",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك4غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:47:55.280988",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير رشاشات بلوك4غزل3/2' للماكينة حوض 3/2غزل بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:48:45.417430",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك1 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:49:00.745717",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك2 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:49:24.138658",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:51:15.206750",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك1 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:51:50.684076",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك2 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-16T10:52:22.191498",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
-    "section": "المحطات"
   }
 ]
