@@ -131,5 +131,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير بلوك2 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-11-16T10:52:22.191498",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير بلوك3 رشاشات' للماكينة حوض التدوير بواسطة تيم ",
+    "section": "المحطات"
   }
 ]
