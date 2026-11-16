@@ -1,100 +1,9 @@
 [
   {
-    "timestamp": "2026-11-15T09:29:28.410194",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:29:15.129277",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:29:01.723035",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:28:47.029781",
-    "username": "admin",
-    "action_type": "add_maintenance_task",
-    "details": "تم إضافة بند صيانة 'تغير الفلاتس المتحركه' للماكينة كرد9 (فترة 7500 ساعة)",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:28:07.168643",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:27:54.936741",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:27:41.323673",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'سن الفلاتس' للماكينة كرد9 بواسطة تيم ",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:26:33.181095",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T09:25:53.271339",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: سيرفيس للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T11:07:51.442643",
+    "timestamp": "2026-11-15T20:53:11.794743",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: اختبار للماكينة كرد6",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T20:44:35.984324",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 700 للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T20:46:37.314093",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1270\n للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T20:47:28.943786",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1200\n للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-15T20:48:42.614364",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير 1800 فلات  للماكينة كرد9",
+    "details": "تم إضافة عطل: قطع سير 1800  فلات  للماكينة كرد17",
     "section": "الكرد"
   },
   {
@@ -105,10 +14,38 @@
     "section": "الكرد"
   },
   {
-    "timestamp": "2026-11-15T20:53:11.794743",
+    "timestamp": "2026-11-15T20:48:42.614364",
     "username": "مشرف_تحضيرات",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: قطع سير 1800  فلات  للماكينة كرد17",
+    "details": "تم إضافة عطل: تم قطع سير 1800 فلات  للماكينة كرد9",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T20:47:28.943786",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1200\n للماكينة كرد9",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T20:46:37.314093",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 1270\n للماكينة كرد9",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T20:44:35.984324",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 700 للماكينة كرد9",
+    "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-15T11:07:51.442643",
+    "username": "مشرف_تحضيرات",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: اختبار للماكينة كرد6",
     "section": "الكرد"
   }
 ]
