@@ -145,5 +145,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة بري فلتر تمشيط2",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-11-19T09:52:44.408240",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة كرد6",
+    "section": "الكرد"
   }
 ]
