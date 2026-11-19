@@ -40,5 +40,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: قطع سير سلندر للماكينة كرد2",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-19T18:17:38.160837",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: تلف بلي جلندر خروج شريط للماكينة كرد17",
+    "section": "الكرد"
   }
 ]
