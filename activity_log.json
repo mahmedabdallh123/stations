@@ -138,5 +138,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة مكبس التمشيط",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-11-19T09:50:15.292033",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة بري فلتر تمشيط2",
+    "section": "المحطات"
   }
 ]
