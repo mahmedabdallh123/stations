@@ -131,5 +131,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: صيانه  للماكينة مكبس السايلوهات",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-11-19T09:49:22.277534",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: صيانه  للماكينة مكبس التمشيط",
+    "section": "المكبس"
   }
 ]
