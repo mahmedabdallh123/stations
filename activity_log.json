@@ -47,5 +47,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد14 بواسطة ايهاب/عمر",
     "section": "الكرد"
+  },
+  {
+    "timestamp": "2026-11-22T13:27:20.926735",
+    "username": "admin",
+    "action_type": "add_event",
+    "details": "تم إضافة عطل: عينة سير 3530 تحت التجربة  للماكينة كرد14",
+    "section": "الكرد"
   }
 ]
