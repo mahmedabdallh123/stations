@@ -26,5 +26,12 @@
     "action_type": "add_event",
     "details": "تم إضافة عطل: تسريب زيت من عمود بستم كبيس باله للماكينة مكبس التمشيط",
     "section": "المكبس"
+  },
+  {
+    "timestamp": "2026-11-22T10:16:19.251964",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
