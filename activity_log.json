@@ -1,51 +1,9 @@
 [
   {
-    "timestamp": "2026-11-22T06:24:53.827858",
-    "username": "مشرف_تحضيرات",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: تم قطع سير مسنن الطرفين 700 للماكينة كرد9",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-22T10:11:47.148664",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-22T10:12:05.774530",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تنظيف وملئ الحوض' للماكينة حوض التدوير بواسطة تيم",
-    "section": "المحطات"
-  },
-  {
-    "timestamp": "2026-11-22T10:13:27.577870",
+    "timestamp": "2026-11-22T13:27:49.301895",
     "username": "admin",
     "action_type": "add_event",
-    "details": "تم إضافة عطل: تسريب زيت من عمود بستم كبيس باله للماكينة مكبس التمشيط",
-    "section": "المكبس"
-  },
-  {
-    "timestamp": "2026-11-22T10:16:19.251964",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-22T10:16:32.437549",
-    "username": "admin",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد23 بواسطة تيم",
-    "section": "الكرد"
-  },
-  {
-    "timestamp": "2026-11-22T13:20:24.488523",
-    "username": "مشرف_تحضيرات",
-    "action_type": "execute_maintenance",
-    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد14 بواسطة ايهاب/عمر",
+    "details": "تم إضافة عطل: عينة سير 1465 تحت التجربة  للماكينة كرد14",
     "section": "الكرد"
   },
   {
@@ -56,10 +14,10 @@
     "section": "الكرد"
   },
   {
-    "timestamp": "2026-11-22T13:27:49.301895",
-    "username": "admin",
-    "action_type": "add_event",
-    "details": "تم إضافة عطل: عينة سير 1465 تحت التجربة  للماكينة كرد14",
+    "timestamp": "2026-11-22T13:20:24.488523",
+    "username": "مشرف_تحضيرات",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير جرائد اماميه550' للماكينة كرد14 بواسطة ايهاب/عمر",
     "section": "الكرد"
   }
 ]
