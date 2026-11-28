@@ -26,5 +26,12 @@
     "action_type": "execute_maintenance",
     "details": "تم تنفيذ صيانة 'غسيل وتنظيف وملئ حوض' للماكينة حوض 3/1غزل بواسطة تيم",
     "section": "المحطات"
+  },
+  {
+    "timestamp": "2026-11-28T13:53:55.194905",
+    "username": "admin",
+    "action_type": "execute_maintenance",
+    "details": "تم تنفيذ صيانة 'تغير اول جريده خلفي240' للماكينة كرد3 بواسطة تيم",
+    "section": "الكرد"
   }
 ]
